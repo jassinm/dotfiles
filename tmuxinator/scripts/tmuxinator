@@ -1,0 +1,1 @@
+alias start_testtmux='$SHELL /Users/locojay/.tmuxinator/testtmux.tmux'
