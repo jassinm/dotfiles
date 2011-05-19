@@ -1,4 +1,4 @@
-. ~/.zsh/aliases
+#. ~/.zsh/aliases
 
 # changing directory to code project
 function c { cd ~/code/$1; }
