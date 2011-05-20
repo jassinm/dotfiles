@@ -1,0 +1,3 @@
+file=$1
+echo $file
+gs -sPAPERSIZE=a4 -sDEVICE=pnmraw -r300 -dNOPAUSE -dBATCH -sOutputFile=- -q  "$file" | ocrad > "$file".txt
