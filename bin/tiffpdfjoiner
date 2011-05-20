@@ -1,0 +1,6 @@
+folder=$1
+mkdir pdf
+for file in $(ls $folder/*.tif || ls $folder/*.TIF);do tiff2pdf -o ./pdf/$file.pdf $file; done
+filename=$((ls $folder/*tif || ls $folder/*TIF) | sed '1 !d'| sed 's/.tif//g' | sed 's/.TIF//g')
+pdfjoin ./pdf/*.pdf --outfile $filename'.pdf'
+rm -r ./pdf
