@@ -35,3 +35,6 @@ build/
 echo venv
 #VIM SWAP
 *.swp
+#nfiles
+*.csv
+*.xls
