@@ -12,8 +12,7 @@ from xlrd import open_workbook
 import sys
 import csv
 
-outfile = open(sys.argv[2],'w')
-csvwriter = csv.writer(outfile)
+csvwriter = csv.writer(sys.stdout)
 
 wbk = open_workbook(sys.argv[1],encoding_override='utf-8')
 sheet = wbk.sheet_by_index(0)
@@ -21,8 +20,8 @@ sheet = wbk.sheet_by_index(0)
 def encodeh(val):
     if isinstance(val,unicode):
         val = val.encode('utf-8')
-        val = val.replace('\n','')
-        val = val.replace(',','')
+        #val = val.replace('\n','')
+        #val = val.replace(',','')
     return val
 
 for rowidx in range(0,sheet.nrows):
@@ -30,4 +29,3 @@ for rowidx in range(0,sheet.nrows):
     rowvalues = [encodeh(r) for r in rowvalues]
     csvwriter.writerow(rowvalues)
 
-outfile.close()
