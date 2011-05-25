@@ -96,7 +96,7 @@ def run(files):
 
     maxheader =list(maxheader)
 
-    csvwriter.writerrow(maxheader)
+    csvwriter.writerow(maxheader)
     for dval in dictlist:
         out =[]
         for h in maxheader:
