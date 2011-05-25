@@ -80,6 +80,7 @@ class OrderedSet(collections.MutableSet):
 
 def run(files):
     maxheader = OrderedSet()
+    csvwriter = csv.writer(sys.stdout)
     dictlist = []
     for arg in files:
         csvreader = csv.reader(open(arg))
@@ -94,12 +95,8 @@ def run(files):
             dictlist.append(dtemp)
 
     maxheader =list(maxheader)
-    def pp(s):
-        if ',' in s:
-            return '"'+s+'"'
-        else:
-            return s
-    print ','.join([pp(s) for s in maxheader])
+
+    csvwriter.writerrow(maxheader)
     for dval in dictlist:
         out =[]
         for h in maxheader:
@@ -107,7 +104,7 @@ def run(files):
                 out.append(dval[h])
             else:
                 out.append('')
-        print ','.join([pp(s) for s in out])
+        csvwriter.writerow(out)
 
 def main():
     filestorun = sys.argv[1:]
