@@ -2,7 +2,7 @@
 '''
 File: pycsvtools.py
 Created: Thu 26 May 2011 10:38:51 AM EDT
-Last Modified: Thu 26 May 2011 01:24:09 PM EDT
+Last Modified: Thu 26 May 2011 04:19:27 PM EDT
 Author: Jassin MEKNASSI
 Description: simple csvtools used when wc and ack fails for csv's
 having new lines in fields
@@ -12,10 +12,26 @@ from optparse import OptionParser
 import csv
 import sys
 import json
-from datetutil.parser import parse as dateparser
+from dateutil.parser import parse as dateparser
 csv.field_size_limit(1000000000)
 
 csvwriter = csv.writer(sys.stdout)
+
+
+def findrow(csvreader, hint):
+
+    header = csvreader.next()
+    keys = list(hint.keys())
+    searchkey = keys[0]
+    if searchkey not in header:
+        csvwriter.writerow(header)
+        raise Exception, 'hint key not found in header'
+
+    hintindex = header.index(searchkey)
+    for row in csvreader:
+        if row[hintindex].strip() == hint[searchkey].strip():
+            csvwriter.writerow(row)
+            break
 
 
 def printCsv2json(csvreader):
@@ -54,10 +70,10 @@ def printVal(csvreader, rownr, colnr):
     counter = 0
 
     for row in csvreader:
-        counter += 1
         if counter == rownr:
             print row[colnr]
             break
+        counter += 1
 
 
 def printCol(csvreader, colnr):
@@ -83,12 +99,14 @@ def printusage():
     print 'printcol : print column '
     print 'printval : print value at row / column'
     print 'nrofrows : print nrofrows'
+    print 'tojson   : convert to a json file'
+    print 'findrow  : finds a row using a dict hint'
 
 
 def main():
 
     pycsvoptions = ['printrow', 'printcol', 'printval', 'nrofrows',
-                    'tojson']
+                    'tojson','findrow']
 
     if len(sys.argv) <= 2:
         printusage()
@@ -149,7 +167,7 @@ def main():
             parser.print_help()
     elif roption == 'printval':
 
-        usage = 'usage : %prog printrow'
+        usage = 'usage : %prog printval'
         parser = OptionParser(usage=usage)
         parser.add_option(
             '-f',
@@ -176,7 +194,7 @@ def main():
             help='column number to print (starts @ 0)',
             )
         (options, args) = parser.parse_args()
-        if options.filename and options.rownr and options.colnr:
+        if options.filename and options.rownr is not None and options.colnr is not None:
             csvreader = csv.reader(open(options.filename, 'r'))
             printVal(csvreader, options.rownr, options.colnr)
         else:
@@ -216,6 +234,34 @@ def main():
         if options.filename:
             csvreader = csv.reader(open(options.filename, 'r'))
             printCsv2json(csvreader)
+        else:
+            parser.print_help()
+    elif roption == 'findrow':
+
+        usage = 'usage : %prog findeow'
+        parser = OptionParser(usage=usage)
+        parser.add_option(
+            '-f',
+            '--file',
+            dest='filename',
+            action='store',
+            type='string',
+            help='inputfile',
+            )
+
+        parser.add_option(
+            '-d',
+            '--hint',
+            action='store',
+            type='string',
+            dest='hint',
+            help='hint : dict',
+            )
+        (options, args) = parser.parse_args()
+        if options.filename and options.hint:
+            csvreader = csv.reader(open(options.filename, 'r'))
+            hintdict = json.loads(options.hint)
+            findrow(csvreader, hintdict)
         else:
             parser.print_help()
 
