@@ -2,7 +2,7 @@
 '''
 File: pycsvtools.py
 Created: Thu 26 May 2011 10:38:51 AM EDT
-Last Modified: Thu 26 May 2011 04:19:27 PM EDT
+Last Modified: Thu 26 May 2011 07:30:10 PM EDT
 Author: Jassin MEKNASSI
 Description: simple csvtools used when wc and ack fails for csv's
 having new lines in fields
