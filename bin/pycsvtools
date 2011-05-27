@@ -1,8 +1,9 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 '''
 File: pycsvtools.py
 Created: Thu 26 May 2011 10:38:51 AM EDT
-Last Modified: Thu 26 May 2011 07:30:10 PM EDT
+Last Modified: Fri 27 May 2011 05:00:26 PM EDT
 Author: Jassin MEKNASSI
 Description: simple csvtools used when wc and ack fails for csv's
 having new lines in fields
@@ -86,11 +87,10 @@ def printRow(csvreader, rownr):
 
     counter = 0
     for row in csvreader:
-        counter += 1
         if counter == rownr:
             csvwriter.writerow(row)
             break
-
+        counter += 1
 
 def printusage():
     print 'usage : pycsvtools [options] -h'
@@ -105,8 +105,14 @@ def printusage():
 
 def main():
 
-    pycsvoptions = ['printrow', 'printcol', 'printval', 'nrofrows',
-                    'tojson','findrow']
+    pycsvoptions = [
+        'printrow',
+        'printcol',
+        'printval',
+        'nrofrows',
+        'tojson',
+        'findrow',
+        ]
 
     if len(sys.argv) <= 2:
         printusage()
@@ -115,17 +121,16 @@ def main():
     if roption not in pycsvoptions:
         printusage()
         return
+    parser = OptionParser()
+    parser.add_option(
+        '-f',
+        '--file',
+        dest='filename',
+        action='store',
+        type='string',
+        help='inputfile',
+        )
     if roption == 'printcol':
-        usage = 'usage : %prog printcol'
-        parser = OptionParser(usage=usage)
-        parser.add_option(
-            '-f',
-            '--file',
-            dest='filename',
-            action='store',
-            type='string',
-            help='inputfile',
-            )
         parser.add_option(
             '-n',
             '--colnr',
@@ -134,23 +139,15 @@ def main():
             type='int',
             help='column number to print (starts @ 0)',
             )
+        usage = 'usage : %prog printcol'
+        parser.usage = usage
         (options, args) = parser.parse_args()
-        if options.filename and options.colnr:
+        if options.filename and options.colnr is not None:
             csvreader = csv.reader(open(options.filename, 'r'))
             printCol(csvreader, options.colnr)
         else:
             parser.print_help()
     elif roption == 'printrow':
-        usage = 'usage : %prog printrow'
-        parser = OptionParser(usage=usage)
-        parser.add_option(
-            '-f',
-            '--file',
-            dest='filename',
-            action='store',
-            type='string',
-            help='inputfile',
-            )
         parser.add_option(
             '-n',
             '--rownr',
@@ -159,24 +156,16 @@ def main():
             type='int',
             help='row number to print (starts @ 0)',
             )
+        usage = 'usage : %prog printrow'
+        parser.usage = usage
         (options, args) = parser.parse_args()
-        if options.filename and options.rownr:
+        if options.filename and options.rownr is not None:
             csvreader = csv.reader(open(options.filename, 'r'))
             printRow(csvreader, options.rownr)
         else:
             parser.print_help()
     elif roption == 'printval':
 
-        usage = 'usage : %prog printval'
-        parser = OptionParser(usage=usage)
-        parser.add_option(
-            '-f',
-            '--file',
-            dest='filename',
-            action='store',
-            type='string',
-            help='inputfile',
-            )
         parser.add_option(
             '-r',
             '--rownr',
@@ -193,24 +182,20 @@ def main():
             type='int',
             help='column number to print (starts @ 0)',
             )
+        usage = 'usage : %prog printval'
+        parser.usage = usage
         (options, args) = parser.parse_args()
-        if options.filename and options.rownr is not None and options.colnr is not None:
+        if options.filename and options.rownr is not None \
+            and options.colnr is not None:
             csvreader = csv.reader(open(options.filename, 'r'))
             printVal(csvreader, options.rownr, options.colnr)
         else:
             parser.print_help()
     elif roption == 'nrofrows':
         usage = 'usage : %prog nrofrows'
-        parser = OptionParser(usage=usage)
-        parser.add_option(
-            '-f',
-            '--file',
-            dest='filename',
-            action='store',
-            type='string',
-            help='inputfile',
-            )
 
+        usage = 'usage : %prog printcol'
+        parser.usage = usage
         (options, args) = parser.parse_args()
         if options.filename:
             csvreader = csv.reader(open(options.filename, 'r'))
@@ -220,16 +205,7 @@ def main():
     elif roption == 'printjson':
 
         usage = 'usage : %prog printjson'
-        parser = OptionParser(usage=usage)
-        parser.add_option(
-            '-f',
-            '--file',
-            dest='filename',
-            action='store',
-            type='string',
-            help='inputfile',
-            )
-
+        parser.usage = usage
         (options, args) = parser.parse_args()
         if options.filename:
             csvreader = csv.reader(open(options.filename, 'r'))
@@ -237,17 +213,6 @@ def main():
         else:
             parser.print_help()
     elif roption == 'findrow':
-
-        usage = 'usage : %prog findeow'
-        parser = OptionParser(usage=usage)
-        parser.add_option(
-            '-f',
-            '--file',
-            dest='filename',
-            action='store',
-            type='string',
-            help='inputfile',
-            )
 
         parser.add_option(
             '-d',
@@ -257,6 +222,8 @@ def main():
             dest='hint',
             help='hint : dict',
             )
+        usage = 'usage : %prog findeow'
+        parser.usage = usage
         (options, args) = parser.parse_args()
         if options.filename and options.hint:
             csvreader = csv.reader(open(options.filename, 'r'))
@@ -264,6 +231,8 @@ def main():
             findrow(csvreader, hintdict)
         else:
             parser.print_help()
+    else:
+        printusage()
 
 
 if __name__ == '__main__':
