@@ -10,6 +10,7 @@ Description: converts an xls file to a csv file
 
 from optparse import OptionParser
 from xlrd import open_workbook
+from openpyxl.reader.excel import load_workbook
 import sys
 import csv
 
@@ -19,15 +20,32 @@ csvwriter = csv.writer(sys.stdout)
 def encodeh(val):
     if isinstance(val, unicode):
         val = val.encode('utf-8')
-
         # val = val.replace('\n','')
         # val = val.replace(',','')
-
     return val
 
+def xlsxtocsv(filename, sheetindex=0):
+    """
+    converts an xls (up 2003) to a csv
+    csvoutput to stdout
+    """
+    wb = load_workbook(filename = filename,use_iterators = True)
+    counter=0
+    for sheetname in wb.get_sheet_names():
+        if counter == sheetindex:
+            ws = wb.get_sheet_by_name(name=sheetname)
+            break
+    for row in ws.iter_rows():
+        out = []
+        for cell in row:
+            out.append(encodeh(cell.internal_value))
+        csvwriter.writerow(out)
 
 def xls2csv(filename, sheetindex=0):
-
+    """
+    converts an xlsx (2007) to a csv
+    csvoutput to stdout
+    """
     wbk = open_workbook(filename, encoding_override='utf-8')
     sheet = wbk.sheet_by_index(0)
     for rowidx in range(0, sheet.nrows):
@@ -37,19 +55,36 @@ def xls2csv(filename, sheetindex=0):
 
 
 def listsheetnames(filename):
+    """
+    list sheet names of an xls file
+    """
     wbk = open_workbook(filename, encoding_override='utf-8')
     for sheetname in wbk.sheet_names():
         print sheetname
 
+def listsheetnames_xls(filename):
+    """
+    list sheet names of an xlsx file
+    """
+    wb = load_workbook(filename = filename)
+    for sheetname in wb.get_sheet_names():
+        print sheetname
 
 def printusage():
-    print 'usage xlspytools [options] -h'
+    """
+    outputs pyxlstools usage
+    """
+
+    print 'usage pyxlstools [options] -h'
     print 'options: -------'
     print 'tocsv      : convert sheet to a csvfile'
     print 'listsheets : list sheetnames'
 
 
 def main():
+    """
+    main : parser different options and run's the appropriate function
+    """
     toptions = set(['tocsv', 'listsheets'])
 
     if len(sys.argv) <= 2:
@@ -84,7 +119,12 @@ def main():
         (options, args) = parser.parse_args()
         parser.usage = usage
         if options.filename:
-            xls2csv(options.filename,options.index)
+            if options.filename.endswith('.'):
+                xls2csv(options.filename,options.index)
+            elif options.filename.endswith('.xlsx'):
+                xlsxtocsv(options.filename,options.index)
+            else:
+                print 'please provide xls or xlsx file'
         else:
             parser.print_help()
     elif roption == 'listsheets':
@@ -93,7 +133,12 @@ def main():
         parser.usage = usage
         (options, args) = parser.parse_args()
         if options.filename:
-            listsheetnames(options.filename)
+            if options.filename.endswith('.xls'):
+                listsheetnames(options.filename)
+            elif options.filename.endswith('.xlsx'):
+                listsheetnames_xls(options.filename)
+            else:
+                print 'please provide xls or xlsx file'
         else:
             parser.print_help()
     else:
