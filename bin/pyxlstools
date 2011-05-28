@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 '''
-File: xls2csv.py
+File: pyxlstools.py
 Created: Wed 25 May 2011 08:56:06 AM EDT
 Last Modified: Wed 25 May 2011 08:56:06 AM EDT
 Author: Jassin MEKNASSI
@@ -11,8 +11,10 @@ Description: converts an xls file to a csv file
 from optparse import OptionParser
 from xlrd import open_workbook
 from openpyxl.reader.excel import load_workbook
+from openpyxl.workbook import Workbook
 import sys
 import csv
+import os
 
 csvwriter = csv.writer(sys.stdout)
 
@@ -53,6 +55,18 @@ def xls2csv(filename, sheetindex=0):
         rowvalues = [encodeh(r) for r in rowvalues]
         csvwriter.writerow(rowvalues)
 
+def xls_from_csvs(csvlist,outputfilename):
+    """docstring for xls_from_csvs"""
+    wb = Workbook(optimized_write = True)
+    for csvfile in csvlist:
+        ws = wb.create_sheet()
+        filename ,ext =os.path.splitext(csvfile)
+        ws.title = filename.lstrip()
+        filer = open(csvfile)
+        csvreader = csv.reader(filer)
+        for row in csvreader:
+            ws.append(row)
+    wb.save(outputfilename)
 
 def listsheetnames(filename):
     """
@@ -85,13 +99,11 @@ def main():
     """
     main : parser different options and run's the appropriate function
     """
-    toptions = set(['tocsv', 'listsheets'])
-
+    toptions = set(['tocsv', 'listsheets','mergecsvs'])
     if len(sys.argv) <= 2:
         printusage()
         return
     roption = sys.argv[1]
-
     if roption not in toptions:
         printusage()
         return
@@ -128,7 +140,6 @@ def main():
         else:
             parser.print_help()
     elif roption == 'listsheets':
-
         usage = 'use : %prog listsheetnames'
         parser.usage = usage
         (options, args) = parser.parse_args()
@@ -141,6 +152,12 @@ def main():
                 print 'please provide xls or xlsx file'
         else:
             parser.print_help()
+    elif roption == 'mergecsvs':
+        (options, args) = parser.parse_args()
+        print options.filename
+        args =set(args)
+        args.discard('mergecsvs')
+        xls_from_csvs(args,options.filename)
     else:
         printusage()
 
