@@ -61,7 +61,7 @@ def xls2csv(filename, sheetindex=0):
     csvoutput to stdout
     """
     wbk = open_workbook(filename, encoding_override='utf-8')
-    sheet = wbk.sheet_by_index(0)
+    sheet = wbk.sheet_by_index(sheetindex)
     for rowidx in range(0, sheet.nrows):
         rowvalues = sheet.row_values(rowidx)
         rowtypes = sheet.row_types(rowidx)
