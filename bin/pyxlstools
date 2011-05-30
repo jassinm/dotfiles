@@ -10,10 +10,12 @@ Description: converts an xls file to a csv file
 
 from optparse import OptionParser
 from xlrd import open_workbook
+from xlrd import xldate_as_tuple
 from openpyxl.reader.excel import load_workbook
 from openpyxl.workbook import Workbook
 import sys
 import csv
+import datetime
 import os
 
 csvwriter = csv.writer(sys.stdout)
@@ -43,6 +45,16 @@ def xlsxtocsv(filename, sheetindex=0):
             out.append(encodeh(cell.internal_value))
         csvwriter.writerow(out)
 
+def convertxlrdrow(rowtypes, rowvalues):
+    out = []
+    for index , xtype in enumerate(rowtypes):
+        if xtype == 3:
+            tpldate = xldate_as_tuple(rowvalues[index], 0)
+            out.append(datetime.datetime(*tpldate))
+        else:
+            out.append(encodeh(rowvalues[index]))
+    return out
+
 def xls2csv(filename, sheetindex=0):
     """
     converts an xlsx (2007) to a csv
@@ -52,7 +64,8 @@ def xls2csv(filename, sheetindex=0):
     sheet = wbk.sheet_by_index(0)
     for rowidx in range(0, sheet.nrows):
         rowvalues = sheet.row_values(rowidx)
-        rowvalues = [encodeh(r) for r in rowvalues]
+        rowtypes = sheet.row_types(rowidx)
+        rowvalues = convertxlrdrow(rowtypes,rowvalues)#[encodeh(r) for r in rowvalues]
         csvwriter.writerow(rowvalues)
 
 def xls_from_csvs(csvlist,outputfilename):
