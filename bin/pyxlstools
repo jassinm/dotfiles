@@ -131,7 +131,7 @@ def main():
         (options, args) = parser.parse_args()
         parser.usage = usage
         if options.filename:
-            if options.filename.endswith('.'):
+            if options.filename.endswith('.xls'):
                 xls2csv(options.filename,options.index)
             elif options.filename.endswith('.xlsx'):
                 xlsxtocsv(options.filename,options.index)
