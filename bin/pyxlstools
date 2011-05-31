@@ -13,6 +13,7 @@ from xlrd import open_workbook
 from xlrd import xldate_as_tuple
 from openpyxl.reader.excel import load_workbook
 from openpyxl.workbook import Workbook
+from dateutil.parser import parse as dateparser
 import sys
 import csv
 import datetime
@@ -26,6 +27,17 @@ def encodeh(val):
         val = val.encode('utf-8')
         # val = val.replace('\n','')
         # val = val.replace(',','')
+    return val
+
+def datatypeconversion(val):
+    try:
+        return float(val)
+    except ValueError:
+        pass
+    try:
+        return dateparser(val)
+    except ValueError:
+        pass
     return val
 
 def xlsxtocsv(filename, sheetindex=0):
@@ -78,7 +90,7 @@ def xls_from_csvs(csvlist,outputfilename):
         filer = open(csvfile)
         csvreader = csv.reader(filer)
         for row in csvreader:
-            ws.append(row)
+            ws.append([datatypeconversion(r) for r in row])
     wb.save(outputfilename)
 
 def listsheetnames(filename):
@@ -106,7 +118,7 @@ def printusage():
     print 'options: -------'
     print 'tocsv      : convert sheet to a csvfile'
     print 'listsheets : list sheetnames'
-
+    print 'mergecsvs : mergecsvs to xlsx'
 
 def main():
     """
