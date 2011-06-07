@@ -397,8 +397,8 @@ readline_parse_and_bind tab: complete
 # This binds Control-l to printing the list of all possible completions when
 # there is more than one (what 'complete' does when hitting TAB twice, or at
 # the first TAB if show-all-if-ambiguous is on)
-readline_parse_and_bind "\C-l": possible-completions
-
+#readline_parse_and_bind "\C-l": possible-completions
+readline_parse_and_bind "\C-l": clear-screen
 # This forces readline to automatically print the above list when tab
 # completion is set to 'complete'. You can still get this list manually by
 # using the key bound to 'possible-completions' (Control-l by default) or by
