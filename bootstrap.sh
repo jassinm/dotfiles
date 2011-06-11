@@ -1,12 +1,19 @@
 f=$(pwd)
 git submodule init
 git submodule update
-cd $HOME/.dotfiles/vim
-sh bootstrap.sh
-cd $HOME/.dotfiles/oh-my-zsh/
-sh bootstrap.sh
+read -p "install vim' (y/n)?"
+if [ "$REPLY" == "y" ]
+then
+	cd $HOME/.dotfiles/vim
+	sh bootstrap.sh
+fi
+read -p "install oh-my-zsh' (y/n)?"
+if [ "$REPLY" == "y" ]
+then
+	cd $HOME/.dotfiles/oh-my-zsh/
+	sh bootstrap.sh
+fi
 cd $HOME/.dotfiles/
 sudo gem install teamocil
 rake install
-#ln -Fs ~/.dotfiles/vim/vimrc ~/.vimrc
 mkdir -p $HOME/.ipython
