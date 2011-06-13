@@ -1,16 +1,6 @@
-servers = (
-  {
-    address = "chat.freenode.net";
-    chatnet = "freenode";
-    port = "7000";
-    use_ssl = "yes";
-    ssl_verify = "yes";
-    ssl_capath = "/etc/ssl/certs";
-    autoconnect = "no";
-  }
-);
+servers = ( );
 
-channels = (  );
+channels = ( );
 
 aliases = {
   J = "join";
@@ -47,7 +37,7 @@ aliases = {
   UMODE = "mode $N";
   WC = "window close";
   WN = "window new hide";
-  SV = "say Irssi $J ($V) - http://irssi.org/";
+  SV = "say MacIrssi 0.8.6.6 (Core: irssi 0.8.14) - http://www.sysctl.co.uk/projects/macirssi/";
   GOTO = "sb goto";
   CHAT = "dcc chat";
   RUN = "SCRIPT LOAD";
@@ -190,6 +180,7 @@ settings = {
     print_active_channel = "yes";
     autolog = "yes";
     autolog_path = "~/.irssi/logs/$tag/%Y-%m-%d/$0.log";
+    theme = "default";
   };
   "fe-common/irc" = { show_away_once = "yes"; };
   "irc/core" = { channel_sync = "no"; };
@@ -204,4 +195,4 @@ ignores = (
   { level = "QUITS"; servertag = "freenode"; }
 );
 
-chatnets = { bitlbee = { type = "IRC"; }; freenode = { type = "IRC"; }; };
+chatnets = { freenode = { type = "IRC"; }; };
