@@ -8,6 +8,12 @@ def updatesubmodules():
 def _installdependencies():
     local("sudo gem install teamocil")
     local("mkdir -p $HOME/.ipython/")
+
+def link_file(filetolink):
+    currentdir = local('echo $PWD',capture =True)
+    local("ln -s " + currentdir + "/" + filetolink
+          +" $HOME/." + filetolink )
+
 def install():
     local("git submodule init")
     local("git submodule update")
