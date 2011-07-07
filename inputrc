@@ -3,6 +3,10 @@ set keymap vi
 
 # turn off the stupid bell
 set bell-style none
+#inoremap jj <esc>
+#readline_parse_and_bind "jj" "jk"
+#bindkey "jj"	vi-cmd-mode
+#bindkey self-insert-command"
 $if mode=vi
     set keymap vi-command
     "gg": beginning-of-history
