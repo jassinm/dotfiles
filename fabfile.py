@@ -7,7 +7,13 @@ def updatesubmodules():
 
 def _installdependencies():
     local("sudo gem install teamocil")
+    local("sudo pip install ipython")
     local("mkdir -p $HOME/.ipython/")
+
+def _intalldependencieslinux():
+    local("sudo apt-get install gem")
+    local("sudo apt-get install ruby")
+    local("sudo apt-get install rake")
 
 def link_file(filetolink):
     currentdir = local('echo $PWD',capture =True)
@@ -17,6 +23,10 @@ def link_file(filetolink):
 def install():
     local("git submodule init")
     local("git submodule update")
+    ostype = local("uname -s", capture=True)
+    if ostype == "Linux":
+        _intalldependencieslinux()
+    _installdependencies()
     updatesubmodules()
     if fabric.contrib.console.confirm("install vim"):
         with lcd("./vim/"):
