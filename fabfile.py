@@ -13,6 +13,8 @@ def _installdependencies():
 def _intalldependencieslinux():
     local("sudo apt-get install gem")
     local("sudo apt-get install ruby")
+    local("sudo apt-get install ruby-dev")
+    local("sudo apt-get install ruby-gems")
     local("sudo apt-get install rake")
 
 def link_file(filetolink):
