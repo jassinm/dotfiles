@@ -28,7 +28,6 @@ def install():
     ostype = local("uname -s", capture=True)
     if ostype == "Linux":
         _intalldependencieslinux()
-    _installdependencies()
     updatesubmodules()
     if fabric.contrib.console.confirm("install vim"):
         with lcd("./vim/"):
@@ -37,3 +36,4 @@ def install():
         with lcd("./oh-my-zsh/"):
             local("fab install")
     local("rake install")
+    _installdependencies()
