@@ -1,17 +1,13 @@
 set editing-mode vi
 set keymap vi
-
+"jj":vi-movement-mode
 # turn off the stupid bell
 set bell-style none
-#inoremap jj <esc>
-#readline_parse_and_bind "jj" "jk"
-#bindkey "jj"	vi-cmd-mode
-#bindkey self-insert-command"
 $if mode=vi
     set keymap vi-command
     "gg": beginning-of-history
     "G": end-of-history
-    #"jj":vi-movement-mode"
+    "jj": vi-movement-mode
     set keymap vi-insert
     "\C-w": backward-kill-word
     "\C-p": history-search-backward
