@@ -44,17 +44,17 @@ def guess_row_type(row):
     """
     Guess the type of the row given some values in the row.
     """
-    txttype = 'text'
+    txttype = 'varchar(255)'
 
-    lens = set(len(x) for x in row)
-    if len(lens) == 1:
-        for x in row:
-            if not re.match('(\d\d\d\d)-(\d\d)-(\d\d)', x):
-                break
-        else:
-            return 'date'
+    #lens = set(len(x) for x in row)
+    #if len(lens) == 1:
+        #for x in row:
+            #if not re.match('(\d\d\d\d)-(\d\d)-(\d\d)', x):
+                #break
+        #else:
+            #return 'date'
 
-        txttype = ('varchar', lens.pop())
+        #txttype = ('varchar', lens.pop())
 
     # Try integers.
     for x in row:
@@ -72,14 +72,7 @@ def guess_row_type(row):
         except ValueError:
             break
     else:
-        typ = 'float'
-
-        # Try money.
-        for x in row:
-            if not re.match('\d+\.\d\d', x):
-                break
-        else:
-            typ = ('numeric', '10,2')
+        typ = 'double'
 
         return typ
 
