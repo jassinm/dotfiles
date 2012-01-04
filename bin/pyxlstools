@@ -34,10 +34,10 @@ def datatypeconversion(val):
         return float(val)
     except ValueError:
         pass
-    try:
-        return dateparser(val)
-    except ValueError:
-        pass
+    #try:
+        #return dateparser(val)
+    #except Exception:
+        #pass
     return val
 
 def xlsxtocsv(filename, sheetindex=0):
@@ -182,6 +182,7 @@ def main():
         print options.filename
         args =set(args)
         args.discard('mergecsvs')
+        print args
         xls_from_csvs(args,options.filename)
     else:
         printusage()
