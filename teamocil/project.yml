@@ -2,13 +2,12 @@ windows:
   - name: vim-project
     splits:
       - cmd:
-        height : 100
+        - clear
       - cmd:
-        width: 50
-      - cmd:
-        widht: 50
-      - cmd:
-        widht: 50
-      - cmd:
-        width: 50
-
+        - clear
+      - cmd: clear
+        height: 50
+        target: bottom-right
+      - cmd: clear
+        height: 50
+        target: bottom-left
