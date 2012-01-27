@@ -5,9 +5,25 @@ windows:
         - clear
       - cmd:
         - clear
-      - cmd: clear
+        width : 50
+      - cmd:
+        - clear
+        width: 50
+      - cmd:
+        - clear
         height: 50
-        target: bottom-right
-      - cmd: clear
-        height: 50
-        target: bottom-left
+      #- cmd:
+        #- clear
+        #width: 50
+
+#.------------------.------------------.
+#|                  |        |         |
+#|                  |        |         |
+#|                  |        |         |
+#|                  |        |         |
+#|                  |------------------|
+#|                  |        |         |
+#|                  |        |         |
+#|                  |        |         |
+#|                  |        |         |
+#'------------------'------------------'
