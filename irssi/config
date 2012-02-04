@@ -1,6 +1,23 @@
-servers = ( );
+servers = (
+  {
+    address = "irc.freenode.net";
+    chatnet = "freenode";
+    port = "6667";
+    use_ssl = "no";
+    ssl_verify = "no";
+    autoconnect = "yes";
 
-channels = ( );
+  }
+);
+
+chatnets = {
+  freenode = { type = "IRC"; nick = "locojay"; };
+
+};
+
+channels = ( 
+  { name = "#vim"; chatnet = "freenode"; autojoin = "Yes"; }
+);
 
 aliases = {
   J = "join";
@@ -157,6 +174,13 @@ statusbar = {
       };
       position = "100";
     };
+    awl_0 = {
+      items = {
+        barstart = { priority = "100"; };
+        awl_0 = { };
+        barend = { priority = "100"; alignment = "right"; };
+      };
+    };
   };
 };
 settings = {
@@ -180,13 +204,18 @@ settings = {
     print_active_channel = "yes";
     autolog = "yes";
     autolog_path = "~/.irssi/logs/$tag/%Y-%m-%d/$0.log";
-    theme = "default";
+    theme = "trax";
   };
   "fe-common/irc" = { show_away_once = "yes"; };
   "irc/core" = { channel_sync = "no"; };
-  "perl/core/scripts" = { vim_mode_cmd_seq = "j"; };
+  "perl/core/scripts" = {
+    vim_mode_cmd_seq = "j";
+    growl_on_regex = "locojay";
+  };
 };
-hilights = ( { text = "datetimewidget"; nick = "yes"; word = "yes"; } );
+hilights = (
+  { text = "locojay"; nick = "no"; word = "yes"; fullword = "yes"; }
+);
 logs = { };
 ignores = (
   { level = "JOINS"; servertag = "freenode"; },
@@ -195,4 +224,21 @@ ignores = (
   { level = "QUITS"; servertag = "freenode"; }
 );
 
-chatnets = { freenode = { type = "IRC"; }; };
+windows = {
+  1 = { immortal = "yes"; name = "(status)"; level = "ALL"; };
+  2 = { name = "hilight"; sticky = "yes"; };
+  3 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#vim";
+        tag = "freenode";
+      }
+    );
+  };
+};
+mainwindows = {
+  1 = { first_line = "12"; lines = "72"; };
+  2 = { first_line = "1"; lines = "11"; };
+};
