@@ -17,6 +17,9 @@ disable /VirtualBox/
 only /Chrome/ do
     map "<Ctrl-l>", "<Alt-Cmd-Right>"
     map "<Ctrl-h>", "<Alt-Cmd-Left>"
+    #vimim does not support this
+    map "<Ctrl-d>", "<PageDown>"
+    map "<Ctrl-u>", "<PageUp>"
 end
 
 only /Safari/ do
