@@ -1,8 +1,8 @@
 DOTFILES=$(pwd)
-SYMLINK="ln -fs"
 
 git submodule init
 git submodule update
+git submodule foreach git pull origin master
 
 function link_file {
     source="${DOTFILEs}/$1"
@@ -16,57 +16,46 @@ function link_file {
 }
 
 
-link_file irssi
-#read -p "install vim' (y/n)?"
-#if [ "$REPLY" == "y" ]
-#then
-    #cd $DOTFILES/vim
-    #sh bootstrap.sh
-    #rm $HOME/.vim
-    #$SYMLINK $DOTFILES/vim $HOME/.vim
-#fi
-#read -p "install oh-my-zsh' (y/n)?"
-#if [ "$REPLY" == "y" ]
-#then
-    #cd $DOTFILES/oh-my-zsh/
-    #sh bootstrap.sh
-#fi
+read -p "install vim' (y/n)?"
+if [ "$REPLY" == "y" ]
+then
+    cd $DOTFILES/vim
+    sh bootstrap.sh
+    link_file vim
+fi
+read -p "install oh-my-zsh' (y/n)?"
+if [ "$REPLY" == "y" ]
+then
+    cd $DOTFILES/oh-my-zsh/
+    sh bootstrap.sh
+    link_file oh-my-zsh
+fi
 
 cd $DOTFILES
 
 
 ##inputrc
-#$SYMLINK $DOTFILES/inputrc $HOME/.inputrc
-
+link_file inputrc
 ##tmux
-#$SYMLINK $DOTFILES/tmux.conf $HOME/.tmux.conf
+link_file tmux
 ##teamocil
-#$SYMLINK $DOTFILES/teamocil $HOME/.teamocil
-
+link_file teamocil
 ##irssi
-#$SYMLINK $DOTFILES/irssi $HOME/.irssi
-
+link_file irssi
 ##ipython
-#$SYMLINK $DOTFILES/ipython $HOME/.ipython
-
-
+link_file ipython
 ##git
-#$SYMLINK $DOTFILES/gitignore $HOME/.gitignore
-#$SYNLINK $DOTFILES/gitconfig $HOME/.gitconfig
-
+link_file .gitignore
+link_file .gitconfig
 ##ack
-#$SYMLINK $DOTFILES/ackrc $HOME/.ackrc
-
+link_file ackrc
 ##bash
-#$SYMLINK $DOTFILES/bash $HOME/.bash
-#$SYMLINK $DOTFILES/bash_profile $HOME/.bash_profile
-#$SYMLINK $DOTFILES/bashrc $HOME/.bashrc
-
+link_file bash
+link_file bash_profile
+link_file bashrc
 ##bin
-#$SYMLINK $DOTFILES/bin $HOME/.bin
-
+link_file bin
 ##zlogin
-#$SYMLINK $DOTFILES/zlogin $HOME/.zlogin
-
+link_file zslogin
 
 ##sudo gem install teamocil
