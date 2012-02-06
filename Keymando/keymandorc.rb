@@ -25,6 +25,8 @@ end
 only /Safari/ do
     map "<Ctrl-l>", "<Cmd-Shift-Right>"
     map "<Ctrl-h>", "<Cmd-Shift-Left>"
+    #go to navigation bar
+    #map "<Ctrl-e>", "<Cmd-l>"
 end
 
 only /Firefox/ do
