@@ -1,0 +1,24 @@
+[user]
+    name = locojaydev
+    email = locojaydev@dev.com
+[alias]
+    co = checkout
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+[core]
+    excludesfile = /Users/locojay/.gitignore
+    editor = vim
+    autocrlf = input
+[apply]
+    whitespace = nowarn
+[format]
+    pretty = %C(yellow)%h%Creset %s %C(red)(%an, %cr)%Creset
+[github]
+    user =
+    token =
+[diff]
+    external = gitvimdiff
+[pager]
+    diff =

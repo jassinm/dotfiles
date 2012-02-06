@@ -1,12 +1,12 @@
-
-
-== Installation
+Installation
+============
 
   git clone git://github.com/ryanb/dotfiles ~/.dotfiles
   cd ~/.dotfiles
   sh bootstrap.sh
 
-== Environment
+Environment
+===========
 
 I am running on Mac OS X, but it will likely work on Linux as well with
 minor fiddling. I primarily use zsh, but this includes some older bash
