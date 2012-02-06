@@ -41,6 +41,10 @@ only /Twitter/ do
     map "<Ctrl-k>", "<Cmd-[>"
 end
 
+only /Mail/ do
+    map ",d", "<Shift-Cmd-m>"
+end
+
 only /Preview/ do
     map "<Ctrl-g>", lambda{send("<Alt-Cmd-g>");}
     map "/" , "<Cmd-f>"
