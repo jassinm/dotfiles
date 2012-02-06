@@ -1,8 +1,5 @@
 DOTFILES=$(pwd)
 
-#git submodule init
-#git submodule update
-#git submodule foreach git pull origin master
 
 function link_file {
     source="${DOTFILES}/$1"
@@ -56,5 +53,9 @@ link_file bashrc
 link_file bin
 ##zlogin
 link_file zslogin
+
+git submodule init
+git submodule update
+git submodule foreach git pull origin master
 
 #sudo gem install teamocil
