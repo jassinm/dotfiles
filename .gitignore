@@ -3,3 +3,5 @@ vim/.VimballRecord
 ipython/IPython_crash_report.txt
 ipython/history-sh
 .DS_Store
+irssi/logs/*
+ipython/profile_default/history.sqlite
