@@ -1,12 +1,12 @@
 DOTFILES=$(pwd)
 
-git submodule init
-git submodule update
-git submodule foreach git pull origin master
+#git submodule init
+#git submodule update
+#git submodule foreach git pull origin master
 
 function link_file {
-    source="${DOTFILEs}/$1"
-    target="${HOME}/${1/_/.}"
+    source="${DOTFILES}/$1"
+    target="${HOME}/.${1}"
 
     if [ -e "${target}" ]; then
         mv $target $target.bak
@@ -36,26 +36,26 @@ cd $DOTFILES
 
 ##inputrc
 link_file inputrc
-##tmux
-link_file tmux
-##teamocil
+#tmux
+link_file tmux.conf
+#teamocil
 link_file teamocil
-##irssi
+#irssi
 link_file irssi
-##ipython
+#ipython
 link_file ipython
-##git
-link_file .gitignore
-link_file .gitconfig
-##ack
+#git
+link_file gitignore
+link_file gitconfig
+#ack
 link_file ackrc
-##bash
+#bash
 link_file bash
 link_file bash_profile
 link_file bashrc
-##bin
+#bin
 link_file bin
-##zlogin
+#zlogin
 link_file zslogin
 
-##sudo gem install teamocil
+#sudo gem install teamocil
