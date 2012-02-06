@@ -25,8 +25,6 @@ end
 only /Safari/ do
     map "<Ctrl-l>", "<Cmd-Shift-Right>"
     map "<Ctrl-h>", "<Cmd-Shift-Left>"
-    #go to navigation bar
-    #map "<Ctrl-e>", "<Cmd-l>"
 end
 
 only /Firefox/ do
@@ -34,7 +32,19 @@ only /Firefox/ do
     map "<Ctrl-h>", "<Cmd-Alt-Left>"
 end
 
-#only /Preview/ do
+only /Skype/ do
+    map "<Ctrl-j>", "<Cmd-Alt-Right>"
+    map "<Ctrl-k>", "<Cmd-Alt-Left>"
+end
+
+only /Twitter/ do
+    map "<Ctrl-j>", "<Cmd-]>"
+    map "<Ctrl-k>", "<Cmd-[>"
+end
+
+only /Preview/ do
+    map "<Ctrl-g>", lambda{send("<Alt-Cmd-g>");}
+    map "/" , "<Cmd-f>"
     #map "<Ctrl-d>", "<PageDown>"
     #map "<Ctrl-u>", "<PageUp>"
     #map "h", "<Left>"
@@ -43,10 +53,9 @@ end
     #map "l", "<Right>"
     #map "gg" , lambda { send("<Home>");}
     #map "G" , lambda { send("<End>");}
-    ##map "gg", "<Fn-Left>"
-    ##map "G", "<Fn-Right>"
-#end
-
+    #map "gg", "<Fn-Left>"
+    #map "G", "<Fn-Right>"
+end
 
 # -----------------------------------------------------------
 # Visit http://keymando.com to see what Keymando can do!
