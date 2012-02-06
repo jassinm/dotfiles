@@ -9,10 +9,9 @@ function link_file {
     target="${HOME}/.${1}"
 
     if [ -e "${target}" ]; then
-        mv $target $target.bak
+        cp -RH $target $target.bak
     fi
-
-    ln -sf ${source} ${target}
+    ln -nfs ${source} ${target}
 }
 
 
@@ -34,28 +33,28 @@ fi
 cd $DOTFILES
 
 
-##inputrc
+###inputrc
 link_file inputrc
-#tmux
+##tmux
 link_file tmux.conf
-#teamocil
+##teamocil
 link_file teamocil
-#irssi
+##irssi
 link_file irssi
-#ipython
+##ipython
 link_file ipython
-#git
+##git
 link_file gitignore
 link_file gitconfig
-#ack
+##ack
 link_file ackrc
-#bash
+##bash
 link_file bash
 link_file bash_profile
 link_file bashrc
-#bin
+##bin
 link_file bin
-#zlogin
+##zlogin
 link_file zslogin
 
 #sudo gem install teamocil
