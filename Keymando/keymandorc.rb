@@ -1,6 +1,5 @@
 # Start Keymando at login
 # -----------------------------------------------------------
- start_at_login
 
 # Disable Keymando when using these applications
 # -----------------------------------------------------------
