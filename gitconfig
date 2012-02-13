@@ -1,22 +1,27 @@
 [user]
     name = locojaydev
     email = locojaydev@dev.com
-[alias]
-    co = checkout
-[color]
-    diff = auto
-    status = auto
-    branch = auto
 [core]
     excludesfile = /Users/locojay/.gitignore
     editor = vim
     autocrlf = input
+    pager = cat
+[alias]
+    co = checkout
+    gl  = log -16 --color=always --all --graph --topo-order --pretty='format: %Cgreen%h%Creset %s%Cred%d%Creset%n'
+    one = show -s
+[color]
+    ui = auto
+    diff = auto
+    status = auto
+    branch = auto
+    interactive = auto
 [apply]
     whitespace = nowarn
 [format]
     pretty = %C(yellow)%h%Creset %s %C(red)(%an, %cr)%Creset
 [github]
-    user =
+    user = locojay
     token =
 [diff]
     external = gitvimdiff
