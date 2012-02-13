@@ -1,6 +1,6 @@
 [submodule "vim"]
 	path = vim
-	url = https://locojay@github.com/locojay/locovm.git
+	url = https://locojay@github.com/locojay/locovim.git
 	ignore = untracked
 [submodule "oh-my-zsh"]
 	path = oh-my-zsh
