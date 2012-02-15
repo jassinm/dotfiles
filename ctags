@@ -1,0 +1,7 @@
+--langmap=Lisp:+.clj
+
+--exclude=.ropeproject
+--exclude=build
+--exclude=libs
+
+
