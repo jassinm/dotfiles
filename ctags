@@ -3,5 +3,4 @@
 --exclude=.ropeproject
 --exclude=build
 --exclude=libs
-
-
+--exclue=$VIRTUAL_ENV
