@@ -60,6 +60,9 @@ only /Preview/ do
     #map "G", "<Fn-Right>"
 end
 
+
+# map "<Cmd-l>", trigger-app
+
 # -----------------------------------------------------------
 # Visit http://keymando.com to see what Keymando can do!
 # -----------------------------------------------------------
