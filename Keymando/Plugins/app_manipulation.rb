@@ -18,13 +18,14 @@ Command.to_run :description => "Launch Preference Pane" do
   end
 end
 
-
-Command.to_run :description => "Show current app menu items" do
-  add_block do
-    app = Accessibility::Gateway.get_active_application
-    app.front_most = true
-    trigger_item_with(app.all_menu_items,RunMenuItem.new)
-  end
+def current_app_windows
+    Command.to_run :description => "Show current app menu items" do
+      add_block do
+        app = Accessibility::Gateway.get_active_application
+        app.front_most = true
+        trigger_item_with(app.all_menu_items,RunMenuItem.new)
+      end
+    end
 end
 
 Command.to_run :description => "Show current app windows" do

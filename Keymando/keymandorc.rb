@@ -78,14 +78,15 @@ Commands.register LeftClick.instance,
 
 
 map "<Cmd-.>",RunLastCommand.instance
+#
 # map "<Cmd-d>", current_app_windows
 
 # map "<Cmd-p>", hit_a_hint
 
 map "<Cmd-k>", run_registered_command
 # map "<Cmd- >", launch_app
-# map "<Cmd-d>", current_app_windows
-# map "<Cmd-f>", trigger_app
+# map "<Cmd-l>", current_app_windows
+map "<Cmd-l>", trigger_app
 
 
 
