@@ -6,6 +6,3 @@
 	path = oh-my-zsh
 	url = https://locojay@github.com/locojay/oh-my-zsh.git
 	ignore = untracked
-[submodule "Keymando/Plugins/vim"]
-	path = Keymando/Plugins/vim
-	url = https://locojay@github.com/locojay/keymando-vim.git
