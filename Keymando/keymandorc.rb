@@ -86,7 +86,7 @@ map "<Cmd-.>",RunLastCommand.instance
 map "<Cmd-k>", run_registered_command
 # map "<Cmd- >", launch_app
 # map "<Cmd-l>", current_app_windows
-map "<Cmd-l>", trigger_app
+map "<Cmd-;>", trigger_app
 
 
 
