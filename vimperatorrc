@@ -1,0 +1,19 @@
+set runtimepath=~/.vimperator
+
+set toolbars=noaddons,nobookmarks,nomenu,navigation,tabs
+set defsearch=google
+set hintchars=HJKLASDFGYUIOPQWERTNMZXCVB
+
+"using one password
+" set! signon.rememberSignons = false
+
+let mapleader = ","
+noremap <Leader>bn :bn<CR>
+noremap <Leader>bp :bp<CR>
+
+ino jj <esc>
+cno jj <esc>
+
+noremap <Leader>sv :source $HOME/.vimperatorrc<CR>
+
+noremap <silent> <leader>d :emenu Delicious.Save a new Bookmark...<CR>
