@@ -9,7 +9,9 @@ set hintchars=HJKLASDFGYUIOPQWERTNMZXCVB
 
 let mapleader = ","
 noremap <Leader>bn :bn<CR>
+noremap <C-l> :bn<CR>
 noremap <Leader>bp :bp<CR>
+noremap <C-h> :bp<CR>
 
 ino jj <esc>
 cno jj <esc>
@@ -17,3 +19,7 @@ cno jj <esc>
 noremap <Leader>sv :source $HOME/.vimperatorrc<CR>
 
 noremap <silent> <leader>d :emenu Delicious.Save a new Bookmark...<CR>
+
+set incsearch
+set hlsearch
+set ignorecase
