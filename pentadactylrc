@@ -1,0 +1,38 @@
+set runtimepath=~/.pentadactyl
+highlight Hint       font-size: 13px; background: rgba(69,175,248,0.8) !important; border: 2px solid rgb(69,175,248); padding: 4px; border-radius: 3px; font-weight: bold; margin-left: -25px; color: white; font-family: PragmataPro; line-height:1em;
+highlight HintActive background: rgba(145,197,43,0.8)    !important;
+highlight HintElem   background: rgba(255, 209, 20, 0.7) !important;
+highlight StatusLine -moz-appearance: none !important; font-weight: bold; background: transparent !important; border: 0px !important; min-height: 16px !important; text-shadow: none !important; font: normal 13px/1 'PragmataPro' !important; padding: 3px 0px 3px 5px !important;
+highlight CmdOutput  font: normal 13px 'PragmataPro' !important;
+highlight CmdLine    padding: 1px !important; font: normal 16px 'Menlo' !important;
+highlight CmdOutput  font: normal 13px 'PragmataPro' !important;
+highlight CompItem   font: normal 13px 'PragmataPro' !important;
+
+highlight Find   background: rgba(249,214,94); color: #000;
+
+set defsearch=google
+set followhints=1
+"show only tab bar when there are multitabs
+set showtabline=multitab
+set hintkeys=asdfg;lkjh
+
+set mapleader=','
+noremap <Leader>bn :bn<CR>
+noremap <C-l> :bn<CR>
+noremap <Leader>bp :bp<CR>
+noremap <C-h> :bp<CR>
+noremap <Leader>bd :bd<CR>
+
+ino jj <esc>
+cno jj <esc>
+noremap <Leader>sv :source $HOME/.pentadactylrc<CR>
+
+nnoremap j 3j
+nnoremap k 3k
+
+set editor='/usr/local/bin/mvim -f +<line> +"sil! call cursor(0, <column>)" <file>'
+
+" Highlight all search matches, not just the first.
+set hlfind
+command! delicious :open javascript:(function(){f='http://www.delicious.com/save?url='+encodeURIComponent(window.location.href)+'&title='+encodeURIComponent(document.title)+'&v=5&';a=function(){if(!window.open(f+'noui=1&jump=doclose','deliciousuiv5','location=yes,links=no,scrollbars=no,toolbar=no,width=550,height=550'))location.href=f+'jump=yes'};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})()
+command! firebug :open javascript:(function(F,i,r,e,b,u,g,L,I,T,E){if(F.getElementById(b))return;E=F[i+'NS']&&F.documentElement.namespaceURI;E=E?F[i+'NS'](E,'script'):F[i]('script');E[r]('id',b);E[r]('src',I+g+T);E[r](b,u);(F[e]('head')[0]||F[e]('body')[0]).appendChild(E);E=new%20Image;E[r]('src',I+L);})(document,'createElement','setAttribute','getElementsByTagName','FirebugLite','4','firebug-lite.js','releases/lite/latest/skin/xp/sprite.png','https://getfirebug.com/','#startOpened');
