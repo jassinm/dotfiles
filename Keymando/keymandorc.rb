@@ -27,8 +27,7 @@ only /Safari/ do
 end
 
 only /Firefox/ do
-    map "<Ctrl-l>", "<Cmd-Alt-Right>"
-    map "<Ctrl-h>", "<Cmd-Alt-Left>"
+    map "<Cmd-f>", nil
 end
 
 only /Skype/ do
