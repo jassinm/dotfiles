@@ -5,4 +5,3 @@ ipython/history-sh
 .DS_Store
 irssi/logs/*
 ipython/profile_default/history.sqlite
-vimperator/info
