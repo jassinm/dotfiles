@@ -50,4 +50,3 @@ command! imdbsearch -nargs=1 -javascript dactyl.open('http://imdb.com/find?q=' +
 command! githubsearch -nargs=1 -javascript dactyl.open('http://www.github.com/search?q=' + encodeURIComponent(args[0]) + '&type=Everything&repo=&langOverride&start_value=1')
 command! pythonsearch -nargs=1 -javascript dactyl.open('https://babbledrive.appspot.com/#'+ encodeURIComponent(args[0]))
 command! ducksearch -nargs=1 d dactyl.open('https://duckduckgo.com/?q='+encodeURIComponent(args[0]))
-
