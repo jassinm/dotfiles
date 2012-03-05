@@ -34,7 +34,7 @@ set editor='/usr/local/bin/mvim -f +<line> +"sil! call cursor(0, <column>)" <fil
 
 command! github :open www.github.com
 command! locojaydev :open https://locojaydev.com
-command! -description "Elasticsearch Head Testing Cluster" estest :open http://locolhost:9200/_plugin/head
+command! -description "Elasticsearch Head Testing Cluster" eshead :open file:///Users/locojay/.eshead/index.html
 
 " Highlight all search matches, not just the first.
 set hlfind
