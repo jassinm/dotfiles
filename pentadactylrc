@@ -35,14 +35,10 @@ nnoremap k 3k
 set editor='/usr/local/bin/mvim -f +<line> +"sil! call cursor(0, <column>)" <file>'
 
 command! github :open www.github.com
-<<<<<<< HEAD
 command! locojaydev :open https://locojaydev.com
 command! -description "Elasticsearch Head Testing Cluster" eshead :open file:///Users/locojay/.eshead/index.html
-=======
 command! locojaydev :open https://locojaydev/
-command! -description "Elasticsearch Head Testing Cluster" estest :open http://locolhost:9200/_plugin/head
 command! read -description "Readability" :open http://www.readability.com/locojay/latest
->>>>>>> b97bd9d0a996c30525cf4dab382ed01b1e8e0c4a
 
 " Highlight all search matches, not just the first.
 set hlfind
