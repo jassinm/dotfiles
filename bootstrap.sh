@@ -58,6 +58,8 @@ link_file ctags
 
 link_file pentadactylrc
 
+link_file lbdbrc
+
 git submodule init
 git submodule update
 git submodule foreach git pull origin master

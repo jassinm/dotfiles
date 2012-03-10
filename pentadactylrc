@@ -35,7 +35,6 @@ nnoremap k 3k
 set editor='/usr/local/bin/mvim -f +<line> +"sil! call cursor(0, <column>)" <file>'
 
 command! github :open www.github.com
-command! locojaydev :open https://locojaydev.com
 command! -description "Elasticsearch Head Testing Cluster" eshead :open file:///Users/locojay/.eshead/index.html
 command! locojaydev :open https://locojaydev/
 command! read -description "Readability" :open http://www.readability.com/locojay/latest
