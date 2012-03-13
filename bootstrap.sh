@@ -60,6 +60,8 @@ link_file pentadactylrc
 
 link_file lbdbrc
 
+link_file urlview
+
 git submodule init
 git submodule update
 git submodule foreach git pull origin master
