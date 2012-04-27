@@ -22,7 +22,7 @@
     pretty = %C(yellow)%h%Creset %s %C(red)(%an, %cr)%Creset
 [github]
     user = locojay
-    token = $GITHUB_TOKEN
+    token =
 [diff]
     external = gitvimdiff
 [pager]
