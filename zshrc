@@ -44,4 +44,5 @@ source "$OMZ/init.zsh"
 # Customize to your needs...
 bindkey -M viins "jj" vi-cmd-mode
 source ~/.profile
+source ~/.dotfiles/aliases.zsh
 
