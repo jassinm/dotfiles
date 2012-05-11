@@ -2,3 +2,4 @@
 --follow
 --type-set=vim=.vim
 --type-set=csv=.txt,.csv,.tsv
+--type-set=objective-j=.j
