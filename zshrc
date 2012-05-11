@@ -46,3 +46,7 @@ bindkey -M viins "jj" vi-cmd-mode
 source ~/.profile
 source ~/.dotfiles/aliases.zsh
 
+if [ -f `brew --prefix`/etc/autojump ]; then
+    . `brew --prefix`/etc/autojump
+fi
+

@@ -1,8 +1,8 @@
 windows:
   - name: simple-six-splits
     splits:
-      - cmd: tmux resize-pane -L 4
-      - cmd: tmux resize-pane -L 1
+      - cmd: tmux resize-pane -L 4 && clear
+      - cmd: tmux resize-pane -L 1 && clear
         width: 66
       - cmd: clear
         width: 50
