@@ -216,7 +216,12 @@ settings = {
 hilights = (
   { text = "locojay"; nick = "no"; word = "yes"; fullword = "yes"; }
 );
-logs = { };
+logs = {
+  "~/irc.log.Window5" = {
+    level = "ALL";
+    items = ( { type = "window"; name = "5"; } );
+  };
+};
 ignores = (
   { level = "JOINS"; servertag = "freenode"; },
   { level = "NICKS"; servertag = "freenode"; },
