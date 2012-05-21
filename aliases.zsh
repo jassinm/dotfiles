@@ -1,5 +1,8 @@
 alias gst='git status'
+alias gba='git branch -a'
 alias tls='tmux list-sessions'
 alias ta='tmux attach -t'
 alias clj='rlwarp -a dummy clj'
 alias zs='source ~/.zshrc'
+alias pyclean='find . -type f -name "*.py[co]" -delete'
+alias mkproject='mkproject -t locodev'
