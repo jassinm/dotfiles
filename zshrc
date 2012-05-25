@@ -43,6 +43,8 @@ source "$OMZ/init.zsh"
 
 # Customize to your needs...
 bindkey -M viins "jj" vi-cmd-mode
+setopt interactivecomments
+
 source ~/.profile
 source ~/.dotfiles/aliases.zsh
 
