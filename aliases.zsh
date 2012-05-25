@@ -1,5 +1,6 @@
 alias gst='git status'
 alias gba='git branch -a'
+alias gcaa="git commit -a --amend -C HEAD"
 alias tls='tmux list-sessions'
 alias ta='tmux attach -t'
 alias clj='rlwarp -a dummy clj'
