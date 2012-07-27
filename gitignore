@@ -45,3 +45,4 @@ echo venv
 *.xls
 .ropeproject/
 .env
+*.un~
