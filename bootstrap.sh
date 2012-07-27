@@ -22,14 +22,20 @@ fi
 read -p "install oh-my-zsh' (y/n)?"
 if [ "$REPLY" == "y" ]
 then
-    cd $DOTFILES/oh-my-zsh/
-    sh bootstrap.sh
-    link_file oh-my-zsh
+    #install inosecu
+    git clone --recursive https://github.com/sorin-ionescu/oh-my-zsh.git ~/.oh-my-zsh
+    for rcfile in ~/.oh-my-zsh/templates/z{shenv,shrc,login,logout}; do
+          cp -f $rcfile ~/.$rcfile:t
+    done
+    # cd $DOTFILES/oh-my-zsh/
+    # sh bootstrap.sh
+    # link_file oh-my-zsh
 fi
 
 cd $DOTFILES
 
-
+link_file weechat
+link_file zshrc
 ###inputrc
 link_file inputrc
 ##tmux
@@ -37,7 +43,7 @@ link_file tmux.conf
 ##teamocil
 link_file teamocil
 ##irssi
-link_file irssi
+#link_file irssi
 ##ipython
 link_file ipython
 ##git
