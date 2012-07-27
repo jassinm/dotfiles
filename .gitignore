@@ -8,4 +8,5 @@ ipython/profile_default/history.sqlite
 weechat/logs
 ipython/profile_default/pid
 ipython/profile_default/security
+bin/vim
 
