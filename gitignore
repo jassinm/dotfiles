@@ -39,6 +39,7 @@ dist/
 echo venv
 #VIM SWAP
 *.swp
+*.un~
 #nfiles
 *.csv
 *.xls
