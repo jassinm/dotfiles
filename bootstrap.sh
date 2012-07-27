@@ -73,3 +73,4 @@ git submodule update
 git submodule foreach git pull origin master
 
 #sudo gem install teamocil
+ln -nfs $DOTFILES/lein2/project.clj $HOME/.lein/project.clj
