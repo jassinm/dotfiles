@@ -2,7 +2,3 @@
 	path = vim
 	url = https://locojay@github.com/locojay/locovim.git
 	ignore = untracked
-[submodule "oh-my-zsh"]
-	path = oh-my-zsh
-	url = https://locojay@github.com/locojay/oh-my-zsh.git
-	ignore = untracked
