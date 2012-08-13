@@ -1,4 +1,4 @@
 [submodule "vim"]
 	path = vim
-	url = https://locojay@github.com/locojay/locovim.git
+	url = git@github.com:locojay/locovim.git
 	ignore = untracked
