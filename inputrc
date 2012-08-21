@@ -11,3 +11,6 @@ $if mode=vi
     "\C-w": backward-kill-word
     "\C-p": history-search-backward
 $endif
+
+'\e[O': ''
+'\e[I': ''
