@@ -4,8 +4,22 @@
                          "http://marmalade-repo.org/packages/"))
 (package-initialize)
 
+;; clojure
+;; (require 'paredit) if you didn't install via package.el
+(defun turn-on-paredit () (paredit-mode 1))
+(add-hook 'clojure-mode-hook 'turn-on-paredit)
+
 (require 'evil)
 (evil-mode 1)
+
+(require 'highlight-parentheses)
+
+;; nrepl
+(setq nrepl-lein-command "/Users/locojay/bin/lein2")
+(add-hook 'nrepl-interaction-mode-hook
+  'nrepl-turn-on-eldoc-mode)
+(setq nrepl-popup-stacktraces nil)
+
 
 
 ; make "jk" behave as ESC key
@@ -26,6 +40,9 @@
                   (self-insert-command arg)))
 
 (define-key evil-insert-state-map (kbd "j") 'escape-if-next-char-is-k)
+(put 'downcase-region 'disabled nil)
+
 
 (require 'rainbow-delimiters)
 (global-rainbow-delimiters-mode)
+
