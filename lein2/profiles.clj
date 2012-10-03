@@ -3,5 +3,6 @@
                   [lein-tarsier "0.9.2"]
                   [lein-reload "1.0.0"]
                   [lein-ring "0.7.1"]
+                  [org.clojure/tools.nrepl "0.2.0-beta9"]
                   ]}
         :hooks [leiningen.hooks.reload-on-test]}
