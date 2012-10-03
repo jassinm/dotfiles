@@ -8,10 +8,6 @@
 (evil-mode 1)
 
 
-;; nrepl
-(setenv "PATH" (concat "~/bin:" (getenv "PATH")))
-
-
 ; make "jk" behave as ESC key
 (defun escape-if-next-char (c)
     "Watches the next letter.  If c, then switch to viper mode, otherwise insert a j and forward unpressed key to unread-command-events"
