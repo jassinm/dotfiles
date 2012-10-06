@@ -10,3 +10,4 @@ ipython/profile_default/pid
 ipython/profile_default/security
 bin/vim
 bin/lein2
+.emacs.d

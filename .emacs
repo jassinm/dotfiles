@@ -14,7 +14,7 @@
   (dolist (p '(starter-kit
            starter-kit-lisp
            clojure-mode
-           paraedit
+           evil
            nrepl
            rainbow-delimiters
            mic-paren
@@ -26,7 +26,7 @@
 (package-initialize)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; look-good 
+;; look-good
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; theme
 (add-to-list 'custom-theme-load-path "/Users/locojay/.emacs.d/themes")
@@ -41,14 +41,14 @@
 ;;(load-theme 'tango-dark t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; config's 
+;; config's
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;show line numbers
 (global-linum-mode t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; matching parens 
+;; matching parens
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; highlight matching parens
@@ -56,14 +56,14 @@
 (paren-activate)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; rainbow-delimiters 
+;; rainbow-delimiters
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (require 'rainbow-delimiters)
 (global-rainbow-delimiters-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; clojure-mode 
+;; clojure-mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; (require 'paredit) if you didn't install via package.el
@@ -85,7 +85,7 @@
 
 (require 'evil)
 (evil-mode 1)
-;; map jj to esc 
+;; map jj to esc
 (define-key evil-insert-state-map "j" #'cofi/maybe-exit)
 
 (evil-define-command cofi/maybe-exit ()
