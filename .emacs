@@ -1,48 +1,105 @@
+(add-to-list 'load-path "~/.emacs.d")
+
 (require 'package)
-(add-to-list 'package-archives
-                 '("marmalade" .
-                         "http://marmalade-repo.org/packages/"))
+
+(setq package-archives
+            '(("gnu" . "http://elpa.gnu.org/packages/")
+              ("marmalade" . "http://marmalade-repo.org/packages/")
+                      ("melpa" . "http://melpa.milkbox.net/packages/")))
+(defun loco-install-packages ()
+  "Install some handy packages from marmalade."
+  (interactive)
+  (package-initialize)
+  (package-refresh-contents)
+  (dolist (p '(starter-kit
+           starter-kit-lisp
+           clojure-mode
+           paraedit
+           nrepl
+           rainbow-delimiters
+           mic-paren
+           monokai-theme
+           solarized-theme
+           gist))
+    (when (not (package-installed-p p))
+      (package-install p))))
 (package-initialize)
 
-;; clojure
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; look-good 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; theme
+(add-to-list 'custom-theme-load-path "/Users/locojay/.emacs.d/themes")
+;;(load-theme 'monokai t)
+(setq solarized-termcolors 256)
+(load-theme 'solarized-light t)
+
+;;(set-default-font "-apple-PragmataPro-medium-normal-normal")
+(set-default-font "PragmataPro-15")
+
+(add-to-list 'default-frame-alist '(background-mode . dark))
+;;(load-theme 'tango-dark t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; config's 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;show line numbers
+(global-linum-mode t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; matching parens 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; highlight matching parens
+(require 'mic-paren)
+(paren-activate)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; rainbow-delimiters 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(require 'rainbow-delimiters)
+(global-rainbow-delimiters-mode)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; clojure-mode 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ;; (require 'paredit) if you didn't install via package.el
 (defun turn-on-paredit () (paredit-mode 1))
 (add-hook 'clojure-mode-hook 'turn-on-paredit)
 
-(require 'evil)
-(evil-mode 1)
-
-(require 'highlight-parentheses)
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; nrepl
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (setq nrepl-lein-command "/Users/locojay/bin/lein2")
 (add-hook 'nrepl-interaction-mode-hook
   'nrepl-turn-on-eldoc-mode)
 (setq nrepl-popup-stacktraces nil)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; evil mode
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(require 'evil)
+(evil-mode 1)
+;; map jj to esc 
+(define-key evil-insert-state-map "j" #'cofi/maybe-exit)
 
-; make "jk" behave as ESC key
-(defun escape-if-next-char (c)
-    "Watches the next letter.  If c, then switch to viper mode, otherwise insert a j and forward unpressed key to unread-command-events"
-      (self-insert-command 1)
-        (let ((next-key (read-event)))
-              (if (= c next-key)
-                        (progn
-                                    (delete-backward-char 1)
-                                              (viper-mode))
-                              (setq unread-command-events (list next-key)))))
-
-(defun escape-if-next-char-is-k (arg)
-    (interactive "p")
-      (if (= arg 1)
-              (escape-if-next-char ?k)
-                  (self-insert-command arg)))
-
-(define-key evil-insert-state-map (kbd "j") 'escape-if-next-char-is-k)
-(put 'downcase-region 'disabled nil)
-
-
-(require 'rainbow-delimiters)
-(global-rainbow-delimiters-mode)
-
+(evil-define-command cofi/maybe-exit ()
+  :repeat change
+  (interactive)
+  (let ((modified (buffer-modified-p)))
+    (insert "j")
+    (let ((evt (read-event (format "Insert %c to exit insert state" ?j)
+               nil 0.5)))
+      (cond
+       ((null evt) (message ""))
+       ((and (integerp evt) (char-equal evt ?j))
+    (delete-char -1)
+    (set-buffer-modified-p modified)
+    (push 'escape unread-command-events))
+       (t (setq unread-command-events (append unread-command-events
+                          (list evt))))))))
