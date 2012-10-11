@@ -15,7 +15,7 @@
            starter-kit-lisp
            auto-complete
            clojure-mode
-           clojure-project
+           clojure-project-mode
            evil
            nrepl
            ac-nrepl
@@ -24,6 +24,7 @@
            monokai-theme
            solarized-theme
            nav
+           magit
            gist))
     (when (not (package-installed-p p))
       (package-install p))))
@@ -39,6 +40,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; theme
 (add-to-list 'custom-theme-load-path "/Users/locojay/.emacs.d/themes")
+(provide 'init-themes)
 ;;(load-theme 'monokai t)
 (setq solarized-termcolors 256)
 (load-theme 'solarized-light t)
@@ -131,3 +133,15 @@
                           (list evt))))))))
 
 (define-key evil-normal-state-map ",d" 'nav-toggle)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes (quote (solarized-light))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
