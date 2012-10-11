@@ -25,6 +25,7 @@
            solarized-theme
            nav
            magit
+           rainbow-mode
            gist))
     (when (not (package-installed-p p))
       (package-install p))))
@@ -37,7 +38,7 @@
 (nav-disable-overeager-window-splitting)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; autocomplete 
+;; autocomplete
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'auto-complete-config)
 (ac-config-default)
@@ -115,7 +116,7 @@
    '(add-to-list 'ac-modes 'nrepl-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; rainbow-mode 
+;; rainbow-mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'rainbow-mode)
 
