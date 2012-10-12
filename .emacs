@@ -48,17 +48,16 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; theme
 (add-to-list 'custom-theme-load-path "/Users/locojay/.emacs.d/themes")
+(set-cursor-color "#0a9dff")
 (provide 'init-themes)
 ;;(load-theme 'monokai t)
-(setq solarized-termcolors 256)
-(load-theme 'solarized-light t)
+;;(setq solarized-termcolors 256)
+;;(load-theme 'solarized-light t)
+(load-theme 'badwolf t)
 
 (set-default-font "PragmataPro-15")
 
-;;(add-to-list 'default-frame-alist '(background-mode . dark))
-;;(load-theme 'tango-dark t)
 (setq frame-title-format '("Emacs @ " system-name ": %b %+%+ %f"))
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; config's
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -146,15 +145,3 @@
                           (list evt))))))))
 
 (define-key evil-normal-state-map ",d" 'nav-toggle)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes (quote ("27713778ce0291c1002fac10ba08f6de8430a6f24a506b821293b9eda806dfcc" "2a962c80c1d40251389b1f3a7d5508e5f866529c58cb9f3363d7c177672dac9a" "1cd4f389c2e67204c96b3e9a28d4fa4674e57d7532808614499f0950dd381c49" "0a7de097291a69f8ff04c3b6f126166ba895b2f08e755d75012b12253e390283" default))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
