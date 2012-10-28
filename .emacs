@@ -60,11 +60,8 @@
 (set-default-font "PragmataPro-15")
 
 (setq frame-title-format '("Emacs @ " system-name ": %b %+%+ %f"))
-;;(set-idle-highlight-mode 0)
 (setq idle-highlight-global-timer 1)
-
 (set-fringe-mode 0)
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; config's
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
