@@ -68,6 +68,8 @@
 
 ;;show line numbers
 (global-linum-mode t)
+(setq linum-format "%d ")
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; matching parens
