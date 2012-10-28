@@ -159,3 +159,18 @@
 
 (define-key evil-normal-state-map ",d" 'nav-toggle)
 (define-key evil-normal-state-map ",f" 'ns-toggle-fullscreen)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; buffer-file stuff 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(ido-mode t)
+
+;;expand filepth
+(global-set-key (kbd "C-M-/") 'my-expand-file-name-at-point)
+(defun my-expand-file-name-at-point ()
+  "Use hippie-expand to expand the filename"
+  (interactive)
+  (let ((hippie-expand-try-functions-list '(try-complete-file-name-partially try-complete-file-name)))
+    (call-interactively 'hippie-expand)))
