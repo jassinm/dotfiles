@@ -23,6 +23,7 @@
            mic-paren
            monokai-theme
            solarized-theme
+           ein
            nav
            magit
            rainbow-mode
@@ -59,6 +60,7 @@
 (set-default-font "PragmataPro-15")
 
 (setq frame-title-format '("Emacs @ " system-name ": %b %+%+ %f"))
+(setq idle-highlight-global-timer 1)
 (set-fringe-mode 0)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; config's
@@ -122,6 +124,13 @@
 (require 'rainbow-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ein
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(require 'ein)
+(setq ein:use-auto-complete t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; evil mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -147,3 +156,4 @@
                           (list evt))))))))
 
 (define-key evil-normal-state-map ",d" 'nav-toggle)
+(define-key evil-normal-state-map ",f" 'ns-toggle-fullscreen)
