@@ -132,16 +132,6 @@
 
 (require 'ein)
 (setq ein:use-auto-complete t)
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ein:cell-input-area ((t (:background "#1c1b1a"))))
- '(ein:cell-input-prompt ((t (:foreground "#ffa724"))))
- '(ein:cell-output-prompt ((t (:foreground "#ff2c4b"))))
- '(mumamo-background-chunk-major ((((class color) (min-colors 88) (background dark)) nil))))
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; evil mode
@@ -170,6 +160,3 @@
 
 (define-key evil-normal-state-map ",d" 'nav-toggle)
 (define-key evil-normal-state-map ",f" 'ns-toggle-fullscreen)
-
-
-;;(font-lock-add-keywords 'python-mode '(("\\<\\(import\\||from\\|except\\|finally\\|try\\|from\\|\\)\\>" 1 '(:foreground "#aeee00") t)))
