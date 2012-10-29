@@ -44,6 +44,22 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'auto-complete-config)
 (ac-config-default)
+;; start completing after 1 char
+(setq ac-auto-start 1)
+;;(setq ac-ignore-case t)
+
+(setq ac-use-menu-map t)
+(define-key ac-menu-map "\C-n" 'ac-next)
+(define-key ac-menu-map "\C-p" 'ac-previous)
+;;(require 'ac-anything)
+;;ac-source-filename
+(global-set-key (kbd "C-c /") 'ac-complete-filename)
+;;
+(set-face-background 'ac-candidate-face "#998f84")
+(set-face-background 'ac-selection-face "#ffa724")
+(set-face-foreground 'ac-selection-face "#000000")
+
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; look-good
@@ -162,15 +178,15 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; buffer-file stuff 
+;; buffer-file stuff
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 (ido-mode t)
-
-;;expand filepth
-(global-set-key (kbd "C-M-/") 'my-expand-file-name-at-point)
-(defun my-expand-file-name-at-point ()
-  "Use hippie-expand to expand the filename"
-  (interactive)
-  (let ((hippie-expand-try-functions-list '(try-complete-file-name-partially try-complete-file-name)))
-    (call-interactively 'hippie-expand)))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; editing
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(setq-default indent-tabs-mode nil)    ; use only spaces and no tabs
+(setq default-tab-width 4)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; python
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'python-mode)
