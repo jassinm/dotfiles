@@ -25,6 +25,12 @@
            solarized-theme
            ein
            nav
+           python-mode
+           virtualenv
+           pymacs
+           flymake-python-pyflakes
+           highlight-identation
+           yasnippet-bundle
            magit
            rainbow-mode
            gist))
@@ -55,9 +61,9 @@
 ;;ac-source-filename
 (global-set-key (kbd "C-c /") 'ac-complete-filename)
 ;;
-(set-face-background 'ac-candidate-face "#998f84")
-(set-face-background 'ac-selection-face "#ffa724")
-(set-face-foreground 'ac-selection-face "#000000")
+;;(set-face-background 'ac-candidate-face "#998f84")
+;;(set-face-background 'ac-selection-face "#ffa724")
+;;(set-face-foreground 'ac-selection-face "#000000")
 
 
 
@@ -180,13 +186,42 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; buffer-file stuff
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'ido)
 (ido-mode t)
+(setq ido-enable-flex-matching t)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; editing
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (setq-default indent-tabs-mode nil)    ; use only spaces and no tabs
 (setq default-tab-width 4)
+(add-hook 'before-save-hook (lambda () (delete-trailing-whitespace)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; global
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; prevent beep
+(setq visible-bell t)
+
+;;(setq backup-directory-alist '("." . "~/.emacs.d/backups"))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; python
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'python-mode)
+(require 'flymake-python-pyflakes)
+(require 'ac-python)
+
+
+(setq flymake-python-pyflakes-executable "/usr/local/share/python/pyflakes")
+(add-hook 'python-mode-hook
+          (lambda ()
+            ;;(fci-mode t)
+            (flymake-python-pyflakes-load)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; yasnippet
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'yasnippet-bundle)
+(yas/initialize)
+(yas/load-directory "~/.emacs.d/my-snippets/")
