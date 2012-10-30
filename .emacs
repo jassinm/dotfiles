@@ -28,11 +28,14 @@
            python-mode
            virtualenv
            pymacs
+           nose
+           jinja2-mode
            flymake-python-pyflakes
            highlight-identation
            yasnippet-bundle
            magit
            rainbow-mode
+           ack
            gist))
     (when (not (package-installed-p p))
       (package-install p))))
@@ -202,6 +205,11 @@
 
 ;; prevent beep
 (setq visible-bell t)
+;;follow symlinks and don't ask
+(setq vc-follow-symlinks t)
+;;save position in files
+(setq-default save-place t)
+
 
 ;;(setq backup-directory-alist '("." . "~/.emacs.d/backups"))
 
@@ -225,3 +233,10 @@
 (require 'yasnippet-bundle)
 (yas/initialize)
 (yas/load-directory "~/.emacs.d/my-snippets/")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ack
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(require 'ack)
+(setq ack-command "/usr/local/bin/ack")
