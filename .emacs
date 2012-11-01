@@ -62,11 +62,6 @@
 (define-key ac-menu-map "\C-p" 'ac-previous)
 ;;(require 'ac-anything)
 ;;ac-source-filename
-(global-set-key (kbd "C-c /") 'ac-complete-filename)
-;;
-;;(set-face-background 'ac-candidate-face "#998f84")
-;;(set-face-background 'ac-selection-face "#ffa724")
-;;(set-face-foreground 'ac-selection-face "#000000")
 
 
 
@@ -222,9 +217,18 @@
 
 
 (setq flymake-python-pyflakes-executable "/usr/local/share/python/pyflakes")
+
+(defun load-pymacs ()
+  (autoload 'pymacs-load "pymacs" nil t)
+  (autoload 'pymacs-eval "pymacs" nil t)
+  (autoload 'pymacs-apply "pymacs" nil t)
+  (autoload 'pymacs-call "pymacs" nil t)
+  )
+
 (add-hook 'python-mode-hook
           (lambda ()
             ;;(fci-mode t)
+            (load-pymacs)
             (flymake-python-pyflakes-load)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -240,3 +244,9 @@
 
 (require 'ack)
 (setq ack-command "/usr/local/bin/ack")
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; key binding
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(global-set-key (kbd "C-c /") 'ac-complete-filename)
+;;(global-set-key ",f" 'ns-toggle-fullscreen)
