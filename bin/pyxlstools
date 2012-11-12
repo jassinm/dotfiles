@@ -158,7 +158,7 @@ def main():
         if options.filename:
             if options.filename.endswith('.xls'):
                 xls2csv(options.filename,options.index)
-            elif options.filename.endswith('.xlsx'):
+            elif options.filename.endswith('.xlsx') or options.filename.endswith('.XLSX'):
                 xlsxtocsv(options.filename,options.index)
             else:
                 print 'please provide xls or xlsx file'

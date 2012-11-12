@@ -20,6 +20,7 @@
            clojure-mode
            clojure-project-mode
            evil
+           surround
            nrepl
            ac-nrepl
            rainbow-delimiters
@@ -36,7 +37,7 @@
            jinja2-mode
            flymake-cursor
            flymake-python-pyflakes
-           highlight-identation
+           highlight-indentation
            yasnippet-bundle
            magit
            rainbow-mode
@@ -203,6 +204,12 @@
 
 
 
+;;tpope surround
+
+(require 'surround)
+(global-surround-mode 1)
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; buffer-file stuff
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -237,7 +244,7 @@
 (setq py-default-interpreter "ipython")
 
 (require 'flymake-python-pyflakes)
-(require 'ac-python)
+;;(require 'ac-python)
 
 (require 'anything-ipython)
 
