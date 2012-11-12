@@ -31,7 +31,7 @@
            nose
            jinja2-mode
            flymake-python-pyflakes
-           highlight-identation
+           highlight-indentation
            yasnippet-bundle
            magit
            rainbow-mode
@@ -213,7 +213,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'python-mode)
 (require 'flymake-python-pyflakes)
-(require 'ac-python)
+;;(require 'ac-python)
 
 
 (setq flymake-python-pyflakes-executable "/usr/local/share/python/pyflakes")
