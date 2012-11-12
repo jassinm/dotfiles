@@ -1,4 +1,6 @@
 (add-to-list 'load-path "~/.emacs.d")
+(push "/usr/local/bin" exec-path)
+(push "/usr/local/share/python" exec-path)
 
 
 (require 'package)
@@ -32,6 +34,7 @@
            pymacs
            nose
            jinja2-mode
+           flymake-cursor
            flymake-python-pyflakes
            highlight-identation
            yasnippet-bundle
@@ -62,7 +65,8 @@
 (setq ac-use-menu-map t)
 (define-key ac-menu-map "\C-n" 'ac-next)
 (define-key ac-menu-map "\C-p" 'ac-previous)
-;;(require 'ac-anything)
+
+(require 'anything)
 ;;ac-source-filename
 
 
@@ -193,6 +197,10 @@
 
 (define-key evil-normal-state-map ",d" 'nav-toggle)
 (define-key evil-normal-state-map ",f" 'ns-toggle-fullscreen)
+(define-key evil-normal-state-map ",bn" 'next-buffer)
+(define-key evil-normal-state-map ",bp" 'previous-buffer)
+(define-key evil-normal-state-map ",lb" 'ido-switch-buffer)
+
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -212,12 +220,31 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; python
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+;;(setq py-shell-name "/usr/local/bin/python")
+
+
+;;(setq py-python-command "/usr/local/bin/python")
+;;(setq py-default-interpreter "/usr/local/share/python/ipython")
+;;(setq ipython-command "/usr/local/share/python/ipython")
+;;(setq py-shell-name "ipython")
+
+(setq py-python-command-args nil)
+
 (require 'python-mode)
+(require 'ipython)
+(defvar py-mode-map python-mode-map)
+(setq py-default-interpreter "ipython")
+
 (require 'flymake-python-pyflakes)
 (require 'ac-python)
 
+(require 'anything-ipython)
 
-(setq flymake-python-pyflakes-executable "/usr/local/share/python/pyflakes")
+
+
+(setq
+flymake-python-pyflakes-executable "/usr/local/share/python/flake8")
 
 (defun load-pymacs ()
   (autoload 'pymacs-load "pymacs" nil t)
