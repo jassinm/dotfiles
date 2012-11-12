@@ -9,6 +9,7 @@
             '(("gnu" . "http://elpa.gnu.org/packages/")
               ("marmalade" . "http://marmalade-repo.org/packages/")
                       ("melpa" . "http://melpa.milkbox.net/packages/")))
+
 (defun loco-install-packages ()
   "Install some handy packages from marmalade."
   (interactive)
@@ -31,6 +32,8 @@
            nav
            pretty-lambdada
            python-mode
+           ipython
+           anything-ipython
            virtualenv
            pymacs
            nose
@@ -53,7 +56,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'nav)
 (nav-disable-overeager-window-splitting)
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; autocomplete
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -62,16 +64,10 @@
 ;; start completing after 1 char
 (setq ac-auto-start 1)
 ;;(setq ac-ignore-case t)
-
 (setq ac-use-menu-map t)
 (define-key ac-menu-map "\C-n" 'ac-next)
 (define-key ac-menu-map "\C-p" 'ac-previous)
-
 (require 'anything)
-;;ac-source-filename
-
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; look-good
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -79,9 +75,6 @@
 (add-to-list 'custom-theme-load-path "/Users/locojay/.emacs.d/themes")
 (set-cursor-color "#0a9dff")
 (provide 'init-themes)
-;;(load-theme 'monokai t)
-;;(setq solarized-termcolors 256)
-;;(load-theme 'solarized-light t)
 (load-theme 'badwolf t)
 
 (set-default-font "PragmataPro-15")
@@ -89,11 +82,9 @@
 (setq frame-title-format '("Emacs @ " system-name ": %b %+%+ %f"))
 (setq idle-highlight-global-timer 1)
 (set-fringe-mode 0)
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; global
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 ;; Use command as the meta key
 (setq ns-command-modifier (quote meta))
 ;; "y or n" instead of "yes or no"
@@ -101,55 +92,47 @@
 ;;show line numbers
 (global-linum-mode t)
 (setq linum-format "%d ")
-
 ;; prevent beep
 (setq visible-bell t)
 ;;follow symlinks and don't ask
 (setq vc-follow-symlinks t)
 ;;save position in files
 (setq-default save-place t)
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; matching parens
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 ;; highlight matching parens
 (require 'mic-paren)
 (paren-activate)
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; rainbow-delimiters
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 (require 'rainbow-delimiters)
 (global-rainbow-delimiters-mode)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; clojure project-mode
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(require 'clojure-project-mode)
-(project-load-all)
-(project-mode 1)
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; clojure-mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; (require 'paredit) if you didn't install via package.el
-(defun turn-on-paredit () (paredit-mode 1))
-(add-hook 'clojure-mode-hook 'turn-on-paredit)
+(defun load-clojure-project ()
+    (require 'clojure-project-mode)
+    (project-load-all)
+    (project-mode 1))
+
+(defun turn-on-paredit ()
+  (paredit-mode 1))
+
+(add-hook 'clojure-mode-hook
+          (lambda ()
+            (turn-on-paredit)
+            (load-clojure-project)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; nrepl
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 (setq nrepl-lein-command "/Users/locojay/bin/lein2")
 (add-hook 'nrepl-interaction-mode-hook
   'nrepl-turn-on-eldoc-mode)
 (setq nrepl-popup-stacktraces nil)
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ac-nrepl
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -158,23 +141,18 @@
  (add-hook 'nrepl-interaction-mode-hook 'ac-nrepl-setup)
  (eval-after-load "auto-complete"
    '(add-to-list 'ac-modes 'nrepl-mode))
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; rainbow-mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'rainbow-mode)
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ein
+;; ein ipython notebook
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 (require 'ein)
 (setq ein:use-auto-complete t)
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; evil mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 (require 'evil)
 (evil-mode 1)
 ;; map jj to esc
@@ -202,14 +180,9 @@
 (define-key evil-normal-state-map ",bp" 'previous-buffer)
 (define-key evil-normal-state-map ",lb" 'ido-switch-buffer)
 
-
-
 ;;tpope surround
-
 (require 'surround)
 (global-surround-mode 1)
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; buffer-file stuff
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -222,20 +195,9 @@
 (setq-default indent-tabs-mode nil)    ; use only spaces and no tabs
 (setq default-tab-width 4)
 (add-hook 'before-save-hook (lambda () (delete-trailing-whitespace)))
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; python
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
-;;(setq py-shell-name "/usr/local/bin/python")
-
-
-;;(setq py-python-command "/usr/local/bin/python")
-;;(setq py-default-interpreter "/usr/local/share/python/ipython")
-;;(setq ipython-command "/usr/local/share/python/ipython")
-;;(setq py-shell-name "ipython")
-
 (setq py-python-command-args nil)
 
 (require 'python-mode)
@@ -244,11 +206,7 @@
 (setq py-default-interpreter "ipython")
 
 (require 'flymake-python-pyflakes)
-;;(require 'ac-python)
-
 (require 'anything-ipython)
-
-
 
 (setq
 flymake-python-pyflakes-executable "/usr/local/share/python/flake8")
@@ -272,19 +230,16 @@ flymake-python-pyflakes-executable "/usr/local/share/python/flake8")
 (require 'yasnippet-bundle)
 (yas/initialize)
 (yas/load-directory "~/.emacs.d/my-snippets/")
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ack
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 (require 'ack)
 (setq ack-command "/usr/local/bin/ack")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; key binding
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 (global-set-key (kbd "C-c /") 'ac-complete-filename)
-;;(global-set-key ",f" 'ns-toggle-fullscreen)
-
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; other plugins
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'pretty-lambdada)
