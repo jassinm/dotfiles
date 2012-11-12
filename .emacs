@@ -18,6 +18,7 @@
            clojure-mode
            clojure-project-mode
            evil
+           surround
            nrepl
            ac-nrepl
            rainbow-delimiters
@@ -195,6 +196,12 @@
 (define-key evil-normal-state-map ",f" 'ns-toggle-fullscreen)
 
 
+;;tpope surround
+
+(require 'surround)
+(global-surround-mode 1)
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; buffer-file stuff
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -217,7 +224,7 @@
 ;;(require 'ac-python)
 
 
-(setq flymake-python-pyflakes-executable "/usr/local/share/python/pyflakes")
+(setq flymake-python-pyflakes-executable "/usr/local/share/python/flake8")
 
 (defun load-pymacs ()
   (autoload 'pymacs-load "pymacs" nil t)
