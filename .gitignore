@@ -11,3 +11,5 @@ ipython/profile_default/security
 bin/vim
 bin/lein2
 .emacs.d
+bin/doc2pdf
+bin/screenshotbot
