@@ -1,5 +1,6 @@
 (add-to-list 'load-path "~/.emacs.d")
 
+
 (require 'package)
 
 (setq package-archives
@@ -25,6 +26,7 @@
            solarized-theme
            ein
            nav
+           pretty-lambdada
            python-mode
            virtualenv
            pymacs
@@ -82,13 +84,25 @@
 (setq frame-title-format '("Emacs @ " system-name ": %b %+%+ %f"))
 (setq idle-highlight-global-timer 1)
 (set-fringe-mode 0)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; config's
+;; global
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; Use command as the meta key
+(setq ns-command-modifier (quote meta))
+;; "y or n" instead of "yes or no"
+(fset 'yes-or-no-p 'y-or-n-p)
 ;;show line numbers
 (global-linum-mode t)
 (setq linum-format "%d ")
+
+;; prevent beep
+(setq visible-bell t)
+;;follow symlinks and don't ask
+(setq vc-follow-symlinks t)
+;;save position in files
+(setq-default save-place t)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -194,19 +208,6 @@
 (setq default-tab-width 4)
 (add-hook 'before-save-hook (lambda () (delete-trailing-whitespace)))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; global
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; prevent beep
-(setq visible-bell t)
-;;follow symlinks and don't ask
-(setq vc-follow-symlinks t)
-;;save position in files
-(setq-default save-place t)
-
-
-;;(setq backup-directory-alist '("." . "~/.emacs.d/backups"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; python
@@ -250,3 +251,6 @@
 
 (global-set-key (kbd "C-c /") 'ac-complete-filename)
 ;;(global-set-key ",f" 'ns-toggle-fullscreen)
+
+
+(require 'pretty-lambdada)
