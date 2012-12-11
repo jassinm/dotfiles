@@ -33,6 +33,7 @@
            pretty-lambdada
            python-mode
            ipython
+           anything
            anything-ipython
            virtualenv
            pymacs
@@ -72,7 +73,7 @@
 ;; look-good
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; theme
-(add-to-list 'custom-theme-load-path "/Users/locojay/.emacs.d/themes")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (set-cursor-color "#0a9dff")
 (provide 'init-themes)
 (load-theme 'badwolf t)
