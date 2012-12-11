@@ -8,7 +8,7 @@ function link_file {
     ln -nfs ${source} ${target}
 }
 
-EXCLUDE="README.rst\|Keymando\|aliases.zsh\|bootstrap.sh"
+EXCLUDE="README.rst\|Keymando\|aliases.zsh\|bootstrap.sh\|vim\|lein2"
 
 for i in `ls | grep -v $EXCLUDE`
 do
@@ -22,4 +22,4 @@ done
 #     sh bootstrap.sh
 #     link_file vim
 # fi
-#ln -nfs $DOTFILES/lein2/project.clj $HOME/.lein/project.clj
+ln -nfs $DOTFILES/lein2/project.clj $HOME/.lein/project.clj
