@@ -8,18 +8,18 @@ function link_file {
     ln -nfs ${source} ${target}
 }
 
-EXCLUDE="README.rst\|Keymando\|aliases.zsh\|bootstrap.sh\|vim\|lein2"
+EXCLUDE="README.rst\|Keymando\|aliases.zsh\|bootstrap.sh\|vim\|lein2\|zshrc"
 
 for i in `ls | grep -v $EXCLUDE`
 do
     link_file $i
 done
 
-# read -p "install vim' (y/n)?"
-# if [ "$REPLY" == "y" ]
-# then
-#     cd $DOTFILES/vim
-#     sh bootstrap.sh
-#     link_file vim
-# fi
 ln -nfs $DOTFILES/lein2/project.clj $HOME/.lein/project.clj
+
+read -p "install vim' (y/n)?"
+if [ "$REPLY" == "y" ]
+then
+    link_file vim
+    ln -nfs $DOTFILES/vim/vimrc $HOME/.vimrc
+fi
