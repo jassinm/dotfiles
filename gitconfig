@@ -1,6 +1,6 @@
 [user]
-    name = locojaydev
-    email = locojaydev@dev.com
+    name = locojay
+    email = locojaydev@gmail.com
 [core]
     excludesfile = /Users/locojay/.gitignore
     editor = vim
@@ -29,3 +29,5 @@
     external = gitvimdiff
 [pager]
     diff =
+[credential]
+	helper = osxkeychain
