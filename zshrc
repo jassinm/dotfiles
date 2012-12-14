@@ -11,11 +11,11 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needsndkey -M viins md-mode
-bindkey -M viins "jj" vi-cmd-mode
 setopt interactivecomments
 #
 source ~/.profile
 source ~/.dotfiles/aliases.zsh
+source ~/.dotfiles/vi-mode.zsh
 #
 if [ -f `brew --prefix`/etc/autojump.sh ]; then
      . `brew --prefix`/etc/autojump.sh
