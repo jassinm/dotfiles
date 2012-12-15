@@ -33,7 +33,8 @@ do
     ln -nfs "$rcfile" "$HOME"/."$basename_"
 done
 
-if [[ `uname` == 'Darwin' ]]; then
+UNAME=$(uname -s)
+if [ "$UNAME" = 'Darwin' ] ; then
     ln -nfs "$DOTFILES"/tmux.conf "$HOME"/.tmux.conf
 else
     ln -nfs "$DOTFILES"/tmux_nonosx.conf "$HOME"/.tmux.conf
