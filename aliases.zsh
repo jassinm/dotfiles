@@ -3,6 +3,7 @@ alias gst='git status'
 alias gba='git branch -a'
 alias gcaa="git commit -a --amend -C HEAD"
 alias gpl='git pull'
+alias gpom='git push origin master'
 #tmux
 alias tls='tmux list-sessions'
 alias ta='tmux attach -t'
