@@ -23,9 +23,9 @@ mkdir -p "$DOTFILES"/vim/tmp/backup
 mkdir -p "$DOTFILES"/vim/tmp/swap
 ln -nfs "$DOTFILES"/vim "$HOME"/.vim
 ln -nfs "$DOTFILES"/vim/vimrc "$HOME"/.vimrc
-#
-ln -nfs "$DOTFILES"/prezto "$HOME"/.zprezto
 
+#zsh
+ln -nfs "$DOTFILES"/prezto "$HOME"/.zprezto
 
 for rcfile in `find "$HOME/.zprezto/runcoms" -maxdepth 1 -name 'z*'`;
 do
@@ -40,3 +40,6 @@ else
     ln -nfs "$DOTFILES"/tmux_nonosx.conf "$HOME"/.tmux.conf
 fi
 
+#emacs
+mkdir -p "$HOME"/.emacs.d/themes
+mkdir -p "$HOME"/.emacs.d/my-snippets
