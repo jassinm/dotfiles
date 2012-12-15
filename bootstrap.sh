@@ -22,6 +22,7 @@ mkdir -p "$DOTFILES"/vim/tmp/undo
 mkdir -p "$DOTFILES"/vim/tmp/backup
 mkdir -p "$DOTFILES"/vim/tmp/swap
 ln -nfs "$DOTFILES"/vim "$HOME"/.vim
+ln -nfs "$DOTFILES"/vim/vimrc "$HOME"/.vimrc
 #
 ln -nfs "$DOTFILES"/prezto "$HOME"/.zprezto
 
