@@ -4,5 +4,5 @@
 	ignore = untracked
 [submodule "prezto"]
 	path = prezto
-	url = git@github.com:locojay/locoprezto.git
+	url = git://github.com/locojay/prezto.git
 	ignore = untracked
