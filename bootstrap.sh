@@ -21,10 +21,13 @@ ln -nfs "$DOTFILES"/lein2/project.clj "$HOME"/.lein/project.clj
 mkdir -p "$DOTFILES"/vim/tmp/undo
 mkdir -p "$DOTFILES"/vim/tmp/backup
 mkdir -p "$DOTFILES"/vim/tmp/swap
-ln -nfs "$DOTFILES"/vim $HOME/.vim
+ln -nfs "$DOTFILES"/vim "$HOME"/.vim
 #
-ln -nfs "$DOTFILES"/prezto $HOME/.zprezto
+ln -nfs "$DOTFILES"/prezto "$HOME"/.zprezto
 
-# for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
-#       ln -nfs "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
-# done
+
+for rcfile in `find "$HOME/.zprezto/runcoms" -maxdepth 1 -name 'z*'`;
+do
+    basename_=`basename "$rcfile"`
+    ln -nfs "$rcfile" "$HOME"/."$basename_"
+done
