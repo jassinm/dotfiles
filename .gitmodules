@@ -2,3 +2,7 @@
 	path = vim
 	url = git@github.com:locojay/locovim.git
 	ignore = untracked
+[submodule "prezto"]
+	path = prezto
+	url = git@github.com:locojay/locoprezto.git
+	ignore = untracked
