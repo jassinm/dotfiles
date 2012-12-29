@@ -20,4 +20,4 @@ alias ipynb="ipython notebook --ip='*' --pylab=inline"
 
 alias ka9='killall -9'
 alias k9='kill -9'
-alias clang11++='clang++ -std=c++11'
+alias clang11++='clang++ -std=c++11 -stdlib=libc++'
