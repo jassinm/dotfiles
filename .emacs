@@ -16,37 +16,40 @@
   (package-initialize)
   (package-refresh-contents)
   (dolist (p '(starter-kit
-           starter-kit-lisp
-           auto-complete
-           clojure-mode
-           clojure-project-mode
-           evil
-           surround
-           nrepl
-           ac-nrepl
-           rainbow-delimiters
-           mic-paren
-           monokai-theme
-           solarized-theme
-           ein
-           nav
-           pretty-lambdada
-           python-mode
-           ipython
-           anything
-           anything-ipython
-           virtualenv
-           pymacs
-           nose
-           jinja2-mode
-           flymake-cursor
-           flymake-python-pyflakes
-           highlight-indentation
-           yasnippet-bundle
-           magit
-           rainbow-mode
-           ack
-           gist))
+               starter-kit-lisp
+               auto-complete
+               clojure-mode
+               clojure-project-mode
+               evil
+               surround
+               nrepl
+               ac-nrepl
+               rainbow-delimiters
+               mic-paren
+               monokai-theme
+               solarized-theme
+               ein
+               nav
+               pretty-lambdada
+               python-mode
+               ipython
+               anything
+               anything-ipython
+               virtualenv
+               pymacs
+               nose
+               jinja2-mode
+               flymake-cursor
+               flymake-python-pyflakes
+               highlight-indentation
+               yasnippet-bundle
+               magit
+               rainbow-mode
+               ;;ensime
+               ack
+               gist
+               erlang
+               ))
     (when (not (package-installed-p p))
       (package-install p))))
 (package-initialize)
@@ -244,3 +247,4 @@ flymake-python-pyflakes-executable "/usr/local/share/python/flake8")
 ;; other plugins
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'pretty-lambdada)
+(require 'erlang-flymake)
