@@ -1,8 +1,8 @@
 [submodule "vim"]
 	path = vim
 	url = git://github.com/locojay/locovim.git
-	ignore = untracked
+	ignore = dirty
 [submodule "prezto"]
 	path = prezto
 	url = git://github.com/locojay/prezto.git
-	ignore = untracked
+	ignore = dirty
