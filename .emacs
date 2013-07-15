@@ -79,8 +79,8 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (set-cursor-color "#0a9dff")
 (provide 'init-themes)
-;;(load-theme 'badwolf t)
-(load-theme 'molokai t)
+(load-theme 'badwolf t)
+;;(load-theme 'molokai t)
 
 (set-default-font "PragmataPro-15")
 
