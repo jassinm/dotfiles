@@ -46,3 +46,5 @@ echo venv
 .ropeproject/
 .env
 *.un~
+#erlang
+*.beam
