@@ -50,3 +50,6 @@ echo venv
 #erlang
 ebin
 deps
+=======
+#erlang
+*.beam
