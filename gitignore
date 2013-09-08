@@ -46,3 +46,7 @@ echo venv
 .ropeproject/
 .env
 *.un~
+
+#erlang
+ebin
+deps

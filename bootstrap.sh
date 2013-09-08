@@ -41,8 +41,4 @@ else
 fi
 
 #emacs
-mkdir -p "$HOME"/.emacs.d/themes
-mkdir -p "$HOME"/.emacs.d/my-snippets
-if [ ! -f "$HOME"/.emacs.d/themes/badwolf-theme.el ] ; then
-    wget https://raw.github.com/locojay/badwolf/master/contrib/badwolf-theme.el -O "$HOME"/.emacs.d/themes/badwolf-theme.el
-fi
+ln -nfs "$DOTFILES"/locoemacs "$HOME"/.emacs.d
