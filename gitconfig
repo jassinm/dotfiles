@@ -5,10 +5,11 @@
     excludesfile = /Users/locojay/.gitignore
     editor = vim
     autocrlf = input
-    pager = cat
+    pager = less
 [alias]
     co = checkout
     gl  = log -16 --color=always --all --graph --topo-order --pretty='format: %Cgreen%h%Creset %s%Cred%d%Creset%n'
+    lg  = log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen%cn %Cred%cr %C(cyan)%ci%Creset' --abbrev-commit
     one = show -s
     st = status
     caa = commit -a --amend -C HEAD
