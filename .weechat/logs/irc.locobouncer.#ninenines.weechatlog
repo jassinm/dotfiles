@@ -1,0 +1,695 @@
+2013-12-19 15:46:38	✔	locojay (~locojay@108.30.139.71) has joined #ninenines
+2013-12-19 15:46:38	--	Topic for #ninenines is "Nine Nines http://ninenines.eu | Source code https://github.com/extend/ | LinkedIn Cowboy Group http://goo.gl/le4Cj"
+2013-12-19 15:46:38	--	Topic set by essen (~essen@ks28969.kimsufi.com) on Wed, 30 Jan 2013 12:25:34
+2013-12-19 15:46:38	--	Nicks #ninenines: [AeroNotix asabil athoune avn_ daniel_karlsson dawik_ dch debris`_ espiral essen evax fishcakez___ gen_ale_drinker Guest12830 hlieberman hq1- IbnFirnas_ jprieur JStoker jwheare kiela Licenser locojay MononcQc msch okeuday1 pantech peerst ptomasroos puzza007 RJ2 s1n4 smeb- srijan4 stowelly submersive tOkeshu tristan_1 true_dro_ wc_ wc__ y05uk_take_away]
+2013-12-19 15:46:38	--	Channel #ninenines: 42 nicks (0 ops, 0 halfops, 0 voices, 42 normals)
+2013-12-19 15:46:38	--	Mode #ninenines [+cnt]
+2013-12-19 15:46:38	--	Channel created on Sun, 16 Dec 2012 04:24:56
+2013-12-19 15:46:40	--	Mode #ninenines [+cnt]
+2013-12-19 15:46:40	--	Channel created on Sun, 16 Dec 2012 04:24:56
+2013-12-19 15:46:45	--	[#ninenines] End of Channel Ban List
+2013-12-19 15:47:18	✔	wildroman2 (~wildroman@5.29.0.95) has joined #ninenines
+2013-12-19 15:49:01	✘	s1n4 (~s1n4@unaffiliated/s1n4) has quit (Ping timeout: 272 seconds)
+2013-12-19 15:49:26	✘	wildroman2 (~wildroman@5.29.0.95) has quit (Remote host closed the connection)
+2013-12-19 15:49:32	✔	s1n4 (~s1n4@unaffiliated/s1n4) has joined #ninenines
+2013-12-19 15:49:58	✔	wildroman2 (~wildroman@5.29.0.95) has joined #ninenines
+2013-12-19 15:51:03	locojay	essen picking up on conversation from erlang channel. teseted safari, firefox with no issues. chrome Version 31.0.1650.63 gets this on server https://gist.github.com/locojay/8046064
+2013-12-19 15:51:38	locojay	was planning on creating a module ejabberd_cowboy for processone ejabberd
+2013-12-19 15:51:55	locojay	reinstalled chrome...
+2013-12-19 15:54:40	✔	archaelus (~nem@108.sub-70-194-130.myvzw.com) has joined #ninenines
+2013-12-19 15:54:43	✘	wildroman2 (~wildroman@5.29.0.95) has quit (Ping timeout: 272 seconds)
+2013-12-19 16:00:53	--	[#ninenines] End of Channel Ban List
+2013-12-19 16:03:01	✔	captain_furious (~hickin@86.4.8.243) has joined #ninenines
+2013-12-19 16:10:16	asabil	@locojay I would bet this has to do with sub-protocols
+2013-12-19 16:11:19	asabil	essentially you need to match the sub-protocol proposed by the client, otherwise the handshake would fail
+2013-12-19 16:14:02	essen	that's my thought too
+2013-12-19 16:22:24	locojay	the subprotocol send by strophe.js is  xmpp Sec-WebSocket-Protocol:xmpp
+2013-12-19 16:23:44	essen	you need to send that exact same header back then
+2013-12-19 16:26:48	locojay	https://github.com/esl/MongooseIM/blob/master/apps/ejabberd/src/mod_websockets.erl ill debug
+2013-12-19 16:28:37	asabil	You need to check that xmpp is present in the Sec-WebSocket-Protocol header, and if so set the Sec-WebSocket-Protocol: xmpp during the handshake
+2013-12-19 16:28:38	essen	there's nothing to debug, you need to set_resp_header that exact header in websocket_init
+2013-12-19 16:29:51	locojay	thanks. I guess the other browser are just not as picky as chrome ....
+2013-12-19 16:51:01	✘	hq1- (~hq1@2836.rev.megiteam.pl) has left #ninenines
+2013-12-19 16:51:07	✔	nicholasf (~nicholasf@203.27.139.77) has joined #ninenines
+2013-12-19 16:51:11	✘	nicholasf (~nicholasf@203.27.139.77) has quit (Remote host closed the connection)
+2013-12-19 16:51:35	✔	nicholasf (~nicholasf@203.27.139.77) has joined #ninenines
+2013-12-19 16:51:52	--	[#ninenines] End of Channel Ban List
+2013-12-19 17:00:43	✔	wildroman2 (~wildroman@5.29.0.95) has joined #ninenines
+2013-12-19 17:04:50	✘	wildroman2 (~wildroman@5.29.0.95) has quit (Ping timeout: 246 seconds)
+2013-12-19 17:04:58	✘	nicholasf (~nicholasf@203.27.139.77) has quit (Read error: Connection reset by peer)
+2013-12-19 17:05:29	✔	nicholasf (~nicholasf@203.27.139.77) has joined #ninenines
+2013-12-19 17:09:32	✔	marcosvm (~textual@192.161.159.18) has joined #ninenines
+2013-12-19 17:22:13	✔	PolCPP (~PolCPP@1.Red-88-7-231.staticIP.rima-tde.net) has joined #ninenines
+2013-12-19 17:39:23	--	[#ninenines] End of Channel Ban List
+2013-12-19 17:40:10	✘	captain_furious (~hickin@86.4.8.243) has left #ninenines
+2013-12-19 18:07:46	✘	Guest12830 (~chops@cpe-184-58-135-210.wi.res.rr.com) has quit (Ping timeout: 252 seconds)
+2013-12-19 18:20:54	--	[#ninenines] End of Channel Ban List
+2013-12-19 19:02:28	✘	archaelus (~nem@108.sub-70-194-130.myvzw.com) has quit (Read error: Connection reset by peer)
+2013-12-19 19:31:15	✘	marcosvm (~textual@192.161.159.18) has quit (Quit: My MacBook has gone to sleep. ZZZzzz…)
+2013-12-19 20:33:33	✔	Guest12830 (~chops@cpe-184-58-135-210.wi.res.rr.com) has joined #ninenines
+2013-12-19 20:52:13	--	y05uk_take_away is now known as yosuke
+2013-12-19 21:34:36	✘	PolCPP (~PolCPP@1.Red-88-7-231.staticIP.rima-tde.net) has quit (Remote host closed the connection)
+2013-12-19 21:35:03	✔	PolCPP (~PolCPP@1.Red-88-7-231.staticIP.rima-tde.net) has joined #ninenines
+2013-12-19 21:36:17	✔	PolCPP_ (~PolCPP@1.Red-88-7-231.staticIP.rima-tde.net) has joined #ninenines
+2013-12-19 21:36:17	✘	PolCPP (~PolCPP@1.Red-88-7-231.staticIP.rima-tde.net) has quit (Read error: Connection reset by peer)
+2013-12-19 21:39:03	--	yosuke is now known as y05uk_take_away
+2013-12-19 21:41:20	✘	s1n4 (~s1n4@unaffiliated/s1n4) has quit (Quit: Lost terminal)
+2013-12-19 22:21:23	✔	archaelus (~nem@108.sub-70-194-130.myvzw.com) has joined #ninenines
+2013-12-19 22:23:44	✘	nicholasf (~nicholasf@203.27.139.77) has quit (Remote host closed the connection)
+2013-12-19 22:24:17	✔	nicholasf (~nicholasf@203.27.139.77) has joined #ninenines
+2013-12-19 22:28:24	✘	nicholasf (~nicholasf@203.27.139.77) has quit (Ping timeout: 240 seconds)
+2013-12-19 22:32:04	✔	nicholasf (~nicholasf@203.27.139.77) has joined #ninenines
+2013-12-19 22:54:02	✔	marcosvm (~textual@99-100-33-130.lightspeed.sntcca.sbcglobal.net) has joined #ninenines
+2013-12-19 23:12:39	✘	marcosvm (~textual@99-100-33-130.lightspeed.sntcca.sbcglobal.net) has quit (Quit: My MacBook has gone to sleep. ZZZzzz…)
+2013-12-19 23:13:10	✔	marcosvm (~textual@99-100-33-130.lightspeed.sntcca.sbcglobal.net) has joined #ninenines
+2013-12-19 23:13:13	✘	marcosvm (~textual@99-100-33-130.lightspeed.sntcca.sbcglobal.net) has quit (Client Quit)
+2013-12-19 23:16:02	✘	archaelus (~nem@108.sub-70-194-130.myvzw.com) has quit (Read error: Connection reset by peer)
+2013-12-19 23:23:23	✘	true_dro_ (~true_droi@sour-accorder.volia.net) has quit (Remote host closed the connection)
+2013-12-20 00:00:20	✔	marcosvm (~textual@99-100-33-130.lightspeed.sntcca.sbcglobal.net) has joined #ninenines
+2013-12-20 00:05:46	✘	marcosvm (~textual@99-100-33-130.lightspeed.sntcca.sbcglobal.net) has quit (Quit: My MacBook has gone to sleep. ZZZzzz…)
+2013-12-20 00:52:37	✔	varnerac (~varnerac@cpe-098-025-034-117.sc.res.rr.com) has joined #ninenines
+2013-12-20 00:53:55	✘	varnerac (~varnerac@cpe-098-025-034-117.sc.res.rr.com) has quit (Quit: varnerac)
+2013-12-20 00:54:23	✔	ninefx (~varnerac@cpe-098-025-034-117.sc.res.rr.com) has joined #ninenines
+2013-12-20 01:08:00	✘	nicholasf (~nicholasf@203.27.139.77) has quit (Remote host closed the connection)
+2013-12-20 01:08:36	✔	nicholasf (~nicholasf@203.27.139.77) has joined #ninenines
+2013-12-20 01:12:54	✘	nicholasf (~nicholasf@203.27.139.77) has quit (Ping timeout: 245 seconds)
+2013-12-20 01:57:55	✔	nicholasf (~nicholasf@d110-33-178-72.sun801.vic.optusnet.com.au) has joined #ninenines
+2013-12-20 02:08:43	✔	marcosvm (~textual@99-100-33-130.lightspeed.sntcca.sbcglobal.net) has joined #ninenines
+2013-12-20 02:11:35	✘	nicholasf (~nicholasf@d110-33-178-72.sun801.vic.optusnet.com.au) has quit (Remote host closed the connection)
+2013-12-20 02:21:34	✘	marcosvm (~textual@99-100-33-130.lightspeed.sntcca.sbcglobal.net) has quit (Quit: My MacBook has gone to sleep. ZZZzzz…)
+2013-12-20 02:25:11	✔	marcosvm (~textual@99-100-33-130.lightspeed.sntcca.sbcglobal.net) has joined #ninenines
+2013-12-20 02:29:41	✘	marcosvm (~textual@99-100-33-130.lightspeed.sntcca.sbcglobal.net) has quit (Client Quit)
+2013-12-20 04:15:23	✔	Prokke (~Adium@82.99.25.66) has joined #ninenines
+2013-12-20 04:16:41	✘	Prokke (~Adium@82.99.25.66) has quit (Client Quit)
+2013-12-20 05:09:15	✔	wildroman2 (~wildroman@5.29.0.95) has joined #ninenines
+2013-12-20 07:34:38	✔	true_droid (~true_droi@sour-accorder.volia.net) has joined #ninenines
+2013-12-20 08:11:35	✔	nicholasf (~nicholasf@ppp196-159.static.internode.on.net) has joined #ninenines
+2013-12-20 08:28:41	✔	true_dro_ (~true_droi@sour-accorder.volia.net) has joined #ninenines
+2013-12-20 08:30:59	✘	true_droid (~true_droi@sour-accorder.volia.net) has quit (Ping timeout: 246 seconds)
+2013-12-20 08:31:25	✘	nicholasf (~nicholasf@ppp196-159.static.internode.on.net) has quit
+2013-12-20 09:06:47	✘	wildroman2 (~wildroman@5.29.0.95) has quit (Remote host closed the connection)
+2013-12-20 09:07:26	✔	wildroman2 (~wildroman@5.29.0.95) has joined #ninenines
+2013-12-20 09:08:02	✘	wildroman2 (~wildroman@5.29.0.95) has quit (Read error: Connection reset by peer)
+2013-12-20 09:08:36	✔	wildroman2 (~wildroman@5.29.0.95) has joined #ninenines
+2013-12-20 09:24:19	✘	wildroman2 (~wildroman@5.29.0.95) has quit (Remote host closed the connection)
+2013-12-20 09:24:55	✔	wildroman2 (~wildroman@5.29.0.95) has joined #ninenines
+2013-12-20 09:29:09	✘	wildroman2 (~wildroman@5.29.0.95) has quit (Ping timeout: 245 seconds)
+2013-12-20 09:29:14	✔	wildroman3 (~wildroman@5.29.0.95) has joined #ninenines
+2013-12-20 11:10:26	✘	wildroman3 (~wildroman@5.29.0.95) has quit (Remote host closed the connection)
+2013-12-20 11:13:25	✔	marcosvm (~textual@99-100-33-130.lightspeed.sntcca.sbcglobal.net) has joined #ninenines
+2013-12-20 11:30:06	✘	marcosvm (~textual@99-100-33-130.lightspeed.sntcca.sbcglobal.net) has quit (Quit: My MacBook has gone to sleep. ZZZzzz…)
+2013-12-20 11:34:43	✔	marcosvm (~textual@99-100-33-130.lightspeed.sntcca.sbcglobal.net) has joined #ninenines
+2013-12-20 11:35:33	✔	wildroman2 (~wildroman@5.29.0.95) has joined #ninenines
+2013-12-20 11:53:04	✘	marcosvm (~textual@99-100-33-130.lightspeed.sntcca.sbcglobal.net) has quit (Quit: My MacBook has gone to sleep. ZZZzzz…)
+2013-12-20 11:53:20	✔	marcosvm (~textual@99-100-33-130.lightspeed.sntcca.sbcglobal.net) has joined #ninenines
+2013-12-20 11:55:23	✘	marcosvm (~textual@99-100-33-130.lightspeed.sntcca.sbcglobal.net) has quit (Client Quit)
+2013-12-20 12:18:46	✔	archaelus (~nem@108.sub-70-194-130.myvzw.com) has joined #ninenines
+2013-12-20 13:35:29	✘	archaelus (~nem@108.sub-70-194-130.myvzw.com) has quit (Quit: archaelus)
+2013-12-20 13:44:23	✔	marcosvm (~textual@192.161.159.18) has joined #ninenines
+2013-12-20 14:18:04	✘	PolCPP_ (~PolCPP@1.Red-88-7-231.staticIP.rima-tde.net) has quit (Remote host closed the connection)
+2013-12-20 14:18:30	✔	PolCPP (~PolCPP@1.Red-88-7-231.staticIP.rima-tde.net) has joined #ninenines
+2013-12-20 14:23:05	✘	PolCPP (~PolCPP@1.Red-88-7-231.staticIP.rima-tde.net) has quit (Ping timeout: 272 seconds)
+2013-12-20 14:59:38	✘	wildroman2 (~wildroman@5.29.0.95) has quit (Remote host closed the connection)
+2013-12-20 15:00:15	✔	wildroman2 (~wildroman@5.29.0.95) has joined #ninenines
+2013-12-20 15:04:59	✘	wildroman2 (~wildroman@5.29.0.95) has quit (Ping timeout: 240 seconds)
+2013-12-20 15:25:18	✔	wildroman2 (~wildroman@5.29.0.95) has joined #ninenines
+2013-12-20 15:34:30	✔	PolCPP (~PolCPP@1.Red-88-7-231.staticIP.rima-tde.net) has joined #ninenines
+2013-12-20 15:37:47	✘	wildroman2 (~wildroman@5.29.0.95) has quit (Remote host closed the connection)
+2013-12-20 15:38:33	✔	wildroman2 (~wildroman@5.29.0.95) has joined #ninenines
+2013-12-20 15:43:03	✘	wildroman2 (~wildroman@5.29.0.95) has quit (Ping timeout: 248 seconds)
+2013-12-20 16:16:15	✔	wildroman2 (~wildroman@5.29.0.95) has joined #ninenines
+2013-12-20 16:17:34	✘	marcosvm (~textual@192.161.159.18) has quit (Quit: My MacBook has gone to sleep. ZZZzzz…)
+2013-12-20 16:22:48	✘	wildroman2 (~wildroman@5.29.0.95) has quit (Read error: Connection reset by peer)
+2013-12-20 16:23:08	✔	wildroman2 (~wildroman@5.29.0.95) has joined #ninenines
+2013-12-20 16:36:07	✔	marcosvm (~textual@192.161.159.18) has joined #ninenines
+2013-12-20 16:53:11	✘	ninefx (~varnerac@cpe-098-025-034-117.sc.res.rr.com) has quit (Ping timeout: 246 seconds)
+2013-12-20 16:58:36	✔	paladinn (~paladin@unaffiliated/paladinn) has joined #ninenines
+2013-12-20 16:59:43	✘	paladinn (~paladin@unaffiliated/paladinn) has quit (Remote host closed the connection)
+2013-12-20 17:28:59	✘	true_dro_ (~true_droi@sour-accorder.volia.net) has quit
+2013-12-20 17:36:07	✔	nicholasf (~nicholasf@1.154.251.207) has joined #ninenines
+2013-12-20 17:54:09	✘	wildroman2 (~wildroman@5.29.0.95) has quit (Remote host closed the connection)
+2013-12-20 17:54:44	✔	wildroman2 (~wildroman@5.29.0.95) has joined #ninenines
+2013-12-20 17:58:14	✔	archaelus (~nem@108.sub-70-194-130.myvzw.com) has joined #ninenines
+2013-12-20 17:58:39	✘	wildroman2 (~wildroman@5.29.0.95) has quit (Ping timeout: 241 seconds)
+2013-12-20 18:13:03	✔	true_droid (~true_droi@sour-accorder.volia.net) has joined #ninenines
+2013-12-20 18:30:31	✘	nicholasf (~nicholasf@1.154.251.207) has quit (Read error: Connection reset by peer)
+2013-12-20 18:40:46	✔	ninefx (~varnerac@cpe-098-025-034-117.sc.res.rr.com) has joined #ninenines
+2013-12-20 18:57:17	--	y05uk_take_away is now known as yosuke
+2013-12-20 18:57:39	✔	nicholasf (~nicholasf@ppp196-159.static.internode.on.net) has joined #ninenines
+2013-12-20 19:09:01	✘	archaelus (~nem@108.sub-70-194-130.myvzw.com) has quit (Read error: Connection reset by peer)
+2013-12-20 19:16:52	✘	marcosvm (~textual@192.161.159.18) has quit (Quit: My MacBook has gone to sleep. ZZZzzz…)
+2013-12-20 20:02:29	--	yosuke is now known as y05uk_take_away
+2013-12-20 20:02:45	--	y05uk_take_away is now known as yosuke
+2013-12-20 20:03:03	--	yosuke is now known as y05uk_take_away
+2013-12-20 20:24:20	✘	true_droid (~true_droi@sour-accorder.volia.net) has quit (Read error: Connection reset by peer)
+2013-12-20 20:24:57	✔	true_droid (~true_droi@sour-accorder.volia.net) has joined #ninenines
+2013-12-20 20:27:31	✘	nicholasf (~nicholasf@ppp196-159.static.internode.on.net) has quit (Remote host closed the connection)
+2013-12-20 20:28:05	✔	nicholasf (~nicholasf@ppp196-159.static.internode.on.net) has joined #ninenines
+2013-12-20 20:32:42	✘	nicholasf (~nicholasf@ppp196-159.static.internode.on.net) has quit (Ping timeout: 250 seconds)
+2013-12-20 20:55:05	✘	Guest12830 (~chops@cpe-184-58-135-210.wi.res.rr.com) has quit (Ping timeout: 246 seconds)
+2013-12-20 20:58:16	✔	archaelus (~nem@108.sub-70-194-130.myvzw.com) has joined #ninenines
+2013-12-20 21:00:25	✔	rail4you (~rail4you@123.245.6.168) has joined #ninenines
+2013-12-20 21:10:18	✘	PolCPP (~PolCPP@1.Red-88-7-231.staticIP.rima-tde.net) has quit (Remote host closed the connection)
+2013-12-20 21:28:45	✔	nicholasf (~nicholasf@ppp196-159.static.internode.on.net) has joined #ninenines
+2013-12-20 21:32:53	✘	nicholasf (~nicholasf@ppp196-159.static.internode.on.net) has quit (Ping timeout: 246 seconds)
+2013-12-20 21:39:00	✔	Guest12830 (~chops@cpe-184-58-135-210.wi.res.rr.com) has joined #ninenines
+2013-12-20 21:51:26	--	y05uk_take_away is now known as yosuke
+2013-12-20 21:58:06	✘	Guest12830 (~chops@cpe-184-58-135-210.wi.res.rr.com) has quit (Ping timeout: 240 seconds)
+2013-12-20 22:08:05	--	yosuke is now known as y05uk_take_away
+2013-12-20 22:17:14	✘	true_droid (~true_droi@sour-accorder.volia.net) has quit (Remote host closed the connection)
+2013-12-20 22:31:37	✔	locojay (~locojay@108.30.139.71) has joined #ninenines
+2013-12-20 22:31:37	--	Topic for #ninenines is "Nine Nines http://ninenines.eu | Source code https://github.com/extend/ | LinkedIn Cowboy Group http://goo.gl/le4Cj"
+2013-12-20 22:31:37	--	Topic set by essen (~essen@ks28969.kimsufi.com) on Wed, 30 Jan 2013 12:25:34
+2013-12-20 22:31:37	--	Nicks #ninenines: [AeroNotix archaelus asabil athoune avn_ daniel_karlsson dawik_ dch debris`_ espiral essen evax fishcakez___ gen_ale_drinker hlieberman IbnFirnas_ jprieur JStoker jwheare kiela Licenser locojay MononcQc msch ninefx okeuday1 pantech peerst ptomasroos puzza007 rail4you RJ2 smeb- srijan4 stowelly submersive tOkeshu tristan_1 wc_ wc__ y05uk_take_away]
+2013-12-20 22:31:37	--	Channel #ninenines: 41 nicks (0 ops, 0 voices, 41 normals)
+2013-12-20 22:31:41	--	Mode #ninenines [+cnt]
+2013-12-20 22:31:41	--	Channel created on Sun, 16 Dec 2012 04:24:56
+2013-12-20 22:36:37	✔	locojay (~locojay@108.30.139.71) has joined #ninenines
+2013-12-20 22:36:37	--	Topic for #ninenines is "Nine Nines http://ninenines.eu | Source code https://github.com/extend/ | LinkedIn Cowboy Group http://goo.gl/le4Cj"
+2013-12-20 22:36:37	--	Topic set by essen (~essen@ks28969.kimsufi.com) on Wed, 30 Jan 2013 12:25:34
+2013-12-20 22:36:37	--	Nicks #ninenines: [AeroNotix archaelus asabil athoune avn_ daniel_karlsson dawik_ dch debris`_ espiral essen evax fishcakez___ gen_ale_drinker hlieberman IbnFirnas_ jprieur JStoker jwheare kiela Licenser locojay MononcQc msch ninefx okeuday1 pantech peerst ptomasroos puzza007 rail4you RJ2 smeb- srijan4 stowelly submersive tOkeshu tristan_1 wc_ wc__ y05uk_take_away]
+2013-12-20 22:36:37	--	Channel #ninenines: 41 nicks (0 ops, 0 voices, 41 normals)
+2013-12-20 22:36:41	--	Mode #ninenines [+cnt]
+2013-12-20 22:36:41	--	Channel created on Sun, 16 Dec 2012 04:24:56
+2013-12-20 22:44:54	✔	locojay (~locojay@108.30.139.71) has joined #ninenines
+2013-12-20 22:44:54	--	Topic for #ninenines is "Nine Nines http://ninenines.eu | Source code https://github.com/extend/ | LinkedIn Cowboy Group http://goo.gl/le4Cj"
+2013-12-20 22:44:54	--	Topic set by essen (~essen@ks28969.kimsufi.com) on Wed, 30 Jan 2013 12:25:34
+2013-12-20 22:44:54	--	Nicks #ninenines: [AeroNotix archaelus asabil athoune avn_ daniel_karlsson dawik_ dch debris`_ espiral essen evax fishcakez___ gen_ale_drinker hlieberman IbnFirnas_ jprieur JStoker jwheare kiela Licenser locojay MononcQc msch ninefx okeuday1 pantech peerst ptomasroos puzza007 rail4you RJ2 smeb- srijan4 stowelly submersive tOkeshu tristan_1 wc_ wc__ y05uk_take_away]
+2013-12-20 22:44:54	--	Channel #ninenines: 41 nicks (0 ops, 0 voices, 41 normals)
+2013-12-20 22:44:58	--	Mode #ninenines [+cnt]
+2013-12-20 22:44:58	--	Channel created on Sun, 16 Dec 2012 04:24:56
+2013-12-20 22:47:55	-->	locojay (~locojay@108.30.139.71) has joined #ninenines
+2013-12-20 22:47:55	--	Topic for #ninenines is "Nine Nines http://ninenines.eu | Source code https://github.com/extend/ | LinkedIn Cowboy Group http://goo.gl/le4Cj"
+2013-12-20 22:47:55	--	Topic set by essen (~essen@ks28969.kimsufi.com) on Wed, 30 Jan 2013 12:25:34
+2013-12-20 22:47:55	--	Nicks #ninenines: [AeroNotix archaelus asabil athoune avn_ daniel_karlsson dawik_ dch debris`_ espiral essen evax fishcakez___ gen_ale_drinker hlieberman IbnFirnas_ jprieur JStoker jwheare kiela Licenser locojay MononcQc msch ninefx okeuday1 pantech peerst ptomasroos puzza007 rail4you RJ2 smeb- srijan4 stowelly submersive tOkeshu tristan_1 wc_ wc__ y05uk_take_away]
+2013-12-20 22:47:55	--	Channel #ninenines: 41 nicks (0 ops, 0 voices, 41 normals)
+2013-12-20 22:47:58	--	Mode #ninenines [+cnt]
+2013-12-20 22:47:58	--	Channel created on Sun, 16 Dec 2012 04:24:56
+2013-12-20 22:54:38	✔	locojay (~locojay@108.30.139.71) has joined #ninenines
+2013-12-20 22:54:38	--	Topic for #ninenines is "Nine Nines http://ninenines.eu | Source code https://github.com/extend/ | LinkedIn Cowboy Group http://goo.gl/le4Cj"
+2013-12-20 22:54:38	--	Topic set by essen (~essen@ks28969.kimsufi.com) on Wed, 30 Jan 2013 12:25:34
+2013-12-20 22:54:38	--	Nicks #ninenines: [AeroNotix archaelus asabil athoune avn_ daniel_karlsson dawik_ dch debris`_ espiral essen evax fishcakez___ gen_ale_drinker hlieberman IbnFirnas_ jprieur JStoker jwheare kiela Licenser locojay MononcQc msch ninefx okeuday1 pantech peerst ptomasroos puzza007 rail4you RJ2 smeb- srijan4 stowelly submersive tOkeshu tristan_1 wc_ wc__ y05uk_take_away]
+2013-12-20 22:54:38	--	Channel #ninenines: 41 nicks (0 ops, 0 voices, 41 normals)
+2013-12-20 22:54:42	--	Mode #ninenines [+cnt]
+2013-12-20 22:54:42	--	Channel created on Sun, 16 Dec 2012 04:24:56
+2013-12-20 22:55:50	-->	locojay (~locojay@108.30.139.71) has joined #ninenines
+2013-12-20 22:55:50	--	Topic for #ninenines is "Nine Nines http://ninenines.eu | Source code https://github.com/extend/ | LinkedIn Cowboy Group http://goo.gl/le4Cj"
+2013-12-20 22:55:50	--	Topic set by essen (~essen@ks28969.kimsufi.com) on Wed, 30 Jan 2013 12:25:34
+2013-12-20 22:55:50	--	Nicks #ninenines: [AeroNotix archaelus asabil athoune avn_ daniel_karlsson dawik_ dch debris`_ espiral essen evax fishcakez___ gen_ale_drinker hlieberman IbnFirnas_ jprieur JStoker jwheare kiela Licenser locojay MononcQc msch ninefx okeuday1 pantech peerst ptomasroos puzza007 rail4you RJ2 smeb- srijan4 stowelly submersive tOkeshu tristan_1 wc_ wc__ y05uk_take_away]
+2013-12-20 22:55:50	--	Channel #ninenines: 41 nicks (0 ops, 0 voices, 41 normals)
+2013-12-20 22:55:54	--	Mode #ninenines [+cnt]
+2013-12-20 22:55:54	--	Channel created on Sun, 16 Dec 2012 04:24:56
+2013-12-21 12:41:59	-->	locojay (~locojay@108.30.139.71) has joined #ninenines
+2013-12-21 12:41:59	--	Topic for #ninenines is "Nine Nines http://ninenines.eu | Source code https://github.com/extend/ | LinkedIn Cowboy Group http://goo.gl/le4Cj"
+2013-12-21 12:41:59	--	Topic set by essen (~essen@ks28969.kimsufi.com) on Wed, 30 Jan 2013 12:25:34
+2013-12-21 12:41:59	--	Nicks #ninenines: [AeroNotix asabil athoune avn_ captain_furious daniel_karlsson dawik_ dch debris`_ espiral essen evax fishcakez___ gen_ale_drinker hlieberman IbnFirnas_ jprieur JStoker jwheare kiela Licenser locojay MononcQc msch ninefx okeuday1 pantech peerst PolCPP ptomasroos puzza007 rail4you RJ2 smeb- srijan4 stowelly submersive tOkeshu tristan_1 wc_ wc__ y05uk_take_away]
+2013-12-21 12:41:59	--	Channel #ninenines: 42 nicks (0 ops, 0 voices, 42 normals)
+2013-12-21 12:42:03	--	Mode #ninenines [+cnt]
+2013-12-21 12:42:03	--	Channel created on Sun, 16 Dec 2012 04:24:56
+2013-12-21 12:54:18	-->	locojay (~locojay@108.30.139.71) has joined #ninenines
+2013-12-21 12:54:18	--	Topic for #ninenines is "Nine Nines http://ninenines.eu | Source code https://github.com/extend/ | LinkedIn Cowboy Group http://goo.gl/le4Cj"
+2013-12-21 12:54:18	--	Topic set by essen (~essen@ks28969.kimsufi.com) on Wed, 30 Jan 2013 12:25:34
+2013-12-21 12:54:18	--	Nicks #ninenines: [AeroNotix asabil athoune avn_ captain_furious daniel_karlsson dawik_ dch debris`_ espiral essen evax fishcakez___ gen_ale_drinker hlieberman IbnFirnas_ jprieur JStoker jwheare kiela Licenser locojay MononcQc msch ninefx okeuday1 pantech peerst PolCPP ptomasroos puzza007 rail4you RJ2 smeb- srijan4 stowelly submersive tOkeshu tristan_1 wc_ wc__ y05uk_take_away]
+2013-12-21 12:54:18	--	Channel #ninenines: 42 nicks (0 ops, 0 voices, 42 normals)
+2013-12-21 12:54:22	--	Mode #ninenines [+cnt]
+2013-12-21 12:54:22	--	Channel created on Sun, 16 Dec 2012 04:24:56
+2013-12-21 13:01:25	-->	nicholasf (~nicholasf@ppp196-159.static.internode.on.net) has joined #ninenines
+2013-12-21 13:06:25	<--	nicholasf (~nicholasf@ppp196-159.static.internode.on.net) has quit (Ping timeout: 272 seconds)
+2013-12-21 13:10:57	<--	MononcQc (~ferd@li101-172.members.linode.com) has quit (Quit: leaving)
+2013-12-21 13:15:12	<--	rail4you (~rail4you@123.245.6.168) has quit (Remote host closed the connection)
+2013-12-21 15:06:56	--	irc: disconnected from server
+2013-12-21 15:07:06	-->	locojay (~locojay@108.30.139.71) has joined #ninenines
+2013-12-21 15:07:06	--	Topic for #ninenines is "Nine Nines http://ninenines.eu | Source code https://github.com/extend/ | LinkedIn Cowboy Group http://goo.gl/le4Cj"
+2013-12-21 15:07:06	--	Topic set by essen (~essen@ks28969.kimsufi.com) on Wed, 30 Jan 2013 12:25:34
+2013-12-21 15:07:06	--	Nicks #ninenines: [AeroNotix asabil athoune avn_ captain_furious daniel_karlsson dawik_ dch debris`_ espiral essen evax fishcakez___ gen_ale_drinker hlieberman IbnFirnas_ jprieur JStoker jwheare kiela Licenser locojay msch nicholasf ninefx okeuday1 pantech peerst PolCPP ptomasroos puzza007 RJ2 s1n4 smeb- srijan4 stowelly submersive tOkeshu tristan_1 wc_ wc__ y05uk_take_away]
+2013-12-21 15:07:06	--	Channel #ninenines: 42 nicks (0 ops, 0 voices, 42 normals)
+2013-12-21 15:07:16	--	Mode #ninenines [+cnt]
+2013-12-21 15:07:16	--	Channel created on Sun, 16 Dec 2012 04:24:56
+2013-12-21 16:56:14	--	irc: disconnected from server
+2013-12-21 16:56:24	-->	locojay (~locojay@108.30.139.71) has joined #ninenines
+2013-12-21 16:56:24	--	Topic for #ninenines is "Nine Nines http://ninenines.eu | Source code https://github.com/extend/ | LinkedIn Cowboy Group http://goo.gl/le4Cj"
+2013-12-21 16:56:24	--	Topic set by essen (~essen@ks28969.kimsufi.com) on Wed, 30 Jan 2013 12:25:34
+2013-12-21 16:56:24	--	Nicks #ninenines: [AeroNotix asabil athoune avn_ captain_furious daniel_karlsson dawik_ dch debris`_ espiral essen evax fishcakez___ gen_ale_drinker hlieberman IbnFirnas_ jprieur JStoker jwheare kiela Licenser locojay msch nicholasf ninefx okeuday1 pantech peerst PolCPP ptomasroos puzza007 RJ2 s1n4 smeb- srijan4 stowelly submersive tOkeshu tristan_1 true_droid wc_ wc__ y05uk_take_away]
+2013-12-21 16:56:24	--	Channel #ninenines: 43 nicks (0 ops, 0 voices, 43 normals)
+2013-12-21 16:56:34	--	Mode #ninenines [+cnt]
+2013-12-21 16:56:34	--	Channel created on Sun, 16 Dec 2012 04:24:56
+2013-12-21 17:48:11	--	irc: disconnected from server
+2013-12-21 17:48:21	-->	locojay (~locojay@108.30.139.71) has joined #ninenines
+2013-12-21 17:48:21	--	Topic for #ninenines is "Nine Nines http://ninenines.eu | Source code https://github.com/extend/ | LinkedIn Cowboy Group http://goo.gl/le4Cj"
+2013-12-21 17:48:21	--	Topic set by essen (~essen@ks28969.kimsufi.com) on Wed, 30 Jan 2013 12:25:34
+2013-12-21 17:48:21	--	Nicks #ninenines: [AeroNotix asabil athoune avn_ captain_furious daniel_karlsson dawik_ dch debris`_ espiral essen evax fishcakez___ gen_ale_drinker hlieberman IbnFirnas_ jprieur JStoker jwheare kiela Licenser locojay msch nicholasf ninefx okeuday1 pantech peerst PolCPP ptomasroos puzza007 RJ2 smeb- srijan4 stowelly submersive tOkeshu tristan_1 true_droid wc_ wc__ y05uk_take_away]
+2013-12-21 17:48:21	--	Channel #ninenines: 42 nicks (0 ops, 0 voices, 42 normals)
+2013-12-21 17:48:31	--	Mode #ninenines [+cnt]
+2013-12-21 17:48:31	--	Channel created on Sun, 16 Dec 2012 04:24:56
+2013-12-21 19:17:44	--	irc: disconnected from server
+2013-12-21 19:17:54	-->	locojay (~locojay@108.30.139.71) has joined #ninenines
+2013-12-21 19:17:54	--	Topic for #ninenines is "Nine Nines http://ninenines.eu | Source code https://github.com/extend/ | LinkedIn Cowboy Group http://goo.gl/le4Cj"
+2013-12-21 19:17:54	--	Topic set by essen (~essen@ks28969.kimsufi.com) on Wed, 30 Jan 2013 12:25:34
+2013-12-21 19:17:54	--	Nicks #ninenines: [AeroNotix asabil athoune avn_ daniel_karlsson dawik_ dch debris`_ espiral essen evax fishcakez___ gen_ale_drinker hlieberman IbnFirnas_ jprieur JStoker jwheare kiela Licenser locojay msch nicholasf ninefx okeuday1 pantech peerst PolCPP ptomasroos puzza007 RJ2 smeb- srijan4 stowelly submersive tOkeshu tristan_1 true_droid wc_ wc__ y05uk_take_away]
+2013-12-21 19:17:54	--	Channel #ninenines: 41 nicks (0 ops, 0 voices, 41 normals)
+2013-12-21 19:18:04	--	Mode #ninenines [+cnt]
+2013-12-21 19:18:04	--	Channel created on Sun, 16 Dec 2012 04:24:56
+2013-12-21 21:06:47	--	irc: disconnected from server
+2013-12-21 21:06:57	-->	locojay (~locojay@108.30.139.71) has joined #ninenines
+2013-12-21 21:06:57	--	Topic for #ninenines is "Nine Nines http://ninenines.eu | Source code https://github.com/extend/ | LinkedIn Cowboy Group http://goo.gl/le4Cj"
+2013-12-21 21:06:57	--	Topic set by essen (~essen@ks28969.kimsufi.com) on Wed, 30 Jan 2013 12:25:34
+2013-12-21 21:06:57	--	Nicks #ninenines: [AeroNotix asabil athoune avn_ daniel_karlsson dawik_ dch debris`_ espiral essen evax fishcakez___ gen_ale_drinker hlieberman IbnFirnas_ jprieur JStoker jwheare kiela Licenser locojay msch nicholasf okeuday1 pantech peerst PolCPP ptomasroos puzza007 RJ2 smeb- srijan4 stowelly submersive tOkeshu tristan_1 wc_ wc__ y05uk_take_away]
+2013-12-21 21:06:57	--	Channel #ninenines: 39 nicks (0 ops, 0 voices, 39 normals)
+2013-12-21 21:07:07	--	Mode #ninenines [+cnt]
+2013-12-21 21:07:07	--	Channel created on Sun, 16 Dec 2012 04:24:56
+2013-12-21 21:27:06	--	irc: disconnected from server
+2013-12-21 21:27:16	-->	locojay (~locojay@108.30.139.71) has joined #ninenines
+2013-12-21 21:27:16	--	Topic for #ninenines is "Nine Nines http://ninenines.eu | Source code https://github.com/extend/ | LinkedIn Cowboy Group http://goo.gl/le4Cj"
+2013-12-21 21:27:16	--	Topic set by essen (~essen@ks28969.kimsufi.com) on Wed, 30 Jan 2013 12:25:34
+2013-12-21 21:27:16	--	Nicks #ninenines: [AeroNotix asabil athoune avn_ daniel_karlsson dawik_ dch debris`_ espiral essen evax fishcakez___ gen_ale_drinker hlieberman IbnFirnas_ jprieur JStoker jwheare kiela Licenser locojay msch okeuday1 pantech peerst PolCPP ptomasroos puzza007 RJ2 smeb- srijan4 stowelly submersive tOkeshu tristan_1 wc_ wc__ y05uk_take_away]
+2013-12-21 21:27:16	--	Channel #ninenines: 38 nicks (0 ops, 0 voices, 38 normals)
+2013-12-21 21:27:26	--	Mode #ninenines [+cnt]
+2013-12-21 21:27:26	--	Channel created on Sun, 16 Dec 2012 04:24:56
+2013-12-21 23:09:35	--	irc: disconnected from server
+2013-12-21 23:09:45	-->	locojay (~locojay@108.30.139.71) has joined #ninenines
+2013-12-21 23:09:45	--	Topic for #ninenines is "Nine Nines http://ninenines.eu | Source code https://github.com/extend/ | LinkedIn Cowboy Group http://goo.gl/le4Cj"
+2013-12-21 23:09:45	--	Topic set by essen (~essen@ks28969.kimsufi.com) on Wed, 30 Jan 2013 12:25:34
+2013-12-21 23:09:45	--	Nicks #ninenines: [AeroNotix asabil athoune avn_ daniel_karlsson dawik_ dch debris`_ espiral essen evax fishcakez___ gen_ale_drinker hlieberman IbnFirnas_ jprieur JStoker jwheare kiela Licenser locojay msch nicholasf ninefx okeuday1 pantech peerst ptomasroos puzza007 RJ2 smeb- srijan4 stowelly submersive tOkeshu tristan_1 wc_ wc__ y05uk_take_away]
+2013-12-21 23:09:45	--	Channel #ninenines: 39 nicks (0 ops, 0 voices, 39 normals)
+2013-12-21 23:09:55	--	Mode #ninenines [+cnt]
+2013-12-21 23:09:55	--	Channel created on Sun, 16 Dec 2012 04:24:56
+2013-12-22 01:09:12	--	irc: disconnected from server
+2013-12-22 01:09:22	-->	locojay (~locojay@108.30.139.71) has joined #ninenines
+2013-12-22 01:09:22	--	Topic for #ninenines is "Nine Nines http://ninenines.eu | Source code https://github.com/extend/ | LinkedIn Cowboy Group http://goo.gl/le4Cj"
+2013-12-22 01:09:22	--	Topic set by essen (~essen@ks28969.kimsufi.com) on Wed, 30 Jan 2013 12:25:34
+2013-12-22 01:09:22	--	Nicks #ninenines: [AeroNotix asabil athoune avn_ daniel_karlsson dawik_ dch debris`_ espiral essen evax fishcakez___ gen_ale_drinker hlieberman IbnFirnas_ jprieur JStoker jwheare kiela Licenser locojay msch nicholasf ninefx okeuday1 pantech peerst ptomasroos puzza007 RJ2 smeb- srijan4 stowelly submersive tOkeshu tristan_1 wc_ wc__ y05uk_take_away]
+2013-12-22 01:09:22	--	Channel #ninenines: 39 nicks (0 ops, 0 voices, 39 normals)
+2013-12-22 01:09:32	--	Mode #ninenines [+cnt]
+2013-12-22 01:09:32	--	Channel created on Sun, 16 Dec 2012 04:24:56
+2013-12-22 02:58:29	--	irc: disconnected from server
+2013-12-22 02:58:39	-->	locojay (~locojay@108.30.139.71) has joined #ninenines
+2013-12-22 02:58:39	--	Topic for #ninenines is "Nine Nines http://ninenines.eu | Source code https://github.com/extend/ | LinkedIn Cowboy Group http://goo.gl/le4Cj"
+2013-12-22 02:58:39	--	Topic set by essen (~essen@ks28969.kimsufi.com) on Wed, 30 Jan 2013 12:25:34
+2013-12-22 02:58:39	--	Nicks #ninenines: [AeroNotix asabil athoune avn_ daniel_karlsson dawik_ dch debris`_ espiral essen evax fishcakez___ gen_ale_drinker hlieberman IbnFirnas_ jprieur JStoker jwheare kiela Licenser locojay msch nicholasf ninefx okeuday1 pantech peerst ptomasroos puzza007 RJ2 smeb- srijan4 stowelly submersive tOkeshu tristan_1 wc_ wc__ y05uk_take_away]
+2013-12-22 02:58:39	--	Channel #ninenines: 39 nicks (0 ops, 0 voices, 39 normals)
+2013-12-22 02:58:49	--	Mode #ninenines [+cnt]
+2013-12-22 02:58:49	--	Channel created on Sun, 16 Dec 2012 04:24:56
+2013-12-22 02:59:10	-->	marcosvm (~textual@99-100-33-130.lightspeed.sntcca.sbcglobal.net) has joined #ninenines
+2013-12-22 04:48:20	--	irc: disconnected from server
+2013-12-22 04:48:30	-->	locojay (~locojay@108.30.139.71) has joined #ninenines
+2013-12-22 04:48:30	--	Topic for #ninenines is "Nine Nines http://ninenines.eu | Source code https://github.com/extend/ | LinkedIn Cowboy Group http://goo.gl/le4Cj"
+2013-12-22 04:48:30	--	Topic set by essen (~essen@ks28969.kimsufi.com) on Wed, 30 Jan 2013 12:25:34
+2013-12-22 04:48:30	--	Nicks #ninenines: [AeroNotix asabil athoune avn_ daniel_karlsson dawik_ dch debris`_ espiral essen evax fishcakez___ gen_ale_drinker hlieberman IbnFirnas_ jprieur JStoker jwheare kiela Licenser locojay msch nicholasf ninefx okeuday1 pantech peerst ptomasroos puzza007 RJ2 smeb- srijan4 stowelly submersive tOkeshu tristan_1 wc_ wc__ y05uk_take_away]
+2013-12-22 04:48:30	--	Channel #ninenines: 39 nicks (0 ops, 0 voices, 39 normals)
+2013-12-22 04:48:40	--	Mode #ninenines [+cnt]
+2013-12-22 04:48:40	--	Channel created on Sun, 16 Dec 2012 04:24:56
+2013-12-22 06:37:13	--	irc: disconnected from server
+2013-12-22 06:37:23	-->	locojay (~locojay@108.30.139.71) has joined #ninenines
+2013-12-22 06:37:23	--	Topic for #ninenines is "Nine Nines http://ninenines.eu | Source code https://github.com/extend/ | LinkedIn Cowboy Group http://goo.gl/le4Cj"
+2013-12-22 06:37:23	--	Topic set by essen (~essen@ks28969.kimsufi.com) on Wed, 30 Jan 2013 12:25:34
+2013-12-22 06:37:23	--	Nicks #ninenines: [AeroNotix asabil athoune avn_ captain_furious daniel_karlsson dawik_ dch debris`_ espiral essen evax fishcakez___ gen_ale_drinker hlieberman IbnFirnas_ jprieur JStoker jwheare kiela Licenser locojay msch nicholasf ninefx okeuday1 pantech peerst ptomasroos puzza007 RJ2 smeb- srijan4 stowelly submersive tOkeshu tristan_1 wc_ wc__ y05uk_take_away]
+2013-12-22 06:37:23	--	Channel #ninenines: 40 nicks (0 ops, 0 voices, 40 normals)
+2013-12-22 06:37:33	--	Mode #ninenines [+cnt]
+2013-12-22 06:37:33	--	Channel created on Sun, 16 Dec 2012 04:24:56
+2013-12-22 08:26:10	--	irc: disconnected from server
+2013-12-22 08:26:20	-->	locojay (~locojay@108.30.139.71) has joined #ninenines
+2013-12-22 08:26:20	--	Topic for #ninenines is "Nine Nines http://ninenines.eu | Source code https://github.com/extend/ | LinkedIn Cowboy Group http://goo.gl/le4Cj"
+2013-12-22 08:26:20	--	Topic set by essen (~essen@ks28969.kimsufi.com) on Wed, 30 Jan 2013 12:25:34
+2013-12-22 08:26:20	--	Nicks #ninenines: [AeroNotix asabil athoune avn_ captain_furious daniel_karlsson dawik_ dch debris`_ espiral essen evax fishcakez___ gen_ale_drinker hlieberman IbnFirnas_ jprieur JStoker jwheare kiela Licenser locojay msch nicholasf ninefx okeuday1 pantech peerst ptomasroos puzza007 RJ2 smeb- srijan4 stowelly submersive tOkeshu tristan_1 true_droid wc_ wc__ y05uk_take_away]
+2013-12-22 08:26:20	--	Channel #ninenines: 41 nicks (0 ops, 0 voices, 41 normals)
+2013-12-22 08:26:30	--	Mode #ninenines [+cnt]
+2013-12-22 08:26:30	--	Channel created on Sun, 16 Dec 2012 04:24:56
+2013-12-22 10:15:30	--	irc: disconnected from server
+2013-12-22 10:15:40	-->	locojay (~locojay@108.30.139.71) has joined #ninenines
+2013-12-22 10:15:40	--	Topic for #ninenines is "Nine Nines http://ninenines.eu | Source code https://github.com/extend/ | LinkedIn Cowboy Group http://goo.gl/le4Cj"
+2013-12-22 10:15:40	--	Topic set by essen (~essen@ks28969.kimsufi.com) on Wed, 30 Jan 2013 12:25:34
+2013-12-22 10:15:40	--	Nicks #ninenines: [AeroNotix asabil athoune avn_ captain_furious daniel_karlsson dawik_ dch debris` espiral essen evax fishcakez___ gen_ale_drinker hlieberman IbnFirnas_ jprieur JStoker jwheare kiela Licenser locojay MononcQc msch nicholasf ninefx okeuday1 pantech peerst PolCPP ptomasroos puzza007 RJ2 smeb- srijan4 stowelly submersive tOkeshu tristan_1 true_droid wc_ wc__ y05uk_take_away]
+2013-12-22 10:15:40	--	Channel #ninenines: 43 nicks (0 ops, 0 voices, 43 normals)
+2013-12-22 10:15:50	--	Mode #ninenines [+cnt]
+2013-12-22 10:15:50	--	Channel created on Sun, 16 Dec 2012 04:24:56
+2013-12-22 10:15:58	tristan_1	grr, hmm
+2013-12-22 12:04:25	--	irc: disconnected from server
+2013-12-22 12:04:35	-->	locojay (~locojay@108.30.139.71) has joined #ninenines
+2013-12-22 12:04:35	--	Topic for #ninenines is "Nine Nines http://ninenines.eu | Source code https://github.com/extend/ | LinkedIn Cowboy Group http://goo.gl/le4Cj"
+2013-12-22 12:04:35	--	Topic set by essen (~essen@ks28969.kimsufi.com) on Wed, 30 Jan 2013 12:25:34
+2013-12-22 12:04:35	--	Nicks #ninenines: [AeroNotix asabil athoune avn_ captain_furious daniel_karlsson dawik dch debris` espiral essen evax fishcakez___ gen_ale_drinker Guest12830 hlieberman IbnFirnas_ jprieur JStoker jwheare kiela Licenser locojay MononcQc msch nicholasf ninefx okeuday1 pantech peerst PolCPP ptomasroos puzza007 RJ2 smeb- srijan4 stowelly submersive tOkeshu tristan_1 true_droid wc_ wc__ y05uk_take_away]
+2013-12-22 12:04:35	--	Channel #ninenines: 44 nicks (0 ops, 0 voices, 44 normals)
+2013-12-22 12:04:45	--	Mode #ninenines [+cnt]
+2013-12-22 12:04:45	--	Channel created on Sun, 16 Dec 2012 04:24:56
+2013-12-22 13:53:45	--	irc: disconnected from server
+2013-12-22 13:53:55	-->	locojay (~locojay@108.30.139.71) has joined #ninenines
+2013-12-22 13:53:55	--	Topic for #ninenines is "Nine Nines http://ninenines.eu | Source code https://github.com/extend/ | LinkedIn Cowboy Group http://goo.gl/le4Cj"
+2013-12-22 13:53:55	--	Topic set by essen (~essen@ks28969.kimsufi.com) on Wed, 30 Jan 2013 12:25:34
+2013-12-22 13:53:55	--	Nicks #ninenines: [AeroNotix archaelus asabil athoune avn_ captain_furious daniel_karlsson dawik dch debris` espiral essen evax fishcakez___ gen_ale_drinker Guest12830 hlieberman IbnFirnas_ jprieur JStoker jwheare kiela Licenser locojay MononcQc msch nicholasf ninefx okeuday1 pantech peerst PolCPP ptomasroos puzza007 RJ2 smeb- srijan4 stowelly submersive tOkeshu tristan_1 true_droid wc_ wc__ y05uk_take_away]
+2013-12-22 13:53:55	--	Channel #ninenines: 45 nicks (0 ops, 0 voices, 45 normals)
+2013-12-22 13:54:05	--	Mode #ninenines [+cnt]
+2013-12-22 13:54:05	--	Channel created on Sun, 16 Dec 2012 04:24:56
+2013-12-22 14:49:05	--	irc: disconnected from server
+2013-12-22 14:49:15	-->	locojay (~locojay@108.30.139.71) has joined #ninenines
+2013-12-22 14:49:15	--	Topic for #ninenines is "Nine Nines http://ninenines.eu | Source code https://github.com/extend/ | LinkedIn Cowboy Group http://goo.gl/le4Cj"
+2013-12-22 14:49:15	--	Topic set by essen (~essen@ks28969.kimsufi.com) on Wed, 30 Jan 2013 12:25:34
+2013-12-22 14:49:15	--	Nicks #ninenines: [AeroNotix archaelus asabil athoune avn_ captain_furious daniel_karlsson dawik dch debris` espiral essen evax gen_ale_drinker Guest12830 hlieberman IbnFirnas_ jprieur JStoker jwheare kiela Licenser locojay MononcQc msch nicholasf ninefx okeuday1 pantech peerst PolCPP puzza007 RJ2 smeb- srijan4 stowelly submersive tOkeshu tristan_1 true_droid wc_ wc__ y05uk_take_away]
+2013-12-22 14:49:15	--	Channel #ninenines: 43 nicks (0 ops, 0 voices, 43 normals)
+2013-12-22 14:49:16	<--	puzza007 (sid127@gateway/web/irccloud.com/x-xlfcxkokllrxzzig) has quit (Ping timeout: 272 seconds)
+2013-12-22 14:49:25	--	Mode #ninenines [+cnt]
+2013-12-22 14:49:25	--	Channel created on Sun, 16 Dec 2012 04:24:56
+2013-12-22 14:49:25	<--	daniel_karlsson (sid18957@gateway/web/irccloud.com/x-kltkdxmfivzdhqby) has quit (Ping timeout: 252 seconds)
+2013-12-22 14:49:25	<--	pantech (sid16240@gateway/web/irccloud.com/x-iozkosjcrlyuwvyu) has quit (Ping timeout: 252 seconds)
+2013-12-22 14:49:31	<--	RJ2 (sid1@pdpc/supporter/professional/rj2) has quit (Ping timeout: 246 seconds)
+2013-12-22 14:49:42	<--	dch (sid1310@couchdb/committer/dch) has quit (Ping timeout: 246 seconds)
+2013-12-22 15:36:26	--	irc: disconnected from server
+2013-12-22 15:36:36	-->	locojay (~locojay@108.30.139.71) has joined #ninenines
+2013-12-22 15:36:36	--	Topic for #ninenines is "Nine Nines http://ninenines.eu | Source code https://github.com/extend/ | LinkedIn Cowboy Group http://goo.gl/le4Cj"
+2013-12-22 15:36:36	--	Topic set by essen (~essen@ks28969.kimsufi.com) on Wed, 30 Jan 2013 12:25:34
+2013-12-22 15:36:36	--	Nicks #ninenines: [AeroNotix archaelus asabil athoune avn_ captain_furious daniel_karlsson_ dawik dch debris` espiral essen evax fishcakez___ gen_ale_drinker Guest12830 hlieberman IbnFirnas_ jprieur JStoker jwheare kiela Licenser locojay MononcQc msch nicholasf ninefx okeuday1 pantech_ peerst PolCPP ptomasroos_ puzza007 RJ2 smeb- srijan4 stowelly submersive tOkeshu tristan_1 true_droid wc_ wc__ y05uk_take_away]
+2013-12-22 15:36:36	--	Channel #ninenines: 45 nicks (0 ops, 0 voices, 45 normals)
+2013-12-22 15:36:46	--	Mode #ninenines [+cnt]
+2013-12-22 15:36:46	--	Channel created on Sun, 16 Dec 2012 04:24:56
+2013-12-22 17:25:46	--	irc: disconnected from server
+2013-12-22 17:25:56	-->	locojay (~locojay@108.30.139.71) has joined #ninenines
+2013-12-22 17:25:56	--	Topic for #ninenines is "Nine Nines http://ninenines.eu | Source code https://github.com/extend/ | LinkedIn Cowboy Group http://goo.gl/le4Cj"
+2013-12-22 17:25:56	--	Topic set by essen (~essen@ks28969.kimsufi.com) on Wed, 30 Jan 2013 12:25:34
+2013-12-22 17:25:56	--	Nicks #ninenines: [AeroNotix archaelus asabil athoune avn_ captain_furious daniel_karlsson_ dawik dch debris` espiral essen evax fishcakez___ gen_ale_drinker Guest12830 hlieberman IbnFirnas_ jprieur JStoker jwheare kiela Licenser locojay MononcQc msch nicholas_ ninefx okeuday1 pantech_ peerst PolCPP ptomasroos_ puzza007 RJ2 smeb- srijan4 stowelly submersive tOkeshu tristan_1 true_droid wc_ wc__ y05uk_take_away]
+2013-12-22 17:25:56	--	Channel #ninenines: 45 nicks (0 ops, 0 voices, 45 normals)
+2013-12-22 17:26:06	--	Mode #ninenines [+cnt]
+2013-12-22 17:26:06	--	Channel created on Sun, 16 Dec 2012 04:24:56
+2013-12-22 19:15:08	--	irc: disconnected from server
+2013-12-22 19:15:18	-->	locojay (~locojay@108.30.139.71) has joined #ninenines
+2013-12-22 19:15:18	--	Topic for #ninenines is "Nine Nines http://ninenines.eu | Source code https://github.com/extend/ | LinkedIn Cowboy Group http://goo.gl/le4Cj"
+2013-12-22 19:15:18	--	Topic set by essen (~essen@ks28969.kimsufi.com) on Wed, 30 Jan 2013 12:25:34
+2013-12-22 19:15:18	--	Nicks #ninenines: [AeroNotix asabil athoune avn_ daniel_karlsson_ dawik dch debris` espiral essen evax fishcakez___ gen_ale_drinker Guest12830 hlieberman IbnFirnas_ jprieur JStoker jwheare kiela Licenser locojay MononcQc msch nicholas_ ninefx okeuday1 pantech_ peerst PolCPP ptomasroos_ puzza007 RJ2 smeb- srijan4 stowelly submersive tOkeshu tristan_1 true_droid wc_ wc__ y05uk_take_away]
+2013-12-22 19:15:18	--	Channel #ninenines: 43 nicks (0 ops, 0 voices, 43 normals)
+2013-12-22 19:15:28	--	Mode #ninenines [+cnt]
+2013-12-22 19:15:28	--	Channel created on Sun, 16 Dec 2012 04:24:56
+2013-12-22 21:04:30	--	irc: disconnected from server
+2013-12-22 21:04:40	-->	locojay (~locojay@108.30.139.71) has joined #ninenines
+2013-12-22 21:04:40	--	Topic for #ninenines is "Nine Nines http://ninenines.eu | Source code https://github.com/extend/ | LinkedIn Cowboy Group http://goo.gl/le4Cj"
+2013-12-22 21:04:40	--	Topic set by essen (~essen@ks28969.kimsufi.com) on Wed, 30 Jan 2013 12:25:34
+2013-12-22 21:04:40	--	Nicks #ninenines: [AeroNotix asabil athoune avn_ daniel_karlsson_ dawik dch debris` espiral essen evax fishcakez___ gen_ale_drinker Guest12830 hlieberman IbnFirnas_ jprieur JStoker jwheare kiela Licenser locojay MononcQc msch nicholas_ ninefx okeuday1 pantech_ peerst PolCPP ptomasroos_ puzza007 RJ2 smeb- srijan4 stowelly submersive tOkeshu tristan_1 wc_ wc__ y05uk_take_away]
+2013-12-22 21:04:40	--	Channel #ninenines: 42 nicks (0 ops, 0 voices, 42 normals)
+2013-12-22 21:04:50	--	Mode #ninenines [+cnt]
+2013-12-22 21:04:50	--	Channel created on Sun, 16 Dec 2012 04:24:56
+2013-12-22 22:53:28	--	irc: disconnected from server
+2013-12-22 22:53:38	-->	locojay (~locojay@108.30.139.71) has joined #ninenines
+2013-12-22 22:53:38	--	Topic for #ninenines is "Nine Nines http://ninenines.eu | Source code https://github.com/extend/ | LinkedIn Cowboy Group http://goo.gl/le4Cj"
+2013-12-22 22:53:38	--	Topic set by essen (~essen@ks28969.kimsufi.com) on Wed, 30 Jan 2013 12:25:34
+2013-12-22 22:53:38	--	Nicks #ninenines: [AeroNotix asabil athoune avn_ daniel_karlsson_ dawik dch debris` espiral essen evax fishcakez___ gen_ale_drinker Guest12830 hlieberman IbnFirnas_ jprieur JStoker jwheare kiela Licenser locojay MononcQc msch nicholas_ ninefx okeuday1 pantech_ peerst ptomasroos_ puzza007 RJ2 smeb- srijan4 stowelly submersive tOkeshu tristan_1 wc_ wc__ y05uk_take_away]
+2013-12-22 22:53:38	--	Channel #ninenines: 41 nicks (0 ops, 0 voices, 41 normals)
+2013-12-22 22:53:48	--	Mode #ninenines [+cnt]
+2013-12-22 22:53:48	--	Channel created on Sun, 16 Dec 2012 04:24:56
+2013-12-23 00:42:22	--	irc: disconnected from server
+2013-12-23 00:42:32	-->	locojay (~locojay@108.30.139.71) has joined #ninenines
+2013-12-23 00:42:32	--	Topic for #ninenines is "Nine Nines http://ninenines.eu | Source code https://github.com/extend/ | LinkedIn Cowboy Group http://goo.gl/le4Cj"
+2013-12-23 00:42:32	--	Topic set by essen (~essen@ks28969.kimsufi.com) on Wed, 30 Jan 2013 12:25:34
+2013-12-23 00:42:32	--	Nicks #ninenines: [AeroNotix asabil athoune avn_ bullno1 daniel_karlsson_ dawik dch debris` espiral essen evax fishcakez___ gen_ale_drinker Guest12830 hlieberman IbnFirnas_ jprieur JStoker jwheare kiela Licenser locojay msch nicholas_ ninefx okeuday1 pantech_ peerst ptomasroos_ puzza007 RJ2 smeb- srijan4 stowelly submersive tOkeshu tristan_1 wc_ wc__ y05uk_take_away]
+2013-12-23 00:42:32	--	Channel #ninenines: 41 nicks (0 ops, 0 voices, 41 normals)
+2013-12-23 00:42:42	--	Mode #ninenines [+cnt]
+2013-12-23 00:42:42	--	Channel created on Sun, 16 Dec 2012 04:24:56
+2013-12-23 02:31:20	--	irc: disconnected from server
+2013-12-23 02:31:30	-->	locojay (~locojay@108.30.139.71) has joined #ninenines
+2013-12-23 02:31:30	--	Topic for #ninenines is "Nine Nines http://ninenines.eu | Source code https://github.com/extend/ | LinkedIn Cowboy Group http://goo.gl/le4Cj"
+2013-12-23 02:31:30	--	Topic set by essen (~essen@ks28969.kimsufi.com) on Wed, 30 Jan 2013 12:25:34
+2013-12-23 02:31:30	--	Nicks #ninenines: [AeroNotix asabil athoune avn_ bullno1 daniel_karlsson_ dawik dch debris` espiral essen evax fishcakez___ gen_ale_drinker Guest12830 hlieberman IbnFirnas_ jprieur JStoker jwheare kiela Licenser locojay marcosvm msch ninefx okeuday1 pantech_ peerst ptomasroos_ puzza007 RJ2 smeb- srijan4 stowelly submersive tOkeshu tristan_1 wc_ wc__ yosuke]
+2013-12-23 02:31:30	--	Channel #ninenines: 41 nicks (0 ops, 0 voices, 41 normals)
+2013-12-23 02:31:40	--	Mode #ninenines [+cnt]
+2013-12-23 02:31:40	--	Channel created on Sun, 16 Dec 2012 04:24:56
+2013-12-23 04:20:40	--	irc: disconnected from server
+2013-12-23 04:20:50	-->	locojay (~locojay@108.30.139.71) has joined #ninenines
+2013-12-23 04:20:50	--	Topic for #ninenines is "Nine Nines http://ninenines.eu | Source code https://github.com/extend/ | LinkedIn Cowboy Group http://goo.gl/le4Cj"
+2013-12-23 04:20:50	--	Topic set by essen (~essen@ks28969.kimsufi.com) on Wed, 30 Jan 2013 12:25:34
+2013-12-23 04:20:50	--	Nicks #ninenines: [AeroNotix asabil athoune avn_ bullno1 daniel_karlsson_ dawik dch debris` espiral essen evax fishcakez___ gen_ale_drinker Guest12830 hlieberman IbnFirnas_ jprieur JStoker jwheare kiela Licenser locojay maxii msch nicholas_ ninefx okeuday1 pantech_ peerst ptomasroos_ puzza007 RJ2 smeb- srijan4 stowelly submersive tOkeshu tristan_1 wc_ wc__ yosuke]
+2013-12-23 04:20:50	--	Channel #ninenines: 42 nicks (0 ops, 0 voices, 42 normals)
+2013-12-23 04:21:00	--	Mode #ninenines [+cnt]
+2013-12-23 04:21:00	--	Channel created on Sun, 16 Dec 2012 04:24:56
+2013-12-23 06:09:42	--	irc: disconnected from server
+2013-12-23 06:09:52	-->	locojay (~locojay@108.30.139.71) has joined #ninenines
+2013-12-23 06:09:52	--	Topic for #ninenines is "Nine Nines http://ninenines.eu | Source code https://github.com/extend/ | LinkedIn Cowboy Group http://goo.gl/le4Cj"
+2013-12-23 06:09:52	--	Topic set by essen (~essen@ks28969.kimsufi.com) on Wed, 30 Jan 2013 12:25:34
+2013-12-23 06:09:52	--	Nicks #ninenines: [AeroNotix asabil athoune avn_ captain_furious daniel_karlsson_ dawik dch debris` espiral essen evax fishcakez___ gen_ale_drinker Guest12830 hlieberman IbnFirnas_ jprieur JStoker jwheare kiela Licenser locojay maxii msch nicholas_ ninefx okeuday1 pantech_ peerst ptomasroos_ puzza007 RJ2 s1n4 smeb- srijan4 stowelly submersive tOkeshu tristan_1 wc_ wc__ wildroman2 y05uk_take_away]
+2013-12-23 06:09:52	--	Channel #ninenines: 44 nicks (0 ops, 0 voices, 44 normals)
+2013-12-23 06:10:02	--	Mode #ninenines [+cnt]
+2013-12-23 06:10:02	--	Channel created on Sun, 16 Dec 2012 04:24:56
+2013-12-23 07:58:58	--	irc: disconnected from server
+2013-12-23 07:59:08	-->	locojay (~locojay@108.30.139.71) has joined #ninenines
+2013-12-23 07:59:08	--	Topic for #ninenines is "Nine Nines http://ninenines.eu | Source code https://github.com/extend/ | LinkedIn Cowboy Group http://goo.gl/le4Cj"
+2013-12-23 07:59:08	--	Topic set by essen (~essen@ks28969.kimsufi.com) on Wed, 30 Jan 2013 12:25:34
+2013-12-23 07:59:08	--	Nicks #ninenines: [AeroNotix asabil athoune avn_ captain_furious daniel_karlsson_ dawik dch debris` espiral essen evax fishcakez___ gen_ale_drinker Guest12830 hlieberman IbnFirnas_ jprieur JStoker jwheare kiela Licenser locojay maxii msch nicholasf ninefx okeuday1 pantech_ peerst PolCPP ptomasroos_ puzza007 RJ2 s1n4 smeb- srijan4 stowelly submersive tOkeshu tristan_1 wc_ wc__ wildroman2 yosuke]
+2013-12-23 07:59:08	--	Channel #ninenines: 45 nicks (0 ops, 0 voices, 45 normals)
+2013-12-23 07:59:18	--	Mode #ninenines [+cnt]
+2013-12-23 07:59:18	--	Channel created on Sun, 16 Dec 2012 04:24:56
+2013-12-23 09:24:35	--	irc: disconnected from server
+2013-12-23 09:24:45	-->	locojay (~locojay@108.30.139.71) has joined #ninenines
+2013-12-23 09:24:45	--	Topic for #ninenines is "Nine Nines http://ninenines.eu | Source code https://github.com/extend/ | LinkedIn Cowboy Group http://goo.gl/le4Cj"
+2013-12-23 09:24:45	--	Topic set by essen (~essen@ks28969.kimsufi.com) on Wed, 30 Jan 2013 12:25:34
+2013-12-23 09:24:45	--	Nicks #ninenines: [AeroNotix asabil athoune avn_ captain_furious daniel_karlsson_ dawik dch debris` espiral essen evax fishcakez___ gen_ale_drinker Guest12830 hlieberman IbnFirnas_ jprieur JStoker jwheare kiela Licenser locojay maxii msch ninefx okeuday1 pantech_ peerst PolCPP ptomasroos_ puzza007 RJ2 s1n4 smeb- srijan4 stowelly submersive tOkeshu tristan_1 wc_ wc__ wildroman2 y05uk_take_away]
+2013-12-23 09:24:45	--	Channel #ninenines: 44 nicks (0 ops, 0 voices, 44 normals)
+2013-12-23 09:24:55	--	Mode #ninenines [+cnt]
+2013-12-23 09:24:55	--	Channel created on Sun, 16 Dec 2012 04:24:56
+2013-12-23 10:10:41	--	irc: disconnected from server
+2013-12-23 10:10:51	-->	locojay (~locojay@108.30.139.71) has joined #ninenines
+2013-12-23 10:10:51	--	Topic for #ninenines is "Nine Nines http://ninenines.eu | Source code https://github.com/extend/ | LinkedIn Cowboy Group http://goo.gl/le4Cj"
+2013-12-23 10:10:51	--	Topic set by essen (~essen@ks28969.kimsufi.com) on Wed, 30 Jan 2013 12:25:34
+2013-12-23 10:10:51	--	Nicks #ninenines: [AeroNotix asabil avn_ daniel_karlsson_ dawik dch debris` espiral essen evax fishcakez___ gen_ale_drinker Guest12830 hlieberman IbnFirnas_ jprieur JStoker jwheare kiela Licenser locojay maxii msch ninefx okeuday1 pantech_ peerst PolCPP ptomasroos_ puzza007 RJ2 s1n4 smeb- srijan4 stowelly submersive tOkeshu tristan_1 true_droid wc_ wc__ wildroman2 y05uk_take_away]
+2013-12-23 10:10:51	--	Channel #ninenines: 43 nicks (0 ops, 0 voices, 43 normals)
+2013-12-23 10:11:01	--	Mode #ninenines [+cnt]
+2013-12-23 10:11:01	--	Channel created on Sun, 16 Dec 2012 04:24:56
+2013-12-23 10:18:07	-->	athoune (~athoune42@ze.garambrogne.net) has joined #ninenines
+2013-12-23 10:18:08	<--	athoune (~athoune42@ze.garambrogne.net) has quit (Excess Flood)
+2013-12-23 10:18:48	-->	athoune (~athoune42@ze.garambrogne.net) has joined #ninenines
+2013-12-23 10:31:40	-->	nicholasf (~nicholasf@ppp196-159.static.internode.on.net) has joined #ninenines
+2013-12-23 10:36:25	<--	nicholasf (~nicholasf@ppp196-159.static.internode.on.net) has quit (Ping timeout: 248 seconds)
+2013-12-23 11:32:41	-->	nicholasf (~nicholasf@ppp196-159.static.internode.on.net) has joined #ninenines
+2013-12-23 11:37:13	<--	nicholasf (~nicholasf@ppp196-159.static.internode.on.net) has quit (Ping timeout: 248 seconds)
+2013-12-23 11:47:04	-->	mrpi_ (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has joined #ninenines
+2013-12-23 12:01:13	<--	mrpi_ (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has quit (Read error: Connection reset by peer)
+2013-12-23 12:01:23	-->	mrpi_ (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has joined #ninenines
+2013-12-23 12:30:18	<--	maxii (~mrpi@37.46.116.33) has quit (Ping timeout: 246 seconds)
+2013-12-23 12:33:43	-->	nicholasf (~nicholasf@ppp196-159.static.internode.on.net) has joined #ninenines
+2013-12-23 12:38:21	<--	nicholasf (~nicholasf@ppp196-159.static.internode.on.net) has quit (Ping timeout: 246 seconds)
+2013-12-23 12:43:34	-->	marcosvm (~textual@pool-72-87-216-60.lsanca.dsl-w.verizon.net) has joined #ninenines
+2013-12-23 13:00:56	<--	mrpi_ (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has quit (Read error: Connection reset by peer)
+2013-12-23 13:01:19	-->	mrpi (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has joined #ninenines
+2013-12-23 13:17:28	-->	MononcQc (~ferd@li101-172.members.linode.com) has joined #ninenines
+2013-12-23 13:19:19	<--	wildroman2 (~wildroman@212.143.139.185) has quit
+2013-12-23 13:34:39	-->	nicholasf (~nicholasf@ppp196-159.static.internode.on.net) has joined #ninenines
+2013-12-23 13:39:34	<--	nicholasf (~nicholasf@ppp196-159.static.internode.on.net) has quit (Ping timeout: 264 seconds)
+2013-12-23 14:03:19	<--	mrpi (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has quit (Ping timeout: 259 seconds)
+2013-12-23 14:11:12	-->	mrpi (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has joined #ninenines
+2013-12-23 14:16:20	<--	marcosvm (~textual@pool-72-87-216-60.lsanca.dsl-w.verizon.net) has quit (Quit: My MacBook has gone to sleep. ZZZzzz…)
+2013-12-23 14:18:04	-->	nicholasf (~nicholasf@59.167.196.159) has joined #ninenines
+2013-12-23 14:18:37	-->	true_dro_ (~true_droi@sour-accorder.volia.net) has joined #ninenines
+2013-12-23 14:18:45	-->	PolCPP_ (~PolCPP@205.Red-83-42-66.dynamicIP.rima-tde.net) has joined #ninenines
+2013-12-23 14:20:24	-->	kiela_ (~kiela@89.248.171.156) has joined #ninenines
+2013-12-23 14:23:02	-->	debris`_ (debris@shells.ohai.su) has joined #ninenines
+2013-12-23 14:25:23	-->	paladinn (~paladin@unaffiliated/paladinn) has joined #ninenines
+2013-12-23 14:25:40	-->	marcosvm (~textual@pool-72-87-216-60.lsanca.dsl-w.verizon.net) has joined #ninenines
+2013-12-23 14:27:03	<--	true_droid (~true_droi@sour-accorder.volia.net) has quit (*.net *.split)
+2013-12-23 14:27:03	<--	PolCPP (~PolCPP@205.Red-83-42-66.dynamicIP.rima-tde.net) has quit (*.net *.split)
+2013-12-23 14:27:03	<--	debris` (debris@shells.ohai.su) has quit (*.net *.split)
+2013-12-23 14:27:03	<--	kiela (~kiela@89.248.171.156) has quit (*.net *.split)
+2013-12-23 14:29:53	<--	paladinn (~paladin@unaffiliated/paladinn) has quit (Client Quit)
+2013-12-23 14:38:42	<--	marcosvm (~textual@pool-72-87-216-60.lsanca.dsl-w.verizon.net) has quit (Quit: My MacBook has gone to sleep. ZZZzzz…)
+2013-12-23 15:02:50	-->	true_droid (~true_droi@sour-accorder.volia.net) has joined #ninenines
+2013-12-23 15:03:59	<--	mrpi (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has quit (Ping timeout: 260 seconds)
+2013-12-23 15:05:58	<--	true_dro_ (~true_droi@sour-accorder.volia.net) has quit (Ping timeout: 264 seconds)
+2013-12-23 15:10:29	--	y05uk_take_away is now known as yosuke
+2013-12-23 15:19:13	-->	oberstet (~vanaland@82.113.99.238) has joined #ninenines
+2013-12-23 15:25:53	<--	nicholasf (~nicholasf@59.167.196.159) has quit (Remote host closed the connection)
+2013-12-23 15:26:26	-->	nicholasf (~nicholasf@ppp196-159.static.internode.on.net) has joined #ninenines
+2013-12-23 15:27:45	--	yosuke is now known as y05uk_take_away
+2013-12-23 15:30:35	<--	nicholasf (~nicholasf@ppp196-159.static.internode.on.net) has quit (Ping timeout: 240 seconds)
+2013-12-23 15:43:14	-->	nicholasf (~nicholasf@110.144.31.166) has joined #ninenines
+2013-12-23 15:54:44	-->	mrpi (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has joined #ninenines
+2013-12-23 15:59:58	<--	nicholasf (~nicholasf@110.144.31.166) has quit (Read error: Connection reset by peer)
+2013-12-23 16:01:23	-->	mrpi_ (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has joined #ninenines
+2013-12-23 16:01:24	<--	mrpi (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has quit (Read error: Connection reset by peer)
+2013-12-23 16:07:59	<--	s1n4 (~s1n4@unaffiliated/s1n4) has quit (Quit: leaving)
+2013-12-23 16:10:18	-->	nicholasf (~nicholasf@203.27.139.77) has joined #ninenines
+2013-12-23 16:30:24	-->	archaelus (~nem@175.sub-70-194-131.myvzw.com) has joined #ninenines
+2013-12-23 16:35:29	<--	submersive (tburdick@unaffiliated/submersive) has quit (Quit: WeeChat 0.4.2)
+2013-12-23 16:58:59	--	y05uk_take_away is now known as yosuke
+2013-12-23 16:59:42	--	yosuke is now known as y05uk_take_away
+2013-12-23 16:59:48	--	y05uk_take_away is now known as yosuke
+2013-12-23 17:01:22	<--	mrpi_ (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has quit (Read error: Connection reset by peer)
+2013-12-23 17:05:25	-->	mrpi (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has joined #ninenines
+2013-12-23 18:00:54	<--	mrpi (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has quit (Read error: Connection reset by peer)
+2013-12-23 18:01:07	-->	mrpi (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has joined #ninenines
+2013-12-23 18:11:59	<--	MononcQc (~ferd@li101-172.members.linode.com) has quit (Quit: leaving)
+2013-12-23 19:01:12	<--	mrpi (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has quit (Read error: Connection reset by peer)
+2013-12-23 19:01:54	-->	mrpi (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has joined #ninenines
+2013-12-23 19:11:09	-->	marcosvm (~textual@pool-72-87-216-60.lsanca.dsl-w.verizon.net) has joined #ninenines
+2013-12-23 19:34:38	<--	oberstet (~vanaland@82.113.99.238) has quit (Ping timeout: 252 seconds)
+2013-12-23 20:00:11	<--	Guest12830 (~chops@cpe-184-58-135-210.wi.res.rr.com) has quit (Ping timeout: 240 seconds)
+2013-12-23 20:01:05	<--	mrpi (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has quit (Read error: Connection reset by peer)
+2013-12-23 20:01:26	-->	mrpi (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has joined #ninenines
+2013-12-23 20:06:48	-->	Guest12830 (~chops@cpe-184-58-135-210.wi.res.rr.com) has joined #ninenines
+2013-12-23 20:22:44	-->	MononcQc (~ferd@li101-172.members.linode.com) has joined #ninenines
+2013-12-23 20:50:26	<--	archaelus (~nem@175.sub-70-194-131.myvzw.com) has quit (Read error: Connection reset by peer)
+2013-12-23 21:00:53	<--	true_droid (~true_droi@sour-accorder.volia.net) has quit (Remote host closed the connection)
+2013-12-23 21:00:56	<--	mrpi (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has quit (Read error: Connection reset by peer)
+2013-12-23 21:04:52	<--	marcosvm (~textual@pool-72-87-216-60.lsanca.dsl-w.verizon.net) has quit (Quit: My MacBook has gone to sleep. ZZZzzz…)
+2013-12-23 21:20:11	-->	mrpi (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has joined #ninenines
+2013-12-23 21:46:55	-->	archaelus (~nem@71-13-152-2.static.ftbg.wi.charter.com) has joined #ninenines
+2013-12-23 22:00:21	<--	PolCPP_ (~PolCPP@205.Red-83-42-66.dynamicIP.rima-tde.net) has quit (Remote host closed the connection)
+2013-12-23 22:00:47	-->	PolCPP (~PolCPP@205.Red-83-42-66.dynamicIP.rima-tde.net) has joined #ninenines
+2013-12-23 22:00:59	<--	mrpi (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has quit (Read error: Connection reset by peer)
+2013-12-23 22:04:57	<--	PolCPP (~PolCPP@205.Red-83-42-66.dynamicIP.rima-tde.net) has quit (Ping timeout: 248 seconds)
+2013-12-23 22:17:15	-->	mrpi (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has joined #ninenines
+2013-12-23 22:52:39	<--	Guest12830 (~chops@cpe-184-58-135-210.wi.res.rr.com) has quit (Ping timeout: 240 seconds)
+2013-12-23 22:58:13	<--	MononcQc (~ferd@li101-172.members.linode.com) has quit (Quit: sleep)
+2013-12-23 23:01:02	<--	mrpi (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has quit (Read error: Connection reset by peer)
+2013-12-23 23:01:03	-->	mrpi_ (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has joined #ninenines
+2013-12-23 23:21:23	<--	nicholasf (~nicholasf@203.27.139.77) has quit (Read error: Connection reset by peer)
+2013-12-23 23:21:59	-->	nicholasf (~nicholasf@203.27.139.77) has joined #ninenines
+2013-12-23 23:25:40	-->	nicholas_ (~nicholasf@203.27.139.77) has joined #ninenines
+2013-12-23 23:26:12	-->	bullno1 (~bullno1@113.190.154.199) has joined #ninenines
+2013-12-23 23:26:24	<--	nicholasf (~nicholasf@203.27.139.77) has quit (Ping timeout: 252 seconds)
+2013-12-23 23:29:59	<--	nicholas_ (~nicholasf@203.27.139.77) has quit (Ping timeout: 260 seconds)
+2013-12-23 23:51:17	<--	bullno1 (~bullno1@113.190.154.199) has quit (Ping timeout: 272 seconds)
+2013-12-24 00:00:41	<--	mrpi_ (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has quit (Read error: Connection reset by peer)
+2013-12-24 00:10:41	-->	mrpi (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has joined #ninenines
+2013-12-24 00:20:35	white,nick_locojay	hi wanted to use a pem file (key, cert, cacet) to start ssl ws. using public_key:pem_entry_decode to capture the individual binary's for key and cert. paasing to start_https results in a badarg for key option. passed {key, Bin} where {PrivateKeyInfo, Bin, not_encrypted} 
+2013-12-24 00:45:09	white,nick_locojay	2{key, {'RSAPrivateKey'| 'DSAPrivateKey' | 'ECPrivateKey' |'PrivateKeyInfo', der_encoded()}}
+2013-12-24 00:45:12	white,nick_locojay	it is
+2013-12-24 00:56:55	-->	nicholasf (~nicholasf@ppp196-159.static.internode.on.net) has joined #ninenines
+2013-12-24 01:00:40	<--	mrpi (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has quit (Read error: Connection reset by peer)
+2013-12-24 01:01:05	-->	mrpi (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has joined #ninenines
+2013-12-24 01:36:08	-->	bullno1 (~Bull@113.190.154.199) has joined #ninenines
+2013-12-24 02:00:50	<--	mrpi (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has quit (Read error: Connection reset by peer)
+2013-12-24 02:01:03	-->	mrpi (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has joined #ninenines
+2013-12-24 02:10:53	<--	mrpi (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has quit (Ping timeout: 272 seconds)
+2013-12-24 02:28:37	-->	mrpi (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has joined #ninenines
+2013-12-24 03:00:42	<--	mrpi (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has quit (Read error: Connection reset by peer)
+2013-12-24 03:01:04	-->	mrpi (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has joined #ninenines
+2013-12-24 03:26:34	<--	nicholasf (~nicholasf@ppp196-159.static.internode.on.net) has quit
+2013-12-24 04:00:39	<--	mrpi (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has quit (Read error: Connection reset by peer)
+2013-12-24 04:01:07	-->	mrpi (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has joined #ninenines
+2013-12-24 04:04:09	--	yosuke is now known as y05uk_take_away
+2013-12-24 04:10:19	<--	peerst (~peer@yrael.stritzinger.com) has quit (Read error: Connection reset by peer)
+2013-12-24 04:10:41	-->	peerst (~peer@yrael.stritzinger.com) has joined #ninenines
+2013-12-24 04:17:23	--	y05uk_take_away is now known as yosuke
+2013-12-24 04:35:14	--	yosuke is now known as y05uk_take_away
+2013-12-24 04:36:52	--	y05uk_take_away is now known as yosuke
+2013-12-24 04:41:37	--	yosuke is now known as y05uk_take_away
+2013-12-24 04:59:56	essen	no idea what you're saying
+2013-12-24 05:01:01	-->	mrpi_ (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has joined #ninenines
+2013-12-24 05:01:02	<--	mrpi (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has quit (Read error: Connection reset by peer)
+2013-12-24 05:01:41	<--	bullno1 (~Bull@113.190.154.199) has quit (Quit: Leaving.)
+2013-12-24 05:26:09	asabil	Do you think it would make sense to add useful utilities to cowboy? (url parsing, base N codec, url encoding, mime encoding, html escaping ...) ?
+2013-12-24 05:26:37	asabil	or have a sanctioned sibling library for cowboy?
+2013-12-24 05:33:25	essen	you didn't notice cowlib?
+2013-12-24 05:36:18	-->	wildroman2 (~wildroman@212.143.139.185) has joined #ninenines
+2013-12-24 05:36:18	asabil	oh, no not really
+2013-12-24 05:36:26	asabil	been away for too long from coding
+2013-12-24 05:36:55	essen	I'm moving the private functions from cowboy_http to there and adding a few other useful things
+2013-12-24 05:37:10	essen	url parsing/building encoding/decoding is already there
+2013-12-24 05:37:47	asabil	would you be interested in base64? and more generally base N?
+2013-12-24 05:41:59	essen	well erlang already has base64
+2013-12-24 05:43:39	asabil	there are quite a few variants of base64
+2013-12-24 05:44:03	asabil	for example when used inside cookies, you have to use the RFC 4648 variant
+2013-12-24 05:44:56	asabil	base64url that is
+2013-12-24 05:50:20	essen	well either way I'm not adding anything that isn't already in cowboy at this time, unless it's useful for testing (like building url), until everything is properly documented
+2013-12-24 05:50:35	essen	I don't really want to add everything from everyone and then be the one to document it all
+2013-12-24 05:51:42	asabil	ok
+2013-12-24 06:00:58	<--	mrpi_ (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has quit (Read error: Connection reset by peer)
+2013-12-24 06:01:04	-->	mrpi (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has joined #ninenines
+2013-12-24 06:26:04	-->	true_droid (~true_droi@sour-accorder.volia.net) has joined #ninenines
+2013-12-24 06:59:32	-->	bullno1 (~Bull@113.190.154.199) has joined #ninenines
+2013-12-24 07:00:56	-->	mrpi_ (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has joined #ninenines
+2013-12-24 07:00:56	<--	mrpi (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has quit (Read error: Connection reset by peer)
+2013-12-24 07:05:05	<--	wildroman2 (~wildroman@212.143.139.185) has quit (Remote host closed the connection)
+2013-12-24 07:06:12	-->	wildroman2 (~wildroman@212.143.139.185) has joined #ninenines
+2013-12-24 07:06:17	<--	wildroman2 (~wildroman@212.143.139.185) has quit (Remote host closed the connection)
+2013-12-24 07:06:52	-->	wildroman2 (~wildroman@212.143.139.185) has joined #ninenines
+2013-12-24 07:10:25	-->	PolCPP (~PolCPP@205.Red-83-42-66.dynamicIP.rima-tde.net) has joined #ninenines
+2013-12-24 07:15:52	-->	oberstet (~vanaland@nrbg-4dbe3fcf.pool.mediaWays.net) has joined #ninenines
+2013-12-24 07:34:28	<--	wildroman2 (~wildroman@212.143.139.185) has quit (Remote host closed the connection)
+2013-12-24 07:44:18	<--	oberstet (~vanaland@nrbg-4dbe3fcf.pool.mediaWays.net) has quit (Quit: No Ping reply in 180 seconds.)
+2013-12-24 07:44:41	-->	oberstet (~vanaland@nrbg-4dbe3fcf.pool.mediaWays.net) has joined #ninenines
+2013-12-24 07:46:44	-->	wildroman2 (~wildroman@212.143.139.185) has joined #ninenines
+2013-12-24 07:46:48	<--	wildroman2 (~wildroman@212.143.139.185) has quit (Remote host closed the connection)
+2013-12-24 07:47:28	-->	wildroman2 (~wildroman@212.143.139.185) has joined #ninenines
+2013-12-24 08:00:48	<--	mrpi_ (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has quit (Read error: Connection reset by peer)
+2013-12-24 08:01:05	-->	mrpi_ (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has joined #ninenines
+2013-12-24 08:48:11	<--	dch (sid1310@couchdb/committer/dch) has quit (Ping timeout: 246 seconds)
+2013-12-24 08:49:05	-->	dch (sid1310@couchdb/committer/dch) has joined #ninenines
+2013-12-24 08:54:40	--	smeb- is now known as smeb
+2013-12-24 08:56:34	-->	stowelly_ (~stowelly@109.169.95.183) has joined #ninenines
+2013-12-24 09:01:16	<--	mrpi_ (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has quit (Read error: Connection reset by peer)
+2013-12-24 09:02:26	-->	ptomasroos__ (uid16626@gateway/web/irccloud.com/x-rchpnjykrhnvyovq) has joined #ninenines
+2013-12-24 09:05:59	-->	pantech__ (sid16240@gateway/web/irccloud.com/x-audbrrfpzshkyycr) has joined #ninenines
+2013-12-24 09:06:02	<--	true_droid (~true_droi@sour-accorder.volia.net) has quit (*.net *.split)
+2013-12-24 09:06:04	<--	ptomasroos_ (uid16626@gateway/web/irccloud.com/x-ffktgrztegtyynxm) has quit (*.net *.split)
+2013-12-24 09:06:04	<--	pantech_ (sid16240@gateway/web/irccloud.com/x-bsfcaiqcpjkccegq) has quit (*.net *.split)
+2013-12-24 09:06:04	<--	fishcakez___ (sid15555@gateway/web/irccloud.com/x-wbsaoahrzzswgqxe) has quit (*.net *.split)
+2013-12-24 09:06:07	<--	stowelly (~stowelly@109.169.95.183) has quit (*.net *.split)
+2013-12-24 09:06:11	--	stowelly_ is now known as stowelly
+2013-12-24 09:06:19	--	pantech__ is now known as pantech_
+2013-12-24 09:06:24	--	ptomasroos__ is now known as ptomasroos_
+2013-12-24 09:07:08	-->	mrpi_ (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has joined #ninenines
+2013-12-24 09:10:53	-->	fishcakez___ (sid15555@gateway/web/irccloud.com/x-wbsaoahrzzswgqxe) has joined #ninenines
+2013-12-24 09:56:09	-->	true_droid (~true_droi@sour-accorder.volia.net) has joined #ninenines
+2013-12-24 10:00:51	<--	mrpi_ (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has quit (Read error: Connection reset by peer)
+2013-12-24 10:01:02	-->	mrpi_ (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has joined #ninenines
+2013-12-24 10:03:29	<--	wildroman2 (~wildroman@212.143.139.185) has quit (Remote host closed the connection)
+2013-12-24 10:04:11	-->	wildroman2 (~wildroman@212.143.139.185) has joined #ninenines
+2013-12-24 10:08:38	<--	wildroman2 (~wildroman@212.143.139.185) has quit (Ping timeout: 264 seconds)
+2013-12-24 10:11:23	-->	wildroman2 (~wildroman@212.143.139.185) has joined #ninenines
+2013-12-24 10:45:43	<--	AeroNotix (~aero@37.139.18.183) has quit (Ping timeout: 252 seconds)
+2013-12-24 10:48:09	<--	wildroman2 (~wildroman@212.143.139.185) has quit (Remote host closed the connection)
+2013-12-24 10:48:46	-->	wildroman2 (~wildroman@212.143.139.185) has joined #ninenines
+2013-12-24 10:52:55	<--	wildroman2 (~wildroman@212.143.139.185) has quit (Ping timeout: 246 seconds)
+2013-12-24 11:01:03	-->	mrpi_314 (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has joined #ninenines
+2013-12-24 11:01:03	<--	mrpi_ (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has quit (Read error: Connection reset by peer)
+2013-12-24 11:08:05	<--	true_droid (~true_droi@sour-accorder.volia.net) has quit (Remote host closed the connection)
+2013-12-24 11:17:34	<--	bullno1 (~Bull@113.190.154.199) has quit (Read error: Connection reset by peer)
+2013-12-24 11:20:04	-->	MononcQc (~ferd@li101-172.members.linode.com) has joined #ninenines
+2013-12-24 11:37:01	-->	wildroman2 (~wildroman@212.143.139.185) has joined #ninenines
+2013-12-24 11:37:02	<--	wildroman2 (~wildroman@212.143.139.185) has quit (Remote host closed the connection)
+2013-12-24 11:37:37	-->	wildroman2 (~wildroman@212.143.139.185) has joined #ninenines
+2013-12-24 11:42:23	<--	archaelus (~nem@71-13-152-2.static.ftbg.wi.charter.com) has quit (Quit: archaelus)
+2013-12-24 11:44:13	-->	archaelus (~nem@71-13-152-2.static.ftbg.wi.charter.com) has joined #ninenines
+2013-12-24 11:44:18	<--	archaelus (~nem@71-13-152-2.static.ftbg.wi.charter.com) has quit (Client Quit)
+2013-12-24 11:44:33	-->	archaelus (~nem@71-13-152-2.static.ftbg.wi.charter.com) has joined #ninenines
+2013-12-24 11:44:38	<--	archaelus (~nem@71-13-152-2.static.ftbg.wi.charter.com) has quit (Client Quit)
+2013-12-24 12:01:05	-->	mrpi_ (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has joined #ninenines
+2013-12-24 12:01:05	<--	mrpi_314 (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has quit (Read error: Connection reset by peer)
+2013-12-24 12:19:29	-->	archaelus (~nem@71-13-152-2.static.ftbg.wi.charter.com) has joined #ninenines
+2013-12-24 12:42:06	-->	AeroNotix (~aero@37.139.18.183) has joined #ninenines
+2013-12-24 13:01:04	-->	mrpi_314 (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has joined #ninenines
+2013-12-24 13:01:05	<--	mrpi_ (~mrpi@HSI-KBW-109-192-127-021.hsi6.kabel-badenwuerttemberg.de) has quit (Read error: Connection reset by peer)
+2013-12-25 02:10:30	-->	locojay (~locojay@108.30.139.71) has joined #ninenines
+2013-12-25 02:10:30	--	Topic for #ninenines is "Nine Nines http://ninenines.eu | Source code https://github.com/extend/ | LinkedIn Cowboy Group http://goo.gl/le4Cj"
+2013-12-25 02:10:30	--	Topic set by essen (~essen@ks28969.kimsufi.com) on Wed, 30 Jan 2013 12:25:34
+2013-12-25 02:10:30	--	Nicks #ninenines: [AeroNotix archaelus asabil athoune avn_ daniel_karlsson_ dawik dch debris`_ espiral essen evax fishcakez___ gen_ale_drinker hlieberman IbnFirnas_ jprieur JStoker jwheare kiela_ Licenser locojay msch ninefx okeuday1 pantech_ peerst ptomasroos_ puzza007 RJ2 smeb srijan4 stowelly tOkeshu tristan_1 wc_ wc__ yosuke]
+2013-12-25 02:10:30	--	Channel #ninenines: 38 nicks (0 ops, 0 voices, 38 normals)
+2013-12-25 02:10:34	--	Mode #ninenines [+cnt]
+2013-12-25 02:10:34	--	Channel created on Sun, 16 Dec 2012 04:24:56
+2013-12-25 02:11:43	-->	locojay (~locojay@108.30.139.71) has joined #ninenines
+2013-12-25 02:11:43	--	Topic for #ninenines is "Nine Nines http://ninenines.eu | Source code https://github.com/extend/ | LinkedIn Cowboy Group http://goo.gl/le4Cj"
+2013-12-25 02:11:43	--	Topic set by essen (~essen@ks28969.kimsufi.com) on Wed, 30 Jan 2013 12:25:34
+2013-12-25 02:11:43	--	Nicks #ninenines: [AeroNotix archaelus asabil athoune avn_ daniel_karlsson_ dawik dch debris`_ espiral essen evax fishcakez___ gen_ale_drinker hlieberman IbnFirnas_ jprieur JStoker jwheare kiela_ Licenser locojay msch ninefx okeuday1 pantech_ peerst ptomasroos_ puzza007 RJ2 smeb srijan4 stowelly tOkeshu tristan_1 wc_ wc__ yosuke]
+2013-12-25 02:11:43	--	Channel #ninenines: 38 nicks (0 ops, 0 voices, 38 normals)
+2013-12-25 02:11:47	--	Mode #ninenines [+cnt]
+2013-12-25 02:11:47	--	Channel created on Sun, 16 Dec 2012 04:24:56
+2013-12-25 02:12:16	<--	locojay (~locojay@108.30.139.71) has left #ninenines ("WeeChat 0.4.2")
+2013-12-25 02:12:28	white,nick_locojay	hi
+2013-12-25 02:12:28	--	#ninenines: Cannot send to channel
+2013-12-25 02:12:38	-->	locojay (~locojay@108.30.139.71) has joined #ninenines
+2013-12-25 02:12:38	--	Topic for #ninenines is "Nine Nines http://ninenines.eu | Source code https://github.com/extend/ | LinkedIn Cowboy Group http://goo.gl/le4Cj"
+2013-12-25 02:12:38	--	Topic set by essen (~essen@ks28969.kimsufi.com) on Wed, 30 Jan 2013 12:25:34
+2013-12-25 02:12:38	--	Nicks #ninenines: [AeroNotix archaelus asabil athoune avn_ daniel_karlsson_ dawik dch debris`_ espiral essen evax fishcakez___ gen_ale_drinker hlieberman IbnFirnas_ jprieur JStoker jwheare kiela_ Licenser locojay msch ninefx okeuday1 pantech_ peerst ptomasroos_ puzza007 RJ2 smeb srijan4 stowelly tOkeshu tristan_1 wc_ wc__ yosuke]
+2013-12-25 02:12:38	--	Channel #ninenines: 38 nicks (0 ops, 0 voices, 38 normals)
+2013-12-25 02:12:38	--	Mode #ninenines [+cnt]
+2013-12-25 02:12:38	--	Channel created on Sun, 16 Dec 2012 04:24:56
+2013-12-25 02:12:40	--	Mode #ninenines [+cnt]
+2013-12-25 02:12:40	--	Channel created on Sun, 16 Dec 2012 04:24:56
+2013-12-25 02:25:23	-->	locojay (~locojay@108.30.139.71) has joined #ninenines
+2013-12-25 02:25:23	--	Topic for #ninenines is "Nine Nines http://ninenines.eu | Source code https://github.com/extend/ | LinkedIn Cowboy Group http://goo.gl/le4Cj"
+2013-12-25 02:25:23	--	Topic set by essen (~essen@ks28969.kimsufi.com) on Wed, 30 Jan 2013 12:25:34
+2013-12-25 02:25:23	--	Nicks #ninenines: [AeroNotix asabil athoune avn_ daniel_karlsson_ dawik dch debris`_ espiral essen evax fishcakez___ gen_ale_drinker hlieberman IbnFirnas_ jprieur JStoker jwheare kiela_ Licenser locojay msch ninefx okeuday1 pantech_ peerst ptomasroos_ puzza007 RJ2 smeb srijan4 stowelly tOkeshu tristan_1 wc_ wc__ yosuke]
+2013-12-25 02:25:23	--	Channel #ninenines: 37 nicks (0 ops, 0 voices, 37 normals)
+2013-12-25 02:25:27	--	Mode #ninenines [+cnt]
+2013-12-25 02:25:27	--	Channel created on Sun, 16 Dec 2012 04:24:56
+2013-12-25 02:28:11	-->	locojay (~locojay@108.30.139.71) has joined #ninenines
+2013-12-25 02:28:11	--	Topic for #ninenines is "Nine Nines http://ninenines.eu | Source code https://github.com/extend/ | LinkedIn Cowboy Group http://goo.gl/le4Cj"
+2013-12-25 02:28:11	--	Topic set by essen (~essen@ks28969.kimsufi.com) on Wed, 30 Jan 2013 12:25:34
+2013-12-25 02:28:11	--	Nicks #ninenines: [AeroNotix asabil athoune avn_ daniel_karlsson_ dawik dch debris`_ espiral essen evax fishcakez___ gen_ale_drinker hlieberman IbnFirnas_ jprieur JStoker jwheare kiela_ Licenser locojay msch ninefx okeuday1 pantech_ peerst ptomasroos_ puzza007 RJ2 smeb srijan4 stowelly tOkeshu tristan_1 wc_ wc__ yosuke]
+2013-12-25 02:28:11	--	Channel #ninenines: 37 nicks (0 ops, 0 voices, 37 normals)
+2013-12-25 02:28:15	--	Mode #ninenines [+cnt]
+2013-12-25 02:28:15	--	Channel created on Sun, 16 Dec 2012 04:24:56
