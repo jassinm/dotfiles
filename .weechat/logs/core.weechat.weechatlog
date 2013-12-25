@@ -1,0 +1,152 @@
+2013-12-13 20:59:41	=!=	lua: warning, license "Apache-2.0" for script "Highlight" differs from plugin license ("GPL3")
+2013-12-13 20:59:41		lua scripts loaded: Highlight
+2013-12-13 20:59:41	=!=	Warning: /home/locojay/.weechat/irc.conf, line 12: unknown option for section "look": ctcp_time_format = "%a, %d %b %Y %T %z"
+2013-12-13 20:59:41	=!=	Warning: /home/locojay/.weechat/irc.conf, line 39: unknown option for section "look": nick_mode = prefix
+2013-12-13 20:59:41	=!=	Warning: /home/locojay/.weechat/irc.conf, line 40: unknown option for section "look": nick_mode_empty = off
+2013-12-13 20:59:41		perl scripts loaded: buffers, colorize_lines
+2013-12-13 20:59:42	=!=	python: warning, license "MIT/X11" for script "coloncomplete" differs from plugin license ("GPL3")
+2013-12-13 20:59:42		python: stdout/stderr: Traceback (most recent call last):
+2013-12-13 20:59:42		python: stdout/stderr:   File "/home/locojay/.dotfiles/weechat/python/autoload/notification_center.py", line 5, in <module>
+2013-12-13 20:59:42		python: stdout/stderr:     from pync import Notifier
+2013-12-13 20:59:42		python: stdout/stderr: ImportError: No module named pync
+2013-12-13 20:59:42	=!=	python: unable to parse file "/home/locojay/.dotfiles/weechat/python/autoload/notification_center.py"
+2013-12-13 20:59:42		python scripts loaded: coloncomplete, urlgrab, zerotab
+2013-12-13 20:59:42	=!=	Warning: /home/locojay/.weechat/relay.conf, line 10: unknown option for section "color": client = cyan
+2013-12-13 20:59:42	=!=	Warning: /home/locojay/.weechat/relay.conf, line 26: unknown option for section "network": ssl_cert_key = "%h/ssl/relay.pem"
+2013-12-13 20:59:42		Plugins loaded: alias, aspell, charset, fifo, guile, irc, logger, lua, perl, python, relay, rmodifier, ruby, tcl, xfer
+2013-12-13 20:59:47	=!=	Error: unknown command "coonect" (type /help for help)
+2013-12-13 20:59:58	=!=	irc: command "msg" must be executed on connected irc server
+2013-12-15 12:06:10		python: scripts unloaded
+2013-12-15 12:06:10		perl: scripts unloaded
+2013-12-15 12:06:10		fifo: pipe closed
+2013-12-15 12:06:10		lua: scripts unloaded
+2013-12-15 12:07:04	=!=	lua: warning, license "Apache-2.0" for script "Highlight" differs from plugin license ("GPL3")
+2013-12-15 12:07:04		lua scripts loaded: Highlight
+2013-12-15 12:07:04		perl scripts loaded: buffers, colorize_lines
+2013-12-15 12:07:04	=!=	python: warning, license "MIT/X11" for script "coloncomplete" differs from plugin license ("GPL3")
+2013-12-15 12:07:04		python: stdout/stderr: Traceback (most recent call last):
+2013-12-15 12:07:04		python: stdout/stderr:   File "/home/locojay/.dotfiles/weechat/python/autoload/notification_center.py", line 5, in <module>
+2013-12-15 12:07:04		python: stdout/stderr:     from pync import Notifier
+2013-12-15 12:07:04		python: stdout/stderr: ImportError: No module named pync
+2013-12-15 12:07:04	=!=	python: unable to parse file "/home/locojay/.dotfiles/weechat/python/autoload/notification_center.py"
+2013-12-15 12:07:04		python scripts loaded: coloncomplete, urlgrab, zerotab
+2013-12-15 12:07:04		Plugins loaded: alias, aspell, charset, fifo, guile, irc, logger, lua, perl, python, relay, rmodifier, ruby, tcl, xfer
+2013-12-15 22:23:07		python: scripts unloaded
+2013-12-15 22:23:07		perl: scripts unloaded
+2013-12-15 22:23:07		fifo: pipe closed
+2013-12-15 22:23:07		lua: scripts unloaded
+2013-12-19 15:04:55	=!=	lua: warning, license "Apache-2.0" for script "Highlight" differs from plugin license ("GPL3")
+2013-12-19 15:04:55		lua scripts loaded: Highlight
+2013-12-19 15:04:55		perl scripts loaded: buffers, colorize_lines
+2013-12-19 15:04:55	=!=	python: warning, license "MIT/X11" for script "coloncomplete" differs from plugin license ("GPL3")
+2013-12-19 15:04:56		python: stdout/stderr: Traceback (most recent call last):
+2013-12-19 15:04:56		python: stdout/stderr:   File "/home/locojay/.dotfiles/weechat/python/autoload/notification_center.py", line 5, in <module>
+2013-12-19 15:04:56		python: stdout/stderr:     from pync import Notifier
+2013-12-19 15:04:56		python: stdout/stderr: ImportError: No module named pync
+2013-12-19 15:04:56	=!=	python: unable to parse file "/home/locojay/.dotfiles/weechat/python/autoload/notification_center.py"
+2013-12-19 15:04:56		python scripts loaded: coloncomplete, urlgrab, zerotab
+2013-12-19 15:04:56		Plugins loaded: alias, aspell, charset, fifo, guile, irc, logger, lua, perl, python, relay, rmodifier, ruby, tcl, xfer
+2013-12-19 15:05:25		irc: server locobouncer created
+2013-12-19 15:05:30		[irc]  /server  list|listfull [<server>]
+2013-12-19 15:05:30		                add <server> <hostname>[/<port>] [-temp] [-<option>[=<value>]] [-no<option>]
+2013-12-19 15:05:30		                copy|rename <server> <new_name>
+2013-12-19 15:05:30		                del|keep <server>
+2013-12-19 15:05:30		                deloutq|jump|raw
+2013-12-19 15:05:30		list, add or remove IRC servers
+2013-12-19 15:05:30		    list: list servers (without argument, this list is displayed)
+2013-12-19 15:05:30		listfull: list servers with detailed info for each server
+2013-12-19 15:05:30		     add: create a new server
+2013-12-19 15:05:30		  server: server name, for internal and display use
+2013-12-19 15:05:30		hostname: name or IP address of server, with optional port (default: 6667), many addresses can be separated by a comma
+2013-12-19 15:05:30		    temp: create temporary server (not saved)
+2013-12-19 15:05:30		  option: set option for server (for boolean option, value can be omitted)
+2013-12-19 15:05:30		nooption: set boolean option to 'off' (for example: -nossl)
+2013-12-19 15:05:30		    copy: duplicate a server
+2013-12-19 15:05:30		  rename: rename a server
+2013-12-19 15:05:30		    keep: keep server in config file (for temporary servers only)
+2013-12-19 15:05:30		     del: delete a server
+2013-12-19 15:05:30		 deloutq: delete messages out queue for all servers (all messages WeeChat is currently sending)
+2013-12-19 15:05:30		    jump: jump to server buffer
+2013-12-19 15:05:30		     raw: open buffer with raw IRC data
+2013-12-19 15:05:30		Examples:
+2013-12-19 15:05:30		  /server listfull
+2013-12-19 15:05:30		  /server add oftc irc.oftc.net/6697 -ssl -autoconnect
+2013-12-19 15:05:30		  /server add oftc6 irc6.oftc.net/6697 -ipv6 -ssl
+2013-12-19 15:05:30		  /server add freenode2 chat.eu.freenode.net/6667,chat.us.freenode.net/6667
+2013-12-19 15:05:30		  /server add freenode3 irc.freenode.net -password=mypass
+2013-12-19 15:05:30		  /server copy oftc oftcbis
+2013-12-19 15:05:30		  /server rename oftc newoftc
+2013-12-19 15:05:30		  /server del freenode
+2013-12-19 15:05:30		  /server deloutq
+2013-12-19 15:05:35		irc: Server locobouncer has been deleted
+2013-12-19 15:05:54		irc: server locobouncer created
+2013-12-20 22:30:46		Plugins loaded: alias, charset, fifo, irc, logger, relay, rmodifier, script, tcl, xfer
+2013-12-20 22:30:57		Plugins loaded: alias, charset, fifo, irc, logger, relay, rmodifier, script, tcl, xfer
+2013-12-20 22:31:02		Plugins loaded: alias, charset, fifo, irc, logger, relay, rmodifier, script, tcl, xfer
+2013-12-20 22:31:29		irc: server locobouncer created
+2013-12-20 22:36:27		Plugins loaded: alias, charset, fifo, irc, logger, relay, rmodifier, script, tcl, xfer
+2013-12-20 22:44:47		Plugins loaded: alias, charset, fifo, irc, logger, relay, rmodifier, script, tcl, xfer
+2013-12-20 22:47:45		Plugins loaded: alias, charset, fifo, irc, logger, relay, rmodifier, script, tcl, xfer
+2013-12-20 22:54:29		Plugins loaded: alias, charset, fifo, irc, logger, relay, rmodifier, script, tcl, xfer
+2013-12-20 22:54:34		Plugins loaded: alias, charset, fifo, irc, logger, relay, rmodifier, script, tcl, xfer
+2013-12-20 22:55:44		Plugins loaded: alias, charset, fifo, irc, logger, relay, rmodifier, script, tcl, xfer
+2013-12-20 22:56:58		script: downloading list of scripts...
+2013-12-20 22:56:59		script: 264 scripts for WeeChat 0.4.2
+2013-12-20 22:56:59		script: script "buffers.pl" can not be installed because plugin "perl" is not loaded
+2013-12-20 22:57:17	=!=	Error: option "weechat.bar.buffers.position" not found
+2013-12-20 22:57:20	=!=	Error: option "weechat.bar.buffers.position" not found
+2013-12-21 12:41:54		script: downloading list of scripts...
+2013-12-21 12:41:54		Plugins loaded: alias, charset, fifo, irc, logger, relay, rmodifier, script, tcl, xfer
+2013-12-21 12:41:55		script: 264 scripts for WeeChat 0.4.2
+2013-12-21 12:43:15	=!=	Error: unknown command "weeget" (type /help for help)
+2013-12-21 12:43:54	=!=	Error: unknown command "weeget" (type /help for help)
+2013-12-21 12:44:00	=!=	Error: unknown command "weeget" (type /help for help)
+2013-12-21 12:44:09	=!=	Error: unknown command "weeget" (type /help for help)
+2013-12-21 12:44:14		script: 264 scripts for WeeChat 0.4.2
+2013-12-21 12:44:14		Plugins loaded: alias, charset, fifo, irc, logger, relay, rmodifier, script, tcl, xfer
+2013-12-21 12:45:36		script: 264 scripts for WeeChat 0.4.2
+2013-12-21 12:45:36		Plugins loaded: alias, charset, fifo, irc, logger, relay, rmodifier, script, tcl, xfer
+2013-12-21 12:45:39	=!=	Error: unknown command "weeget" (type /help for help)
+2013-12-21 12:45:43	=!=	Error: unknown command "weeget" (type /help for help)
+2013-12-21 12:50:39		script: 264 scripts for WeeChat 0.4.2
+2013-12-21 12:50:39		Plugins loaded: alias, charset, fifo, irc, logger, relay, rmodifier, script, tcl, xfer
+2013-12-21 12:50:56		script: script "buffers.pl" can not be installed because plugin "perl" is not loaded
+2013-12-21 12:54:08		New key binding (context "mouse"): @item(buffers):button1* => hsignal:buffers_mouse
+2013-12-21 12:54:08		perl scripts loaded: buffers, colorize_lines
+2013-12-21 12:54:08		script: 264 scripts for WeeChat 0.4.2
+2013-12-21 12:54:08		Plugins loaded: alias, charset, fifo, irc, logger, perl, relay, rmodifier, script, tcl, xfer
+2013-12-24 13:07:42		perl: scripts unloaded
+2013-12-24 15:56:20		perl scripts loaded: buffers, colorize_lines
+2013-12-24 15:56:20		script: downloading list of scripts...
+2013-12-24 15:56:20		Plugins loaded: alias, charset, fifo, irc, logger, perl, relay, rmodifier, script, tcl, xfer
+2013-12-24 15:56:21		script: 264 scripts for WeeChat 0.4.2
+2013-12-24 15:56:22		perl: scripts unloaded
+2013-12-24 15:57:51		perl scripts loaded: buffers, colorize_lines
+2013-12-24 15:57:51		script: 264 scripts for WeeChat 0.4.2
+2013-12-24 15:57:51		Plugins loaded: alias, charset, fifo, irc, logger, perl, relay, rmodifier, script, tcl, xfer
+2013-12-24 15:57:53		perl: scripts unloaded
+2013-12-25 02:05:55		perl scripts loaded: buffers, colorize_lines
+2013-12-25 02:05:55		script: downloading list of scripts...
+2013-12-25 02:05:55		Plugins loaded: alias, charset, fifo, irc, logger, perl, relay, rmodifier, script, tcl, xfer
+2013-12-25 02:05:56		script: 264 scripts for WeeChat 0.4.2
+2013-12-25 02:10:19		perl: scripts unloaded
+2013-12-25 02:10:21		perl scripts loaded: buffers, colorize_lines
+2013-12-25 02:10:21		script: 264 scripts for WeeChat 0.4.2
+2013-12-25 02:10:21		Plugins loaded: alias, charset, fifo, irc, logger, perl, relay, rmodifier, script, tcl, xfer
+2013-12-25 02:10:59		perl: scripts unloaded
+2013-12-25 02:11:33		perl scripts loaded: buffers, colorize_lines
+2013-12-25 02:11:33		script: 264 scripts for WeeChat 0.4.2
+2013-12-25 02:11:33		Plugins loaded: alias, charset, fifo, irc, logger, perl, relay, rmodifier, script, tcl, xfer
+2013-12-25 02:12:43		perl: scripts unloaded
+2013-12-25 02:25:17		perl scripts loaded: buffers, colorize_lines
+2013-12-25 02:25:17		script: 264 scripts for WeeChat 0.4.2
+2013-12-25 02:25:17		Plugins loaded: alias, charset, fifo, irc, logger, perl, relay, rmodifier, script, tcl, xfer
+2013-12-25 02:26:33		perl: scripts unloaded
+2013-12-25 02:26:35		perl scripts loaded: buffers, colorize_lines
+2013-12-25 02:26:35		script: 264 scripts for WeeChat 0.4.2
+2013-12-25 02:26:35		Plugins loaded: alias, charset, fifo, irc, logger, perl, relay, rmodifier, script, tcl, xfer
+2013-12-25 02:26:37		perl: scripts unloaded
+2013-12-25 02:27:59		perl scripts loaded: buffers, colorize_lines
+2013-12-25 02:27:59		script: 264 scripts for WeeChat 0.4.2
+2013-12-25 02:27:59		Plugins loaded: alias, charset, fifo, irc, logger, perl, relay, rmodifier, script, tcl, xfer
+2013-12-25 02:30:57		perl: scripts unloaded
