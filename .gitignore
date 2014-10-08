@@ -16,3 +16,5 @@ bin/screenshotbot
 ipython/bitey/
 .weechat/logs/*
 .weechat/irc.conf
+.weechat/logs/
+irc.conf
