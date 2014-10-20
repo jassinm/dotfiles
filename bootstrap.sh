@@ -42,3 +42,6 @@ fi
 
 #emacs
 ln -nfs "$DOTFILES"/locoemacs "$HOME"/.emacs.d
+
+#weechat
+ln -nfs "$DOTFILES"/weechat "$HOME"/.weechat
