@@ -1,8 +1,11 @@
 windows:
-  - name: simple-six-splits
-    splits:
-      - cmd: tmux resize-pane -L 1 && clear
-      - cmd: tmux resize-pane -L 2 && clear
-        width: 66
-      - cmd: tmux resize-pane -L 2
-        width: 50
+  - name: simplesixsplits
+    layout: even-horizontal
+    panes:
+      - commands:
+        - clear
+      - clear
+      - commands:
+        - tmux resize-pane -R 1
+        - clear
+        - #tmux resize-pane -R 2
