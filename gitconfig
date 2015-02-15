@@ -26,8 +26,8 @@
 [github]
     user = locojay
     token =
-[diff]
-    external = gitvimdiff
+; [diff]
+;     external = gitvimdiff
 [pager]
     diff =
 [credential]
