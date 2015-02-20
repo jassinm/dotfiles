@@ -1,4 +1,5 @@
 (setq-default
+    dotspacemacs-themes '(leuven solarized-light)
     dotspacemacs-configuration-layers '(osx loco python)
 )
 (defun dotspacemacs/init ()
