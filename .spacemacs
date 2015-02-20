@@ -7,9 +7,14 @@
  startup."
   (setq org-agenda-files '("~/.org"))
   (setq org-src-fontify-natively t)
+  (setq org-src-preserve-indentation t)
+  (setq python-indent-guess-indent-offset nil)
+  (setq org-src-tab-acts-natively t)
 
   (setq-default evil-escape-delay 0.2)
   (setq-default evil-escape-key-sequence "jj")
+  (evil-leader/set-key
+    "d" 'neotree-toggle)
 )
 
 (defun dotspacemacs/config ()
