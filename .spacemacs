@@ -13,8 +13,7 @@
 
   (setq-default evil-escape-delay 0.2)
   (setq-default evil-escape-key-sequence "jj")
-  (evil-leader/set-key
-    "d" 'neotree-toggle)
+  ;;(evil-leader/set-key "d" 'neotree-toggle)
 )
 
 (defun dotspacemacs/config ()
