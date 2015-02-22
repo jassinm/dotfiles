@@ -1,6 +1,12 @@
 (setq-default
     dotspacemacs-themes '(leuven solarized-light)
     dotspacemacs-configuration-layers '(osx loco python)
+    ;; The leader key
+    ;;dotspacemacs-leader-key "SPC"
+    dotspacemacs-leader-key ","
+    ;; Major mode leader key is a shortcut key which is the equivalent of
+    ;; pressing `<leader> m`
+    ;;dotspacemacs-major-mode-leader-key ","
 )
 (defun dotspacemacs/init ()
   "User initialization for Spacemacs. This function is called at the very
@@ -8,8 +14,10 @@
   (setq org-agenda-files '("~/.org"))
   (setq org-src-fontify-natively t)
   (setq org-src-preserve-indentation t)
-  (setq python-indent-guess-indent-offset nil)
   (setq org-src-tab-acts-natively t)
+  (setq org-babel-python-command "ipython --no-banner --classic --no-confirm-exit --pprint")
+
+  (setq python-indent-guess-indent-offset nil)
 
   (setq-default evil-escape-delay 0.2)
   (setq-default evil-escape-key-sequence "jj")
@@ -20,10 +28,30 @@
 (defun dotspacemacs/config ()
   "This is were you can ultimately override default Spacemacs configuration.
 This function is called at the very end of Spacemacs initialization."
-  (setq evil-leader/leader ",")
+  ;;(setq evil-leader/leader ",")
   (setq powerline-default-separator 'arrow)
 )
 
 (custom-set-variables
  '(org-babel-load-languages (quote ((emacs-lisp . t) (sh . t) (python . t))))
 )
+
+;; use %cpaste to paste code into ipython in org mode
+(defadvice org-babel-python-evaluate-session
+  (around org-python-use-cpaste
+          (session body &optional result-type result-params) activate)
+  "Add a %cpaste and '--' to the body, so that ipython does the right
+thing."
+  (setq body (concat "%cpaste -q\n" body "\n--"))
+  ad-do-it
+  ad-return-value)
+
+(defun org-babel-execute:panda (body params)
+  (let ((results
+          (org-babel-execute:python
+          body (org-babel-merge-params '((:results . "scalar")) params))))
+    (org-babel-result-cond (cdr (assoc :result-params params))
+      results
+      (let ((tmp-file (org-babel-temp-file "sh-")))
+        (with-temp-file tmp-file (insert results))
+        (org-babel-import-elisp-from-file tmp-file)))))
