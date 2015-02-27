@@ -4,6 +4,7 @@
     ;; The leader key
     ;;dotspacemacs-leader-key "SPC"
     dotspacemacs-leader-key ","
+    ;;dotspacemacs-leader-key ","
     ;; Major mode leader key is a shortcut key which is the equivalent of
     ;; pressing `<leader> m`
     ;;dotspacemacs-major-mode-leader-key ","
