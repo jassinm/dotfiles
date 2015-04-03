@@ -1,6 +1,6 @@
 (setq-default
-    dotspacemacs-themes '(leuven solarized-light)
-    dotspacemacs-configuration-layers '(osx loco python)
+    dotspacemacs-themes '(leuven solarized-light zenburn)
+    dotspacemacs-configuration-layers '(osx loco python ess)
     ;; The leader key
     ;;dotspacemacs-leader-key "SPC"
     dotspacemacs-leader-key ","
@@ -23,6 +23,8 @@
   (setq-default evil-escape-delay 0.2)
   (setq-default evil-escape-key-sequence "jj")
   ;;(evil-leader/set-key "d" 'neotree-toggle)
+  (add-hook 'org-babel-after-execute-hook 'org-display-inline-images)
+  (add-hook 'org-mode-hook 'org-display-inline-images)
 )
 
 (defun dotspacemacs/config ()
@@ -33,7 +35,7 @@ This function is called at the very end of Spacemacs initialization."
 )
 
 (custom-set-variables
- '(org-babel-load-languages (quote ((emacs-lisp . t) (sh . t) (python . t))))
+ '(org-babel-load-languages (quote ((emacs-lisp . t) (sh . t) (python . t) (sql . t) (R . t))))
 )
 
 ;; use %cpaste to paste code into ipython in org mode
