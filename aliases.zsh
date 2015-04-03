@@ -23,3 +23,4 @@ alias k9='kill -9'
 
 alias erl='rlwrap -a dummy erl'
 alias clang11++='clang++ -std=c++11 -stdlib=libc++'
+alias R='/usr/local/bin/r'
