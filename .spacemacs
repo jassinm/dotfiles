@@ -1,13 +1,12 @@
 (setq-default
     dotspacemacs-themes '(leuven solarized-light monokai)
-    dotspacemacs-configuration-layers '(osx loco python ess)
-    ;; The leader key
-    ;;dotspacemacs-leader-key "SPC"
+    dotspacemacs-configuration-layers '(osx loco python ess auto-completion)
     dotspacemacs-leader-key ","
-    ;;dotspacemacs-leader-key ","
-    ;; Major mode leader key is a shortcut key which is the equivalent of
-    ;; pressing `<leader> m`
-    ;;dotspacemacs-major-mode-leader-key ","
+    dotspacemacs-default-font '("PragmataPro"
+                                :size 15
+                                :weight normal
+                                :width normal
+                                :powerline-scale 1.1)
 )
 (defun dotspacemacs/init ()
   "User initialization for Spacemacs. This function is called at the very
@@ -35,8 +34,11 @@ This function is called at the very end of Spacemacs initialization."
 )
 
 (custom-set-variables
- '(org-babel-load-languages (quote ((emacs-lisp . t) (sh . t) (python . t) (sql . t) (R . t))))
-)
+ '(org-babel-load-languages (quote ((emacs-lisp . t)
+                                    (sh . t)
+                                    (python . t)
+                                    (sql . t)
+                                    (R . t)))))
 
 ;; use %cpaste to paste code into ipython in org mode
 (defadvice org-babel-python-evaluate-session
