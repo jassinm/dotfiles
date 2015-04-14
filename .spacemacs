@@ -1,5 +1,5 @@
 (setq-default
-    dotspacemacs-themes '(leuven solarized-light zenburn)
+    dotspacemacs-themes '(leuven solarized-light monokai)
     dotspacemacs-configuration-layers '(osx loco python ess)
     ;; The leader key
     ;;dotspacemacs-leader-key "SPC"
