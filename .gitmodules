@@ -6,6 +6,3 @@
 	path = prezto
 	url = git://github.com/locojay/prezto.git
 	ignore = dirty
-[submodule "locoemacs"]
-	path = locoemacs
-	url = git://github.com/locojay/locoemacs.git

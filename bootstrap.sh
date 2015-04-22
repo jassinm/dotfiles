@@ -40,8 +40,5 @@ else
     ln -nfs "$DOTFILES"/tmux_nonosx.conf "$HOME"/.tmux.conf
 fi
 
-#emacs
-ln -nfs "$DOTFILES"/locoemacs "$HOME"/.emacs.d
-
 #weechat
 ln -nfs "$DOTFILES"/weechat "$HOME"/.weechat
