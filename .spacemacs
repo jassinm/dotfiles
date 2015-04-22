@@ -1,5 +1,5 @@
 (setq-default
-    dotspacemacs-themes '(leuven solarized-light zenburn)
+    dotspacemacs-themes '(leuven monokai)
     dotspacemacs-configuration-layers '(osx loco python ess auto-completion)
     dotspacemacs-leader-key ","
     dotspacemacs-default-font '("PragmataPro"
@@ -8,6 +8,7 @@
                                 :width normal
                                 :powerline-scale 1.1)
 )
+
 (defun dotspacemacs/init ()
   "User initialization for Spacemacs. This function is called at the very
  startup."
@@ -23,7 +24,11 @@
   (setq-default evil-escape-key-sequence "jj")
   ;;(evil-leader/set-key "d" 'neotree-toggle)
   (add-hook 'org-babel-after-execute-hook 'org-display-inline-images)
-  (add-hook 'org-mode-hook 'org-display-inline-images)
+  ;;(add-hook 'org-mode-hook 'org-display-inline-images)
+  (add-hook 'org-mode-hook (lambda ()
+                             (setq buffer-face-mode-face '(:family "Inconsolata"))
+                             (buffer-face-mode)
+                             ('org-display-inline-images)))
 )
 
 (defun dotspacemacs/config ()
@@ -31,7 +36,15 @@
 This function is called at the very end of Spacemacs initialization."
   ;;(setq evil-leader/leader ",")
   (setq powerline-default-separator 'arrow)
+  ;;(define-key evil-motion-state-local-map (kbd "o") 'spacemacs/neotree-expand-or-open)
+  (evil-define-key 'motion neotree-mode-map  (kbd "o") 'neotree-enter)
+  (evil-define-key 'motion neotree-mode-map  (kbd "r") 'neotree-refresh)
+  (add-to-hooks 'linum-mode '(python-mode-hook))
+  ;;
+  (setq multi-term-program "/usr/local/bin/zsh")
+  ;;(setq system-uses-terminfo nil)
 )
+
 
 (custom-set-variables
  '(org-babel-load-languages (quote ((emacs-lisp . t)
