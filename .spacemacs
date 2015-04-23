@@ -1,9 +1,5 @@
 (setq-default
-<<<<<<< HEAD
-    dotspacemacs-themes '(leuven solarized-light monokai)
-=======
-    dotspacemacs-themes '(leuven monokai)
->>>>>>> 11d86f1fcb1e50d2319a14eaa225ddddb4f2592d
+    dotspacemacs-themes '(leuven monokai badwolf)
     dotspacemacs-configuration-layers '(osx loco python ess auto-completion)
     dotspacemacs-leader-key ","
     dotspacemacs-default-font '("PragmataPro"
@@ -33,6 +29,7 @@
                              (setq buffer-face-mode-face '(:family "Inconsolata"))
                              (buffer-face-mode)
                              ('org-display-inline-images)))
+  (add-to-list 'custom-theme-load-path "~/.emacs.d/private/themes")
 )
 
 (defun dotspacemacs/config ()
@@ -47,6 +44,7 @@ This function is called at the very end of Spacemacs initialization."
   ;;
   (setq multi-term-program "/usr/local/bin/zsh")
   ;;(setq system-uses-terminfo nil)
+  (evil-leader/set-key "," 'helm-find-files)
 )
 
 
