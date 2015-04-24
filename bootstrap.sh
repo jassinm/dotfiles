@@ -8,10 +8,11 @@ link_file () {
     ln -nfs ${source_} ${target_}
 }
 
-excludes="bin\|iterm|Keymando\|lein2\|spacemacslayers\|vim\|prezto_config\|bootstrap.sh\|aliases.zsh\|README.org\|spacemacs\|prezto\|"
+excludes="bin\|iterm\|Keymando\|lein2\|spacemacslayers\|vim\|prezto_config\|bootstrap.sh\|aliases.zsh\|README.org\|spacemacs\|prezto\|spacemacsrc"
 
 for file_or_folder in `find . -maxdepth 1 -name '[!.]*' | sed "s|^\./||" | grep -v "$excludes"`;
 do
+    echo "linking" $file_or_folder
     link_file "$file_or_folder"
 done
 
@@ -19,11 +20,11 @@ mkdir -p "$HOME"/.lein
 ln -nfs "$DOTFILES"/lein2/project.clj "$HOME"/.lein/project.clj
 
 #vim
-mkdir -p "$DOTFILES"/vim/tmp/undo
-mkdir -p "$DOTFILES"/vim/tmp/backup
-mkdir -p "$DOTFILES"/vim/tmp/swap
-ln -nfs "$DOTFILES"/vim "$HOME"/.vim
-ln -nfs "$DOTFILES"/vim/vimrc "$HOME"/.vimrc
+# mkdir -p "$DOTFILES"/vim/tmp/undo
+# mkdir -p "$DOTFILES"/vim/tmp/backup
+# mkdir -p "$DOTFILES"/vim/tmp/swap
+# ln -nfs "$DOTFILES"/vim "$HOME"/.vim
+# ln -nfs "$DOTFILES"/vim/vimrc "$HOME"/.vimrc
 
 #zsh
 
@@ -46,4 +47,5 @@ touch $HOME/.profile
 
 #emacs
 ln -nfs "$DOTFILES"/spacemacs "$HOME"/.emacs.d
+ln -nfs "$DOTFILES"/spacemacsrc "$HOME"/.spacemacs
 ln -nfs "$DOTFILES"/spacemacslayers/loco $HOME/.emacs.d/private/loco
