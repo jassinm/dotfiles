@@ -19,6 +19,13 @@
      ;; markdown
      ;; org
      ;; syntax-checking
+     osx
+     loco
+     python
+     ess
+     auto-completion
+     syntax-checking
+     org
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
@@ -36,11 +43,7 @@ before layers configuration."
     dotspacemacs-themes '(leuven
                           monokai
                           badwolf)
-    dotspacemacs-configuration-layers '(osx
-                                        loco
-                                        python
-                                        ess
-                                        auto-completion)
+
     dotspacemacs-leader-key ","
     dotspacemacs-editing-style 'vim
     dotspacemacs-default-font '("PragmataPro"

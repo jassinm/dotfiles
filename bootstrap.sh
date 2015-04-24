@@ -46,7 +46,7 @@ fi
 touch $HOME/.profile
 
 #emacs
-ln -nfs "$DOTFILES"/spacemacs "$HOME"/.emacs.d
-ln -nfs "$DOTFILES"/spacemacsrc "$HOME"/.spacemacs
+ln -nfs "$DOTFILES"/emacs_spacemacs "$HOME"/.emacs.d
+ln -nfs "$DOTFILES"/spacemacs "$HOME"/.spacemacs
 ln -nfs "$DOTFILES"/spacemacs_private/loco $HOME/.emacs.d/private/loco
 ln -nfs "$DOTFILES"/spacemacs_private/themes $HOME/.emacs.d/private/themes
