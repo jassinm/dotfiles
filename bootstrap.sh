@@ -8,7 +8,7 @@ link_file () {
     ln -nfs ${source_} ${target_}
 }
 
-excludes="bin\|iterm|Keymando\|lein2\|spacemacslayers\|vim\|zprezto\|bootstrap.sh\|aliases.zsh\|README.org"
+excludes="bin\|iterm|Keymando\|lein2\|spacemacslayers\|vim\|prezto_config\|bootstrap.sh\|aliases.zsh\|README.org"
 
 for file_or_folder in `find . -maxdepth 1 -name '[!.]*' | sed "s|^\./||" | grep -v "$excludes"`;
 do
@@ -28,10 +28,10 @@ ln -nfs "$DOTFILES"/vim/vimrc "$HOME"/.vimrc
 #zsh
 #ln -nfs "$DOTFILES"/prezto "$HOME"/.zprezto
 
-for rcfile in `find "$DOTFILES/zprezto/"`;
+for rcfile in `find "$DOTFILES/prezto_config/"`;
 do
     basename_=`basename "$rcfile"`
-    # ln -nfs "$rcfile" "$HOME"/."$basename_"
+    ln -nfs "$rcfile" "$HOME"/."$basename_"
 done
 
 UNAME=$(uname -s)
