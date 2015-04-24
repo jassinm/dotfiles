@@ -2,7 +2,3 @@
 	path = vim
 	url = git://github.com/locojay/locovim.git
 	ignore = dirty
-[submodule "prezto"]
-	path = prezto
-	url = git://github.com/locojay/prezto.git
-	ignore = dirty

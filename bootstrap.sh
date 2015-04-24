@@ -42,3 +42,8 @@ fi
 
 #weechat
 ln -nfs "$DOTFILES"/weechat "$HOME"/.weechat
+
+setopt EXTENDED_GLOB
+for rcfile in "${ZDOTDIR:-$HOME}"/.dotfiles/zprezto/^README.md(.N); do
+  ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+done
