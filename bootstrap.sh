@@ -8,7 +8,7 @@ link_file () {
     ln -nfs ${source_} ${target_}
 }
 
-excludes="bin\|iterm|Keymando\|lein2\|spacemacslayers\|vim\|prezto_config\|bootstrap.sh\|aliases.zsh\|README.org\|spacemacs"
+excludes="bin\|iterm|Keymando\|lein2\|spacemacslayers\|vim\|prezto_config\|bootstrap.sh\|aliases.zsh\|README.org\|spacemacs\|prezto\|"
 
 for file_or_folder in `find . -maxdepth 1 -name '[!.]*' | sed "s|^\./||" | grep -v "$excludes"`;
 do
@@ -27,6 +27,7 @@ ln -nfs "$DOTFILES"/vim/vimrc "$HOME"/.vimrc
 
 #zsh
 
+ln -nfs "$DOTFILES"/prezto $HOME/.zprezto
 
 for rcfile in `find "$DOTFILES/prezto_config/"`;
 do
@@ -44,4 +45,5 @@ fi
 touch $HOME/.profile
 
 #emacs
+ln -nfs "$DOTFILES"/spacemacs "$HOME"/.emacs.d
 ln -nfs "$DOTFILES"/spacemacslayers/loco $HOME/.emacs.d/private/loco
