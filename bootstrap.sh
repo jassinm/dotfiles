@@ -8,7 +8,7 @@ link_file () {
     ln -nfs ${source_} ${target_}
 }
 
-excludes="README.rst\|Keymando\|aliases.zsh\|bootstrap.sh\|vim\|lein2|\prezto"
+excludes="bin\|iterm|Keymando\|lein2\|spacemacslayers\|vim\|zprezto\|bootstrap.sh\|aliases.zsh\|README.rst"
 
 for file_or_folder in `find . -maxdepth 1 -name '[!.]*' | sed "s|^\./||" | grep -v "$excludes"`;
 do
@@ -17,6 +17,7 @@ done
 
 mkdir -p "$HOME"/.lein
 ln -nfs "$DOTFILES"/lein2/project.clj "$HOME"/.lein/project.clj
+
 #vim
 mkdir -p "$DOTFILES"/vim/tmp/undo
 mkdir -p "$DOTFILES"/vim/tmp/backup
@@ -25,12 +26,12 @@ ln -nfs "$DOTFILES"/vim "$HOME"/.vim
 ln -nfs "$DOTFILES"/vim/vimrc "$HOME"/.vimrc
 
 #zsh
-ln -nfs "$DOTFILES"/prezto "$HOME"/.zprezto
+#ln -nfs "$DOTFILES"/prezto "$HOME"/.zprezto
 
-for rcfile in `find "$HOME/.zprezto/runcoms" -maxdepth 1 -name 'z*'`;
+for rcfile in `find "$DOTFILES/zprezto/"`;
 do
     basename_=`basename "$rcfile"`
-    ln -nfs "$rcfile" "$HOME"/."$basename_"
+    # ln -nfs "$rcfile" "$HOME"/."$basename_"
 done
 
 UNAME=$(uname -s)
@@ -39,11 +40,3 @@ if [ "$UNAME" = 'Darwin' ] ; then
 else
     ln -nfs "$DOTFILES"/tmux_nonosx.conf "$HOME"/.tmux.conf
 fi
-
-#weechat
-ln -nfs "$DOTFILES"/weechat "$HOME"/.weechat
-
-setopt EXTENDED_GLOB
-for rcfile in "${ZDOTDIR:-$HOME}"/.dotfiles/zprezto/^README.md(.N); do
-  ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
-done
