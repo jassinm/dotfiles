@@ -8,7 +8,7 @@ link_file () {
     ln -nfs ${source_} ${target_}
 }
 
-excludes="bin\|iterm\|Keymando\|lein2\|spacemacslayers\|vim\|prezto_config\|bootstrap.sh\|aliases.zsh\|README.org\|spacemacs\|prezto\|spacemacsrc"
+excludes="bin\|iterm\|Keymando\|lein2\|spacemacs_private\|vim\|prezto_config\|bootstrap.sh\|aliases.zsh\|README.org\|spacemacs\|prezto\|spacemacsrc"
 
 for file_or_folder in `find . -maxdepth 1 -name '[!.]*' | sed "s|^\./||" | grep -v "$excludes"`;
 do
@@ -48,4 +48,5 @@ touch $HOME/.profile
 #emacs
 ln -nfs "$DOTFILES"/spacemacs "$HOME"/.emacs.d
 ln -nfs "$DOTFILES"/spacemacsrc "$HOME"/.spacemacs
-ln -nfs "$DOTFILES"/spacemacslayers/loco $HOME/.emacs.d/private/loco
+ln -nfs "$DOTFILES"/spacemacs_private/loco $HOME/.emacs.d/private/loco
+ln -nfs "$DOTFILES"/spacemacs_private/themes $HOME/.emacs.d/private/themes
