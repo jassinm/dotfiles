@@ -26,7 +26,7 @@ ln -nfs "$DOTFILES"/vim "$HOME"/.vim
 ln -nfs "$DOTFILES"/vim/vimrc "$HOME"/.vimrc
 
 #zsh
-#ln -nfs "$DOTFILES"/prezto "$HOME"/.zprezto
+
 
 for rcfile in `find "$DOTFILES/prezto_config/"`;
 do
@@ -40,3 +40,8 @@ if [ "$UNAME" = 'Darwin' ] ; then
 else
     ln -nfs "$DOTFILES"/tmux_nonosx.conf "$HOME"/.tmux.conf
 fi
+
+touch $HOME/.profile
+
+#emacs
+ln -nfs "$DOTFILES"/spacemacslayers/loco $HOME/.emacs.d/private/loco
