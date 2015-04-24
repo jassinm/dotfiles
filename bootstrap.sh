@@ -8,7 +8,7 @@ link_file () {
     ln -nfs ${source_} ${target_}
 }
 
-excludes="bin\|iterm|Keymando\|lein2\|spacemacslayers\|vim\|prezto_config\|bootstrap.sh\|aliases.zsh\|README.org"
+excludes="bin\|iterm|Keymando\|lein2\|spacemacslayers\|vim\|prezto_config\|bootstrap.sh\|aliases.zsh\|README.org\|spacemacs"
 
 for file_or_folder in `find . -maxdepth 1 -name '[!.]*' | sed "s|^\./||" | grep -v "$excludes"`;
 do
