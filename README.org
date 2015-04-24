@@ -1,3 +1,5 @@
+#+TITLE: Loco's Dotfiles
+
 * Installation
 
 #+begin_src 
@@ -19,3 +21,7 @@ sudo brew install zsh
 chsh -s /usr/local/bin/zsh
 #+end_src
 
+* Update
+#+begin_src 
+git pull && git submodule update --init --recursive
+#+end_src
