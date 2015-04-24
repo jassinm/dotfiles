@@ -1,8 +1,11 @@
 * Installation
 
-  git clone --recursive https://github.com/locojay/dotfiles.git $HOME/.dotfiles
-  cd ~/.dotfiles
-  sh bootstrap.sh
+#+begin_src 
+git clone --recursive https://github.com/locojay/dotfiles.git $HOME/.dotfiles
+cd ~/.dotfiles
+sh bootstrap.sh
+#+end_src
+
 
 * Environment
 
@@ -11,5 +14,8 @@ minor fiddling. I primarily use zsh, but this includes some older bash
 files as well. If you would like to switch to zsh, you can do so with
 the following command.
 
-  sudo brew install zsh
-  chsh -s /usr/local/bin/zsh
+#+begin_src language
+sudo brew install zsh
+chsh -s /usr/local/bin/zsh
+#+end_src
+
