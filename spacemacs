@@ -60,6 +60,8 @@ before layers configuration."
   (setq org-src-tab-acts-natively t)
   (setq org-babel-python-command "ipython --no-banner --classic --no-confirm-exit --pprint")
 
+  (setq linum-format "%4d \u2502 ")
+
   (setq python-indent-guess-indent-offset nil)
   ;;(evil-leader/set-key "d" 'neotree-toggle)
   (add-hook 'org-babel-after-execute-hook 'org-display-inline-images)
@@ -85,6 +87,7 @@ This function is called at the very end of Spacemacs initialization."
   (setq multi-term-program "/usr/local/bin/zsh")
   ;;(setq system-uses-terminfo nil)
   (evil-leader/set-key "," 'helm-find-files)
+
 )
 
 
