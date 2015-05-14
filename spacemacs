@@ -26,6 +26,7 @@
      auto-completion
      syntax-checking
      org
+     dash
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
@@ -82,7 +83,7 @@ This function is called at the very end of Spacemacs initialization."
   ;;(define-key evil-motion-state-local-map (kbd "o") 'spacemacs/neotree-expand-or-open)
   (evil-define-key 'motion neotree-mode-map  (kbd "o") 'neotree-enter)
   (evil-define-key 'motion neotree-mode-map  (kbd "r") 'neotree-refresh)
-  (add-to-hooks 'linum-mode '(python-mode-hook))
+  ;;(add-to-hooks 'linum-mode '(python-mode-hook))
   ;;
   (setq multi-term-program "/usr/local/bin/zsh")
   ;;(setq system-uses-terminfo nil)
