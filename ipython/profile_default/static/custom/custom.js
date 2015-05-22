@@ -49,5 +49,7 @@
  */
 $([IPython.events]).on('app_initialized.NotebookApp', function(){
   //...
-  require(['/static/custom/hide_input_all.js'])
+  require(['/static/custom/hide_input_all.js']);
+  IPython.load_extensions("toc");
+
 });
