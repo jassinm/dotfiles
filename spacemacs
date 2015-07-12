@@ -52,7 +52,7 @@ before layers configuration."
                                 :weight normal
                                 :width normal
                                 :powerline-scale 1.1)
-    evil-escape-delay 0.2
+    evil-escape-delay 0.01
     evil-escape-key-sequence "jj")
 
   (setq org-agenda-files '("~/.org"))
