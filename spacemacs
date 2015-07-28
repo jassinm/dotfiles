@@ -4,6 +4,7 @@
    ;; List of additional paths where to look for configuration layers.
    ;; Paths must have a trailing slash (ie. `~/.mycontribs/')
    dotspacemacs-configuration-layer-path '()
+   dotspacemacs-additional-packages '(ob-ipython)
    ;; List of configuration layers to load. If it is the symbol `all' instead
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
@@ -59,19 +60,27 @@ before layers configuration."
   (setq org-src-fontify-natively t)
   (setq org-src-preserve-indentation t)
   (setq org-src-tab-acts-natively t)
+  (setq org-confirm-babel-evaluate nil)   ;don't prompt me to confirm everytime I want to evaluate a block
   (setq org-babel-python-command "ipython --no-banner --classic --no-confirm-exit --pprint")
 
   (setq linum-format "%4d \u2502 ")
 
   (setq python-indent-guess-indent-offset nil)
   ;;(evil-leader/set-key "d" 'neotree-toggle)
-  (add-hook 'org-babel-after-execute-hook 'org-display-inline-images)
+  ;;; display/update images in the buffer after I evaluate
+  ; (add-hook
+  ;   'org-babel-after-execute-hook
+  ;   'org-display-inline-images
+  ;   'append)
   ;;(add-hook 'org-mode-hook 'org-display-inline-images)
   (add-hook 'org-mode-hook (lambda ()
                              ;;(setq buffer-face-mode-face '(:family "Inconsolata"))
                              (setq buffer-face-mode-face '(:family "Source Code Pro"))
                              (buffer-face-mode)
-                             ('org-display-inline-images)))
+                             (org-display-inline-images)))
+
+
+
   (add-to-list 'custom-theme-load-path "~/.emacs.d/private/themes")
 )
 
@@ -88,7 +97,6 @@ This function is called at the very end of Spacemacs initialization."
   (setq multi-term-program "/usr/local/bin/zsh")
   ;;(setq system-uses-terminfo nil)
   (evil-leader/set-key "," 'helm-find-files)
-
 )
 
 
@@ -96,6 +104,7 @@ This function is called at the very end of Spacemacs initialization."
  '(org-babel-load-languages (quote ((emacs-lisp . t)
                                     (sh . t)
                                     (python . t)
+                                    (ipython . t)
                                     (sql . t)
                                     (R . t)))))
 
@@ -118,3 +127,18 @@ thing."
       (let ((tmp-file (org-babel-temp-file "sh-")))
         (with-temp-file tmp-file (insert results))
         (org-babel-import-elisp-from-file tmp-file)))))
+
+(defun mrb/insert-created-timestamp()
+  "Insert a CREATED property using org-expiry.el for TODO entries"
+  (org-expiry-insert-created)
+  (org-back-to-heading)
+  (org-end-of-line)
+  (insert " ")
+  )
+
+;; Whenever a TODO entry is created, I want a timestamp
+;; Advice org-insert-todo-heading to insert a created timestamp using org-expiry
+(defadvice org-insert-todo-heading (after mrb/created-timestamp-advice activate)
+  "Insert a CREATED property using org-expiry.el for TODO entries"
+  (mrb/insert-created-timestamp)
+)

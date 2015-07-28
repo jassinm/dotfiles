@@ -13,6 +13,7 @@
 (defvar locolayer-pre-extensions
   '(
     ;; pre extension locolayers go here
+    org-expiry
     )
   "List of all extensions to load before the packages.")
 
@@ -20,6 +21,7 @@
   '(
     ;; post extension locolayers go here
     )
+
   "List of all extensions to load after the packages.")
 
 ;; For each extension, define a function locolayer/init-<extension-locolayer>
@@ -27,6 +29,8 @@
 ;; (defun locolayer/init-my-extension ()
 ;;   "Initialize my extension"
 ;;   )
+(defun locojayer/init-org-expiry()
+)
 ;;
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:

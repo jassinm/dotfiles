@@ -13,7 +13,8 @@
 (defvar loco-packages
   '(
     ;; package loco go here
-    ein
+    ;;ein
+    ;;ob-ipython
     ;;load-theme-buffer-local
     )
   "List of all packages to install and/or initialize. Built-in packages
@@ -24,9 +25,11 @@ which require an initialization must be listed explicitly in the list.")
 
 ;; For each package, define a function loco/init-<package-loco>
 ;;
-(defun loco/init-ein()
+(defun loco/init-loco()
 ;;   "Initialize my package"
-  (require 'ein )
+  ;;(require 'ein )
+  (require 'ob-ipython)
+  (require 'org-expiry)
  )
 ;;
 ;; Often the body of an initialize function uses `use-package'
