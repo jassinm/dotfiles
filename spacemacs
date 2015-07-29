@@ -13,13 +13,9 @@
      ;; Example of useful layers you may want to use right away
      ;; Uncomment a layer name and press C-c C-c to install it
      ;; --------------------------------------------------------
-     ;; auto-completion
      ;; better-defaults
      ;; (git :variables
      ;;      git-gutter-use-fringe t)
-     ;; markdown
-     ;; org
-     ;; syntax-checking
      osx
      loco
      python
@@ -41,6 +37,8 @@
 This function is called at the very startup of Spacemacs initialization
 before layers configuration."
 
+  (setq-default evil-escape-key-sequence "jj")
+  (setq-default evil-escape-delay 0.01)
   (setq-default
     dotspacemacs-themes '(leuven
                           monokai
@@ -53,8 +51,7 @@ before layers configuration."
                                 :weight normal
                                 :width normal
                                 :powerline-scale 1.1)
-    evil-escape-delay 0.01
-    evil-escape-key-sequence "jj")
+    )
 
   (setq org-agenda-files '("~/.org"))
   (setq org-src-fontify-natively t)
@@ -75,7 +72,7 @@ before layers configuration."
   ;;(add-hook 'org-mode-hook 'org-display-inline-images)
   (add-hook 'org-mode-hook (lambda ()
                              ;;(setq buffer-face-mode-face '(:family "Inconsolata"))
-                             (setq buffer-face-mode-face '(:family "Source Code Pro"))
+                             ;;(setq buffer-face-mode-face '(:family "Source Code Pro"))
                              (buffer-face-mode)
                              (org-display-inline-images)))
 
@@ -87,7 +84,6 @@ before layers configuration."
 (defun dotspacemacs/config ()
   "This is were you can ultimately override default Spacemacs configuration.
 This function is called at the very end of Spacemacs initialization."
-  ;;(setq evil-leader/leader ",")
   (setq powerline-default-separator 'arrow)
   ;;(define-key evil-motion-state-local-map (kbd "o") 'spacemacs/neotree-expand-or-open)
   (evil-define-key 'motion neotree-mode-map  (kbd "o") 'neotree-enter)
@@ -95,7 +91,6 @@ This function is called at the very end of Spacemacs initialization."
   ;;(add-to-hooks 'linum-mode '(python-mode-hook))
   ;;
   (setq multi-term-program "/usr/local/bin/zsh")
-  ;;(setq system-uses-terminfo nil)
   (evil-leader/set-key "," 'helm-find-files)
 )
 
