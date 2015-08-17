@@ -24,6 +24,7 @@
      syntax-checking
      org
      dash
+     '(shell :variables shell-default-term-shell '/usr/local/bin/zsh)
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
@@ -37,8 +38,8 @@
 This function is called at the very startup of Spacemacs initialization
 before layers configuration."
 
-  (setq-default evil-escape-key-sequence "jj")
-  (setq-default evil-escape-delay 0.01)
+  (setq-default evil-escape-key-sequence "jk")
+  (setq-default evil-escape-delay 0.2)
   (setq-default
     dotspacemacs-themes '(leuven
                           monokai
@@ -90,7 +91,7 @@ This function is called at the very end of Spacemacs initialization."
   (evil-define-key 'motion neotree-mode-map  (kbd "r") 'neotree-refresh)
   ;;(add-to-hooks 'linum-mode '(python-mode-hook))
   ;;
-  (setq multi-term-program "/usr/local/bin/zsh")
+  ;;(setq multi-term-program "/usr/local/bin/zsh")
   (evil-leader/set-key "," 'helm-find-files)
 )
 
