@@ -24,7 +24,7 @@
      syntax-checking
      org
      dash
-     '(shell :variables shell-default-term-shell '/usr/local/bin/zsh)
+     (shell :variables shell-default-term-shell '/usr/local/bin/zsh)
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
@@ -41,20 +41,44 @@ before layers configuration."
   (setq-default evil-escape-key-sequence "jk")
   (setq-default evil-escape-delay 0.2)
   (setq-default
-    dotspacemacs-themes '(leuven
-                          monokai
-                          badwolf)
+   dotspacemacs-themes '(spacemacs-light
+                         monokai
+                         leuven
+                         )
 
-    dotspacemacs-leader-key ","
+    dotspacemacs-leader-key "SPC"
+    dotspacemacs-major-mode-leader-key ","
+    dotspacemacs-command-key ":"
     dotspacemacs-editing-style 'vim
+    dotspacemacs-maximized-at-startup t
     dotspacemacs-default-font '("PragmataPro"
                                 :size 15
                                 :weight normal
                                 :width normal
                                 :powerline-scale 1.1)
+    dotspacemacs-search-tools '("ag" "pt" "ack" "grep")
     )
 
+)
+
+(defun my-common-hook ()
+  (linum-mode 1)
+  )
+
+(defun dotspacemacs/config ()
+  "This is were you can ultimately override default Spacemacs configuration.
+This function is called at the very end of Spacemacs initialization."
+  (setq powerline-default-separator 'arrow)
+  (evil-define-key 'motion neotree-mode-map  (kbd "o") 'neotree-enter)
+  (evil-define-key 'motion neotree-mode-map  (kbd "r") 'neotree-refresh)
+  ;;(add-to-hooks 'linum-mode '(python-mode-hook))
+  (add-hook 'python-mode-hook 'my-common-hook)
+  (add-hook 'R-mode-hook 'my-common-hook)
+  ;;(setq multi-term-program "/usr/local/bin/zsh")
+  (evil-leader/set-key "," 'helm-find-files)
+
   (setq org-agenda-files '("~/.org"))
+  (setq org-planning-line-re "")
   (setq org-src-fontify-natively t)
   (setq org-src-preserve-indentation t)
   (setq org-src-tab-acts-natively t)
@@ -64,35 +88,23 @@ before layers configuration."
   (setq linum-format "%4d \u2502 ")
 
   (setq python-indent-guess-indent-offset nil)
-  ;;(evil-leader/set-key "d" 'neotree-toggle)
   ;;; display/update images in the buffer after I evaluate
-  ; (add-hook
-  ;   'org-babel-after-execute-hook
-  ;   'org-display-inline-images
-  ;   'append)
+                                        ; (add-hook
+                                        ;   'org-babel-after-execute-hook
+                                        ;   'org-display-inline-images
+                                        ;   'append)
   ;;(add-hook 'org-mode-hook 'org-display-inline-images)
   (add-hook 'org-mode-hook (lambda ()
-                             ;;(setq buffer-face-mode-face '(:family "Inconsolata"))
-                             ;;(setq buffer-face-mode-face '(:family "Source Code Pro"))
                              (buffer-face-mode)
                              (org-display-inline-images)))
 
 
-
   (add-to-list 'custom-theme-load-path "~/.emacs.d/private/themes")
-)
 
-(defun dotspacemacs/config ()
-  "This is were you can ultimately override default Spacemacs configuration.
-This function is called at the very end of Spacemacs initialization."
-  (setq powerline-default-separator 'arrow)
-  ;;(define-key evil-motion-state-local-map (kbd "o") 'spacemacs/neotree-expand-or-open)
-  (evil-define-key 'motion neotree-mode-map  (kbd "o") 'neotree-enter)
-  (evil-define-key 'motion neotree-mode-map  (kbd "r") 'neotree-refresh)
-  ;;(add-to-hooks 'linum-mode '(python-mode-hook))
-  ;;
-  ;;(setq multi-term-program "/usr/local/bin/zsh")
-  (evil-leader/set-key "," 'helm-find-files)
+  ;; Show 80-column marker
+  ;; (define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
+  ;; (global-fci-mode 1)
+
 )
 
 
