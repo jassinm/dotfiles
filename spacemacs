@@ -58,7 +58,6 @@ before layers configuration."
                                 :powerline-scale 1.1)
     dotspacemacs-search-tools '("ag" "pt" "ack" "grep")
     )
-
 )
 
 (defun my-common-hook ()
@@ -104,7 +103,11 @@ This function is called at the very end of Spacemacs initialization."
   ;; Show 80-column marker
   ;; (define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
   ;; (global-fci-mode 1)
-
+  ;; (add-hook 'python-mode-hook
+  ;;           (lambda ()
+  ;;             ;;(setq python-shell-interpreter "python")
+  ;;             (setq anaconda-mode-server-script
+  ;;                   "/usr/local/lib/python2.7/site-packages/anaconda_mode.py")))
 )
 
 
