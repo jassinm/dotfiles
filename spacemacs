@@ -38,118 +38,93 @@
 This function is called at the very startup of Spacemacs initialization
 before layers configuration."
 
-  (setq-default evil-escape-key-sequence "jk")
-  (setq-default evil-escape-delay 0.2)
   (setq-default
+   dotspacemacs-leader-key "SPC"
+   dotspacemacs-major-mode-leader-key ","
+   dotspacemacs-command-key ":"
+   dotspacemacs-editing-style 'vim
+
+   dotspacemacs-startup-banner nil
+   dotspacemacs-maximized-at-startup t
+
+
    dotspacemacs-themes '(spacemacs-light
                          monokai
                          leuven
                          )
 
-    dotspacemacs-leader-key "SPC"
-    dotspacemacs-major-mode-leader-key ","
-    dotspacemacs-command-key ":"
-    dotspacemacs-editing-style 'vim
-    dotspacemacs-maximized-at-startup t
+    dotspacemacs-startup-lists '(recents bookmarks projects)
+
     dotspacemacs-default-font '("PragmataPro"
                                 :size 15
                                 :weight normal
                                 :width normal
                                 :powerline-scale 1.1)
-    dotspacemacs-search-tools '("ag" "pt" "ack" "grep")
-    )
+    dotspacemacs-search-tools '("ag" "pt" "ack" "grep"))
+)
+
+(defun dotspacemacs/user-init ()
+  (setq-default
+   evil-escape-key-sequence "jk"
+   evil-escape-delay 0.2
+
+   evil-shift-round nil
+
+   ;; Miscellaneous
+   vc-follow-symlinks t
+
+   ;; Org
+   org-agenda-files '("~/.org")
+   org-planning-line-re ""
+   org-src-fontify-natively t
+   org-src-preserve-indentation t
+   org-src-tab-acts-natively t
+   ;don't prompt me to confirm everytime I want to evaluate a block
+   org-confirm-babel-evaluate nil
+   org-babel-python-command "ipython --no-banner --classic --no-confirm-exit --pprint"
+   org-babel-load-languages (quote ((emacs-lisp . t)
+                                      (sh . t)
+                                      (python . t)
+                                      (ipython . t)
+                                      (sql . t)
+                                      (R . t)))
+   )
 )
 
 (defun my-common-hook ()
   (linum-mode 1)
   )
 
-(defun dotspacemacs/config ()
+(defun dotspacemacs/user-config ()
   "This is were you can ultimately override default Spacemacs configuration.
 This function is called at the very end of Spacemacs initialization."
-  (setq powerline-default-separator 'arrow)
-  (evil-define-key 'motion neotree-mode-map  (kbd "o") 'neotree-enter)
-  (evil-define-key 'motion neotree-mode-map  (kbd "r") 'neotree-refresh)
-  ;;(add-to-hooks 'linum-mode '(python-mode-hook))
-  (add-hook 'python-mode-hook 'my-common-hook)
-  (add-hook 'R-mode-hook 'my-common-hook)
-  ;;(setq multi-term-program "/usr/local/bin/zsh")
-  (evil-leader/set-key "," 'helm-find-files)
 
-  (setq org-agenda-files '("~/.org"))
-  (setq org-planning-line-re "")
-  (setq org-src-fontify-natively t)
-  (setq org-src-preserve-indentation t)
-  (setq org-src-tab-acts-natively t)
-  (setq org-confirm-babel-evaluate nil)   ;don't prompt me to confirm everytime I want to evaluate a block
-  (setq org-babel-python-command "ipython --no-banner --classic --no-confirm-exit --pprint")
+  ;; Miscellaneous
+  (add-hook 'text-mode-hook 'auto-fill-mode)
+  (add-hook 'makefile-mode-hook 'whitespace-mode)
 
-  (setq linum-format "%4d \u2502 ")
 
-  (setq python-indent-guess-indent-offset nil)
-  ;;; display/update images in the buffer after I evaluate
-                                        ; (add-hook
-                                        ;   'org-babel-after-execute-hook
-                                        ;   'org-display-inline-images
-                                        ;   'append)
-  ;;(add-hook 'org-mode-hook 'org-display-inline-images)
+  ;; Org
   (add-hook 'org-mode-hook (lambda ()
                              (buffer-face-mode)
                              (org-display-inline-images)))
 
+  (setq powerline-default-separator 'arrow)
+  (evil-define-key 'motion neotree-mode-map  (kbd "o") 'neotree-enter)
+  (evil-define-key 'motion neotree-mode-map  (kbd "r") 'neotree-refresh)
+
+  (add-hook 'python-mode-hook 'my-common-hook)
+  (add-hook 'R-mode-hook 'my-common-hook)
+  ;;(setq multi-term-program "/usr/local/bin/zsh")
+
+  ;;(evil-leader/set-key "," 'helm-find-files)
+
+
+  (setq linum-format "%4d \u2502 ")
+
+  (setq python-indent-guess-indent-offset nil)
+
 
   (add-to-list 'custom-theme-load-path "~/.emacs.d/private/themes")
 
-  ;; Show 80-column marker
-  ;; (define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
-  ;; (global-fci-mode 1)
-  ;; (add-hook 'python-mode-hook
-  ;;           (lambda ()
-  ;;             ;;(setq python-shell-interpreter "python")
-  ;;             (setq anaconda-mode-server-script
-  ;;                   "/usr/local/lib/python2.7/site-packages/anaconda_mode.py")))
-)
-
-
-(custom-set-variables
- '(org-babel-load-languages (quote ((emacs-lisp . t)
-                                    (sh . t)
-                                    (python . t)
-                                    (ipython . t)
-                                    (sql . t)
-                                    (R . t)))))
-
-;; use %cpaste to paste code into ipython in org mode
-(defadvice org-babel-python-evaluate-session
-  (around org-python-use-cpaste
-          (session body &optional result-type result-params) activate)
-  "Add a %cpaste and '--' to the body, so that ipython does the right
-thing."
-  (setq body (concat "%cpaste -q\n" body "\n--"))
-  ad-do-it
-  ad-return-value)
-
-(defun org-babel-execute:panda (body params)
-  (let ((results
-          (org-babel-execute:python
-          body (org-babel-merge-params '((:results . "scalar")) params))))
-    (org-babel-result-cond (cdr (assoc :result-params params))
-      results
-      (let ((tmp-file (org-babel-temp-file "sh-")))
-        (with-temp-file tmp-file (insert results))
-        (org-babel-import-elisp-from-file tmp-file)))))
-
-(defun mrb/insert-created-timestamp()
-  "Insert a CREATED property using org-expiry.el for TODO entries"
-  (org-expiry-insert-created)
-  (org-back-to-heading)
-  (org-end-of-line)
-  (insert " ")
-  )
-
-;; Whenever a TODO entry is created, I want a timestamp
-;; Advice org-insert-todo-heading to insert a created timestamp using org-expiry
-(defadvice org-insert-todo-heading (after mrb/created-timestamp-advice activate)
-  "Insert a CREATED property using org-expiry.el for TODO entries"
-  (mrb/insert-created-timestamp)
 )
