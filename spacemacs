@@ -14,20 +14,25 @@
      ;; Uncomment a layer name and press C-c C-c to install it
      ;; --------------------------------------------------------
      ;; better-defaults
-     ;; (git :variables
-     ;;      git-gutter-use-fringe t)
+     (git :variables
+          git-gutter-use-fringe t)
      auto-completion
      osx
      loco
      python
      ipython-notebook
-     ess
+     (ess :variables ess-enable-smart-equals t)
      syntax-checking
      org
      pandoc
      dash
-     (shell :variables shell-default-term-shell '/usr/local/bin/zsh)
+     ;;(shell :variables shell-default-term-shell '/usr/local/bin/zsh)
+     (shell :variables shell-default-shell 'eshell)
      eyebrowse
+     semantic
+     smex
+     gtags
+     (c-c++ :variables c-c++-enable-clang-support t)
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
