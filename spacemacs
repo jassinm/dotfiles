@@ -32,6 +32,7 @@
      semantic
      smex
      gtags
+     ranger
      (c-c++ :variables c-c++-enable-clang-support t)
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
@@ -87,6 +88,12 @@ before layers configuration."
    whitespace-display-mappings
    '((newline-mark 10 [172 10])
      (tab-mark 9 [9655 9]))
+
+   ;; Ranger
+   ranger-override-dired t
+   ranger-show-dotfiles t
+   ranger-ignored-extensions '("mkv" "iso" "mp4" "mp3")
+
 
    ;; Org
    org-agenda-files '("~/.org")
