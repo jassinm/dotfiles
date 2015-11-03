@@ -71,6 +71,8 @@ before layers configuration."
                                 :width normal
                                 :powerline-scale 1.1)
     dotspacemacs-search-tools '("ag" "pt" "ack" "grep"))
+    dotspacemacs-mode-line-unicode-symbols nil
+
 )
 
 (defun dotspacemacs/user-init ()
@@ -157,6 +159,8 @@ This function is called at the very end of Spacemacs initialization."
             (setq python-indent-guess-indent-offset nil))
 
   (add-hook 'R-mode-hook 'my-common-hook)
+  (add-hook 'sql-mode-hook 'my-common-hook)
+
   ;;(setq multi-term-program "/usr/local/bin/zsh")
 
   ;;(evil-leader/set-key "," 'helm-find-files)
