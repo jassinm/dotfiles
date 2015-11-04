@@ -4,7 +4,7 @@
    ;; List of additional paths where to look for configuration layers.
    ;; Paths must have a trailing slash (ie. `~/.mycontribs/')
    dotspacemacs-configuration-layer-path '()
-   dotspacemacs-additional-packages '(ob-ipython)
+   dotspacemacs-additional-packages '(ob-ipython gruvbox-theme)
    ;; List of configuration layers to load. If it is the symbol `all' instead
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
@@ -33,6 +33,7 @@
      smex
      gtags
      ranger
+     theming
      (c-c++ :variables c-c++-enable-clang-support t)
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
@@ -58,7 +59,8 @@ before layers configuration."
    dotspacemacs-maximized-at-startup t
 
 
-   dotspacemacs-themes '(spacemacs-light
+   dotspacemacs-themes '(gruvbox
+                         spacemacs-light
                          monokai
                          leuven
                          )
@@ -112,6 +114,21 @@ before layers configuration."
                               (sql . t)
                               (ipython . t)
                               (python . t))
+
+   ;; don't evaluate babel code when publishing
+   org-export-babel-evaluate nil
+   org-src-fontify-natively t
+
+   theming-modifications
+   '((monokai
+      ;;babel
+      ;;(clock-line '(:box (:line-width 1 :color "#335EA8") :foreground "black" :background "#EEC900"))
+      ;;(code-block '(:foreground "#000088" :background "#FFFFE0"))
+      ;;(code-inline '(:foreground "#006400" :background "#FDFFF7"))
+      ;;(org-code ((,class ,code-inline)))
+      (org-code :foreground "#00088")
+      ))
+
    )
 )
 
