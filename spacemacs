@@ -34,6 +34,7 @@
      gtags
      ranger
      theming
+     tmux
      (c-c++ :variables c-c++-enable-clang-support t)
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
@@ -120,15 +121,15 @@ before layers configuration."
    org-src-fontify-natively t
 
    theming-modifications
-   '((monokai
+   '((gruvbox
       ;;babel
-      ;;(clock-line '(:box (:line-width 1 :color "#335EA8") :foreground "black" :background "#EEC900"))
-      ;;(code-block '(:foreground "#000088" :background "#FFFFE0"))
-      ;;(code-inline '(:foreground "#006400" :background "#FDFFF7"))
-      ;;(org-code ((,class ,code-inline)))
-      (org-code :foreground "#00088")
+      (org-block-background
+       ((t (:background "#FFFFEA"))))
+      (org-block-begin-line
+       ((t (:underline "#A7A6AA" :foreground "#008ED1" :background "#EAEAFF"))))
+      (org-block-end-line
+       ((t (:overline "#A7A6AA" :foreground "#008ED1" :background "#EAEAFF"))))
       ))
-
    )
 )
 
