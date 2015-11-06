@@ -145,6 +145,10 @@ This function is called at the very end of Spacemacs initialization."
   (add-hook 'text-mode-hook 'auto-fill-mode)
   (add-hook 'makefile-mode-hook 'whitespace-mode)
 
+  ;; save when focus is lost
+  (add-hook 'focus-out-hook (lambda () (save-some-buffers t)))
+
+
 
   ;; Org
   (add-hook 'org-mode-hook (lambda ()
