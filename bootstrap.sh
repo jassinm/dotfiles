@@ -31,11 +31,14 @@ ln -fs "$DOTFILES"/urlview $HOME/.urlview
 ln -fs "$DOTFILES"/ptpython $HOME/.ptpython
 
 #vim
-# mkdir -p "$DOTFILES"/vim/tmp/undo
-# mkdir -p "$DOTFILES"/vim/tmp/backup
-# mkdir -p "$DOTFILES"/vim/tmp/swap
-# ln -nfs "$DOTFILES"/vim "$HOME"/.vim
-# ln -nfs "$DOTFILES"/vim/vimrc "$HOME"/.vimrc
+ln -nFs "$DOTFILES"/vim "$HOME"/.vim
+ln -nfs "$DOTFILES"/vim/vimrc "$HOME"/.vimrc
+mkdir -p "$DOTFILES"/vim/tmp/undo
+mkdir -p "$DOTFILES"/vim/tmp/backup
+mkdir -p "$DOTFILES"/vim/tmp/swap
+
+mkdir -p .config
+ln -nFs  "$DOTFILES"/vim  "$HOME"/.config/nvim
 
 #zsh
 touch $HOME/.profile
