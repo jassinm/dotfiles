@@ -33,9 +33,6 @@ ln -fs "$DOTFILES"/ptpython $HOME/.ptpython
 #vim
 ln -nFs "$DOTFILES"/vim "$HOME"/.vim
 ln -nfs "$DOTFILES"/vim/vimrc "$HOME"/.vimrc
-mkdir -p "$DOTFILES"/vim/tmp/undo
-mkdir -p "$DOTFILES"/vim/tmp/backup
-mkdir -p "$DOTFILES"/vim/tmp/swap
 
 mkdir -p .config
 ln -nFs  "$DOTFILES"/vim  "$HOME"/.config/nvim
