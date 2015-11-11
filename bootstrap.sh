@@ -25,10 +25,11 @@ ln -fs "$DOTFILES"/gitconfig $HOME/.gitconfig
 ln -fs "$DOTFILES"/gitignore $HOME/.gitignore
 ln -fs "$DOTFILES"/inputrc $HOME/.inputrc
 ln -fs "$DOTFILES"/lbdbrc $HOME/.lbdbrc
-ln -fs "$DOTFILES"/teamocil $HOME/.teamocil
-ln -fs "$DOTFILES"/weechat $HOME/.weechat
 ln -fs "$DOTFILES"/urlview $HOME/.urlview
-ln -fs "$DOTFILES"/ptpython $HOME/.ptpython
+
+ln -nFs "$DOTFILES"/ptpython $HOME/.ptpython
+ln -nFs "$DOTFILES"/teamocil $HOME/.teamocil
+ln -nFs "$DOTFILES"/weechat $HOME/.weechat
 
 #vim
 ln -nFs "$DOTFILES"/vim "$HOME"/.vim
@@ -40,7 +41,7 @@ ln -nFs  "$DOTFILES"/vim  "$HOME"/.config/nvim
 #zsh
 touch $HOME/.profile
 
-ln -nfs "$DOTFILES"/prezto $HOME/.zprezto
+ln -nFs "$DOTFILES"/prezto $HOME/.zprezto
 
 for rcfile in `find "$DOTFILES/prezto_config/"`;
 do
@@ -58,7 +59,7 @@ else
 fi
 
 #emacs
-ln -fs "$DOTFILES"/emacs_spacemacs "$HOME"/.emacs.d
+ln -nFs "$DOTFILES"/emacs_spacemacs "$HOME"/.emacs.d
 ln -fs "$DOTFILES"/spacemacs/spacemacs "$HOME"/.spacemacs
 ln -fs "$DOTFILES"/spacemacs/private/loco $HOME/.emacs.d/private/loco
 ln -fs "$DOTFILES"/spacemacs/private/themes $HOME/.emacs.d/private/themes
