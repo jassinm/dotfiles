@@ -36,6 +36,7 @@
      theming
      tmux
      (c-c++ :variables c-c++-enable-clang-support t)
+     fasd
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
@@ -68,14 +69,17 @@ before layers configuration."
 
     dotspacemacs-startup-lists '(recents bookmarks projects)
 
-    dotspacemacs-default-font '("PragmataPro"
+    dotspacemacs-default-font '(
+                                ;;"Source Code Pro"
+                                "PragmataPro"
                                 :size 15
                                 :weight normal
                                 :width normal
                                 :powerline-scale 1.1)
     dotspacemacs-search-tools '("ag" "pt" "ack" "grep"))
     dotspacemacs-mode-line-unicode-symbols nil
-
+    dotspacemacs-whitespace-cleanup 'trailing
+    dotspacemacs-highlight-delimiters 'all
 )
 
 (defun dotspacemacs/user-init ()
