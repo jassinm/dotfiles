@@ -8,11 +8,10 @@ extensions = os.path.join(ipythondir,'extensions')
 sys.path.append( extensions )
 
 c = get_config()
-c.NotebookApp.server_extensions = [ 'nbextensions']
+c.NotebookApp.server_extensions = ['nbextensions']
 c.NotebookApp.extra_template_paths = [os.path.join(ipythondir,'templates') ]
+c.NotebookApp.ip = '*'
 # Configuration file for ipython-notebook.
-
-c = get_config()
 
 def post_save(model, os_path, contents_manager):
     """post-save hook for converting notebooks to .py scripts"""
@@ -22,6 +21,7 @@ def post_save(model, os_path, contents_manager):
     check_call(['ipython', 'nbconvert', '--to', 'script', fname], cwd=d)
 
 c.FileContentsManager.post_save_hook = post_save
+
 #------------------------------------------------------------------------------
 # NotebookApp configuration
 #------------------------------------------------------------------------------
