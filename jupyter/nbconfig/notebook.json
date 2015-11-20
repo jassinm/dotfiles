@@ -1,0 +1,10 @@
+{
+  "load_extensions": {
+    "hide_input": true, 
+    "usability/codefolding/main": true, 
+    "python-markdown": true, 
+    "codefolding": true, 
+    "toc": true, 
+    "hide_input_all": true
+  }
+}
