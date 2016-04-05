@@ -37,6 +37,8 @@
      tmux
      (c-c++ :variables c-c++-enable-clang-support t)
      fasd
+     (spell-checking :variables spell-checking-enable-auto-dictionary t)
+     latex
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
@@ -121,6 +123,7 @@ before layers configuration."
                               (R . t)
                               (sql . t)
                               (dot . t)
+                              (sh . t)
                               (ipython . t)
                               (python . t))
 
@@ -201,6 +204,21 @@ This function is called at the very end of Spacemacs initialization."
 
 
   (add-to-list 'custom-theme-load-path "~/.emacs.d/private/themes")
+
+  ;;Koma-script
+  (eval-after-load 'ox '(require 'ox-koma-letter))
+  (eval-after-load 'ox-koma-letter
+    '(progn
+       (add-to-list 'org-latex-classes
+                    '("my-letter"
+                      "\\documentclass[a4paper,10pt,DIV=9]\{scrlttr2\}
+     \\usepackage[english]{babel}
+     \[DEFAULT-PACKAGES]
+     \[PACKAGES]
+     \[EXTRA]"))
+
+       (setq org-koma-letter-default-class "my-letter")))
+
 
 )
 (custom-set-variables
