@@ -37,6 +37,7 @@
      tmux
      (c-c++ :variables c-c++-enable-clang-support t)
      fasd
+     (spell-checking :variables spell-checking-enable-auto-dictionary t)
      latex
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
@@ -122,6 +123,7 @@ before layers configuration."
                               (R . t)
                               (sql . t)
                               (dot . t)
+                              (sh . t)
                               (ipython . t)
                               (python . t))
 
@@ -204,6 +206,21 @@ This function is called at the very end of Spacemacs initialization."
 
   (add-to-list 'custom-theme-load-path "~/.emacs.d/private/themes")
 
+  ;;Koma-script
+  (eval-after-load 'ox '(require 'ox-koma-letter))
+  (eval-after-load 'ox-koma-letter
+    '(progn
+       (add-to-list 'org-latex-classes
+                    '("my-letter"
+                      "\\documentclass[a4paper,10pt,DIV=9]\{scrlttr2\}
+     \\usepackage[english]{babel}
+     \[DEFAULT-PACKAGES]
+     \[PACKAGES]
+     \[EXTRA]"))
+
+       (setq org-koma-letter-default-class "my-letter")))
+
+
 )
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -262,4 +279,6 @@ This function is called at the very end of Spacemacs initialization."
  '(default ((t (:family "PragmataPro" :foundry "nil" :slant normal :weight normal :height 151 :width normal))))
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
+ '(org-block-begin-line ((t (:underline "#A7A6AA" :foreground "#3c3836" :background "#928374"))))
+ '(org-block-end-line ((t (:overline "#A7A6AA" :foreground "#3c3836" :background "#928374"))))
  '(org-document-title ((t (:family "Sans Serif" :height 1.8 :weight bold :foreground "#458588")))))
