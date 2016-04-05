@@ -28,6 +28,8 @@
     token =
 [diff]
     tool = Kaleidoscope
+[merge]
+    tool = Kaleidoscope
 [difftool]
     prompt = false
 [difftool "Kaleidoscope"]
