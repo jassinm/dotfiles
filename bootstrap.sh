@@ -63,10 +63,11 @@ ln -nFs "$DOTFILES"/emacs_spacemacs "$HOME"/.emacs.d
 ln -fs "$DOTFILES"/spacemacs/spacemacs "$HOME"/.spacemacs
 ln -fs "$DOTFILES"/spacemacs/private/loco $HOME/.emacs.d/private/loco
 ln -fs "$DOTFILES"/spacemacs/private/themes $HOME/.emacs.d/private/themes
+ln -fs "$DOTFILES"/spacemacs/private/snippets/org-mode $HOME/.emacs.d/private/snippets/org-mode
 
 #jupyter
 
 mkdir -p $HOME/.jupyter
 ln -fs "$DOTFILES"/jupyter/jupyter_notebook_config.py  $HOME/.jupyter/jupyter_notebook_config.py
-ln  -nFs "$DOTFILES"/.jupyter/nbconfig  $HOME/.jupyter/nbconfig
-ln  -nFs "$DOTFILES"/.jupyter/nbextensions /usr/local/share/jupyter/nbextensions
+ln  -nFs "$DOTFILES"/jupyter/nbconfig  $HOME/.jupyter/nbconfig
+ln  -nFs "$DOTFILES"/jupyter/nbextensions /usr/local/share/jupyter/nbextensions

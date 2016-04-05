@@ -4,7 +4,7 @@
    ;; List of additional paths where to look for configuration layers.
    ;; Paths must have a trailing slash (ie. `~/.mycontribs/')
    dotspacemacs-configuration-layer-path '()
-   dotspacemacs-additional-packages '(ob-ipython gruvbox-theme rainbow-mode)
+   dotspacemacs-additional-packages '(ob-ipython gruvbox-theme rainbow-mode darktooth-theme)
    ;; List of configuration layers to load. If it is the symbol `all' instead
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
@@ -37,6 +37,7 @@
      tmux
      (c-c++ :variables c-c++-enable-clang-support t)
      fasd
+     latex
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
@@ -133,10 +134,10 @@ before layers configuration."
       ;;babel
       (org-document-title :family "Sans Serif" :height 1.8 :weight bold
                           :foreground "#7c6f64")
-      (org-block-begin-line :underline "#A7A6AA" :foreground "#3c3836"
-                            :background "#928374")
-      (org-block-end-line  :overline "#A7A6AA" :foreground "#3c3836"
-                           :background "#928374")
+      ;; (org-block-begin-line :underline "#A7A6AA" :foreground "#3c3836"
+      ;;                       :background "#928374")
+      ;; (org-block-end-line  :overline "#A7A6AA" :foreground "#3c3836"
+      ;;                      :background "#928374")
       (mode-line :foreground "#ffffc8")
 
       ))
@@ -151,6 +152,7 @@ before layers configuration."
   "This is were you can ultimately override default Spacemacs configuration.
 This function is called at the very end of Spacemacs initialization."
 
+  (add-hook 'doc-view-mode-hook 'auto-revert-mode)
   ;; Miscellaneous
   (add-hook 'text-mode-hook 'auto-fill-mode)
   (add-hook 'makefile-mode-hook 'whitespace-mode)
@@ -260,6 +262,4 @@ This function is called at the very end of Spacemacs initialization."
  '(default ((t (:family "PragmataPro" :foundry "nil" :slant normal :weight normal :height 151 :width normal))))
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
- '(org-block-begin-line ((t (:underline "#A7A6AA" :foreground "#3c3836" :background "#928374"))))
- '(org-block-end-line ((t (:overline "#A7A6AA" :foreground "#3c3836" :background "#928374"))))
  '(org-document-title ((t (:family "Sans Serif" :height 1.8 :weight bold :foreground "#458588")))))
