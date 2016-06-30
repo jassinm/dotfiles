@@ -227,6 +227,25 @@ This function is called at the very end of Spacemacs initialization."
 
        (setq org-koma-letter-default-class "my-letter")))
 
+  (defun custom-neotree-enter-hide ()
+    (interactive)
+    (neotree-enter)
+    (neotree-hide))
+  (defun custom-neotree-horizontal-split-hide ()
+    (interactive)
+    (neotree-enter-horizontal-split)
+    (neotree-hide))
+  (defun custom-neotree-vertical-split-hide ()
+    (interactive)
+    (neotree-enter-vertical-split)
+    (neotree-hide))
+
+
+  (with-eval-after-load 'neotree
+    (define-key neotree-mode-map (kbd "o") 'custom-neotree-enter-hide)
+    (define-key neotree-mode-map (kbd "i") 'custom-neotree-vertical-split-hide)
+    (define-key neotree-mode-map (kbd "I") 'custom-neotree-vertical-split-hide))
+
 
 )
 (custom-set-variables
