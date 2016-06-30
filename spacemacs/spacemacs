@@ -9,6 +9,9 @@
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
+     vimscript
+     html
+     sql
      javascript
      ansible
      yaml
@@ -144,7 +147,7 @@ before layers configuration."
       ;;                       :background "#928374")
       ;; (org-block-end-line  :overline "#A7A6AA" :foreground "#3c3836"
       ;;                      :background "#928374")
-      (mode-line :foreground "#ffffc8")
+      ;;(mode-line :foreground "#ffffc8")
 
       ))
    )
@@ -157,7 +160,6 @@ before layers configuration."
 (defun dotspacemacs/user-config ()
   "This is were you can ultimately override default Spacemacs configuration.
 This function is called at the very end of Spacemacs initialization."
-
 
   (add-hook 'doc-view-mode-hook 'auto-revert-mode)
   ;; Miscellaneous
@@ -226,6 +228,26 @@ This function is called at the very end of Spacemacs initialization."
 
        (setq org-koma-letter-default-class "my-letter")))
 
+  (defun custom-neotree-enter-hide ()
+    (interactive)
+    (neotree-enter)
+    (neotree-hide))
+  (defun custom-neotree-horizontal-split-hide ()
+    (interactive)
+    (neotree-enter-horizontal-split)
+    (neotree-hide))
+  (defun custom-neotree-vertical-split-hide ()
+    (interactive)
+    (neotree-enter-vertical-split)
+    (neotree-hide))
+
+
+  (with-eval-after-load 'neotree
+    (define-key neotree-mode-map (kbd "o") 'custom-neotree-enter-hide)
+    (define-key neotree-mode-map (kbd "i") 'custom-neotree-vertical-split-hide)
+    (define-key neotree-mode-map (kbd "I") 'custom-neotree-vertical-split-hide))
+
+
 )
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -284,6 +306,6 @@ This function is called at the very end of Spacemacs initialization."
  '(default ((t (:family "PragmataPro" :foundry "nil" :slant normal :weight normal :height 151 :width normal))))
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
- '(org-block-begin-line ((t (:underline "#A7A6AA" :foreground "#3c3836" :background "#928374"))))
- '(org-block-end-line ((t (:overline "#A7A6AA" :foreground "#3c3836" :background "#928374"))))
+ ;;'(org-block-begin-line ((t (:underline "#A7A6AA" :foreground "#3c3836" :background "#928374"))))
+ ;;'(org-block-end-line ((t (:overline "#A7A6AA" :foreground "#3c3836" :background "#928374"))))
  '(org-document-title ((t (:family "Sans Serif" :height 1.8 :weight bold :foreground "#458588")))))
