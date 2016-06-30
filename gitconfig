@@ -3,7 +3,7 @@
     email = locojaydev@gmail.com
 [core]
     excludesfile = /Users/locojay/.gitignore
-    editor = vim
+    editor = nvim
     autocrlf = input
     pager = less
 [alias]
