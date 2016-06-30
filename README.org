@@ -1,12 +1,4 @@
-#+TITLE: Loco's Dotfiles
 
-* Installation
-
-#+begin_src 
-git clone --recursive https://github.com/locojay/dotfiles.git $HOME/.dotfiles
-cd ~/.dotfiles
-sh bootstrap.sh
-#+end_src
 
 
 * Environment

@@ -158,6 +158,7 @@ before layers configuration."
   "This is were you can ultimately override default Spacemacs configuration.
 This function is called at the very end of Spacemacs initialization."
 
+
   (add-hook 'doc-view-mode-hook 'auto-revert-mode)
   ;; Miscellaneous
   (add-hook 'text-mode-hook 'auto-fill-mode)
@@ -200,6 +201,7 @@ This function is called at the very end of Spacemacs initialization."
 
   (add-hook 'R-mode-hook 'my-common-hook)
   (add-hook 'sql-mode-hook 'my-common-hook)
+  (add-hook 'scala-mode-hook 'my-common-hook)
 
   ;;(setq multi-term-program "/usr/local/bin/zsh")
 
@@ -223,7 +225,6 @@ This function is called at the very end of Spacemacs initialization."
      \[EXTRA]"))
 
        (setq org-koma-letter-default-class "my-letter")))
-
 
 )
 (custom-set-variables
