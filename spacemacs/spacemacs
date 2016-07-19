@@ -244,7 +244,7 @@ This function is called at the very end of Spacemacs initialization."
 
   (with-eval-after-load 'neotree
     (define-key neotree-mode-map (kbd "o") 'custom-neotree-enter-hide)
-    (define-key neotree-mode-map (kbd "i") 'custom-neotree-vertical-split-hide)
+    (define-key neotree-mode-map (kbd "i") 'custom-neotree-horizontal-split-hide)
     (define-key neotree-mode-map (kbd "I") 'custom-neotree-vertical-split-hide))
 
 
