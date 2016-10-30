@@ -3,13 +3,13 @@ from subprocess import check_call
 import os
 import sys
 
-ipythondir = get_ipython_dir()
-extensions = os.path.join(ipythondir,'extensions')
-sys.path.append( extensions )
+#ipythondir = get_ipython_dir()
+#extensions = os.path.join(ipythondir,'extensions')
+#sys.path.append( extensions )
 
 c = get_config()
-c.NotebookApp.server_extensions = ['nbextensions']
-c.NotebookApp.extra_template_paths = [os.path.join(ipythondir,'templates') ]
+#c.NotebookApp.server_extensions = ['nbextensions']
+#c.NotebookApp.extra_template_paths = [os.path.join(ipythondir,'templates') ]
 c.NotebookApp.ip = '*'
 # Configuration file for ipython-notebook.
 
@@ -18,7 +18,7 @@ def post_save(model, os_path, contents_manager):
     if model['type'] != 'notebook':
         return # only do this for notebooks
     d, fname = os.path.split(os_path)
-    check_call(['ipython', 'nbconvert', '--to', 'script', fname], cwd=d)
+    check_call(['jupyter', 'nbconvert', '--to', 'script', fname], cwd=d)
 
 c.FileContentsManager.post_save_hook = post_save
 
