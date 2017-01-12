@@ -73,7 +73,7 @@ before layers configuration."
    dotspacemacs-themes '(default
                          gruvbox
                          spacemacs-light
-                         monokai
+                         darktooth
                          leuven
                          )
 
