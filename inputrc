@@ -12,5 +12,3 @@ $if mode=vi
     "\C-p": history-search-backward
 $endif
 
-# '\e[O': ''
-# '\e[I': ''
