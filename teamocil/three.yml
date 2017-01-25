@@ -1,11 +1,15 @@
 windows:
-  - name: simplesixsplits
-    layout: even-horizontal
+  - name: three-panes
+    layout: 0220,718x53,0,0{239x53,0,0,79,239x53,240,0,80,238x53,480,0,81}
     panes:
       - commands:
-        - clear
-      - clear
-      - commands:
+        - /usr/bin/clear
         - tmux resize-pane -R 1
-        - clear
+        - /usr/bin/clear
+      - commands:
+        - /usr/bin/clear
+      - commands:
+        - /usr/bin/clear
         - #tmux resize-pane -R 2
+
+
