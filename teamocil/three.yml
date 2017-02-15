@@ -1,6 +1,6 @@
 windows:
   - name: three-panes
-    layout: 0220,718x53,0,0{239x53,0,0,79,239x53,240,0,80,238x53,480,0,81}
+    layout: c222,718x53,0,0{239x53,0,0,89,239x53,240,0,92,238x53,480,0,93}
     panes:
       - commands:
         - /usr/bin/clear
