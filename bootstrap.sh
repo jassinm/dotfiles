@@ -41,7 +41,7 @@ ln -nFs  "$DOTFILES"/vim  "$HOME"/.config/nvim
 #zsh
 touch $HOME/.profile
 
-ln -nFs "$DOTFILES"/prezto $HOME/.zprezto
+#ln -nFs "$DOTFILES"/prezto $HOME/.zprezto
 
 for rcfile in `find "$DOTFILES/prezto_config/"`;
 do
@@ -59,11 +59,11 @@ else
 fi
 
 #emacs
-ln -nFs "$DOTFILES"/emacs_spacemacs "$HOME"/.emacs.d
+#ln -nFs "$DOTFILES"/emacs_spacemacs "$HOME"/.emacs.d
 ln -fs "$DOTFILES"/spacemacs/spacemacs "$HOME"/.spacemacs
-ln -fs "$DOTFILES"/spacemacs/private/loco $HOME/.emacs.d/private/loco
-ln -fs "$DOTFILES"/spacemacs/private/themes $HOME/.emacs.d/private/themes
-ln -fs "$DOTFILES"/spacemacs/private/snippets/org-mode $HOME/.emacs.d/private/snippets/org-mode
+#ln -fs "$DOTFILES"/spacemacs/private/loco $HOME/.emacs.d/private/loco
+#ln -fs "$DOTFILES"/spacemacs/private/themes $HOME/.emacs.d/private/themes
+#ln -fs "$DOTFILES"/spacemacs/private/snippets/org-mode $HOME/.emacs.d/private/snippets/org-mode
 
 #jupyter
 
