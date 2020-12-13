@@ -1,0 +1,55 @@
+{
+    "workbench.colorTheme": "Gruvbox Minor Dark Hard",
+    "editor.fontSize": 15,
+    "editor.fontFamily": "PragmataPro, Menlo, Monaco, 'Courier New', monospace",
+    "terminal.integrated.inheritEnv": false,
+    // Vim easymotion is required for Jump menu - <SPC> j
+    "vim.easymotion": true,
+    // Use system clipboard for vim
+    "vim.useSystemClipboard": true,
+    // Trigger the main which key menu with in the active editor with vim
+    // This cannot be put into keybindings.json because it will
+    // create conflict with Vim.
+    // https://github.com/stevenguh/spacecode/issues/3
+    "vim.insertModeKeyBindings": [
+        {
+            "before": ["j", "k"],
+            "after": ["<Esc>"]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["<space>"],
+            "commands": ["vspacecode.space"]
+        },
+        {
+            "before": [","],
+            "commands": [
+                "vspacecode.space",
+                {
+                    "command": "whichkey.triggerKey",
+                    "args": "m"
+                }
+            ]
+        }
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": ["<space>"],
+            "commands": ["vspacecode.space"]
+        },
+        {
+            "before": [","],
+            "commands": [
+                "vspacecode.space",
+                {
+                    "command": "whichkey.triggerKey",
+                    "args": "m"
+                }
+            ]
+        }
+    ],
+    "python.pythonPath": "/Users/locojay/.pyenv/versions/miniconda3-latest/envs/pydata3/bin/python",
+    "jupyter.interactiveWindowMode": "perFile",
+    "jupyter.alwaysTrustNotebooks": true
+}
