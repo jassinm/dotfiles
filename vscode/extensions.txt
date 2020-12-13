@@ -1,0 +1,13 @@
+adamsome.vscode-theme-gruvbox-minor@2.2.2
+bodil.file-browser@0.2.10
+jacobdufault.fuzzy-search@0.0.3
+kahole.magit@0.5.8
+ms-pyright.pyright@1.1.94
+ms-python.python@2020.11.371526539
+ms-toolsai.jupyter@2020.12.414227025
+ms-vscode.js-debug@1.51.0
+sainnhe.gruvbox-material@6.3.4
+tomphilbin.gruvbox-themes@1.0.0
+vscodevim.vim@1.18.5
+VSpaceCode.vspacecode@0.8.5
+VSpaceCode.whichkey@0.8.3
