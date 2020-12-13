@@ -38,6 +38,9 @@ ln -nfs "$DOTFILES"/vim/vimrc "$HOME"/.vimrc
 mkdir -p .config
 ln -nFs  "$DOTFILES"/vim  "$HOME"/.config/nvim
 
+#emacs
+ln -nFs  "$DOTFILES/doom.d" "$HOME/.doom.d"
+
 #zsh
 touch $HOME/.profile
 

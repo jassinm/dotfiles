@@ -34,13 +34,16 @@ zstyle ':prezto:load' pmodule \
   'prompt' \
   'osx' \
   'git' \
-  'tmux'
+  'tmux'\
+  'python'\
+  'syntax-highlighting'
   #'completion' \
 
 #
 # Editor
 #
-
+zstyle ':prezto:module:python' conda-init 'on'
+zstyle ':prezto:module:python:info:virtualenv' format 'virtualenv:%v'
 # Set the key mapping style to 'emacs' or 'vi'.
 zstyle ':prezto:module:editor' key-bindings 'vi'
 
@@ -88,7 +91,8 @@ zstyle ':prezto:module:editor' key-bindings 'vi'
 # Set the prompt theme to load.
 # Setting it to 'random' loads a random theme.
 # Auto set to 'off' on dumb terminals.
-zstyle ':prezto:module:prompt' theme 'sorin'
+#zstyle ':prezto:module:prompt' theme 'sorin'
+zstyle ':prezto:module:prompt' theme 'pure'
 
 #
 # Ruby

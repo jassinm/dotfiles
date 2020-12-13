@@ -14,7 +14,29 @@ fi
 setopt interactivecomments
 bindkey -M viins "jk" vi-cmd-mode
 export TERM=xterm-256color
-setopt interactivecomments
 source $HOME/.dotfiles/aliases.zsh
 source $HOME/.profile
-source $HOME/.vim/plugged/gruvbox/gruvbox_256palette_osx.sh
+export PATH="$PATH:/Library/TeX/texbin"
+#source $HOME/.vim/plugged/gruvbox/gruvbox_256palette_osx.sh
+# Move next only if `homebrew` is installed
+if command -v brew >/dev/null 2>&1; then
+	# Load rupa's z if installed
+	[ -f $(brew --prefix)/etc/profile.d/z.sh ] && source $(brew --prefix)/etc/profile.d/z.sh
+fi
+
+
+## >>> conda initialize >>>
+## !! Contents within this block are managed by 'conda init' !!
+#__conda_setup="$('/Users/locojay/.pyenv/versions/miniconda3-latest/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+#if [ $? -eq 0 ]; then
+#    eval "$__conda_setup"
+#else
+#    if [ -f "/Users/locojay/.pyenv/versions/miniconda3-latest/etc/profile.d/conda.sh" ]; then
+#        . "/Users/locojay/.pyenv/versions/miniconda3-latest/etc/profile.d/conda.sh"
+#    else
+#        export PATH="/Users/locojay/.pyenv/versions/miniconda3-latest/bin:$PATH"
+#    fi
+#fi
+#unset __conda_setup
+## <<< conda initialize <<<
+
