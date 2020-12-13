@@ -2,7 +2,7 @@
     name = locojay
     email = locojaydev@gmail.com
 [core]
-    excludesfile = /Users/locojay/.gitignore
+	excludesfile = /Users/locojay/.gitignore
     editor = nvim
     autocrlf = input
     pager = less
@@ -43,3 +43,9 @@
     diff =
 [credential]
     helper = osxkeychain
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
