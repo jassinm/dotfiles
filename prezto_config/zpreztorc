@@ -35,15 +35,16 @@ zstyle ':prezto:load' pmodule \
   'osx' \
   'git' \
   'tmux'\
-  'python'\
-  'syntax-highlighting'
+  'python'
+  #'node'
+  #'syntax-highlighting'
   #'completion' \
 
 #
 # Editor
 #
-zstyle ':prezto:module:python' conda-init 'on'
-zstyle ':prezto:module:python:info:virtualenv' format 'virtualenv:%v'
+#zstyle ':prezto:module:python' conda-init 'on'
+#zstyle ':prezto:module:python:info:virtualenv' format 'virtualenv:%v'
 # Set the key mapping style to 'emacs' or 'vi'.
 zstyle ':prezto:module:editor' key-bindings 'vi'
 

@@ -15,8 +15,8 @@ setopt interactivecomments
 bindkey -M viins "jk" vi-cmd-mode
 export TERM=xterm-256color
 source $HOME/.dotfiles/aliases.zsh
-source $HOME/.profile
-export PATH="$PATH:/Library/TeX/texbin"
+#source $HOME/.profile
+#export PATH="$PATH:/Library/TeX/texbin"
 #source $HOME/.vim/plugged/gruvbox/gruvbox_256palette_osx.sh
 # Move next only if `homebrew` is installed
 if command -v brew >/dev/null 2>&1; then
@@ -24,6 +24,7 @@ if command -v brew >/dev/null 2>&1; then
 	[ -f $(brew --prefix)/etc/profile.d/z.sh ] && source $(brew --prefix)/etc/profile.d/z.sh
 fi
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 ## >>> conda initialize >>>
 ## !! Contents within this block are managed by 'conda init' !!
@@ -40,3 +41,6 @@ fi
 #unset __conda_setup
 ## <<< conda initialize <<<
 
+
+export BAT_THEME='gruvbox'
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
