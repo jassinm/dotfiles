@@ -6,7 +6,3 @@
 	path = prezto
 	url = https://github.com/sorin-ionescu/prezto.git
     ignore  =  dirty
-[submodule "emacs_spacemacs"]
-	path = emacs_spacemacs
-	url = http://github.com/syl20bnr/spacemacs
-    ignore  =  dirty

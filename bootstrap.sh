@@ -112,6 +112,15 @@ else
 fi
 
 link_file "$DOTFILES"/prezto $HOME/.zprezto
+##zsh
+#touch $HOME/.profile
+#
+
+for rcfile in `find "$DOTFILES/prezto_config/"`;
+do
+    basename_=`basename "$rcfile"`
+    link_file "$rcfile" "$HOME"/."$basename_"
+done
 
 link_file "$DOTFILES/inputrc" "$HOME/.inputrc"
 link_file "$DOTFILES/ackrc" "$HOME/.ackrc"
@@ -137,15 +146,6 @@ link_file "$DOTFILES"/vim  "$HOME"/.config/nvim
 ##emacs
 link_file "$DOTFILES/doom.d" "$HOME/.doom.d"
 #
-##zsh
-#touch $HOME/.profile
-#
-
-#for rcfile in `find "$DOTFILES/prezto_config/"`;
-#do
-#    basename_=`basename "$rcfile"`
-#    ln -nfs "$rcfile" "$HOME"/."$basename_"
-#done
 #
 #
 ##emacs
