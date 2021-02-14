@@ -146,7 +146,8 @@ link_file "$DOTFILES"/vim  "$HOME"/.config/nvim
 ##emacs
 link_file "$DOTFILES/doom.d" "$HOME/.doom.d"
 #
-#
+
+#link_file "$DOTFILES/ipython" "$HOME/.ipython"
 #
 ##emacs
 ##ln -nFs "$DOTFILES"/emacs_spacemacs "$HOME"/.emacs.d
