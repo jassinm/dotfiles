@@ -13,7 +13,7 @@ fi
 # Customize to your needs...
 setopt interactivecomments
 bindkey -M viins "jk" vi-cmd-mode
-export TERM=xterm-256color
+#export TERM=xterm-256color
 source $HOME/.dotfiles/aliases.zsh
 #source $HOME/.profile
 #export PATH="$PATH:/Library/TeX/texbin"
@@ -44,3 +44,6 @@ fi
 
 export BAT_THEME='gruvbox'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+#export FZF_DEFAULT_COMMAND='rg --files --follow --glob "!.git/*"'

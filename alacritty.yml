@@ -1,6 +1,6 @@
 env:
-  TERM: alacritty
-  #TERM: xterm-256color
+  #TERM: alacritty
+  TERM: xterm-256color
   #
 window:
   # Spread additional padding evenly around the terminal content.
@@ -8,6 +8,7 @@ window:
 
   # Startup Mode (changes require restart)
   #startup_mode: Fullscreen
+  startup_mode: Maximized
 
 # Colors (Gruvbox dark)
 colors:
@@ -45,3 +46,15 @@ font:
   normal:
     family: PragmataPro Mono
   size: 15
+
+shell:
+  program: /usr/local/bin/zsh
+  args:
+    - -l
+    - -c
+    - "tmux attach || tmux"
+mouse:
+  url:
+    launcher:
+      program: open
+    modifiers: Command
