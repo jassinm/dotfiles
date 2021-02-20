@@ -44,7 +44,9 @@ colors:
 
 font:
   normal:
-    family: PragmataPro Mono
+    #family: MesloLGS NF
+    family: PragmataPro
+    #family: PragmataPro Mono
   size: 15
 
 shell:

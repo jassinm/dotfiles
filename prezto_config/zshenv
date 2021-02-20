@@ -13,11 +13,13 @@ export PATH="/usr/local/opt/openssl@1.1/bin":$PATH
 export WORKON_HOME="/Users/locojay/.virtualenvs"
 
 
-export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib -L/usr/local/opt/zlib/lib"
-export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include  -L/usr/loca/opt/zlib/include"
+export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/bzip2/lib"
+export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include  -I/usr/loca/opt/zlib/include -I/usr/local/opt/bzip2/include"
 
 
 export GNUPGHOME=~/.gnupg/trezor
+
+export PIPENV_IGNORE_VIRTUALENVS=1
 
 # Ensure that a non-login, non-interactive shell has a defined environment.
 if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
