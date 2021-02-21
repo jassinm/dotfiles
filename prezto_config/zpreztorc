@@ -36,8 +36,8 @@ zstyle ':prezto:load' pmodule \
   'git' \
   'tmux'\
   'python'
-  #'node'
   #'syntax-highlighting'
+  #'node'
   #'completion' \
 
 #
@@ -94,6 +94,7 @@ zstyle ':prezto:module:editor' key-bindings 'vi'
 # Auto set to 'off' on dumb terminals.
 #zstyle ':prezto:module:prompt' theme 'sorin'
 zstyle ':prezto:module:prompt' theme 'powerlevel10k'
+#zstyle ':prezto:module:prompt' theme 'spaceship'
 
 #
 # Ruby
@@ -123,6 +124,7 @@ zstyle ':prezto:module:prompt' theme 'powerlevel10k'
 # Syntax Highlighting
 #
 
+zstyle ':prezto:module:syntax-highlighting' color 'yes'
 # Set syntax highlighters.
 # By default, only the main highlighter is enabled.
 # zstyle ':prezto:module:syntax-highlighting' highlighters \

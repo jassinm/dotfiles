@@ -116,11 +116,13 @@ link_file "$DOTFILES"/prezto $HOME/.zprezto
 #touch $HOME/.profile
 #
 
-for rcfile in `find "$DOTFILES/prezto_config/"`;
+for rcfile in `find "$DOTFILES/prezto_config/" -maxdepth 1 -type f ! -name ".DS_Store"`;
 do
     basename_=`basename "$rcfile"`
     link_file "$rcfile" "$HOME"/."$basename_"
 done
+
+link_file "$DOTFILES/p10k.zsh" "$HOME/.p10k.zsh"
 
 link_file "$DOTFILES/inputrc" "$HOME/.inputrc"
 link_file "$DOTFILES/ackrc" "$HOME/.ackrc"
