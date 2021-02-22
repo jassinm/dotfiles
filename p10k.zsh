@@ -204,7 +204,7 @@
 
   ##################################[ dir: current directory ]##################################
   # Default current directory color.
-  typeset -g POWERLEVEL9K_DIR_FOREGROUND=37
+  typeset -g POWERLEVEL9K_DIR_FOREGROUND=30 #37
   # If directory is too long, shorten some of its segments to the shortest possible unique
   # prefix. The shortened directory can be tab-completed to the original.
   typeset -g POWERLEVEL9K_SHORTEN_STRATEGY=truncate_to_unique
@@ -214,7 +214,7 @@
   typeset -g POWERLEVEL9K_DIR_SHORTENED_FOREGROUND=103
   # Color of the anchor directory segments. Anchor segments are never shortened. The first
   # segment is always an anchor.
-  typeset -g POWERLEVEL9K_DIR_ANCHOR_FOREGROUND=44
+  typeset -g POWERLEVEL9K_DIR_ANCHOR_FOREGROUND=37 #44
   # Display anchor directory segments in bold.
   typeset -g POWERLEVEL9K_DIR_ANCHOR_BOLD=true
   # Don't shorten directories that contain any of these files. They are anchors.
@@ -338,7 +338,7 @@
 
   #####################################[ vcs: git status ]######################################
   # Branch icon. Set this parameter to '\uF126 ' for the popular Powerline branch icon.
-  typeset -g POWERLEVEL9K_VCS_BRANCH_ICON=
+  typeset -g POWERLEVEL9K_VCS_BRANCH_ICON='\uF126 '
 
   # Untracked files icon. It's really a question mark, your font isn't broken.
   # Change the value of this parameter to show a different icon.
@@ -367,7 +367,7 @@
       local       meta='%f'     # default foreground
       local      clean='%9F'   # green foreground
       local   modified='%11F'  # yellow foreground
-      local  untracked='%44F'   # blue foreground
+      local  untracked='%37F'   # blue foreground
       local conflicted='%196F'  # red foreground
     else
       # Styling for incomplete and stale Git status.
