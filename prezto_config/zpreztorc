@@ -34,7 +34,8 @@ zstyle ':prezto:load' pmodule \
   'prompt' \
   'osx' \
   'git' \
-  'tmux'\
+  'tmux' \
+  'completion' \
   'python'
   #'syntax-highlighting'
   #'node'

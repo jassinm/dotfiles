@@ -49,3 +49,6 @@
 [mergetool "sourcetree"]
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+[mergetool "kaleidoscope"]
+	cmd = /usr/local/bin/ksdiff --merge \"$LOCAL\" \"$REMOTE\" --base \"$BASE\" --output \"$MERGED\"
+	trustExitCode = true
