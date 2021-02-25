@@ -98,9 +98,10 @@ link_file () {
   fi
 }
 
-
-local overwrite_all=true backup_all=true skip_all=false
-
+setup_config() {
+    local overwrite_all=true backup_all=true skip_all=false
+}
+setup_config
 #terminal
 link_file "$DOTFILES/alacritty.yml" "$HOME/.alacritty.yml"
 #tmux
