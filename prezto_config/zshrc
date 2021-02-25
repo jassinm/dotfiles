@@ -63,3 +63,5 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.g
 #eval "$(starship init zsh)"
 #
 source <(kubectl completion zsh)
+
+complete -C '/usr/local/bin/aws_completer' aws
