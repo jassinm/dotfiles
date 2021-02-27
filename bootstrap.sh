@@ -113,6 +113,7 @@ else
 fi
 
 link_file "$DOTFILES"/prezto $HOME/.zprezto
+#git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 ##zsh
 #touch $HOME/.profile
 #
