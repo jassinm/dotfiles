@@ -1,16 +1,16 @@
-
-
-
-* Environment
-
-** OSX
-
+* Default Shell
 #+begin_src language
-sudo brew install zsh
 chsh -s /usr/local/bin/zsh
 #+end_src
 
+* Install
+
+#+begin_src
+sh bootstrap.sh
+#+end_src
+
+
 * Update
-#+begin_src 
+#+begin_src
 git pull && git submodule update --init --recursive
 #+end_src
