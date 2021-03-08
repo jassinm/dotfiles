@@ -10,6 +10,7 @@ alias ta='tmux attach -t'
 
 alias clj='rlwrap -a dummy clj'
 alias mongo='rlwrap -a dummy mongo'
+alias erl='rlwrap -a dummy erl'
 
 alias zs='source ~/.zshrc'
 alias pyclean='find . -type f -name "*.py[co]" -delete'
@@ -21,10 +22,19 @@ alias ipynb="ipython notebook --ip='*' --pylab=inline"
 alias ka9='killall -9'
 alias k9='kill -9'
 
-alias erl='rlwrap -a dummy erl'
 alias clang11++='clang++ -std=c++11 -stdlib=libc++'
 alias R='/usr/local/bin/r'
 
 alias v='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
 alias vim='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
 
+#kubernetes
+alias k='kubectl'
+alias kg='kubectl get'
+alias kga='kubectl get all'
+alias kl='kubectl logs'
+alias ke='kubectl exec -it'
+
+#docker
+alias d='docker'
+alias dc='docker-compose'
