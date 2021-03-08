@@ -141,11 +141,11 @@ link_file "$DOTFILES"/urlview $HOME/.urlview
 #ln -nFs "$DOTFILES"/weechat $HOME/.weechat
 
 ##vim
-link_file "$DOTFILES"/vim "$HOME"/.vim
-link_file "$DOTFILES"/vim/vimrc "$HOME"/.vimrc
+link_file "$DOTFILES/vim" "$HOME/.vim"
+link_file "$DOTFILES/vim/vimrc" "$HOME/.vimrc"
 
-mkdir -p "$HOME"/.config
-link_file "$DOTFILES"/vim  "$HOME"/.config/nvim
+mkdir -p "$HOME/.config"
+link_file "$DOTFILES/vim"  "$HOME/.config/nvim"
 
 ##emacs
 link_file "$DOTFILES/doom.d" "$HOME/.doom.d"
