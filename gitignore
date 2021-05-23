@@ -41,7 +41,7 @@ echo venv
 *.un~
 #nfiles
 *.csv
-*.xls
+#*.xls
 .ropeproject/
 .env
 *.un~
@@ -53,3 +53,9 @@ deps
 =======
 #erlang
 *.beam
+.python-version
+pyrightconfig.json
+.pyre
+.pyre_configuration
+
+.docker

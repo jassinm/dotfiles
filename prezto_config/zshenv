@@ -25,3 +25,7 @@ export PIPENV_IGNORE_VIRTUALENVS=1
 if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
+
+
+export GITLAB_USER=jameknas
+export GITLAB_TOKEN="ofsHcctybx14HBC5MLKN"
