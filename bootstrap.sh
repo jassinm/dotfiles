@@ -145,13 +145,21 @@ link_file "$DOTFILES/vim" "$HOME/.vim"
 link_file "$DOTFILES/vim/vimrc" "$HOME/.vimrc"
 
 mkdir -p "$HOME/.config"
-link_file "$DOTFILES/vim"  "$HOME/.config/nvim"
+#link_file "$DOTFILES/vim"  "$HOME/.config/nvim"
+link_file "$DOTFILES/nvim" "$HOME/.config/nvim"
+link_file "$DOTFILES/bat" "$HOME/.config/bat"
+link_file "$DOTFILES/ranger" "$HOME/.config/ranger"
+
+link_file "$DOTFILES/kitty" "$HOME/.config/kitty"
+link_file "$DOTFILES/alacritty" "$HOME/.config/alacritty"
 
 ##emacs
 link_file "$DOTFILES/doom.d" "$HOME/.doom.d"
 #
 
 #link_file "$DOTFILES/ipython" "$HOME/.ipython"
+mkdir -p "$HTOME/.ipython/profile_default"
+link_file "$DOTFILES/ipython/ipython/profile_default/ipython_config.py" "$HOME/.ipython/profile_default/ipython_config.py"
 #
 ##emacs
 ##ln -nFs "$DOTFILES"/emacs_spacemacs "$HOME"/.emacs.d

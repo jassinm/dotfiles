@@ -58,7 +58,7 @@ shell:
     - -c
     - "tmux attach || tmux"
 mouse:
-  url:
+  hints:
     launcher:
       program: open
     modifiers: Command
