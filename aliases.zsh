@@ -25,7 +25,7 @@ alias k9='kill -9'
 alias clang11++='clang++ -std=c++11 -stdlib=libc++'
 alias R='/usr/local/bin/r'
 
-alias v='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
+alias vi='/usr/local/bin/vim'
 alias vim='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
 
 #kubernetes
@@ -38,3 +38,23 @@ alias ke='kubectl exec -it'
 #docker
 alias d='docker'
 alias dc='docker-compose'
+
+vdiff () {
+    if [ "${#}" -ne 2 ] ; then
+        echo "vdiff requires two arguments"
+        echo "  comparing dirs:  vdiff dir_a dir_b"
+        echo "  comparing files: vdiff file_a file_b"
+        return 1
+    fi
+
+    local left="${1}"
+    local right="${2}"
+
+    if [ -d "${left}" ] && [ -d "${right}" ]; then
+        vim +"DirDiff ${left} ${right}"
+    else
+        vim -d "${left}" "${right}"
+    fi
+}
+
+alias icat="kitty +kitten icat"
