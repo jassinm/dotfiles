@@ -12,3 +12,5 @@ $if mode=vi
     "\C-p": history-search-backward
 $endif
 
+set mark-symlinked-directories on
+set completion-ignore-case on
