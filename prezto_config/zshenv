@@ -29,3 +29,11 @@ fi
 
 export GITLAB_USER=jameknas
 export GITLAB_TOKEN="ofsHcctybx14HBC5MLKN"
+
+#export TERM=xterm-256color
+#
+
+# export BAT_THEME='gruvbox'
+
+# export FZF_DEFAULT_COMMAND='rg --files --follow --glob "!.git/*"'
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
