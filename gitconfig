@@ -7,12 +7,18 @@
     autocrlf = input
     pager = less
 [alias]
+    a = add
+    b = branch
     co = checkout
-    gl  = log -16 --color=always --all --graph --topo-order --pretty='format: %Cgreen%h%Creset %s%Cred%d%Creset%n'
-    lg  = log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen%cn %Cred%cr %C(cyan)%ci%Creset' --abbrev-commit
+    ba = branch -a
+	bdbd = branch -d
+    ls = ls-files
+    gl = log -16 --color=always --all --graph --topo-order --pretty='format: %Cgreen%h%Creset %s%Cred%d%Creset%n'
+    lg = log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen%cn %Cred%cr %C(cyan)%ci%Creset' --abbrev-commit
     one = show -s
     st = status
     caa = commit -a --amend -C HEAD
+    dirdiff = difftool --dir-diff --no-symlinks
 [color]
     ui = auto
     diff = auto
@@ -27,14 +33,21 @@
     user = locojay
     token =
 [diff]
-    tool = Kaleidoscope
+    tool = kitty
+    guitool = Kaleidoscope
 [difftool]
     prompt = false
     trustExitCode = true
 [difftool "Kaleidoscope"]
     cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
-[difftool "meld"]
-    cmd = meld "$LOCAL" "$REMOTE"
+[difftool "kitty"]
+    cmd = kitty +kitten diff $LOCAL $REMOTE
+[difftool "kitty.gui"]
+    cmd = kitty kitty +kitten diff $LOCAL $REMOTE
+[difftool "vscode"]
+    cmd = code -wait --diff --new-window \"$LOCAL\" \"$REMOTE\"
+[difftool "vim"]
+    cmd = vim -f '+next' '+execute \"DirDiff\" argv(0) argv(1)' $LOCAL $REMOTE
 [merge]
     tool = Kaleidoscope
 [mergetool]
@@ -46,18 +59,6 @@
     diff =
 [credential]
     helper = osxkeychain
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[difftool "vscode"]
-    cmd = code -wait --diff --new-window \"$LOCAL\" \"$REMOTE\"
-[difftool "vim"]
-    cmd = vim -f '+next' '+execute \"DirDiff\" argv(0) argv(1)' $LOCAL $REMOTE
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
 [mergetool "kaleidoscope"]
     cmd = /usr/local/bin/ksdiff --merge \"$LOCAL\" \"$REMOTE\" --base \"$BASE\" --output \"$MERGED\"
     trustExitCode = true
-[alias]
-    dirdiff = difftool --dir-diff
