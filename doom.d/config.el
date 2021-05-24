@@ -6,19 +6,21 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
-(setq user-full-name "Jassin Meknassi"
-      user-mail-address "jassinm@pm.me")
+(setq user-full-name "Locojay"
+      user-mail-address "locojay@pm.me")
 
+(setq doom-theme 'nil)
 (require 'disp-table)
 (require 'nano-faces)
 (require 'nano-theme)
 (require 'nano-writer)
 (require 'nano-base-colors)
 (require 'nano-theme-light)
-(require 'nano-theme-dark)
+;;(require 'nano-theme-dark)
 (require 'nano-help)
 (require 'nano-modeline)
 (require 'nano-layout)
+
 ;;jassinm
 (load "~/.doom.d/org-webkit-preview.el")
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
@@ -40,7 +42,7 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 ;;(setq doom-theme 'leuven)
-(setq doom-theme 'leuven)
+;;(setq doom-theme 'leuven)
 ;;(setq doom-theme 'doom-gruvbox)
 (setq doom-gruvbox-dark-variant "hard")
 (setq display-line-numbers-type t)
