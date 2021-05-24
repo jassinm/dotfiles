@@ -118,6 +118,9 @@ link_file "$DOTFILES"/prezto $HOME/.zprezto
 #touch $HOME/.profile
 #
 
+#cd $ZPREZTODIR
+#git clone --recurse-submodules https://github.com/belak/prezto-contrib contrib
+
 for rcfile in `find "$DOTFILES/prezto_config/" -maxdepth 1 -type f ! -name ".DS_Store"`;
 do
     basename_=`basename "$rcfile"`
