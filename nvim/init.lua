@@ -32,6 +32,15 @@ require('lualine').setup {
   }
 }
 
+require('lsp-rooter').setup {
+
+}
+
+require('orgmode').setup({
+  org_agenda_files = {'~/Dropbox  (Personal)/org/agenda.org', '~/my-orgs/**/*'},
+  org_default_notes_file = '~/Dropbox (Personal)/org/notes.org',
+})
+
 -- init.lua
 vim.g.symbols_outline = {
     highlight_hovered_item = true,
@@ -52,9 +61,10 @@ vim.g.symbols_outline = {
 vim.g.gruvbox_italicize_comments = true
 vim.g.gruvbox_invert_selection = false
 vim.g.gruvbox_contrast_dark = "hard"
-
 -- Load the colorscheme
 vim.cmd([[colorscheme gruvbox]])
+--vim.g.gruvbox_flat_style = "dark"
+--vim.cmd[[colorscheme gruvbox-flat]]
 --
 -- Font
 vim.o.guifont = "PragmataPro Nerd Font:h15"
@@ -144,6 +154,8 @@ vim.api.nvim_set_keymap('n', '<leader>wx', ':wincmd x<CR>', { noremap = true, si
 vim.api.nvim_set_keymap('n', '<leader>wq', ':wincmd q<CR>', { noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>ws', ':split <CR>', { noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>wv', ':vsplit <CR>', { noremap = true, silent = true})
+
+-- Quickfix
 --
 -- Better nav for omnicomplete
 vim.cmd('inoremap <expr> <c-j> (\"\\<C-n>\")')
@@ -175,3 +187,4 @@ vim.api.nvim_set_keymap('n', '<leader>K', ':SymbolsOutline<CR>', {noremap = true
 -- vim.wo.foldmethod="expr"
 -- vim.o.foldexpr="nvim_treesitter#foldexpr()"
 --vim.wo.foldenable=false -- can be enabled directly in opened file - using 'zi' - toogle fold
+--

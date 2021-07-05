@@ -20,6 +20,8 @@ return require("packer").startup(
 
         -- -- Color
         use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
+        --use 'eddyekofo94/gruvbox-flat.nvim'
+
         --use 'folke/tokyonight.nvim'
         use 'arcticicestudio/nord-vim'
         use {"norcalli/nvim-colorizer.lua"}
@@ -37,6 +39,7 @@ return require("packer").startup(
         use 'folke/lsp-colors.nvim'
 
         -- Telescope
+
         use {
         "nvim-telescope/telescope.nvim",
              requires = {
@@ -45,10 +48,6 @@ return require("packer").startup(
                  {'nvim-telescope/telescope-media-files.nvim'}
              }
         }
-
-        -- -- Dbugging
-        -- use "mfussenegger/nvim-dap"
-
         -- -- Formating
         use 'sbdchd/neoformat'
         -- -- Autocomplete
@@ -56,23 +55,20 @@ return require("packer").startup(
         use "hrsh7th/vim-vsnip"
         use "rafamadriz/friendly-snippets"
 
-        -- -- Teesitter
+        -- -- Treesitter
         use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
         use "windwp/nvim-ts-autotag"
 
         -- -- Eplorer
         use "kyazdani42/nvim-tree.lua"
-        --use {"sindrets/nvim-tree.lua", branch = "feat/window-picker"}
-
-        use "preservim/nerdtree"
-        -- -- TODO remove when open on dir is supported by nvimtree
+        -- use "preservim/nerdtree"
         use "kevinhwang91/rnvimr"
 
-        -- -- use {'lukas-reineke/indent-blankline.nvim', opt=true, branch = 'lua'}
         use "terrortylor/nvim-comment"
+
         use "kevinhwang91/nvim-bqf" -- improve quickfix
 
-        use "liuchengxu/vim-which-key"
+        -- use "liuchengxu/vim-which-key"
         -- --
         -- Tagbar
         --use "liuchengxu/vista.vim"
@@ -83,11 +79,10 @@ return require("packer").startup(
 
         -- -- Status Line and Bufferline
         -- use "glepnir/galaxyline.nvim"
-        -- use "hoob3rt/lualine.nvim"
+        -- --use 'bling/vim-airline'
         use {'hoob3rt/lualine.nvim',
             requires = {'kyazdani42/nvim-web-devicons', opt = true},
         }
-        -- --use 'bling/vim-airline'
         --
         -- -- bar
         use "romgrk/barbar.nvim"
@@ -96,9 +91,10 @@ return require("packer").startup(
         -- -- use 'tpope/vim-commentary'
         use 'tpope/vim-surround'
         use 'tpope/vim-fugitive'
+        use 'tpope/vim-unimpaired'
 
         use 'windwp/nvim-autopairs'
-        use 'p00f/nvim-ts-rainbow'
+        -- use 'p00f/nvim-ts-rainbow'
 
         use {
            'lewis6991/gitsigns.nvim',
@@ -123,9 +119,10 @@ return require("packer").startup(
         use 'lambdalisue/suda.vim'
 
         -- ---
-        use {'lukas-reineke/indent-blankline.nvim', branch='lua'}
+        use {'lukas-reineke/indent-blankline.nvim', branch='master'}
         -- --
-        use 'airblade/vim-rooter'
+        -- use 'airblade/vim-rooter'
+        use 'ahmedkhalf/lsp-rooter.nvim'
         -- --
         use 'jpalardy/vim-slime'
 
@@ -133,11 +130,19 @@ return require("packer").startup(
         use 'Konfekt/FastFold'
         use 'tmhedberg/SimpylFold '
 
+        use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
         -- Git diff
         --
         use 'sindrets/diffview.nvim'
 
         -- Jupyter
         use 'goerz/jupytext.vim'
+
+        -- Orgmode
+        use 'kristijanhusak/orgmode.nvim'
+
+        -- term
+        use 'kassio/neoterm'
+
     end
 )
