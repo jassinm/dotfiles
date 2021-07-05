@@ -105,7 +105,7 @@ lspconfig.efm.setup({
                     },
         languages = {
             ["="] = {},
-            python = {flake8, isort} --, mypy}
+            python = {flake8, isort, mypy}
         }
     }
 })
