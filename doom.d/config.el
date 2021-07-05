@@ -9,6 +9,7 @@
 (setq user-full-name "Locojay"
       user-mail-address "locojay@pm.me")
 
+<<<<<<< HEAD
 ;;(setq doom-theme 'nil)
 ;;(require 'disp-table)
 ;;(require 'nano-faces)
@@ -21,6 +22,19 @@
 ;;(require 'nano-modeline)
 ;;(require 'nano-layout)
 
+=======
+(setq doom-theme 'nil)
+(require 'disp-table)
+(require 'nano-faces)
+(require 'nano-theme)
+(require 'nano-writer)
+(require 'nano-base-colors)
+(require 'nano-theme-light)
+;;(require 'nano-theme-dark)
+(require 'nano-help)
+(require 'nano-modeline)
+(require 'nano-layout)
+>>>>>>> 3ced7c9d8e27e412e2c30ff183de55268fa542be
 
 ;;jassinm
 (load "~/.doom.d/org-webkit-preview.el")
@@ -43,9 +57,15 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 ;;(setq doom-theme 'leuven)
+<<<<<<< HEAD
 (setq doom-theme 'doom-gruvbox)
 ;;(setq doom-gruvbox-dark-variant "hard")
 ;;(setq doom-theme 'nano)
+=======
+;;(setq doom-theme 'leuven)
+;;(setq doom-theme 'doom-gruvbox)
+(setq doom-gruvbox-dark-variant "hard")
+>>>>>>> 3ced7c9d8e27e412e2c30ff183de55268fa542be
 (setq display-line-numbers-type t)
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
