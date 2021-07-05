@@ -58,3 +58,5 @@ vdiff () {
 }
 
 alias icat="kitty +kitten icat"
+
+alias emc="emacsclient --create-frame --alternate-editor=''"
