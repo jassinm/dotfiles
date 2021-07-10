@@ -67,7 +67,7 @@ vim.cmd([[colorscheme gruvbox]])
 --vim.cmd[[colorscheme gruvbox-flat]]
 --
 -- Font
-vim.o.guifont = "PragmataPro Nerd Font:h15"
+vim.o.guifont = "PragmataPro Nerd Font:h19"
 --
 -- -- Settings
 -- --
@@ -183,8 +183,6 @@ vim.api.nvim_set_keymap('n', '<leader>sd', [[<cmd>lua require('telescope.builtin
 --
 vim.api.nvim_set_keymap('n', '<leader>K', ':SymbolsOutline<CR>', {noremap = true, silent = true})
 
-
 -- vim.wo.foldmethod="expr"
 -- vim.o.foldexpr="nvim_treesitter#foldexpr()"
 --vim.wo.foldenable=false -- can be enabled directly in opened file - using 'zi' - toogle fold
---

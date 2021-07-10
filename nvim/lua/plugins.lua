@@ -35,8 +35,8 @@ return require("packer").startup(
         use "glepnir/lspsaga.nvim"
         -- use "kabouzeid/nvim-lspinstall"
         use "folke/lsp-trouble.nvim"
-        use "onsails/lspkind-nvim "
-        use 'folke/lsp-colors.nvim'
+        use "folke/lsp-colors.nvim"
+        --use 'onsails/lspkind-nvim' use 'folke/lsp-colors.nvim'
 
         -- Telescope
 
@@ -128,7 +128,7 @@ return require("packer").startup(
 
         --
         use 'Konfekt/FastFold'
-        use 'tmhedberg/SimpylFold '
+        use 'tmhedberg/SimpylFold'
 
         use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
         -- Git diff
