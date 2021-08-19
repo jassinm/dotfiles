@@ -4,5 +4,5 @@
 	ignore = dirty
 [submodule "prezto"]
 	path = prezto
-	url = https://github.com/sorin-ionescu/prezto.git
+	url = git://github.com/jassinm/prezto.git
     ignore  =  dirty
