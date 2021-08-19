@@ -12,5 +12,5 @@ sh bootstrap.sh
 
 * Update
 #+begin_src
-git pull && git submodule update --init --recursive
+git pull && git submodule update --init --recursive --remote
 #+end_src
