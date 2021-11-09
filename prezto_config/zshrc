@@ -58,6 +58,6 @@ source <(kubectl completion zsh)
 
 eval "$(direnv hook zsh)"
 
-complete -C '/usr/local/bin/aws_completer' aws
+# complete -C '/usr/local/bin/aws_completer' aws
 
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
