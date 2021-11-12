@@ -1,1 +1,0 @@
-/Users/locojay/.dotfiles/doom.d
