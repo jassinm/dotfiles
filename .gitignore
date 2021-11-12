@@ -19,3 +19,5 @@ ipython/bitey/
 .weechat/logs/
 irc.conf
 ipython/cython
+coc
+nvim/plugin
