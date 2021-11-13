@@ -32,7 +32,7 @@ require('lualine').setup {
   }
 }
 
-require('lsp-rooter').setup {
+require('project_nvim').setup {
 
 }
 
