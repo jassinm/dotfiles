@@ -122,7 +122,7 @@ return require("packer").startup(
         use {'lukas-reineke/indent-blankline.nvim', branch='master'}
         -- --
         -- use 'airblade/vim-rooter'
-        use 'ahmedkhalf/lsp-rooter.nvim'
+        use 'ahmedkhalf/project.nvim'
         -- --
         use 'jpalardy/vim-slime'
 
