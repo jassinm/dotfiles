@@ -65,6 +65,9 @@ lspconfig.ccls.setup{
   }
 }
 
+lspconfig.rust_analyzer.setup {
+}
+
 
 local black = {
     formatCommand = "black -",
@@ -109,6 +112,7 @@ lspconfig.efm.setup({
         }
     }
 })
+
 
 require("trouble").setup {
 }
