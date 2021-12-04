@@ -9,6 +9,7 @@ export PATH="/usr/local/bin/":$PATH
 export PATH="/Library/TeX/texbin":$PATH
 #export PATH="/usr/local/texlive/2020basic/bin/x86_64-darwin"
 export PATH="/usr/local/opt/openssl@1.1/bin":$PATH
+export PATH=$HOME/.cargo/bin:$PATH
 
 export WORKON_HOME="/Users/locojay/.virtualenvs"
 
@@ -37,3 +38,4 @@ export GITLAB_TOKEN="ofsHcctybx14HBC5MLKN"
 
 # export FZF_DEFAULT_COMMAND='rg --files --follow --glob "!.git/*"'
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+. "$HOME/.cargo/env"
