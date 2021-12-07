@@ -45,6 +45,8 @@ fi
 #fi
 #unset __conda_setup
 ## <<< conda initialize <<<
+#
+export PATH="$HOME/.pyenv/versions/miniforge3-4.10.1-5/bin:$PATH"
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -61,3 +63,7 @@ eval "$(direnv hook zsh)"
 # complete -C '/usr/local/bin/aws_completer' aws
 
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
+
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
