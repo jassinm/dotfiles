@@ -181,5 +181,5 @@
 (map! :leader
       "c l" #'comment-or-uncomment-region)
 
-(toggle-frame-maximized)
+;;(toggle-frame-maximized)
 ;; (toggle-frame-fullscreen)
