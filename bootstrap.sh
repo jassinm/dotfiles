@@ -80,5 +80,8 @@ link_file "$DOTFILES/doom.d" "$HOME/.doom.d"
 
 #link_file "$DOTFILES/ipython" "$HOME/.ipython"
 mkdir -p "$HOME/.ipython/profile_default"
-link_file "$DOTFILES/ipython/ipython/profile_default/ipython_config.py" "$HOME/.ipython/profile_default/ipython_config.py"
+link_file "$DOTFILES/ipython/profile_default/ipython_config.py" "$HOME/.ipython/profile_default/ipython_config.py"
+link_file "$DOTFILES/ipython/profile_default/startup/keybindings.py" "$HOME/.ipython/profile_default/startup/keybindings.py"
 #
+#jupyter
+link_file "$DOTFILES/jupyter" "$HOME/.jupyter"

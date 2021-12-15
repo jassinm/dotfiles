@@ -9,7 +9,7 @@
 export PATH="/opt/homebrew/bin":$PATH
 export PATH="/Library/TeX/texbin":$PATH
 export PATH=$HOME/.cargo/bin:$PATH
-export PATH="$HOME/.pyenv/versions/miniforge3-4.10.1-5/bin:$PATH"
+#export PATH="$HOME/.pyenv/versions/miniforge3-4.10.1-5/bin:$PATH"
 
 export WORKON_HOME="/Users/locojay/.virtualenvs"
 
@@ -18,7 +18,7 @@ export WORKON_HOME="/Users/locojay/.virtualenvs"
 #export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include  -I/usr/loca/opt/zlib/include -I/usr/local/opt/bzip2/include"
 
 
-export GNUPGHOME=~/.gnupg/trezor
+#export GNUPGHOME=~/.gnupg/trezor
 
 export PIPENV_IGNORE_VIRTUALENVS=1
 
