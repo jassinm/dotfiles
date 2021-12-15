@@ -1,11 +1,7 @@
-* Default Shell
-#+begin_src language
-chsh -s /usr/local/bin/zsh
-#+end_src
-
 * Install
 
 #+begin_src
+git clone --recurse-submodules -j8 https://github.com/jassinm/dotfiles  ~/.dotfiles
 sh bootstrap.sh
 #+end_src
 
@@ -14,3 +10,13 @@ sh bootstrap.sh
 #+begin_src
 git pull && git submodule update --init --recursive --remote
 #+end_src
+
+* Tmux
+
+https://github.com/tmux-plugins/tpm
+
+#+begin_src
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+#+end_src
+
+then run Control-b I

@@ -25,10 +25,11 @@ bindkey -M viins "jk" vi-cmd-mode
 source $HOME/.dotfiles/aliases.zsh
 #
 # Move next only if `homebrew` is installed
-if command -v brew >/dev/null 2>&1; then
-	# Load rupa's z if installed
-	[ -f $(brew --prefix)/etc/profile.d/z.sh ] && source $(brew --prefix)/etc/profile.d/z.sh
-fi
+# if command -v brew >/dev/null 2>&1; then
+# 	# Load rupa's z if installed
+# 	[ -f $(brew --prefix)/etc/profile.d/z.sh ] && source $(brew --prefix)/etc/profile.d/z.sh
+# fi
+. /opt/homebrew/etc/profile.d/z.sh
 
 
 ## >>> conda initialize >>>
@@ -46,7 +47,7 @@ fi
 #unset __conda_setup
 ## <<< conda initialize <<<
 #
-export PATH="$HOME/.pyenv/versions/miniforge3-4.10.1-5/bin:$PATH"
+#export PATH="$HOME/.pyenv/versions/miniforge3-4.10.1-5/bin:$PATH"
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
