@@ -68,3 +68,18 @@ typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+
+
+# configure SSH to use GPG
+#echo 'export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)' >> ~/.zshrc
+# start gpg-agent, if it isn't started already
+#echo 'gpgconf --launch gpg-agent' >> ~/.zshrc
+#echo 'gpg-connect-agent /bye' >> ~/.zshrc
+# the docs say to use: gpg-connect-agent /bye
+
+# Set an environment variable to tell GPG the current terminal.
+export GPG_TTY=$(tty)
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+gpgconf --launch gpg-agent
+gpg-connect-agent /bye

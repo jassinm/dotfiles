@@ -139,7 +139,10 @@ return require("packer").startup(
         use 'goerz/jupytext.vim'
 
         -- Orgmode
-        use 'kristijanhusak/orgmode.nvim'
+        use {'nvim-orgmode/orgmode', config = function()
+            require('orgmode').setup{}
+        end
+        }
 
         -- term
         use 'kassio/neoterm'
