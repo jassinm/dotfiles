@@ -41,3 +41,7 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 # export FZF_DEFAULT_COMMAND='rg --files --follow --glob "!.git/*"'
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 . "$HOME/.cargo/env"
+
+export HOMEBREW_NO_ANALYTICS=1
+export HOMEBREW_NO_INSECURE_REDIRECT=1
+export HOMEBREW_CASK_OPTS=--require-sha
