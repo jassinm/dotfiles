@@ -55,7 +55,7 @@
 (setenv "PATH" (concat ":/Library/TeX/texbin/" (getenv "PATH")))
 (add-to-list 'exec-path "/Library/TeX/texbin/")
 
-(setq org-roam-directory "~/Dropbox (Personal)/org/roam")
+(setq org-roam-directory "~/Sync/org/roam")
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (after! org
@@ -65,9 +65,9 @@
   (map! :leader
         "n p" #'org-webkit-preview/org-preview-html)
   (setq
-        org-directory "~/Dropbox (Personal)/org/"
+        org-directory "~/Sync/org/"
         ;;org-agenda-files (concat org-directory "notes")
-        org-agenda-files `("~/Dropbox (Personal)/org/agenda.org")
+        org-agenda-files `("~/Sync/org/")
         org-planning-line-re ""
         org-src-fontify-natively t
         org-latex-create-formula-image-program 'dvisvgm
@@ -108,7 +108,7 @@
 ;;         (writer-mode))
 (after! deft
   (setq
-        deft-directory "~/Dropbox (Personal)/org"
+        deft-directory "~/Sync/org"
         deft-extension '("org" "mdown")
         deft-recursive t))
 
