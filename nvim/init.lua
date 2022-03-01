@@ -52,6 +52,11 @@ require('orgmode').setup({
   org_default_notes_file = '~/Dropbox (Personal)/org/notes.org',
 })
 
+require('orgmode').setup_ts_grammar()
+
+require('rust-tools').setup({})
+require('rust-tools.runnables').runnables()
+
 -- init.lua
 vim.g.symbols_outline = {
     highlight_hovered_item = true,
