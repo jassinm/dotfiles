@@ -146,6 +146,8 @@ return require("packer").startup(
 
         -- term
         use 'kassio/neoterm'
+        --rust
+        use "simrat39/rust-tools.nvim"
 
     end
 )

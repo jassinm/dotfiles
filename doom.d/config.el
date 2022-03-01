@@ -48,6 +48,9 @@
 ;;(setq doom-theme 'leuven)
 ;;(setq doom-theme 'doom-gruvbox)
 (setq display-line-numbers-type t)
+
+(custom-set-faces
+  '(default ((t (:background "#1E2021")))))
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 ;;org
@@ -81,6 +84,10 @@
         ;org-ref-pdf-directory '("~/Dropbox (Personal)/bibliography/bibtex-pdfs/")
 
         org-capture-templates `(
+                ("n" "Note" entry (file+headline ,(concat org-directory "notes.org") "Inbox")
+                 "* NOTE %?\n%U" :empty-lines 1)
+                ("t" "Todo" entry (file+headline ,(concat org-directory "notes.org") "TODOs")
+                "* TODO %?\n%U" :empty-lines 1)
                 ("p" "Protocol" entry (file+headline ,(concat org-directory "notes.org") "Inbox")
                 "* %^{Title}\nSource: %u, %c\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n\n\n%?")
                 ("L" "Protocol Link" entry (file+headline ,(concat org-directory "notes.org") "Inbox")
@@ -168,8 +175,8 @@
   (nano-theme)
  )
 
-(setq doom-font (font-spec :family "PragmataPro" :size 19)
-      doom-big-font (font-spec :family "PragmataPro" :size 22))
+(setq doom-font (font-spec :family "PragmataPro" :size 17)
+      doom-big-font (font-spec :family "PragmataPro" :size 20))
 (map! :leader
       (:prefix ("e". "evaluate/EWW")
        :desc "Evaluate elisp in buffer" "b" #'eval-buffer
