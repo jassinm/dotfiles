@@ -6,13 +6,17 @@
 
 
 export PATH="/opt/homebrew/bin":$PATH
+export PATH="/opt/homebrew/sbin":$PATH
 export PATH="/Library/TeX/texbin":$PATH
 export PATH=$HOME/.cargo/bin:$PATH
+export PATH="/opt/homebrew/opt/openjdk/bin":$PATH
+
 #export PATH="$HOME/.pyenv/versions/miniforge3-4.10.1-5/bin:$PATH"
 #export PATH=$(brew --prefix openssh)/bin:$PATH
 
 #export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/bzip2/lib"
 #export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include  -I/usr/loca/opt/zlib/include -I/usr/local/opt/bzip2/include"
+#export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
 
 
 #export GNUPGHOME=~/.gnupg/trezor
