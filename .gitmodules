@@ -1,8 +1,8 @@
 [submodule "vim"]
 	path = vim
-	url = git://github.com/locojay/locovim.git
+	url = https://github.com/jassinm/locovim
 	ignore = dirty
 [submodule "prezto"]
 	path = prezto
-	url = git://github.com/jassinm/prezto.git
+	url = https://github.com/sorin-ionescu/prezto
     ignore  =  dirty
