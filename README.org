@@ -1,4 +1,16 @@
-* Install
+* Installation
+
+** Requirements
+
+*** OSX
+
+#+begin_src
+brew install stow
+#+end_src
+
+*** Debian
+
+** Install
 
 #+begin_src
 git clone --recurse-submodules -j8 https://github.com/jassinm/dotfiles  ~/.dotfiles
@@ -6,17 +18,27 @@ sh bootstrap.sh
 #+end_src
 
 
-* Update
+** Update
 #+begin_src
-git pull && git submodule update --init --recursive --remote
+git pull
+git submodule sync --recursive
+git submodule update --init --recursive
 #+end_src
 
-* Tmux
-
-https://github.com/tmux-plugins/tpm
-
+** Change Shell
 #+begin_src
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+chsh -s /bin/zsh
 #+end_src
 
-then run Control-b I
+* Setup
+
+** Tmux
+
+start tmux then run ~Control-b I~ to install the [[tpm][https://github.com/tmux-plugins/tpm]] plugins
+
+** emacs
+
+#+begin_src
+cd .emacs.d/bin
+./doom install
+#+end_src
