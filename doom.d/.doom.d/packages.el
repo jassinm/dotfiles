@@ -15,11 +15,17 @@
 ;;(package! org-bullets)
 ;;
 ;;(package! org-ref)
-
+(package! dashboard)
 (package! nano-emacs
   :recipe (:host github :repo "rougier/nano-emacs"))
-(package! elegant-emacs
-  :recipe (:host github :repo "rougier/elegant-emacs"))
+;; (package! elegant-emacs
+;;   :recipe (:host github :repo "rougier/elegant-emacs"))
+;; (package! nano-theme
+;;   :recipe (:host github :repo "rougier/nano-theme"))
+;; (package! nano-modeline
+;;   :recipe (:host github :repo "rougier/nano-modeline"))
+;; (package! nano-splash
+;;   :recipe (:host github :repo "rougier/nano-splash"))
 ;; To install a package directly from a remote git repo, you must specify a
 ;; `:recipe'. You'll find documentation on what `:recipe' accepts here:
 ;; https://github.com/raxod502/straight.el#the-recipe-format

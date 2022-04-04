@@ -34,14 +34,9 @@ link_file () {
 }
 
 #terminal
-link_file "$DOTFILES/alacritty.yml" "$HOME/.alacritty.yml"
+#link_file "$DOTFILES/alacritty.yml" "$HOME/.alacritty.yml"
 #tmux
-UNAME=$(uname -s)
-if [ "$UNAME" = 'Darwin' ] ; then
-    link_file "$DOTFILES"/tmux/tmux.conf "$HOME"/.tmux.conf
-else
-    link_file "$DOTFILES"/tmux/tmux_nonosx.conf "$HOME"/.tmux.conf
-fi
+stow tmux
 
 link_file "$DOTFILES"/prezto $HOME/.zprezto
 for rcfile in `find "$DOTFILES/prezto_config/" -maxdepth 1 -type f ! -name ".DS_Store"`;
@@ -50,7 +45,17 @@ do
     link_file "$rcfile" "$HOME"/."$basename_"
 done
 
-link_file "$DOTFILES/p10k.zsh" "$HOME/.p10k.zsh"
+
+stow p10k
+
+#stow alacritty
+stow kitty
+
+stow ranger
+
+
+stow nvim
+stow bat
 
 link_file "$DOTFILES/inputrc" "$HOME/.inputrc"
 link_file "$DOTFILES/ackrc" "$HOME/.ackrc"
@@ -59,29 +64,23 @@ link_file "$DOTFILES/ackrc" "$HOME/.ackrc"
 link_file "$DOTFILES"/gitconfig $HOME/.gitconfig
 link_file "$DOTFILES"/gitignore $HOME/.gitignore
 
-link_file "$DOTFILES"/urlview $HOME/.urlview
-
 ##vim
 link_file "$DOTFILES/vim" "$HOME/.vim"
 link_file "$DOTFILES/vim/vimrc" "$HOME/.vimrc"
 
-mkdir -p "$HOME/.config"
+#mkdir -p "$HOME/.config"
 #link_file "$DOTFILES/vim"  "$HOME/.config/nvim"
-link_file "$DOTFILES/nvim" "$HOME/.config/nvim"
-link_file "$DOTFILES/bat" "$HOME/.config/bat"
-link_file "$DOTFILES/ranger" "$HOME/.config/ranger"
+#link_file "$DOTFILES/nvim" "$HOME/.config/nvim"
+#link_file "$DOTFILES/bat" "$HOME/.config/bat"
+#link_file "$DOTFILES/ranger" "$HOME/.config/ranger"
 
-link_file "$DOTFILES/kitty" "$HOME/.config/kitty"
-link_file "$DOTFILES/alacritty" "$HOME/.config/alacritty"
+# link_file "$DOTFILES/alacritty" "$HOME/.config/alacritty"
 
 ##emacs
-link_file "$DOTFILES/doom.d" "$HOME/.doom.d"
+#link_file "$DOTFILES/doom.d" "$HOME/.doom.d"
+stow doom.d
 #
 
-#link_file "$DOTFILES/ipython" "$HOME/.ipython"
-mkdir -p "$HOME/.ipython/profile_default"
-link_file "$DOTFILES/ipython/profile_default/ipython_config.py" "$HOME/.ipython/profile_default/ipython_config.py"
-link_file "$DOTFILES/ipython/profile_default/startup/keybindings.py" "$HOME/.ipython/profile_default/startup/keybindings.py"
-#
+stow ipython
 #jupyter
 link_file "$DOTFILES/jupyter" "$HOME/.jupyter"
