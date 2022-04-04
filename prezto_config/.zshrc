@@ -22,7 +22,7 @@ fi
 # Customize to your needs...
 setopt interactivecomments
 bindkey -M viins "jk" vi-cmd-mode
-source $HOME/.dotfiles/aliases.zsh
+source $HOME/.aliases.zsh
 #
 # Move next only if `homebrew` is installed
 if command -v brew >/dev/null 2>&1; then
