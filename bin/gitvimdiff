@@ -1,2 +1,0 @@
-#exec vimdiff ${2} ${5}
-vim -d ${2} ${5}
