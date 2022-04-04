@@ -8,3 +8,6 @@
 [submodule "prezto_contrib/.zprezto/contrib"]
 	path = prezto_contrib/.zprezto/contrib
 	url = https://github.com/belak/prezto-contrib
+[submodule "prezto/.zprezto"]
+	path = prezto/.zprezto
+	url = https://github.com/sorin-ionescu/prezto
