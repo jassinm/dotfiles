@@ -1,18 +1,24 @@
 #!/usr/bin/env bash
 
+UNAME=$(uname -s)
 
+# ZSH
 stow prezto
-stow prezto_config
-
+if [ "$UNAME" = 'Darwin' ] ; then
+    stow prezto_config
+else
+    stow prezto_config_linux
+fi
+stow prezto_contrib
 stow p10k
+
 
 #stow alacritty
 stow kitty
 stow tmux
 
 stow nvim
-
-##emacs
+# emacs
 stow doom
 stow doom_config
 
@@ -20,7 +26,6 @@ stow input
 stow ack
 stow ranger
 stow bat
-
 stow git
 
 ##vim

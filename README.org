@@ -10,6 +10,11 @@ brew install stow
 
 *** Debian
 
+#+begin_src
+apt-get install zsh
+apt-get install stow
+#+end_src
+
 ** Install
 
 #+begin_src
