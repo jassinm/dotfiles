@@ -33,29 +33,21 @@ link_file () {
   success "linked $1 to $2"
 }
 
-#terminal
-#link_file "$DOTFILES/alacritty.yml" "$HOME/.alacritty.yml"
-#tmux
-stow tmux
 
 link_file "$DOTFILES"/prezto $HOME/.zprezto
-for rcfile in `find "$DOTFILES/prezto_config/" -maxdepth 1 -type f ! -name ".DS_Store"`;
-do
-    basename_=`basename "$rcfile"`
-    link_file "$rcfile" "$HOME"/."$basename_"
-done
 
+stow prezto_config
 
 stow p10k
 
 #stow alacritty
 stow kitty
-
+stow tmux
 stow ranger
+stow bat
 
 
 stow nvim
-stow bat
 
 link_file "$DOTFILES/inputrc" "$HOME/.inputrc"
 link_file "$DOTFILES/ackrc" "$HOME/.ackrc"
@@ -68,17 +60,11 @@ link_file "$DOTFILES"/gitignore $HOME/.gitignore
 link_file "$DOTFILES/vim" "$HOME/.vim"
 link_file "$DOTFILES/vim/vimrc" "$HOME/.vimrc"
 
-#mkdir -p "$HOME/.config"
-#link_file "$DOTFILES/vim"  "$HOME/.config/nvim"
-#link_file "$DOTFILES/nvim" "$HOME/.config/nvim"
-#link_file "$DOTFILES/bat" "$HOME/.config/bat"
-#link_file "$DOTFILES/ranger" "$HOME/.config/ranger"
-
 # link_file "$DOTFILES/alacritty" "$HOME/.config/alacritty"
 
 ##emacs
-#link_file "$DOTFILES/doom.d" "$HOME/.doom.d"
-stow doom.d
+stow doom
+stow doom_config
 #
 
 stow ipython

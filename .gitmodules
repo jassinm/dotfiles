@@ -2,7 +2,9 @@
 	path = vim
 	url = https://github.com/jassinm/locovim
 	ignore = dirty
-[submodule "prezto"]
-	path = prezto
-	url = https://github.com/sorin-ionescu/prezto
-    ignore  =  dirty
+[submodule "doom/.emacs.d"]
+	path = doom/.emacs.d
+	url = https://github.com/hlissner/doom-emacs
+[submodule "prezto_contrib/.zprezto/contrib"]
+	path = prezto_contrib/.zprezto/contrib
+	url = https://github.com/belak/prezto-contrib
