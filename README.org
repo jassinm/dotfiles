@@ -37,6 +37,12 @@ chsh -s /bin/zsh
 
 * Setup
 
+** doom emacs
+install manually / TODO: why does stow not work
+#+begin_src
+git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
+~/.emacs.d/bin/doom install
+#+end_src
 ** Tmux
 
 start tmux then run ~Control-b I~ to install the [[tpm][https://github.com/tmux-plugins/tpm]] plugins

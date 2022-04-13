@@ -19,7 +19,7 @@ stow tmux
 
 stow nvim
 # emacs
-stow doom
+# stow doom
 stow doom_config
 
 stow input
