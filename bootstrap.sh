@@ -9,6 +9,7 @@ if [ "$UNAME" = 'Darwin' ] ; then
 else
     stow prezto_config_linux
 fi
+
 stow prezto_contrib
 stow p10k
 

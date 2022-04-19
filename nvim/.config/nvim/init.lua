@@ -77,7 +77,8 @@ vim.g.symbols_outline = {
 vim.g.gruvbox_italicize_comments = true
 vim.g.gruvbox_invert_selection = false
 vim.g.gruvbox_contrast_dark = "hard"
--- Load the colorscheme
+-- Load the ColorScheme
+vim.opt.background = "dark" -- or "light" for light mode
 vim.cmd([[colorscheme gruvbox]])
 --vim.g.gruvbox_flat_style = "dark"
 --vim.cmd[[colorscheme gruvbox-flat]]
@@ -181,7 +182,7 @@ vim.cmd('inoremap <expr> <c-k> (\"\\<C-p>\")')
 vim.api.nvim_set_keymap('n', '<leader>ft', ':NvimTreeToggle<CR>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>fr', ':RnvimrToggle<CR>', {noremap = true, silent = true})
 --
-vim.api.nvim_set_keymap('n', '<leader>ff', ":lua require('telescope.builtin').find_files()<cr>", { noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<leader>ff', ":lua require('telescope.builtin').find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }})<cr>", { noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>fg', ":lua require('telescope.builtin').live_grep()<cr>", { noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>sp', ":lua require('telescope.builtin').live_grep()<cr>", { noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>bb', ":lua require('telescope.builtin').buffers()<cr>", { noremap = true, silent = true})

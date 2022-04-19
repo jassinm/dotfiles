@@ -2,7 +2,7 @@ local actions = require('telescope.actions')
 
 require('telescope').setup {
     defaults = {
-           find_command = {'rg', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case'},
+           find_command = {'rg', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case', '--hidden', '-g', '!.git'},
 --         prompt_prefix = " ",
 --         selection_caret = " ",
 --         entry_prefix = "  ",

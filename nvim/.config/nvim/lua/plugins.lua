@@ -19,7 +19,8 @@ return require("packer").startup(
         use "sheerun/vim-polyglot"
 
         -- -- Color
-        use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
+        --use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
+        use { "ellisonleao/gruvbox.nvim" }
         --use 'eddyekofo94/gruvbox-flat.nvim'
 
         --use 'folke/tokyonight.nvim'

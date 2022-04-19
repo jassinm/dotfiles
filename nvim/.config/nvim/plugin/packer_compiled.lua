@@ -122,7 +122,7 @@ _G.packer_plugins = {
   ["gruvbox.nvim"] = {
     loaded = true,
     path = "/Users/jassinm/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
-    url = "https://github.com/npxbr/gruvbox.nvim"
+    url = "https://github.com/ellisonleao/gruvbox.nvim"
   },
   ["indent-blankline.nvim"] = {
     loaded = true,
@@ -153,11 +153,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/jassinm/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/hoob3rt/lualine.nvim"
-  },
-  ["lush.nvim"] = {
-    loaded = true,
-    path = "/Users/jassinm/.local/share/nvim/site/pack/packer/start/lush.nvim",
-    url = "https://github.com/rktjmp/lush.nvim"
   },
   neoformat = {
     loaded = true,
