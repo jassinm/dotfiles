@@ -74,11 +74,24 @@ vim.g.symbols_outline = {
 }
 -- ColorScheme
 -- gruvbox
-vim.g.gruvbox_italicize_comments = true
-vim.g.gruvbox_invert_selection = false
-vim.g.gruvbox_contrast_dark = "hard"
+--vim.g.gruvbox_italicize_comments = true
+--vim.g.gruvbox_invert_selection = false
+--vim.g.gruvbox_contrast_dark = "hard"
 -- Load the ColorScheme
 vim.opt.background = "dark" -- or "light" for light mode
+require("gruvbox").setup({
+  undercurl = true,
+  underline = true,
+  bold = true,
+  italic = true, -- will make italic comments and special strings
+  invert_selection = false,
+  invert_signs = false,
+  invert_tabline = false,
+  invert_intend_guides = false,
+  contrast = "hard", -- can be "hard" or "light"
+  overrides = {
+    },
+})
 vim.cmd([[colorscheme gruvbox]])
 --vim.g.gruvbox_flat_style = "dark"
 --vim.cmd[[colorscheme gruvbox-flat]]

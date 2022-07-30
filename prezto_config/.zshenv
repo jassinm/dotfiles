@@ -17,6 +17,8 @@ export PATH="/opt/homebrew/opt/openjdk/bin":$PATH
 #export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/bzip2/lib"
 #export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include  -I/usr/loca/opt/zlib/include -I/usr/local/opt/bzip2/include"
 #export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
+export LDFLAGS="-L/opt/homebrew/Cellar/unixodbc/2.3.11/lib"
+export CPPFLAGS="-I/opt/homebrew/Cellar/unixodbc/2.3.11/include"
 
 
 #export GNUPGHOME=~/.gnupg/trezor
@@ -44,4 +46,4 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.g
 
 export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_INSECURE_REDIRECT=1
-export HOMEBREW_CASK_OPTS=--require-sha
+#export HOMEBREW_CASK_OPTS=--require-sha
