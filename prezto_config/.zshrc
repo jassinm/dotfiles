@@ -89,3 +89,8 @@ export GPG_TTY=$(tty)
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 gpgconf --launch gpg-agent
 gpg-connect-agent /bye
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/jassinm/.lmstudio/bin"
+# End of LM Studio CLI section
+

@@ -60,3 +60,4 @@ vdiff () {
 alias icat="kitty +kitten icat"
 
 alias emc="emacsclient --create-frame --alternate-editor=''"
+alias fxp="/Applications/Firefox.app/Contents/MacOS/firefox-bin -p"
