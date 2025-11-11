@@ -23,21 +23,23 @@ return require("packer").startup(
         use { "ellisonleao/gruvbox.nvim" }
         --use 'eddyekofo94/gruvbox-flat.nvim'
 
-        --use 'folke/tokyonight.nvim'
-        use 'arcticicestudio/nord-vim'
         use {"norcalli/nvim-colorizer.lua"}
 
         -- -- Dasboard
         -- --use "ChristianChiarulli/dashboard-nvim"
         use "mhinz/vim-startify"
 
-        -- -- TODO refactor all of this (for now it works, but yes I know it could be wrapped in a simpler function)
         use "neovim/nvim-lspconfig"
-        use "glepnir/lspsaga.nvim"
+        -- use ({
+        --     'nvimdev/lspsaga.nvim',
+        --     after = 'nvim-lspconfig',
+        --     config = function()
+        --         require('lspsaga').setup({})
+        --     end,
+        -- })
         -- use "kabouzeid/nvim-lspinstall"
         use "folke/lsp-trouble.nvim"
         use "folke/lsp-colors.nvim"
-        --use 'onsails/lspkind-nvim' use 'folke/lsp-colors.nvim'
 
         -- Telescope
 
@@ -74,24 +76,18 @@ return require("packer").startup(
 
         use "kevinhwang91/nvim-bqf" -- improve quickfix
 
-        -- use "liuchengxu/vim-which-key"
-        -- --
-        -- Tagbar
-        --use "liuchengxu/vista.vim"
         use "simrat39/symbols-outline.nvim"
 
-        -- -- Icons
-        -- use "kyazdani42/nvim-web-devicons"
-
-        -- -- Status Line and Bufferline
-        -- use "glepnir/galaxyline.nvim"
-        -- --use 'bling/vim-airline'
-        use {'hoob3rt/lualine.nvim',
-            requires = {'kyazdani42/nvim-web-devicons', opt = true},
+        use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'}
+        use {
+          'nvim-lualine/lualine.nvim',
+          requires = { 'nvim-tree/nvim-web-devicons', opt = true }
         }
-        --
-        -- -- bar
-        use "romgrk/barbar.nvim"
+        use 'nvim-tree/nvim-web-devicons'
+        use {
+             'romgrk/barbar.nvim',
+             requires = 'nvim-web-devicons'
+        }
 
         --Tpope
         -- -- use 'tpope/vim-commentary'
@@ -108,8 +104,6 @@ return require("packer").startup(
              'nvim-lua/plenary.nvim'
            }
         }
-        -- -- use 'airblade/vim-gitgutter' -- shows git changes in gutter
-
         --Python
         -- --use 'alfredodeza/pytest.vim'
         -- --use 'heavenshell/vim-pydocstring'
@@ -120,14 +114,12 @@ return require("packer").startup(
         use 'mfussenegger/nvim-dap-python'
 
         -- Testing
-        -- use { "rcarriga/vim-ultest", requires = {"janko/vim-test"}, run = ":UpdateRemotePlugins" }
         -- --
         use 'lambdalisue/suda.vim'
 
         -- ---
         use {'lukas-reineke/indent-blankline.nvim', branch='master'}
         -- --
-        -- use 'airblade/vim-rooter'
         use 'ahmedkhalf/project.nvim'
         -- --
         use 'jpalardy/vim-slime'
@@ -153,7 +145,7 @@ return require("packer").startup(
         -- term
         use 'kassio/neoterm'
         --rust
-        use "simrat39/rust-tools.nvim"
+        --use "simrat39/rust-tools.nvim"
 
     end
 )
