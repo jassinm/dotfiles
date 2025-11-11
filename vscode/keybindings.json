@@ -1,22 +1,48 @@
+// Place your key bindings in this file to override the defaults
 [
-    // Trigger vspacecode in empty editor group
+    {
+        "key": "ctrl+c ctrl+c",
+        "command": "workbench.action.terminal.runSelectedText"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "workbench.action.quickOpenSelectNext",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "ctrl+n",
+        "command": "-workbench.action.quickOpenSelectNext",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "workbench.action.quickOpenSelectPrevious",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "-workbench.action.quickOpenSelectPrevious",
+        "when": "inQuickOpen"
+    },
     {
         "key": "space",
         "command": "vspacecode.space",
         "when": "activeEditorGroupEmpty && focusedView == '' && !whichkeyActive && !inputFocus"
     },
-    // Keybindings required for edamagit
-    // https://github.com/kahole/edamagit#vim-support-vscodevim
-    // Cannot be added to package.json because keybinding replacements
+    {
+        "key": "space",
+        "command": "vspacecode.space",
+        "when": "sideBarFocus && !inputFocus && !whichkeyActive"
+    },
     {
         "key": "tab",
         "command": "extension.vim_tab",
-        "when": "editorFocus && vim.active && !inDebugRepl && vim.mode != 'Insert' && editorLangId != 'magit'"
+        "when": "editorTextFocus && vim.active && !inDebugRepl && vim.mode != 'Insert' && editorLangId != 'magit'"
     },
     {
         "key": "tab",
         "command": "-extension.vim_tab",
-        "when": "editorFocus && vim.active && !inDebugRepl && vim.mode != 'Insert'"
+        "when": "editorTextFocus && vim.active && !inDebugRepl && vim.mode != 'Insert'"
     },
     {
         "key": "x",
@@ -62,8 +88,6 @@
         "key": "ctrl+u x",
         "command": "-magit.reset-hard"
     },
-    // Extra ref menu support for edamagit with the key "y"
-    // Cannot be added to package.json because keybinding replacements
     {
         "key": "y",
         "command": "-magit.show-refs"
@@ -73,19 +97,16 @@
         "command": "vspacecode.showMagitRefMenu",
         "when": "editorTextFocus && editorLangId == 'magit' && vim.mode == 'Normal'"
     },
-    // Easy navigation in quick open/QuickPick
     {
-        "key": "ctrl+j",
-        "command": "workbench.action.quickOpenSelectNext",
-        "when": "inQuickOpen"
+        "key": "g",
+        "command": "-magit.refresh",
+        "when": "editorTextFocus && editorLangId == 'magit' && vim.mode =~ /^(?!SearchInProgressMode|CommandlineInProgress).*$/"
     },
     {
-        "key": "ctrl+k",
-        "command": "workbench.action.quickOpenSelectPrevious",
-        "when": "inQuickOpen"
+        "key": "g",
+        "command": "vspacecode.showMagitRefreshMenu",
+        "when": "editorTextFocus && editorLangId == 'magit' && vim.mode =~ /^(?!SearchInProgressMode|CommandlineInProgress).*$/"
     },
-    // Easy navigation in sugesstion/intellisense
-    // Cannot be added to package.json because of conflict with vim's default bindings
     {
         "key": "ctrl+j",
         "command": "selectNextSuggestion",
@@ -101,8 +122,6 @@
         "command": "acceptSelectedSuggestion",
         "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
     },
-    // Easy navigation in parameter hint (i.e. traverse the hints when there's multiple overload for one method)
-    // Cannot be added to package.json because of conflict with vim's default bindings
     {
         "key": "ctrl+j",
         "command": "showNextParameterHint",
@@ -113,7 +132,21 @@
         "command": "showPrevParameterHint",
         "when": "editorFocus && parameterHintsMultipleSignatures && parameterHintsVisible"
     },
-    // Add ctrl+h/l to navigate in file browser
+    {
+        "key": "ctrl+j",
+        "command": "selectNextCodeAction",
+        "when": "codeActionMenuVisible"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "selectPrevCodeAction",
+        "when": "codeActionMenuVisible"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "acceptSelectedCodeAction",
+        "when": "codeActionMenuVisible"
+    },
     {
         "key": "ctrl+h",
         "command": "file-browser.stepOut",
