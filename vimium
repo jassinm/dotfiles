@@ -1,4 +1,0 @@
-map <c-h> previousTab
-map <c-l> nextTab
-map <c-u> scrollPageUp
-map <c-d> scrollPageDown
