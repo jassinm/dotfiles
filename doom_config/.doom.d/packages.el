@@ -8,27 +8,10 @@
 
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;(package! some-package)
-;;(package! jupyter)
-;;(package! websocket)
-;;(package! zmq)
 
-;;(package! org-bullets)
-;;
-;;(package! org-ref)
-(package! dashboard)
-(package! nano-emacs
-  :recipe (:host github :repo "rougier/nano-emacs"))
-;; (package! elegant-emacs
-;;   :recipe (:host github :repo "rougier/elegant-emacs"))
-;; (package! nano-theme
-;;   :recipe (:host github :repo "rougier/nano-theme"))
-;; (package! nano-modeline
-;;   :recipe (:host github :repo "rougier/nano-modeline"))
-;; (package! nano-splash
-;;   :recipe (:host github :repo "rougier/nano-splash"))
 ;; To install a package directly from a remote git repo, you must specify a
 ;; `:recipe'. You'll find documentation on what `:recipe' accepts here:
-;; https://github.com/raxod502/straight.el#the-recipe-format
+;; https://github.com/radian-software/straight.el#the-recipe-format
 ;(package! another-package
 ;  :recipe (:host github :repo "username/repo"))
 
@@ -51,7 +34,7 @@
 
 ;; Specify a `:branch' to install a package from a particular branch or tag.
 ;; This is required for some packages whose default branch isn't 'master' (which
-;; our package manager can't deal with; see raxod502/straight.el#279)
+;; our package manager can't deal with; see radian-software/straight.el#279)
 ;(package! builtin-package :recipe (:branch "develop"))
 
 ;; Use `:pin' to specify a particular commit to install.

@@ -47,3 +47,6 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.g
 export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_INSECURE_REDIRECT=1
 #export HOMEBREW_CASK_OPTS=--require-sha
+
+# uv
+export PATH="/Users/jassinm/.local/bin:$PATH"
