@@ -47,5 +47,5 @@ typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 
 
 # Added by LM Studio CLI (lms)
-export PATH="$PATH:$HOM/.lmstudio/bin"
+export PATH="$PATH:$HOME/.lmstudio/bin"
 # End of LM Studio CLI section
