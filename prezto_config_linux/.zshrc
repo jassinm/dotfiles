@@ -44,3 +44,8 @@ if command -v direnv >/dev/null 2>&1; then
 fi
 
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
+
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:$HOM/.lmstudio/bin"
+# End of LM Studio CLI section
