@@ -51,7 +51,7 @@ zstyle ':prezto:load' pmodule \
 #
 # Editor
 #
-#zstyle ':prezto:module:python' conda-init 'on'
+zstyle ':prezto:module:python' conda-init 'on'
 #zstyle ':prezto:module:python:info:virtualenv' format 'virtualenv:%v'
 # Set the key mapping style to 'emacs' or 'vi'.
 zstyle ':prezto:module:editor' key-bindings 'vi'

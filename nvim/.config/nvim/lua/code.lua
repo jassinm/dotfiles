@@ -14,11 +14,11 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', 'g]', vim.diagnostic.goto_prev, opts)
 
     vim.keymap.set('n', 'K',  vim.lsp.buf.hover, opts)
-    buf_set_keymap('n', 'gk', "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", opts)
-
-    buf_set_keymap('n', '<C-p>', "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>", opts)
-    buf_set_keymap('n', '<C-n>', "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>", opts)
-    buf_set_keymap('n', '<C-b>', "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", opts)
+    -- buf_set_keymap('n', 'gk', "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", opts)
+    --
+    -- buf_set_keymap('n', '<C-p>', "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>", opts)
+    -- buf_set_keymap('n', '<C-n>', "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>", opts)
+    -- buf_set_keymap('n', '<C-b>', "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", opts)
 end
 
 vim.lsp.config('luals', {
