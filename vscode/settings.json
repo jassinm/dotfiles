@@ -1,13 +1,12 @@
 {
     "window.zoomLevel": 1.2,
     "editor.fontSize": 17,
-    "editor.fontFamily": "PragmataPro Mono Liga",
+    "editor.fontFamily": "PragmataPro Mono",
     //"editor.fontFamily": "'PragmataPro Mono Liga'",
     //"editor.fontFamily": "'JetBrains Mono'",
     "editor.fontLigatures": true,
     "editor.minimap.enabled": false,
-    //"terminal.integrated.fontFamily": "'PragmataPro Mono Liga'",
-    "terminal.integrated.fontFamily": "PragmataPro Liga",
+    "terminal.integrated.fontFamily": "PragmataPro Mono",
     "terminal.integrated.fontLigatures": true,
     "terminal.integrated.fontSize": 19,
     "workbench.colorTheme": "Gruvbox Minor Dark Hard",
@@ -307,5 +306,8 @@
     ],
     "cSpell.diagnosticLevel": "Hint",
     "problems.visibility": false,
-    "settingsSync.ignoredExtensions": []
+    "settingsSync.ignoredExtensions": [],
+    "github.copilot.chat.byok.ollamaEndpoint": "http://localhost:1234/v1/",
+    "gitlens.ai.model": "vscode",
+    "gitlens.ai.vscode.model": "copilot:gpt-4.1"
 }
