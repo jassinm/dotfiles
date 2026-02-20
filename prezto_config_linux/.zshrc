@@ -48,4 +48,6 @@ typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:$HOME/.lmstudio/bin"
-# End of LM Studio CLI section
+export PATH="$PATH:/opt/miniconda3/bin"
+export PATH="$PATH:/opt/llama.cpp/bin"
+export PATH="$PATH:/usr/local/cuda/bin"
