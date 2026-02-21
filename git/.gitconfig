@@ -2,7 +2,7 @@
     name = locojay
     email = locojaydev@gmail.com
 [core]
-	excludesfile = /Users/locojay/.gitignore
+	excludesfile = ~/.gitignore
     editor = nvim
     autocrlf = input
     pager = less
