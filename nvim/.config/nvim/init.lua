@@ -1,19 +1,17 @@
 require('plugins')
 
 require('code')
-require('comment')
 require('completion')
 require('lv-telescope')
-require('lsp')
 require('tree')
 
 
 require('nvim-autopairs').setup()
 --
-require('gitsigns').setup()
+--require('gitsigns').setup()
 --
 vim.o.termguicolors = true
-require('colorizer').setup()
+--require('colorizer').setup()
 
 require('lualine').setup {
   options = {
@@ -23,10 +21,13 @@ require('lualine').setup {
   }
 }
 
-require('project_nvim').setup {
+-- require('project_nvim').setup {
+--
+-- }
 
-}
-
+require'bufferline'.setup({
+  --icons = false
+})
 
 -- init.lua
 vim.g.symbols_outline = {
@@ -176,13 +177,8 @@ vim.api.nvim_set_keymap('n', '<leader>gp', [[<cmd>lua require('telescope.builtin
 vim.api.nvim_set_keymap('n', '<leader>ss', [[<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>]], { noremap = true, silent = true})
 
 vim.api.nvim_set_keymap('n', '<leader>sd', [[<cmd>lua require('telescope.builtin').grep_string()<cr>]], { noremap = true, silent = true})
--- vim.api.nvim_set_keymap('n', '<leader>t', [[<cmd>lua require('telescope.builtin').tags()<cr>]], { noremap = true, silent = true})
 --
 --
 vim.api.nvim_set_keymap('n', '<leader>K', ':SymbolsOutline<CR>', {noremap = true, silent = true})
 
--- vim.wo.foldmethod="expr"
--- vim.o.foldexpr="nvim_treesitter#foldexpr()"
---vim.wo.foldenable=false -- can be enabled directly in opened file - using 'zi' - toogle fold
---
 

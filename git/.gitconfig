@@ -2,7 +2,7 @@
     name = locojay
     email = locojaydev@gmail.com
 [core]
-	excludesfile = /Users/locojay/.gitignore
+	excludesfile = ~/.gitignore
     editor = nvim
     autocrlf = input
     pager = less
@@ -62,3 +62,8 @@
 [mergetool "kaleidoscope"]
     cmd = /usr/local/bin/ksdiff --merge \"$LOCAL\" \"$REMOTE\" --base \"$BASE\" --output \"$MERGED\"
     trustExitCode = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
