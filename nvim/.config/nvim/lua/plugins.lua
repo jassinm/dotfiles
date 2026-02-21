@@ -1,151 +1,159 @@
-local execute = vim.api.nvim_command
-local fn = vim.fn
-
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-
-if fn.empty(fn.glob(install_path)) > 0 then
-    execute("!git clone https://github.com/wbthomason/packer.nvim " .. install_path)
-    execute "packadd packer.nvim"
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out, "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
 end
+vim.opt.rtp:prepend(lazypath)
 
-vim.cmd "autocmd BufWritePost plugins.lua PackerCompile" -- Auto compile when there are changes in plugins.lua
+-- Make sure to setup `mapleader` and `maplocalleader` before
+-- loading lazy.nvim so that mappings are correct.
+-- This is also a good place to setup other settings (vim.opt)
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 
-return require("packer").startup(
-    function(use)
-        -- Packer can manage itself as an optional plugin
-        use "wbthomason/packer.nvim"
-
-         -- Languages support
-        use "sheerun/vim-polyglot"
-
-        -- -- Color
-        --use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
-        use { "ellisonleao/gruvbox.nvim" }
-        --use 'eddyekofo94/gruvbox-flat.nvim'
-
-        use {"norcalli/nvim-colorizer.lua"}
-
-        -- -- Dasboard
-        -- --use "ChristianChiarulli/dashboard-nvim"
-        use "mhinz/vim-startify"
-
-        use "neovim/nvim-lspconfig"
-        -- use ({
-        --     'nvimdev/lspsaga.nvim',
-        --     after = 'nvim-lspconfig',
-        --     config = function()
-        --         require('lspsaga').setup({})
-        --     end,
-        -- })
-        -- use "kabouzeid/nvim-lspinstall"
-        use "folke/lsp-trouble.nvim"
-        use "folke/lsp-colors.nvim"
-
-        -- Telescope
-
-        use {
-        "nvim-telescope/telescope.nvim",
-             requires = {
-                 {"nvim-lua/popup.nvim"},
-                 {"nvim-lua/plenary.nvim"},
-                 {'nvim-telescope/telescope-media-files.nvim'}
-             }
+-- Setup lazy.nvim
+require("lazy").setup({
+  spec = {
+    {
+        "mason-org/mason-lspconfig.nvim",
+        opts = {},
+        dependencies = {
+            { "mason-org/mason.nvim", opts = {} },
+            "neovim/nvim-lspconfig",
+        },
+    },
+   -- add your plugins here
+   -- Languages support
+   -- "sheerun/vim-polyglot"
+    -- Color
+    "ellisonleao/gruvbox.nvim",
+    -- Dashboard
+    "goolord/alpha-nvim",
+    -- "mhinz/vim-startify"
+    -- Statusline
+    {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' }
+    },
+    --Tpope
+    -- 'tpope/vim-commentary'
+    "tpope/vim-surround",
+    "tpope/vim-fugitive",
+    "tpope/vim-unimpaired",
+    {
+      'nvim-treesitter/nvim-treesitter',
+      lazy = false,
+      build = ':TSUpdate'
+    },
+    'windwp/nvim-autopairs',
+    -- Eplorer
+   "kyazdani42/nvim-tree.lua",
+    -- Language Server
+    "neovim/nvim-lspconfig",
+    -- Telescope - find stuff
+    {
+        "nvim-telescope/telescope.nvim", version = "*",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            -- optional but recommended
+            { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
         }
-        -- -- Formating
-        use 'sbdchd/neoformat'
-        -- -- Autocomplete
-        use 'hrsh7th/cmp-nvim-lsp'
-        use 'hrsh7th/cmp-buffer'
-        use 'hrsh7th/cmp-path'
-        use 'hrsh7th/cmp-cmdline'
-        use "hrsh7th/nvim-cmp"
+    },
+    -- Formating
+    "sbdchd/neoformat",
+    -- Comment
+    "terrortylor/nvim-comment",
 
-        use "hrsh7th/vim-vsnip"
-        use "rafamadriz/friendly-snippets"
+    -- Autocomplete
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-path",
+    "hrsh7th/cmp-cmdline",
+    "hrsh7th/nvim-cmp",
+    --
+    {
+    "folke/trouble.nvim",
+    opts = {}, -- for default options, refer to the configuration section for custom setup.
+    cmd = "Trouble",
+    },
+    --
+    {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'}
 
-        -- -- Treesitter
-        use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
-        use "windwp/nvim-ts-autotag"
 
-        -- -- Eplorer
-        use "kyazdani42/nvim-tree.lua"
-        -- use "preservim/nerdtree"
-        use "kevinhwang91/rnvimr"
 
-        use "terrortylor/nvim-comment"
+  },
+  -- Configure any other settings here. See the documentation for more details.
+  -- colorscheme that will be used when installing plugins.
+  install = { colorscheme = { "habamax" } },
+  -- automatically check for plugin updates
+  checker = { enabled = true },
+})
 
-        use "kevinhwang91/nvim-bqf" -- improve quickfix
-
-        use "simrat39/symbols-outline.nvim"
-
-        use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'}
-        use {
-          'nvim-lualine/lualine.nvim',
-          requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-        }
-        use 'nvim-tree/nvim-web-devicons'
-        use {
-             'romgrk/barbar.nvim',
-             requires = 'nvim-web-devicons'
-        }
-
-        --Tpope
-        -- -- use 'tpope/vim-commentary'
-        use 'tpope/vim-surround'
-        use 'tpope/vim-fugitive'
-        use 'tpope/vim-unimpaired'
-
-        use 'windwp/nvim-autopairs'
-        -- use 'p00f/nvim-ts-rainbow'
-
-        use {
-           'lewis6991/gitsigns.nvim',
-           requires = {
-             'nvim-lua/plenary.nvim'
-           }
-        }
-        --Python
-        -- --use 'alfredodeza/pytest.vim'
-        -- --use 'heavenshell/vim-pydocstring'
-        use 'kkoomen/vim-doge'
-
-        -- Debug
-        use 'mfussenegger/nvim-dap'
-        use 'mfussenegger/nvim-dap-python'
-
-        -- Testing
-        -- --
-        use 'lambdalisue/suda.vim'
-
-        -- ---
-        use {'lukas-reineke/indent-blankline.nvim', branch='master'}
-        -- --
-        use 'ahmedkhalf/project.nvim'
-        -- --
-        use 'jpalardy/vim-slime'
-
-        --
-        use 'Konfekt/FastFold'
-        use 'tmhedberg/SimpylFold'
-
-        use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
-        -- Git diff
-        --
-        use 'sindrets/diffview.nvim'
-
-        -- Jupyter
-        use 'goerz/jupytext.vim'
-
-        -- Orgmode
-        use {'nvim-orgmode/orgmode', config = function()
-            require('orgmode').setup{}
-        end
-        }
-
-        -- term
-        use 'kassio/neoterm'
-        --rust
-        --use "simrat39/rust-tools.nvim"
-
-    end
-)
+--
+--         use "hrsh7th/vim-vsnip"
+--         use "rafamadriz/friendly-snippets"
+--
+--         use "kevinhwang91/rnvimr"
+--
+--
+--         use "kevinhwang91/nvim-bqf" -- improve quickfix
+--
+--         use "simrat39/symbols-outline.nvim"
+--
+--         use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'}
+--         use 'nvim-tree/nvim-web-devicons'
+--         use {
+--              'romgrk/barbar.nvim',
+--              requires = 'nvim-web-devicons'
+--         }
+--
+--
+--         use {
+--            'lewis6991/gitsigns.nvim',
+--            requires = {
+--              'nvim-lua/plenary.nvim'
+--            }
+--         }
+--         --Python
+--         -- --use 'alfredodeza/pytest.vim'
+--         -- --use 'heavenshell/vim-pydocstring'
+--         use 'kkoomen/vim-doge'
+--
+--         -- Debug
+--         use 'mfussenegger/nvim-dap'
+--         use 'mfussenegger/nvim-dap-python'
+--
+--         -- Testing
+--         -- --
+--         use 'lambdalisue/suda.vim'
+--
+--         -- ---
+--         use {'lukas-reineke/indent-blankline.nvim', branch='master'}
+--         -- --
+--         use 'ahmedkhalf/project.nvim'
+--         -- --
+--         use 'jpalardy/vim-slime'
+--
+--         --
+--         use 'Konfekt/FastFold'
+--         use 'tmhedberg/SimpylFold'
+--
+--         use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
+--         -- Git diff
+--         --
+--         use 'sindrets/diffview.nvim'
+--
+--         -- term
+--         use 'kassio/neoterm'
+--         --rust
+--         --use "simrat39/rust-tools.nvim"

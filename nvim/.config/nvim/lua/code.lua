@@ -1,3 +1,8 @@
+require('nvim_comment').setup()
+
+require("trouble").setup {
+}
+
 local on_attach = function(client, bufnr)
 
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -59,8 +64,9 @@ vim.lsp.config('pyright', {
     settings = {
       python = {
         analysis = {
-          -- Ignore all ifiles for analysis - Use ruff for linting
-          --ignore = {'*'}
+        autoSearchPaths = true,
+        useLibraryCodeForTypes = true,
+        typeCheckingMode = "basic",
         }
       }
     }
