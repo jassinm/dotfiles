@@ -11,7 +11,6 @@
     "terminal.integrated.fontLigatures": true,
     "terminal.integrated.fontSize": 19,
     "workbench.colorTheme": "Gruvbox Minor Dark Hard",
-    //"workbench.colorTheme": "Gruvbox Minor Dark Medium",
     "workbench.iconTheme": "icons",
     "vim.leader": "<space>",
     "vim.insertModeKeyBindings": [

@@ -51,3 +51,6 @@ export PATH="$PATH:$HOME/.lmstudio/bin"
 export PATH="$PATH:/opt/miniconda3/bin"
 export PATH="$PATH:/opt/llama.cpp/bin"
 export PATH="$PATH:/usr/local/cuda/bin"
+
+# opencode
+export PATH=/home/jassinm/.opencode/bin:$PATH
