@@ -16,6 +16,7 @@ stow p10k
 
 #stow alacritty
 stow kitty
+stow wezterm
 stow tmux
 
 stow nvim

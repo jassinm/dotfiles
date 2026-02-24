@@ -8,7 +8,7 @@ config.window_decorations = "RESIZE"
 config.term = "xterm-256color"
 
 -- This is where you actually apply your config choices.
-config.font = wezterm.font("PragmataPro Mono Liga", { weight = "Medium" })
+config.font = wezterm.font("PragmataPro", { weight = "Medium" })
 config.font_size = 17
 
 
@@ -32,6 +32,8 @@ config.keys = {
 		mods = "SHIFT|CTRL",
 		action = wezterm.action.SplitHorizontal({
 			args = {},
+            domain = 'CurrentPaneDomain',
+
 		}),
 	},
 	{
@@ -39,6 +41,7 @@ config.keys = {
 		mods = "SHIFT|CTRL",
 		action = wezterm.action.SplitVertical({
 			args = {},
+            domain = 'CurrentPaneDomain',
 		}),
 	},
 	{
@@ -68,46 +71,9 @@ config.keys = {
 	},
 }
 
-
---config.enable_tab_bar = false
+config.enable_tab_bar = true
 config.tab_bar_at_bottom = true
-local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
-tabline.setup({
-	sections = {
-		tabline_a = "",
-		tabline_b = "",
-		tabline_c = "",
-		tab_active = {
-            {"index", padding = {left = 0, right = 1}},
-            { "process", padding = { left = 0, right = 1 } },
-            { "zoomed", padding = {left =0, right=0} }
 
-        },
-		tab_inactive = { "index", { "process", padding = { left = 0, right = 1 } } },
-		-- All other sections are omitted or left empty
-		tabline_x = { "" },
-		tabline_y = { "" },
-		tabline_z = { "domain" },
-	},
-	options = {
-		icons_enabled = true,
-		theme = "GruvboxDarkHard",
-		tabs_enabled = true,
-		section_separators = {
-			left = wezterm.nerdfonts.pl_left_hard_divider,
-			right = wezterm.nerdfonts.pl_right_hard_divider,
-		},
-		component_separators = {
-			left = wezterm.nerdfonts.pl_left_soft_divider,
-			right = wezterm.nerdfonts.pl_right_soft_divider,
-		},
-		tab_separators = {
-			left = wezterm.nerdfonts.pl_left_hard_divider,
-			right = wezterm.nerdfonts.pl_right_hard_divider,
-		},
-	},
-})
-tabline.apply_to_config(config)
 
 -- Finally, return the configuration to wezterm:
 return config
