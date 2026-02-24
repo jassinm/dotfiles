@@ -26,6 +26,7 @@ vim.g.symbols_outline = {
 	},
 	lsp_blacklist = {},
 }
+vim.opt.cmdheight = 0
 -- Load the ColorScheme
 vim.opt.background = "dark"
 require("gruvbox").setup({
