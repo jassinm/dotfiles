@@ -11,6 +11,6 @@
 [submodule "prezto/.zprezto"]
 	path = prezto/.zprezto
 	url = https://github.com/sorin-ionescu/prezto
-[submodule "tmp/.tmux/plugins/tpm"]
-	path = tpm/tmp/.tmux/plugins/tpm
+[submodule "tmux/.config/tmux/plugins/tpm"]
+	path = tmux/.config/tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
