@@ -82,10 +82,7 @@ config.mouse_bindings = {
   },
 }
 
-config.visual_bell = {
-  fade_in_duration_ms = 0,
-  fade_out_duration_ms = 0,
-}
+config.audible_bell = "Disabled"
 
 
 -- Finally, return the configuration to wezterm:
