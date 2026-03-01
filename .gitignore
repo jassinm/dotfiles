@@ -14,10 +14,8 @@ bin/lein2
 bin/doc2pdf
 bin/screenshotbot
 ipython/bitey/
-.weechat/logs/*
-.weechat/irc.conf
-.weechat/logs/
-irc.conf
 ipython/cython
 coc
-nvim/plugin
+nvim/.config/nvim/lazy-lock.json
+tmux/.config/tmux/plugins/tmux-gruvbox
+tmux/.config/tmux/plugins/tmux-yank
