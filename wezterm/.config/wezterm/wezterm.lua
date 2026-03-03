@@ -72,7 +72,17 @@ config.keys = {
 }
 
 config.enable_tab_bar = true
-config.tab_bar_at_bottom = true
+config.tab_bar_at_bottom = false
+
+config.mouse_bindings = {
+  {
+    event = { Down = { streak = 3, button = 'Left' } },
+    action = wezterm.action.SelectTextAtMouseCursor 'SemanticZone',
+    mods = 'NONE',
+  },
+}
+
+config.audible_bell = "Disabled"
 
 
 -- Finally, return the configuration to wezterm:
