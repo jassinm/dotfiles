@@ -54,3 +54,8 @@ export PATH="$PATH:/usr/local/cuda/bin"
 
 # opencode
 export PATH=/home/jassinm/.opencode/bin:$PATH
+
+# z jump
+source $HOME/z.sh
+
+setopt HIST_IGNORE_SPACE
