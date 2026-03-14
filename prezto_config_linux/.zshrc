@@ -22,7 +22,7 @@ fi
 # Customize to your needs...
 setopt interactivecomments
 bindkey -M viins "jk" vi-cmd-mode
-#source $HOME/.aliases.zsh
+source $HOME/.aliases.zsh
 #
 
 
