@@ -3,7 +3,7 @@ font-family = PragmataPro
 font-size = 17
 
 # Window
-window-decoration = false
+#window-decoration = false
 
 # Terminal
 term = xterm-256color
