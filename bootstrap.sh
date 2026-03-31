@@ -14,15 +14,16 @@ stow prezto_contrib
 stow p10k
 
 
-#stow alacritty
-stow kitty
-stow wezterm
+# stow alacritty
+# stow kitty
+# stow wezterm
+stow ghostty
 stow tmux
 
 stow nvim
 # emacs
 # stow doom
-stow doom_config
+# stow doom_config
 
 stow input
 stow ack
