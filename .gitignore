@@ -4,7 +4,14 @@ ipython/IPython_crash_report.txt
 ipython/history-sh
 .DS_Store
 irssi/logs/*
-ipython/profile_default/history.sqlite
+ipython/.ipython/profile_default/db
+ipython/.ipython/profile_default/history.sqlite
+ipython/.ipython/profile_default/log
+ipython/.ipython/profile_default/pid
+ipython/.ipython/profile_default/security
+ipython/.ipython/profile_default/startup
+ipython/.ipython/extensions
+ipython/.ipython/nbextensions
 weechat/logs
 ipython/profile_default/pid
 ipython/profile_default/security
@@ -19,3 +26,4 @@ coc
 nvim/.config/nvim/lazy-lock.json
 tmux/.config/tmux/plugins/tmux-gruvbox
 tmux/.config/tmux/plugins/tmux-yank
+jupyter/.jupyter/migrated
