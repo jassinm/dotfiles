@@ -55,9 +55,9 @@ require("lazy").setup({
 		-- Statusline
 		{
 			"nvim-lualine/lualine.nvim",
-            opts = {
-                theme = "gruvbox",
-            },
+			opts = {
+				theme = "gruvbox",
+			},
 			dependencies = { "nvim-tree/nvim-web-devicons" },
 		},
 		{
@@ -71,12 +71,12 @@ require("lazy").setup({
 			end,
 			opts = {
 				-- lazy.nvim will automatically call setup for you.
-                -- put your options here, anything missing will use the default:
+				-- put your options here, anything missing will use the default:
 				-- animation = true,
 				-- insert_at_start = true,
 				-- …etc.
 			},
-            version = '^1.0.0', -- optional: only update when a new 1.x version is released
+			version = "^1.0.0", -- optional: only update when a new 1.x version is released
 		},
 
 		--Tpope
@@ -128,12 +128,27 @@ require("lazy").setup({
 			cmd = "Trouble",
 		},
 		--
+		{
+			"jpalardy/vim-slime",
+			config = function()
+				vim.g.slime_target = "tmux"
+
+				-- default socket and pane (adjust to your setup)
+				vim.g.slime_default_config = {
+					socket_name = "default",
+					target_pane = "{last}",
+				}
+
+				vim.g.slime_dont_ask_default = 1 -- skip the prompt, use default config
+				vim.g.slime_python_ipython = 1 -- if using ipython (optional)
+			end,
+		},
 	},
 	-- Configure any other settings here. See the documentation for more details.
 	-- colorscheme that will be used when installing plugins.
 	install = { colorscheme = { "habamax" } },
 	-- automatically check for plugin updates
-	checker = { enabled = false},
+	checker = { enabled = false },
 })
 
 -- Old plugins check

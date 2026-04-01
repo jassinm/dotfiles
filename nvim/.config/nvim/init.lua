@@ -224,3 +224,13 @@ vim.api.nvim_set_keymap(
 --
 --
 vim.api.nvim_set_keymap("n", "<leader>K", ":SymbolsOutline<CR>", { noremap = true, silent = true })
+
+vim.g.slime_target = "tmux"
+vim.g.slime_default_config = {
+  socket_name = "default",
+  target_pane = "{last}",
+}
+vim.g.slime_dont_ask_default = 1
+vim.g.slime_dont_ask_default = 1 -- skip the prompt, use default config
+vim.g.slime_python_ipython = 1 -- if using ipython (optional)
+
