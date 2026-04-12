@@ -1,14 +1,14 @@
-require("plugins")
+vim.g.mapleader = ","
+vim.g.maplocalleader = "\\"
 
+require("plugins")
 require("code")
 require("completion")
 require("lv-telescope")
 require("tree")
 
---require('gitsigns').setup()
 --
 vim.o.termguicolors = true
---require('colorizer').setup()
 
 
 -- init.lua
@@ -29,18 +29,6 @@ vim.g.symbols_outline = {
 vim.opt.cmdheight = 0
 -- Load the ColorScheme
 vim.opt.background = "dark"
-require("gruvbox").setup({
-	undercurl = true,
-	underline = true,
-	bold = true,
-	--italic = true, -- will make italic comments and special strings
-	invert_selection = false,
-	invert_signs = false,
-	invert_tabline = false,
-	invert_intend_guides = false,
-	contrast = "hard", -- can be "hard" or "light"
-	overrides = {},
-})
 vim.cmd([[colorscheme gruvbox]])
 --
 -- Font
