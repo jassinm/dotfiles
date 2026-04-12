@@ -1,209 +1,110 @@
--- Bootstrap lazy.nvim
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-	local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-	if vim.v.shell_error ~= 0 then
-		vim.api.nvim_echo({
-			{ "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-			{ out, "WarningMsg" },
-			{ "\nPress any key to exit..." },
-		}, true, {})
-		vim.fn.getchar()
-		os.exit(1)
-	end
-end
-vim.opt.rtp:prepend(lazypath)
+-- Plugins
+vim.pack.add({
+  -- LSP / Mason
+  { src = "https://github.com/mason-org/mason.nvim" },
+  { src = "https://github.com/mason-org/mason-lspconfig.nvim" },
+  { src = "https://github.com/neovim/nvim-lspconfig" },
 
--- Make sure to setup `mapleader` and `maplocalleader` before
--- loading lazy.nvim so that mappings are correct.
--- This is also a good place to setup other settings (vim.opt)
-vim.g.mapleader = ","
-vim.g.maplocalleader = "\\"
+  -- Colorscheme
+  { src = "https://github.com/ellisonleao/gruvbox.nvim" },
 
--- Setup lazy.nvim
-require("lazy").setup({
-	spec = {
-		{
-			"mason-org/mason-lspconfig.nvim",
-			opts = {},
-			dependencies = {
-				{ "mason-org/mason.nvim", opts = {} },
-				"neovim/nvim-lspconfig",
-			},
-		},
-		-- add your plugins here
-		-- Languages support
-		-- "sheerun/vim-polyglot"
-		-- Color
-		"ellisonleao/gruvbox.nvim",
-		-- Dashboard
-		{
-			"goolord/alpha-nvim",
-			-- dependencies = { 'nvim-mini/mini.icons' },
-			dependencies = { "nvim-tree/nvim-web-devicons" },
-			config = function()
-				local startify = require("alpha.themes.startify")
-				-- available: devicons, mini, default is mini
-				-- if provider not loaded and enabled is true,
-				-- it will try to use another provider
-				startify.file_icons.provider = "devicons"
-				require("alpha").setup(startify.config)
-			end,
-		},
-		-- "mhinz/vim-startify"
-		-- Statusline
-		{
-			"nvim-lualine/lualine.nvim",
-			opts = {
-				theme = "gruvbox",
-			},
-			dependencies = { "nvim-tree/nvim-web-devicons" },
-		},
-		{
-			"romgrk/barbar.nvim",
-			dependencies = {
-				"lewis6991/gitsigns.nvim", -- OPTIONAL: for git status
-				"nvim-tree/nvim-web-devicons", -- OPTIONAL: for file icons
-			},
-			init = function()
-				vim.g.barbar_auto_setup = false
-			end,
-			opts = {
-				-- lazy.nvim will automatically call setup for you.
-				-- put your options here, anything missing will use the default:
-				-- animation = true,
-				-- insert_at_start = true,
-				-- …etc.
-			},
-			version = "^1.0.0", -- optional: only update when a new 1.x version is released
-		},
+  -- UI
+  { src = "https://github.com/nvim-tree/nvim-web-devicons" },
+  { src = "https://github.com/goolord/alpha-nvim" },
+  { src = "https://github.com/nvim-lualine/lualine.nvim" },
+  { src = "https://github.com/romgrk/barbar.nvim" },
+  { src = "https://github.com/lewis6991/gitsigns.nvim" },
 
-		--Tpope
-		-- 'tpope/vim-commentary'
-		"tpope/vim-surround",
-		"tpope/vim-fugitive",
-		"tpope/vim-unimpaired",
-		{
-			"nvim-treesitter/nvim-treesitter",
-			lazy = false,
-			build = ":TSUpdate",
-		},
-		{
-			"windwp/nvim-autopairs",
-			event = "InsertEnter",
-			config = true,
-			-- use opts = {} for passing setup options
-			-- this is equivalent to setup({}) function
-		},
-		-- Eplorer
-		"kyazdani42/nvim-tree.lua",
-		-- Language Server
-		"neovim/nvim-lspconfig",
-		-- Telescope - find stuff
-		{
-			"nvim-telescope/telescope.nvim",
-			version = "*",
-			dependencies = {
-				"nvim-lua/plenary.nvim",
-				-- optional but recommended
-				{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-			},
-		},
-		-- Formating
-		"sbdchd/neoformat",
-		-- Comment
-		"terrortylor/nvim-comment",
+  -- Tpope
+  { src = "https://github.com/tpope/vim-surround" },
+  { src = "https://github.com/tpope/vim-fugitive" },
+  { src = "https://github.com/tpope/vim-unimpaired" },
 
-		-- Autocomplete
-		"hrsh7th/cmp-nvim-lsp",
-		"hrsh7th/cmp-buffer",
-		"hrsh7th/cmp-path",
-		"hrsh7th/cmp-cmdline",
-		"hrsh7th/nvim-cmp",
-		--
-		{
-			"folke/trouble.nvim",
-			opts = {}, -- for default options, refer to the configuration section for custom setup.
-			cmd = "Trouble",
-		},
-		--
-		{
-			"jpalardy/vim-slime",
-			config = function()
-				vim.g.slime_target = "tmux"
+  -- Treesitter
+  { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
 
-				-- default socket and pane (adjust to your setup)
-				vim.g.slime_default_config = {
-					socket_name = "default",
-					target_pane = "{last}",
-				}
+  -- Editing
+  { src = "https://github.com/windwp/nvim-autopairs" },
+  { src = "https://github.com/terrortylor/nvim-comment" },
+  { src = "https://github.com/sbdchd/neoformat" },
 
-				vim.g.slime_dont_ask_default = 1 -- skip the prompt, use default config
-				vim.g.slime_python_ipython = 1 -- if using ipython (optional)
-			end,
-		},
-	},
-	-- Configure any other settings here. See the documentation for more details.
-	-- colorscheme that will be used when installing plugins.
-	install = { colorscheme = { "habamax" } },
-	-- automatically check for plugin updates
-	checker = { enabled = false },
+  -- Explorer
+  { src = "https://github.com/kyazdani42/nvim-tree.lua" },
+
+  -- Telescope
+  { src = "https://github.com/nvim-lua/plenary.nvim" },
+  { src = "https://github.com/nvim-telescope/telescope.nvim" },
+  { src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+
+  -- Completion
+  { src = "https://github.com/hrsh7th/nvim-cmp" },
+  { src = "https://github.com/hrsh7th/cmp-nvim-lsp" },
+  { src = "https://github.com/hrsh7th/cmp-buffer" },
+  { src = "https://github.com/hrsh7th/cmp-path" },
+  { src = "https://github.com/hrsh7th/cmp-cmdline" },
+
+  -- Trouble
+  { src = "https://github.com/folke/trouble.nvim" },
+
+  -- Slime
+  { src = "https://github.com/jpalardy/vim-slime" },
 })
 
--- Old plugins check
---         use "hrsh7th/vim-vsnip"
---         use "rafamadriz/friendly-snippets"
---
---         use "kevinhwang91/rnvimr"
---
---
---         use "kevinhwang91/nvim-bqf" -- improve quickfix
---
---         use "simrat39/symbols-outline.nvim"
---
---         use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'}
---         use {
---              'romgrk/barbar.nvim',
---              requires = 'nvim-web-devicons'
---         }
---
---
---         use {
---            'lewis6991/gitsigns.nvim',
---            requires = {
---              'nvim-lua/plenary.nvim'
---            }
---         }
---         --Python
---         -- --use 'alfredodeza/pytest.vim'
---         -- --use 'heavenshell/vim-pydocstring'
---         use 'kkoomen/vim-doge'
---
---         -- Debug
---         use 'mfussenegger/nvim-dap'
---         use 'mfussenegger/nvim-dap-python'
---
---         -- Testing
---         -- --
---         use 'lambdalisue/suda.vim'
---
---         -- ---
---         use {'lukas-reineke/indent-blankline.nvim', branch='master'}
---         -- --
---         -- --
---         use 'jpalardy/vim-slime'
---
---         --
---         use 'Konfekt/FastFold'
---         use 'tmhedberg/SimpylFold'
---
---         use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
---         -- Git diff
---         --
---         use 'sindrets/diffview.nvim'
---
---         -- term
---         use 'kassio/neoterm'
---         --rust
---         --use "simrat39/rust-tools.nvim"
+-- =========================
+-- Configs (manual now)
+-- =========================
+
+-- Mason
+require("mason").setup()
+require("mason-lspconfig").setup()
+
+-- Lualine
+require("lualine").setup({
+  options = { theme = "gruvbox" },
+})
+
+-- Alpha dashboard
+local startify = require("alpha.themes.startify")
+startify.file_icons.provider = "devicons"
+require("alpha").setup(startify.config)
+
+-- Barbar
+vim.g.barbar_auto_setup = false
+require("barbar").setup({})
+
+-- Treesitter
+-- require("nvim-treesitter.configs").setup({
+--   highlight = { enable = true },
+-- })
+
+-- Autopairs
+require("nvim-autopairs").setup({})
+
+-- Telescope
+require("telescope").setup({})
+
+-- Trouble
+require("trouble").setup({})
+
+-- Gruvbox
+require("gruvbox").setup({
+	undercurl = true,
+	underline = true,
+	bold = true,
+	--italic = true, -- will make italic comments and special strings
+	invert_selection = false,
+	invert_signs = false,
+	invert_tabline = false,
+	invert_intend_guides = false,
+	contrast = "hard", -- can be "hard" or "light"
+	overrides = {},
+})
+
+-- vim-slime
+vim.g.slime_target = "tmux"
+vim.g.slime_default_config = {
+  socket_name = "default",
+  target_pane = "{last}",
+}
+vim.g.slime_dont_ask_default = 1
+vim.g.slime_python_ipython = 1
