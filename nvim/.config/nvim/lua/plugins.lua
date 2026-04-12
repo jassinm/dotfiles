@@ -21,7 +21,10 @@ vim.pack.add({
   { src = "https://github.com/tpope/vim-unimpaired" },
 
   -- Treesitter
-  { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
+  { src = "https://github.com/nvim-treesitter/nvim-treesitter",
+    branch = "main",
+    build = ":TSUpdate",
+    start = true},
 
   -- Editing
   { src = "https://github.com/windwp/nvim-autopairs" },
@@ -73,9 +76,22 @@ vim.g.barbar_auto_setup = false
 require("barbar").setup({})
 
 -- Treesitter
--- require("nvim-treesitter.configs").setup({
---   highlight = { enable = true },
--- })
+require("nvim-treesitter").setup({})
+require("nvim-treesitter").install({
+  "python",
+  "rust",
+  "lua",
+  "markdown",
+  "json",
+  "c",
+  "bash",
+  "javascript",
+  "typescript",
+  "css",
+  "html",
+  "vim",
+  "yaml",
+})
 
 -- Autopairs
 require("nvim-autopairs").setup({})
