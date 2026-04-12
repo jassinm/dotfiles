@@ -20,11 +20,6 @@ vim.pack.add({
   { src = "https://github.com/tpope/vim-fugitive" },
   { src = "https://github.com/tpope/vim-unimpaired" },
 
-  -- Treesitter
-  { src = "https://github.com/nvim-treesitter/nvim-treesitter",
-    branch = "main",
-    build = ":TSUpdate",
-    start = true},
 
   -- Editing
   { src = "https://github.com/windwp/nvim-autopairs" },
@@ -51,6 +46,8 @@ vim.pack.add({
 
   -- Slime
   { src = "https://github.com/jpalardy/vim-slime" },
+  -- TreesitterManager
+  { src = "https://github.com/romus204/tree-sitter-manager.nvim" },
 })
 
 -- =========================
@@ -75,23 +72,6 @@ require("alpha").setup(startify.config)
 vim.g.barbar_auto_setup = false
 require("barbar").setup({})
 
--- Treesitter
-require("nvim-treesitter").setup({})
-require("nvim-treesitter").install({
-  "python",
-  "rust",
-  "lua",
-  "markdown",
-  "json",
-  "c",
-  "bash",
-  "javascript",
-  "typescript",
-  "css",
-  "html",
-  "vim",
-  "yaml",
-})
 
 -- Autopairs
 require("nvim-autopairs").setup({})
@@ -115,6 +95,10 @@ require("gruvbox").setup({
 	contrast = "hard", -- can be "hard" or "light"
 	overrides = {},
 })
+
+require("tree-sitter-manager").setup({
+
+  })
 
 -- vim-slime
 vim.g.slime_target = "tmux"
