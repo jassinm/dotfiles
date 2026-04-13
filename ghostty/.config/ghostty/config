@@ -25,6 +25,9 @@ keybind = ctrl+shift+j=goto_split:bottom
 # Toggle zoom
 keybind = ctrl+shift+m=toggle_split_zoom
 
+# Notification
+desktop-notifications = true
+
 # Mouse: triple-click to select semantic zone (not directly supported in Ghostty)
 #
 
