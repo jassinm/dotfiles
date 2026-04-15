@@ -53,7 +53,7 @@ export PATH="$PATH:/opt/llama.cpp/bin"
 export PATH="$PATH:/usr/local/cuda/bin"
 
 # opencode
-export PATH=/home/jassinm/.opencode/bin:$PATH
+export PATH=$HOME/.opencode/bin:$PATH
 
 # z jump
 source $HOME/z.sh
