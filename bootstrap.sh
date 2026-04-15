@@ -37,3 +37,5 @@ stow git
 
 stow ipython
 stow jupyter
+
+stow opencode

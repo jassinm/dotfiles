@@ -1,0 +1,32 @@
+{
+  "$schema": "https://opencode.ai/theme.json",
+  "defs": {
+    "bg-hard":    "#1d2021",
+    "bg0":        "#282828",
+    "bg1":        "#3c3836",
+    "bg2":        "#504945",
+    "fg":         "#ebdbb2",
+    "fg4":        "#a89984",
+    "red":        "#cc241d",
+    "green":      "#98971a",
+    "yellow":     "#d79921",
+    "blue":       "#458588",
+    "purple":     "#b16286",
+    "aqua":       "#689d6a",
+    "orange":     "#d65d0e"
+  },
+  "theme": {
+    "primary":           { "dark": "yellow",   "light": "blue" },
+    "secondary":         { "dark": "aqua",     "light": "aqua" },
+    "accent":            { "dark": "orange",   "light": "orange" },
+    "error":             { "dark": "red",      "light": "red" },
+    "warning":           { "dark": "yellow",   "light": "yellow" },
+    "success":           { "dark": "green",    "light": "green" },
+    "info":              { "dark": "blue",     "light": "blue" },
+    "text":              { "dark": "fg",       "light": "bg0" },
+    "textMuted":         { "dark": "fg4",      "light": "bg2" },
+    "background":        { "dark": "bg-hard",  "light": "fg" },
+    "backgroundPanel":   { "dark": "bg0",      "light": "fg4" },
+    "backgroundElement": { "dark": "bg1",      "light": "fg4" }
+  }
+}
