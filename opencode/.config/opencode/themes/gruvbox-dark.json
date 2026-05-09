@@ -1,32 +1,17 @@
 {
   "$schema": "https://opencode.ai/theme.json",
-  "defs": {
-    "bg-hard":    "#1d2021",
-    "bg0":        "#282828",
-    "bg1":        "#3c3836",
-    "bg2":        "#504945",
-    "fg":         "#ebdbb2",
-    "fg4":        "#a89984",
-    "red":        "#cc241d",
-    "green":      "#98971a",
-    "yellow":     "#d79921",
-    "blue":       "#458588",
-    "purple":     "#b16286",
-    "aqua":       "#689d6a",
-    "orange":     "#d65d0e"
-  },
   "theme": {
-    "primary":           { "dark": "yellow",   "light": "blue" },
-    "secondary":         { "dark": "aqua",     "light": "aqua" },
-    "accent":            { "dark": "orange",   "light": "orange" },
-    "error":             { "dark": "red",      "light": "red" },
-    "warning":           { "dark": "yellow",   "light": "yellow" },
-    "success":           { "dark": "green",    "light": "green" },
-    "info":              { "dark": "blue",     "light": "blue" },
-    "text":              { "dark": "fg",       "light": "bg0" },
-    "textMuted":         { "dark": "fg4",      "light": "bg2" },
-    "background":        { "dark": "bg-hard",  "light": "fg" },
-    "backgroundPanel":   { "dark": "bg0",      "light": "fg4" },
-    "backgroundElement": { "dark": "bg1",      "light": "fg4" }
+    "primary":           { "dark": "#d79921", "light": "#458588" },
+    "secondary":         { "dark": "#689d6a", "light": "#689d6a" },
+    "accent":            { "dark": "#d65d0e", "light": "#d65d0e" },
+    "error":             { "dark": "#cc241d", "light": "#cc241d" },
+    "warning":           { "dark": "#d79921", "light": "#d79921" },
+    "success":           { "dark": "#98971a", "light": "#98971a" },
+    "info":              { "dark": "#458588", "light": "#458588" },
+    "text":              { "dark": "#ebdbb2", "light": "#282828" },
+    "textMuted":         { "dark": "#a89984", "light": "#504945" },
+    "background":        { "dark": "#1d2021", "light": "#fbf1c7" },
+    "backgroundPanel":   { "dark": "#282828", "light": "#ebdbb2" },
+    "backgroundElement": { "dark": "#3c3836", "light": "#d5c4a1" }
   }
 }
