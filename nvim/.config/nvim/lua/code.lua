@@ -72,3 +72,9 @@ vim.lsp.config("pyright", {
 	},
 })
 vim.lsp.enable("pyright")
+
+vim.lsp.config("clangd", {
+	on_attach = on_attach,
+	cmd = { "clangd", "--background-index", "--clang-tidy", "--header-insertion=iwyu" },
+})
+vim.lsp.enable("clangd")
