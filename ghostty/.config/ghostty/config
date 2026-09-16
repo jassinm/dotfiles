@@ -27,7 +27,7 @@ keybind = ctrl+shift+m=toggle_split_zoom
 
 # Notification
 desktop-notifications = true
-bell-features = system,audio,attention,title
+bell-features = no-system,no-audio,attention,title
 
 # Mouse: triple-click to select semantic zone (not directly supported in Ghostty)
 #
