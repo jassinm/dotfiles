@@ -1,6 +1,19 @@
 require("nvim_comment").setup()
+-- ,cc = "code comment" (gcc / gc{motion} still work too)
+vim.keymap.set("n", "<leader>cc", "<cmd>CommentToggle<CR>", { silent = true })
+vim.keymap.set("v", "<leader>cc", ":CommentToggle<CR>", { silent = true })
 
 require("trouble").setup({})
+
+-- nvim 0.11+ no longer shows diagnostic messages inline by default
+vim.diagnostic.config({
+	virtual_text = true,
+	signs = true,
+	underline = true,
+	update_in_insert = false,
+	severity_sort = true,
+	float = { border = "rounded", source = true },
+})
 
 local on_attach = function(client, bufnr)
 	local function buf_set_keymap(...)
@@ -19,6 +32,9 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set("n", "g]", vim.diagnostic.goto_prev, opts)
 
 	vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+	vim.keymap.set({ "n", "v" }, "<leader>cf", function()
+		vim.lsp.buf.format({ async = true })
+	end, opts)
 	-- buf_set_keymap('n', 'gk', "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", opts)
 	--
 	-- buf_set_keymap('n', '<C-p>', "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>", opts)
@@ -75,6 +91,7 @@ vim.lsp.enable("pyright")
 
 vim.lsp.config("clangd", {
 	on_attach = on_attach,
-	cmd = { "clangd", "--background-index", "--clang-tidy", "--header-insertion=iwyu" },
+	-- prefer a newer clangd (18 can't parse libstdc++'s <expected>)
+	cmd = { vim.fn.executable("clangd-20") == 1 and "clangd-20" or "clangd", "--background-index", "--clang-tidy", "--header-insertion=iwyu" },
 })
 vim.lsp.enable("clangd")

@@ -21,6 +21,7 @@ stow ghostty
 stow tmux
 
 stow nvim
+stow clangd
 # emacs
 # stow doom
 # stow doom_config
